@@ -765,7 +765,7 @@ ACT.A1.ref="a1";ACT.A2.ref="a2";ACT.A4.ref="a4";ACT.A9.ref="a9";ACT.A10.ref="a10
 })();
 </script>
 <script>
-var SHEET_URL="https://script.google.com/macros/s/AKfycbw2TOoAauBd9gbm5b2lXzrW1edAVdZMApSHdYDpTF_uYQn8sdPq4a6c_jBd23Odx-dx/exec"; /* <<< paste your Google Apps Script web app URL between the quotes */
+var SHEET_URL=""; /* <<< paste your Google Apps Script web app URL between the quotes */
 var LINK=location.href.split("#")[0];
 function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
 function shuf(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t}return a}
@@ -885,7 +885,7 @@ function head(){var s=document.getElementById("stu"),h=el("div","shead"),l=el("d
  var r=el("div","row");if(U.name){var nm=el("span","pill","👤 "+U.name);r.appendChild(nm)}var st=el("span","pill");st.id="stat";r.appendChild(st);
  if(U.preview){var b=el("button","btn alt","← Teacher slides");b.onclick=function(){s.classList.remove("on");document.getElementById("deck").classList.add("on");go(D.i)};r.appendChild(b)}
  h.appendChild(r);s.appendChild(h);stat()}
-function stat(){var st=document.getElementById("stat");if(!st)return;if(U.preview){st.textContent="Teacher preview: shows only in your own monitor";st.className="pill warn"}else if(S.dbOK&&U.ref){st.textContent="✓ Connected to teacher";st.className="pill ok"}else{st.textContent="At the end, copy your code into the ClassIn chat";st.className="pill"}}
+function stat(){var st=document.getElementById("stat");if(!st)return;if(U.preview){st.textContent="Teacher preview: shows only in your own monitor";st.className="pill warn"}else if(S.dbOK&&U.ref){st.textContent="✓ Connected to teacher";st.className="pill ok"}else if(SHEET_URL&&!U.tried){st.textContent="Connecting…";st.className="pill"}else{st.textContent=SHEET_URL?"Not connected: open the activity your teacher says, then copy your code into the ClassIn chat":"At the end, copy your code into the ClassIn chat";st.className="pill warn"}}
 function home(){U.cur=null;var s=document.getElementById("stu");s.innerHTML="";head();
  if(!U.name){var q=el("div","qbox");q.appendChild(el("h3","","Type your name"));q.appendChild(el("p","","Use the same name as in ClassIn, so your teacher knows it is you."));var i=el("input");i.type="text";i.maxLength=30;i.placeholder="Your name";q.appendChild(i);var b=el("button","btn go","Start");b.style.marginTop="10px";
   b.onclick=function(){var v=i.value.replace(/[#\/]/g,"").trim();if(v.length<2){i.focus();return}U.name=v;ls(K("name"),v);push();if(U.live&&U.live.act&&ACT[U.live.act]){U.lastAt=U.live.at;openAct(U.live.act)}else home()};
@@ -939,7 +939,7 @@ function summary(s,A,r){var q=el("div","qbox"),sc=sumSc(r);q.appendChild(el("h2"
  var row=el("div","row"),h=el("button","btn go","← All activities"),again=el("button","btn alt","Try again");h.onclick=home;again.onclick=function(){var t=(r.t||1)+1;U.P[A.id]={a:[],s:[],i:0,done:false,t:t};push();renderAct()};row.appendChild(h);row.appendChild(again);q.appendChild(row);s.appendChild(q)}
 
 /* ================= GOOGLE SHEET MODE ================= */
-function api(o){return fetch(SHEET_URL,{method:"POST",body:JSON.stringify(o)}).then(function(r){return r.text()}).then(function(t){try{return JSON.parse(t)}catch(e){return {error:"bad reply from Google"}}})}
+function api(o){var c=window.AbortController?new AbortController():null,tm=setTimeout(function(){if(c)c.abort()},9000);return fetch(SHEET_URL,{method:"POST",body:JSON.stringify(o),signal:c?c.signal:undefined}).then(function(r){clearTimeout(tm);return r},function(e){clearTimeout(tm);throw e}).then(function(r){return r.text()}).then(function(t){try{return JSON.parse(t)}catch(e){return {error:"bad reply from Google"}}})}
 function tkey(){return ls("apes1_tkey")||""}
 function setLive(id){if(!SHEET_URL){lvMsg("Tell students the activity number. They paste their codes in the ClassIn chat.");return}
  if(!tkey()){lvMsg("Enter your teacher key in Class monitor first.");return}
@@ -952,11 +952,11 @@ function poll(){if(!SHEET_URL||!tkey())return;api({action:"results",key:tkey()})
   S.docs=o;S.live=r.live||null;liveLabel();refreshTeacher()}).catch(function(){S.sheetErr="cannot reach the Google Sheet (check the URL and that the deployment is for Anyone)";refreshTeacher()})}
 function teacherData(){[].forEach.call(document.querySelectorAll(".mon"),function(m){renderMon(m.id.slice(4))});if(!SHEET_URL||!tkey())return;poll();if(!S.started){S.started=true;setInterval(poll,8000)}}
 function startStudent(preview){U.preview=!!preview;document.getElementById("stu").classList.add("on");U.name=ls(K("name"))||"";U.P=ls(K("prog"))||{};
- if(!preview&&SHEET_URL){U.ref="sheet";S.dbOK=true;U.sid=ls("apes1_sid");if(!U.sid){U.sid="s"+Date.now().toString(36)+Math.random().toString(36).slice(2,8);ls("apes1_sid",U.sid)}
-  var pl=function(){api({action:"live"}).then(function(r){var d=r.live||null;U.live=d;if(d&&d.act&&ACT[d.act]&&d.at!==U.lastAt&&U.name){U.lastAt=d.at;openAct(d.act);return}U.lastAt=d?d.at:U.lastAt;if(!U.cur)home()}).catch(function(){})};
+ if(!preview&&SHEET_URL){U.ref="sheet";S.dbOK=false;U.sid=ls("apes1_sid");if(!U.sid){U.sid="s"+Date.now().toString(36)+Math.random().toString(36).slice(2,8);ls("apes1_sid",U.sid)}
+  var pl=function(){api({action:"live"}).then(function(r){if(r.error)throw 0;var was=S.dbOK;S.dbOK=true;if(!was){stat();if(!U.cur)home()}var d=r.live||null;U.live=d;if(d&&d.act&&ACT[d.act]&&d.at!==U.lastAt&&U.name){U.lastAt=d.at;openAct(d.act);return}U.lastAt=d?d.at:U.lastAt;if(!U.cur)home()}).catch(function(){var was=S.dbOK;S.dbOK=false;U.tried=true;stat();if(was!==false||!U.shown){U.shown=true;if(!U.cur)home()}})};
   pl();setInterval(pl,8000)}
  home()}
-function push(){ls(K("prog"),U.P);if(U.preview||!U.ref||!U.cur)return;if(U.writing){U.pending=true;return}U.writing=true;var id=U.cur;
+function push(){ls(K("prog"),U.P);if(U.preview||!U.ref||!U.cur||!S.dbOK)return;if(U.writing){U.pending=true;return}U.writing=true;var id=U.cur;
  api({action:"save",sid:U.sid,name:U.name,act:id,n:ACT[id].n,rec:JSON.stringify(U.P[id])}).then(function(r){S.dbOK=!!r.ok;stat()}).catch(function(){S.dbOK=false;stat()}).then(function(){U.writing=false;if(U.pending){U.pending=false;push()}})}
 /* ================= BOOT ================= */
 (function(){var b=document.getElementById("boot");if(b)b.remove();S.owner=/^#teacher$/i.test(location.hash);if(S.owner)startDeck();else startStudent(false);
