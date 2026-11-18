@@ -1,0 +1,14 @@
+{
+  "name": "smoa",
+  "main": "worker.js",
+  "compatibility_date": "2026-11-01",
+  "keep_vars": true,
+  "assets": { "directory": ".", "binding": "ASSETS" },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "classdb",
+      "database_id": "04051546-0f35-4466-a62a-d9ba40bcf27d"
+    }
+  ]
+}
