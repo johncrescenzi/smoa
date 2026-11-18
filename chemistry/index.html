@@ -1,0 +1,720 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Chemistry Module 6: Stoichiometry</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Serif+4:wght@400;600&display=swap"><style>
+:root{--bg:#f1f5f4;--panel:#dfeae9;--ink:#12262e;--mute:#4a626a;--g:#1d7a8c;--a:#b06a0c;--blue:#2a6f97;--bad:#b23a2e;--line:#b9cdc6;
+--head:"Bricolage Grotesque","Trebuchet MS",sans-serif;--body:"Source Serif 4",Georgia,serif}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1c21;--panel:#17303a;--ink:#e8f1ee;--mute:#9db5bb;--g:#52c0d4;--a:#eaa64a;--blue:#6fb3db;--bad:#e2776b;--line:#2b4650}}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--ink);font:400 clamp(16px,1.6vw,21px)/1.5 var(--body)}
+h1,h2,h3,h4{font-family:var(--head);line-height:1.12;margin:0 0 .45em}
+h1{font-size:clamp(32px,5.4vw,68px);font-weight:800;letter-spacing:-.02em;max-width:15em}
+h2{font-size:clamp(24px,3.4vw,44px);font-weight:700}
+h3{font-size:1.05em;color:var(--g);margin-bottom:.3em}
+p{margin:.3em 0 .8em;max-width:40em}
+ul,ol{margin:.2em 0 .8em;padding-left:1.2em}li{margin:.2em 0}
+.sm{font-size:.85em;color:var(--mute)}
+.tag{display:inline-block;font:700 .7em var(--head);letter-spacing:.06em;text-transform:uppercase;color:var(--g);margin-bottom:.4em}
+.grid{display:grid;gap:clamp(12px,2vw,26px);grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));align-items:start}
+.grid>div{background:var(--panel);border-radius:10px;padding:.7em .9em}
+.do{border-left:5px solid var(--a);padding:.4em 0 .4em 1em;margin-top:1em;max-width:46em}.do b{font-family:var(--head);color:var(--a)}
+.nb{border:2px dashed var(--g);border-radius:8px;padding:.4em .8em;margin-top:1em;max-width:46em}.nb b{font-family:var(--head);color:var(--g)}
+.wrap{overflow-x:auto;max-width:100%}
+table{border-collapse:collapse;width:100%}
+th,td{text-align:left;padding:.42em .7em;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--head);color:var(--g)}
+.split{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:22px;align-items:start}
+@media(max-width:900px){.split{grid-template-columns:1fr}}
+svg.dg{width:100%;max-width:760px;height:auto;display:block}
+.dbox{fill:var(--panel);stroke:var(--g);stroke-width:2}.dtx{fill:var(--ink);font:700 14px sans-serif;text-anchor:middle}
+.darr{fill:none;stroke:var(--mute);stroke-width:2.2}.dnum{fill:var(--a)}.dnt{fill:#fff;font:800 13px sans-serif;text-anchor:middle}
+.dhead{fill:var(--mute)}
+.legend{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:4px 14px;font-size:.85em;margin:.4em 0}
+.legend span b{display:inline-block;min-width:1.6em;height:1.6em;line-height:1.6em;text-align:center;border-radius:50%;background:var(--a);color:#fff;font:800 .85em var(--head);margin-right:6px}
+.bgrid{display:grid;grid-template-columns:7.5em repeat(4,1fr);gap:4px;font-size:.82em;min-width:620px;max-width:900px}
+.bgrid div{padding:.45em .5em;border-radius:6px;background:var(--panel)}
+.bgrid .hd{background:none;font:700 1em var(--head);color:var(--mute);text-align:center}
+.bgrid .rh{background:none;font:700 1em var(--head);color:var(--blue)}
+.b-c{background:color-mix(in srgb,#7fa7c9 40%,var(--bg))!important}.b-w{background:color-mix(in srgb,#5aa36a 40%,var(--bg))!important}
+.b-h{background:color-mix(in srgb,#d9a441 40%,var(--bg))!important}.b-x{opacity:.45}
+.zsvg{width:100%;max-width:520px;height:auto;display:block}
+.water{fill:color-mix(in srgb,var(--blue) 30%,var(--bg))}.deep{fill:color-mix(in srgb,var(--blue) 55%,var(--bg))}.sedi{fill:none;stroke:#8a6a3c;stroke-width:5}
+.zl{fill:var(--ink);font:700 13px sans-serif;text-anchor:middle}.zs{fill:var(--ink);font:11px sans-serif;text-anchor:middle}.zd{stroke:var(--ink);stroke-dasharray:6 5;stroke-width:1.5}
+.plant{stroke:var(--g);stroke-width:3}
+.pyr{fill:color-mix(in srgb,var(--g) 30%,var(--bg));stroke:var(--g);stroke-width:2}
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:8px;margin:.6em 0}.flow>div{background:var(--panel);border-radius:8px;padding:.45em .7em;max-width:12em;font-size:.9em}.flow .ar{background:none;align-self:center;color:var(--g);font-weight:800;padding:0}
+.nbp{background:var(--panel);border-left:6px solid var(--g);border-radius:10px;padding:.6em 1.2em;font-size:1.12em;line-height:1.55;max-width:62em}
+.nbp h3{margin:.6em 0 .2em}.nbt{font:800 1.35em var(--head);color:var(--g)}
+.timer{font:700 .9em var(--head);margin-top:.8em}
+button{font:inherit}
+.btn{font:600 .95em var(--head);background:var(--ink);color:var(--bg);border:0;border-radius:8px;padding:.5em 1.1em;cursor:pointer}
+.btn.alt{background:var(--panel);color:var(--ink);border:2px solid var(--line)}
+.btn.go{background:var(--g);color:#fff}
+.btn:focus-visible,.chip:focus-visible,.opt:focus-visible{outline:3px solid var(--a);outline-offset:2px}
+.btn[disabled]{opacity:.45;cursor:default}
+.lnk{font-family:var(--head);color:var(--blue);word-break:break-all}
+/* deck */
+#deck{display:none;height:100%;flex-direction:column}
+#deck.on{display:flex}
+#deck main{flex:1;min-height:0;position:relative;overflow:hidden}
+#deck section{position:absolute;inset:0;padding:clamp(18px,3.4vw,48px) clamp(18px,5vw,76px);overflow-y:auto;display:none}
+#deck section.on{display:block}
+#deck nav{display:flex;align-items:center;gap:10px;padding:8px clamp(14px,5vw,76px);border-top:1px solid var(--line);font-family:var(--head)}
+.bar{flex:1;height:6px;background:var(--panel);border-radius:3px;overflow:hidden}.bar i{display:block;height:100%;width:0;background:var(--g)}
+#n{color:var(--mute);min-width:4em;text-align:right}
+.live{display:inline-flex;align-items:center;gap:6px;font:700 .8em var(--head);color:var(--bad)}.live i{width:10px;height:10px;border-radius:50%;background:var(--bad);animation:pulse 1.4s infinite}
+@keyframes pulse{50%{opacity:.25}}
+@media(prefers-reduced-motion:reduce){.live i{animation:none}}
+.mon{background:var(--panel);border-radius:12px;padding:.7em .9em;font-size:.82em}
+.mon table{font-size:.9em}.mon td,.mon th{padding:.28em .32em}.split.act{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)}
+.c1{color:var(--g);font-weight:800}.c0{color:var(--bad);font-weight:800}.cp{color:var(--a);font-weight:800}
+.mbar{height:8px;border-radius:4px;background:var(--line);overflow:hidden;min-width:60px}.mbar i{display:block;height:100%;background:var(--g)}
+.txa{border-top:1px solid var(--line);padding:.35em 0}
+.txa b{font-family:var(--head)}
+#ov{position:fixed;inset:0;background:var(--bg);z-index:30;overflow:auto;padding:24px clamp(16px,4vw,60px);display:none}
+#ov.on{display:block}
+textarea,input[type=text]{width:100%;font:inherit;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:.5em}
+/* student */
+#stu{display:none;max-width:1250px;margin:0 auto;padding:clamp(12px,2.6vw,30px)}
+#stu.on{display:block}
+.shead{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;border-bottom:2px solid var(--line);padding-bottom:.5em;margin-bottom:1em}
+.shead h2{margin:0;font-size:clamp(20px,2.6vw,30px)}
+.pill{font:600 .78em var(--head);padding:.25em .7em;border-radius:20px;background:var(--panel)}
+.pill.ok{background:color-mix(in srgb,var(--g) 25%,var(--bg))}.pill.warn{background:color-mix(in srgb,var(--a) 25%,var(--bg))}
+.alist{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.acard{text-align:left;background:var(--panel);border:2px solid var(--line);border-radius:12px;padding:.7em .9em;cursor:pointer;color:var(--ink)}
+.acard b{font-family:var(--head);display:block}.acard.now{border-color:var(--bad)}.acard.done{border-color:var(--g)}
+.run{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:22px;align-items:start}
+.run.noref{grid-template-columns:minmax(0,46em)}
+@media(max-width:860px){.run{grid-template-columns:1fr}}
+.refp{position:sticky;top:8px;background:var(--bg);border:2px solid var(--line);border-radius:12px;padding:10px;max-height:calc(100vh - 30px);overflow:auto;font-size:.88em}
+@media(max-width:860px){.refp{position:static;max-height:none}}
+.qbox{background:var(--panel);border-radius:12px;padding:1em 1.1em}
+.qn{font:700 .8em var(--head);color:var(--mute)}
+.q{font-size:1.12em;font-weight:600;margin:.3em 0 .7em}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;background:var(--bg);color:var(--ink);border:2px solid var(--line);border-radius:10px;padding:.55em .8em;cursor:pointer;font:inherit}
+.opt.ok,.chip.ok{border-color:var(--g);background:color-mix(in srgb,var(--g) 20%,var(--bg))}
+.opt.no,.chip.no{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 15%,var(--bg))}
+.fb{margin:.7em 0;font-weight:600}.fb.good{color:var(--g)}.fb.bad{color:var(--bad)}
+.pool{display:flex;flex-wrap:wrap;gap:8px;margin:.4em 0}
+.chip{background:var(--bg);border:2px solid var(--line);border-radius:8px;padding:.35em .7em;cursor:pointer;font:inherit;color:var(--ink);text-align:left}
+.chip.sel{border-color:var(--a);box-shadow:0 0 0 2px var(--a)}
+.shake{animation:sh .35s}@keyframes sh{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.bks{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));margin:.6em 0}
+.bk{border:2px dashed var(--line);border-radius:10px;padding:8px;min-height:80px;cursor:pointer;display:flex;flex-wrap:wrap;gap:6px;align-content:flex-start;background:var(--bg)}
+.bk h4{width:100%;margin:0;font:700 .92em var(--head);color:var(--g)}
+.seq{counter-reset:s;list-style:none;padding:0}.seq li{counter-increment:s;background:var(--bg);border-radius:8px;padding:.35em .6em;margin:4px 0}.seq li::before{content:counter(s) ". ";font-weight:800;color:var(--g)}
+.seq li.no{outline:2px solid var(--bad)}.seq li.ok{outline:2px solid var(--g)}
+.prog{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin:.4em 0 .8em}.prog i{display:block;height:100%;background:var(--g)}
+.code{font:800 1.3em var(--head);background:var(--bg);border:2px dashed var(--a);border-radius:10px;padding:.5em .8em;display:inline-block;user-select:all;word-break:break-all}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:.6em 0}
+.vgrid{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));margin:.5em 0}
+.vc{background:var(--panel);border-radius:12px;padding:.6em .7em;text-align:center;display:flex;flex-direction:column;align-items:center;gap:2px}
+.vc .emo{font-size:2em;line-height:1.25}.vc .emo small{font-size:.35em;color:var(--mute)}.vc b{font-family:var(--head)}.vc span{font-size:.82em;color:var(--mute)}
+.sign{font:800 1.2em var(--head)}.sp{color:var(--g);font-style:normal;font-weight:800}.sm2{color:var(--bad);font-style:normal;font-weight:800}.s0{color:var(--mute);font-style:normal;font-weight:800}
+.lgd{font-size:.85em}.kg,.kb{display:inline-block;color:#fff;border-radius:10px;padding:0 .6em;margin-right:6px}.kg{background:var(--g)}.kb{background:var(--blue)}
+.salt>div:first-child{height:22px;border-radius:11px;margin:.4em 0}.row3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;font-size:.88em;text-align:center}
+.wbar{display:flex;height:34px;border-radius:8px;overflow:hidden;margin:.3em 0;font:700 .78em var(--head);color:#fff}.wbar div{display:flex;align-items:center;padding-left:8px;white-space:nowrap;overflow:hidden}
+.ebr{display:grid;grid-template-columns:8.5em 1fr 6.5em;gap:8px;align-items:center;margin:4px 0;font-size:.9em}.ebr div{height:20px;background:var(--panel);border-radius:6px;overflow:hidden}.ebr i{display:block;height:100%;background:var(--g)}
+.bem{display:block;font-size:1.5em;line-height:1.2}td .bem{display:inline}
+.fx{display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:1.12em;margin:.4em 0}
+.fr{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;line-height:1.25}.fr>span:first-child{border-bottom:2px solid var(--ink);padding:0 .3em}.fr>span:last-child{padding:0 .3em}
+.cx{text-decoration:line-through;text-decoration-color:var(--bad);text-decoration-thickness:2px}
+.ans{background:color-mix(in srgb,var(--g) 22%,var(--bg));border:2px solid var(--g);border-radius:8px;padding:.1em .5em;font-weight:800}
+.step{display:grid;grid-template-columns:2.2em 1fr;gap:8px;align-items:start;margin:.5em 0}.step>b{background:var(--g);color:#fff;border-radius:50%;width:1.8em;height:1.8em;display:flex;align-items:center;justify-content:center;font-family:var(--head)}
+.ix{background:var(--panel);border-radius:14px;padding:.8em 1em;max-width:900px}.ix label{font-weight:600}.ix input[type=range]{width:min(100%,420px);vertical-align:middle}
+.parts{display:flex;flex-wrap:wrap;gap:3px;font-size:1.5em;line-height:1.2;min-height:1.3em}.left{opacity:.35}
+.big3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;text-align:center}.big3>div{background:var(--bg);border-radius:10px;padding:.5em}.big3 b{display:block;font:800 1.8em var(--head);color:var(--g)}
+.lim{outline:3px solid var(--bad);border-radius:10px}
+.mmt{display:grid;grid-template-columns:repeat(auto-fill,minmax(7.5em,1fr));gap:4px;font-size:.85em}.mmt div{background:var(--panel);border-radius:6px;padding:.2em .45em}.mmt b{font-family:var(--head)}
+.vgrid{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));margin:.5em 0}
+.vc{background:var(--panel);border-radius:12px;padding:.6em .7em;text-align:center;display:flex;flex-direction:column;align-items:center;gap:2px}
+.vc .emo{font-size:2em;line-height:1.25}.vc b{font-family:var(--head)}.vc span{font-size:.82em;color:var(--mute)}
+.ybar{display:grid;grid-template-columns:9em 1fr 5em;gap:8px;align-items:center;margin:6px 0}.ybar div{height:26px;background:var(--panel);border-radius:6px;overflow:hidden}.ybar i{display:block;height:100%}
+</style></head><body>
+<div id="deck"><main>
+
+<!-- ================= CLASS 1 ================= -->
+<section class="on"><span class="tag">Chemistry · Module 6</span><h1>Stoichiometry</h1><h2>Class 1 · Mole ratios and mole calculations (2.5 hours)</h2>
+<p>By the end of today you can: define stoichiometry; explain why the mole ratio matters; write a mole ratio from an equation; show that amounts in a reaction follow mole relationships; calculate moles or mass of one substance from moles of another.</p>
+<div class="wrap"><table><tr><th>Block</th><th>Minutes</th></tr>
+<tr><td>Join + warm-up (A1)</td><td>12</td></tr>
+<tr><td>What is stoichiometry? Reading an equation + A2</td><td>28</td></tr>
+<tr><td>Mole ratios + A3</td><td>25</td></tr>
+<tr><td>Investigate: the ammonia factory</td><td>15</td></tr>
+<tr><td>Break</td><td>10</td></tr>
+<tr><td>Mole → mole calculations + A4</td><td>25</td></tr>
+<tr><td>Mole → mass calculations + A5</td><td>25</td></tr>
+<tr><td>Exit ticket (A6)</td><td>10</td></tr></table></div>
+<div class="nb">&#9998; <b>Notebook:</b> new page. Title it <b>Module 6: Stoichiometry</b>.</div></section>
+
+<section data-join></section>
+<section data-act="A1"></section>
+
+<section><span class="tag">Objective 1</span><h2>What is stoichiometry?</h2>
+<p><b>Stoichiometry</b> (stoy-kee-OM-uh-tree) is the part of chemistry that studies the <b>amounts</b> of reactants and products in a chemical reaction.</p>
+<div data-ref="recipe"></div>
+<div class="grid"><div><h3>A recipe</h3><p>A recipe tells you how much of each ingredient you need. If you double the ingredients, you double the food.</p></div>
+<div><h3>A balanced equation</h3><p>A balanced equation is a chemistry recipe. The <b>coefficients</b> tell you how many particles (or moles) react and form.</p></div>
+<div><h3>Why it matters</h3><p>Factories, medicine and cooking all need to know: <i>how much do I need?</i> and <i>how much will I make?</i></p></div></div></section>
+
+<section><span class="tag">Objective 1</span><h2>Reading a balanced equation</h2>
+<div data-ref="molecules"></div>
+<div class="wrap"><table><tr><th>Read it as…</th><th>2H₂</th><th>+ O₂</th><th>→ 2H₂O</th></tr>
+<tr><td>🔵 particles (molecules)</td><td>2 molecules</td><td>1 molecule</td><td>2 molecules</td></tr>
+<tr><td>📦 moles</td><td>2 mol</td><td>1 mol</td><td>2 mol</td></tr>
+<tr><td>⚖️ mass (mol × molar mass)</td><td>2 × 2.02 = 4.04 g</td><td>1 × 32.00 = 32.00 g</td><td>2 × 18.02 = 36.04 g</td></tr></table></div>
+<div class="do"><b>Look:</b> 4.04 g + 32.00 g = 36.04 g. Mass is conserved. But the <b>coefficients are moles, not grams</b>. Never use coefficients with grams.</div></section>
+
+<section><div class="nbp"><div class="nbt">&#9998; Notebook page 1 · What is stoichiometry?</div>
+<ul><li><b>Stoichiometry</b> = the study of the amounts of reactants and products in a reaction.</li>
+<li>A balanced equation is like a <b>recipe</b>.</li>
+<li><b>Coefficients</b> = number of particles <b>or</b> number of moles. They are NOT grams.</li>
+<li>2H₂ + O₂ → 2H₂O means 2 mol H₂ + 1 mol O₂ → 2 mol H₂O.</li>
+<li>Mass is conserved: 4.04 g + 32.00 g = 36.04 g.</li></ul></div><div data-timer="5"></div></section>
+
+<section data-act="A2"></section>
+
+<section><span class="tag">Objectives 2 and 3</span><h2>The mole ratio</h2>
+<p>A <b>mole ratio</b> is a conversion factor that relates the amounts in moles of <b>any two substances</b> in a chemical reaction. You get it from the <b>coefficients</b> of the balanced equation.</p>
+<div data-ref="ratios"></div>
+<div class="do"><b>Why it is important:</b> the mole ratio is the <b>bridge</b> between two different substances. Every stoichiometry problem uses it. You cannot go from substance A to substance B without it.</div></section>
+
+<section><span class="tag">Objective 3</span><h2>Writing and using a mole ratio</h2>
+<p>Put the substance you <b>want</b> on top. Put the substance you <b>have</b> on the bottom, so its unit cancels.</p>
+<div class="grid"><div><h3>Example: 2Al₂O₃ → 4Al + 3O₂</h3><p>Have mol Al₂O₃, want mol Al:</p><div class="fx"><span class="fr"><span>4 mol Al</span><span>2 mol Al₂O₃</span></span></div><p>Have mol Al₂O₃, want mol O₂:</p><div class="fx"><span class="fr"><span>3 mol O₂</span><span>2 mol Al₂O₃</span></span></div></div>
+<div><h3>Units cancel</h3><div class="fx">5.0 <span class="cx">mol Al₂O₃</span> × <span class="fr"><span>4 mol Al</span><span>2 <span class="cx">mol Al₂O₃</span></span></span> = <span class="ans">10 mol Al</span></div><p class="sm">The "mol Al₂O₃" on top and bottom cancel. Only "mol Al" is left.</p></div></div>
+<div class="do"><b>Remember:</b> wanted on top, given on the bottom. Use the equation's coefficients only.</div></section>
+
+<section><div class="nbp"><div class="nbt">&#9998; Notebook page 2 · Mole ratios</div>
+<ul><li><b>Mole ratio</b> = a conversion factor between the moles of any two substances in a reaction.</li>
+<li>It comes from the <b>coefficients</b> of the <b>balanced</b> equation.</li>
+<li>N₂ + 3H₂ → 2NH₃ gives: 1 mol N₂ / 3 mol H₂ · 2 mol NH₃ / 1 mol N₂ · 2 mol NH₃ / 3 mol H₂ (and each flipped).</li>
+<li><b>Wanted on top, given on the bottom</b>, so units cancel.</li>
+<li>It is the bridge from substance A to substance B.</li></ul></div><div data-timer="5"></div></section>
+
+<section data-act="A3"></section>
+
+<section><span class="tag">Objective 4 · Investigate</span><h2>The ammonia factory</h2>
+<p>A factory makes ammonia: <b>N₂ + 3H₂ → 2NH₃</b>. Move the slider. Watch how the amounts change together. Then answer the questions below with your partner.</p>
+<div data-ref="factory"></div>
+<ol><li>When you double the N₂, what happens to the H₂ needed and the NH₃ made?</li><li>Is the ratio N₂ : H₂ : NH₃ always the same? What is it?</li><li>Do the <b>masses</b> follow 1 : 3 : 2? Why not?</li></ol>
+<div class="do"><b>Conclusion:</b> the amounts in a reaction always follow the <b>mole</b> ratio, not the mass ratio.</div></section>
+
+<section><h2>Break: 10 minutes</h2><p>Stand up, stretch, drink water. Next: stoichiometry calculations.</p></section>
+
+<section><span class="tag">Objective 5</span><h2>The stoichiometry map</h2>
+<p>Every problem in this module uses this map. Find where you <b>start</b> (given) and where you <b>finish</b> (wanted).</p>
+<div data-ref="map"></div>
+<div class="wrap"><table><tr><th>Problem type</th><th>Given</th><th>Wanted</th><th>Steps</th></tr>
+<tr><td>Mole → mole</td><td>mol A</td><td>mol B</td><td>② only</td></tr>
+<tr><td>Mole → mass</td><td>mol A</td><td>g B</td><td>② then ③</td></tr>
+<tr><td>Mass → mole</td><td>g A</td><td>mol B</td><td>① then ②</td></tr>
+<tr><td>Mass → mass</td><td>g A</td><td>g B</td><td>① ② ③</td></tr></table></div></section>
+
+<section><span class="tag">Objective 5</span><h2>Mole → mole calculations</h2><div class="split"><div><div data-ref="mapMM"></div>
+<h3>Example</h3><p>4Al + 3O₂ → 2Al₂O₃. How many moles of Al₂O₃ form from <b>6.0 mol Al</b>?</p>
+<div class="step"><b>1</b><div>Given: 6.0 mol Al. Wanted: mol Al₂O₃.</div></div>
+<div class="step"><b>2</b><div>Mole ratio (wanted / given): <span class="fr"><span>2 mol Al₂O₃</span><span>4 mol Al</span></span></div></div>
+<div class="step"><b>3</b><div class="fx">6.0 <span class="cx">mol Al</span> × <span class="fr"><span>2 mol Al₂O₃</span><span>4 <span class="cx">mol Al</span></span></span> = <span class="ans">3.0 mol Al₂O₃</span></div></div></div>
+<div><h3>Try it together</h3><p>2H₂ + O₂ → 2H₂O. How many moles of O₂ react with <b>8.0 mol H₂</b>?</p><details><summary>Show answer</summary><div class="fx">8.0 <span class="cx">mol H₂</span> × <span class="fr"><span>1 mol O₂</span><span>2 <span class="cx">mol H₂</span></span></span> = <span class="ans">4.0 mol O₂</span></div></details></div></div></section>
+
+<section><div class="nbp"><div class="nbt">&#9998; Notebook page 3 · Mole → mole</div>
+<ul><li>Map: <b>mol A → × mole ratio → mol B</b></li>
+<li>Steps: (1) write given and wanted, (2) write the mole ratio (wanted on top), (3) multiply.</li>
+<li>Example: 4Al + 3O₂ → 2Al₂O₃<br>6.0 mol Al × (2 mol Al₂O₃ / 4 mol Al) = <b>3.0 mol Al₂O₃</b></li></ul></div><div data-timer="5"></div></section>
+
+<section data-act="A4"></section>
+
+<section><span class="tag">Objective 6</span><h2>Mole → mass calculations</h2><div class="split"><div><div data-ref="mapMG"></div>
+<h3>Example</h3><p>2Mg + O₂ → 2MgO. What mass of MgO forms from <b>2.0 mol Mg</b>?</p>
+<div class="step"><b>1</b><div>Molar mass of MgO = 24.31 + 16.00 = <b>40.31 g/mol</b></div></div>
+<div class="step"><b>2</b><div class="fx">2.0 <span class="cx">mol Mg</span> × <span class="fr"><span>2 <span class="cx">mol MgO</span></span><span>2 <span class="cx">mol Mg</span></span></span> × <span class="fr"><span>40.31 g MgO</span><span>1 <span class="cx">mol MgO</span></span></span> = <span class="ans">80.62 g MgO</span></div></div></div>
+<div><h3>Try it together</h3><p>N₂ + 3H₂ → 2NH₃. What mass of NH₃ forms from <b>1.0 mol N₂</b>? (NH₃ = 17.04 g/mol)</p><details><summary>Show answer</summary><div class="fx">1.0 <span class="cx">mol N₂</span> × <span class="fr"><span>2 <span class="cx">mol NH₃</span></span><span>1 <span class="cx">mol N₂</span></span></span> × <span class="fr"><span>17.04 g</span><span>1 <span class="cx">mol NH₃</span></span></span> = <span class="ans">34.08 g NH₃</span></div></details>
+<div data-ref="mm"></div></div></div></section>
+
+<section><div class="nbp"><div class="nbt">&#9998; Notebook page 4 · Mole → mass</div>
+<ul><li>Map: <b>mol A → × mole ratio → mol B → × molar mass B → g B</b></li>
+<li>Molar mass = add the atomic masses (g/mol). MgO = 24.31 + 16.00 = 40.31 g/mol.</li>
+<li>Example: 2Mg + O₂ → 2MgO<br>2.0 mol Mg × (2 mol MgO / 2 mol Mg) × (40.31 g / 1 mol MgO) = <b>80.62 g MgO</b></li></ul></div><div data-timer="5"></div></section>
+
+<section data-act="A5"></section>
+<section data-act="A6"></section>
+
+<!-- ================= CLASS 2 ================= -->
+<section><span class="tag">Chemistry · Module 6</span><h1>Class 2 · Mass, limiting reactants and yield</h1><h2>(2.5 hours)</h2>
+<p>By the end of today you can: calculate moles or mass from the <b>mass</b> of another substance; find the limiting reactant; calculate product when one reactant is in excess; explain and calculate theoretical, actual and percentage yield.</p>
+<div class="wrap"><table><tr><th>Block</th><th>Minutes</th></tr>
+<tr><td>Warm-up (A7)</td><td>10</td></tr>
+<tr><td>Mass → mole and mass → mass + A8</td><td>35</td></tr>
+<tr><td>Limiting reactants: sandwiches and molecules</td><td>25</td></tr>
+<tr><td>Limiting reactant calculations + A9</td><td>25</td></tr>
+<tr><td>Break</td><td>10</td></tr>
+<tr><td>Theoretical, actual and percentage yield + A10</td><td>25</td></tr>
+<tr><td>Module review (A11) + exit ticket (A12)</td><td>20</td></tr></table></div></section>
+
+<section data-act="A7"></section>
+
+<section><span class="tag">Objective 7</span><h2>Mass → mole calculations</h2><div class="split"><div><div data-ref="mapGM"></div>
+<h3>Example</h3><p>2H₂ + O₂ → 2H₂O. How many moles of H₂O form from <b>64.00 g O₂</b>?</p>
+<div class="step"><b>1</b><div>Grams → moles: divide by molar mass (O₂ = 32.00 g/mol)</div></div>
+<div class="step"><b>2</b><div class="fx">64.00 <span class="cx">g O₂</span> × <span class="fr"><span>1 <span class="cx">mol O₂</span></span><span>32.00 <span class="cx">g O₂</span></span></span> × <span class="fr"><span>2 mol H₂O</span><span>1 <span class="cx">mol O₂</span></span></span> = <span class="ans">4.00 mol H₂O</span></div></div></div>
+<div><div data-ref="mm"></div><div class="do"><b>Tip:</b> "× 1 mol / molar mass" is the same as "÷ molar mass".</div></div></div></section>
+
+<section><span class="tag">Objective 8</span><h2>Mass → mass calculations</h2><div class="split"><div><div data-ref="map"></div>
+<h3>Example</h3><p>2Mg + O₂ → 2MgO. What mass of MgO forms from <b>48.62 g Mg</b>?</p>
+<div class="step"><b>①</b><div>48.62 g Mg ÷ 24.31 g/mol = 2.000 mol Mg</div></div>
+<div class="step"><b>②</b><div>2.000 mol Mg × (2 mol MgO / 2 mol Mg) = 2.000 mol MgO</div></div>
+<div class="step"><b>③</b><div>2.000 mol MgO × 40.31 g/mol = <span class="ans">80.62 g MgO</span></div></div>
+<p class="sm">All in one line:</p><div class="fx" style="font-size:.95em">48.62 <span class="cx">g Mg</span> × <span class="fr"><span>1 <span class="cx">mol Mg</span></span><span>24.31 <span class="cx">g Mg</span></span></span> × <span class="fr"><span>2 <span class="cx">mol MgO</span></span><span>2 <span class="cx">mol Mg</span></span></span> × <span class="fr"><span>40.31 g MgO</span><span>1 <span class="cx">mol MgO</span></span></span></div></div>
+<div><div data-ref="mm"></div><div class="do"><b>You can never go grams → grams directly.</b> Always go through moles: g → mol → mol → g.</div></div></div></section>
+
+<section><span class="tag">Skill practice 2</span><h2>Bonus: gas volume at STP</h2><div class="split"><div>
+<p>At <b>STP</b> (standard temperature and pressure: 0 °C and 1 atm), <b>1 mol of any gas = 22.4 L</b>.</p>
+<div class="vgrid"><div class="vc"><div class="emo">🎈</div><b>1 mol O₂</b><span>22.4 L</span></div><div class="vc"><div class="emo">🎈</div><b>1 mol CO₂</b><span>22.4 L</span></div><div class="vc"><div class="emo">🎈🎈</div><b>2 mol H₂</b><span>44.8 L</span></div></div>
+<p class="fx">moles of gas × <span class="fr"><span>22.4 L</span><span>1 mol</span></span> = litres at STP</p>
+<h3>Example</h3><p>2HgO → 2Hg + O₂. What volume of O₂ at STP forms from <b>15.0 g HgO</b>?</p>
+<div class="fx" style="font-size:.95em">15.0 <span class="cx">g HgO</span> × <span class="fr"><span>1 <span class="cx">mol HgO</span></span><span>216.59 <span class="cx">g</span></span></span> × <span class="fr"><span>1 <span class="cx">mol O₂</span></span><span>2 <span class="cx">mol HgO</span></span></span> × <span class="fr"><span>22.4 L</span><span>1 <span class="cx">mol</span></span></span> = <span class="ans">0.776 L O₂</span></div></div>
+<div><div data-ref="mm"></div></div></div></section>
+
+<section><div class="nbp"><div class="nbt">&#9998; Notebook page 5 · Mass → mole, mass → mass</div>
+<ul><li>Mass → mole: <b>g A ÷ molar mass A → mol A → × mole ratio → mol B</b></li>
+<li>Mass → mass: <b>g A → mol A → mol B → g B</b> (3 steps ① ② ③)</li>
+<li>Never go grams → grams directly. Always go through moles.</li>
+<li>Gas at STP: <b>1 mol = 22.4 L</b>. Moles × 22.4 = litres.</li>
+<li>Example: 48.62 g Mg → 2.000 mol Mg → 2.000 mol MgO → <b>80.62 g MgO</b></li></ul></div><div data-timer="5"></div></section>
+
+<section data-act="A8"></section>
+
+<section><span class="tag">Objective 9</span><h2>Limiting reactants: the sandwich shop</h2>
+<p>Recipe: <b>2 bread + 1 cheese → 1 sandwich</b>. Move the sliders.</p>
+<div data-ref="sandwich"></div>
+<div class="grid"><div><h3>Limiting reactant</h3><p>The reactant that is <b>used up first</b>. It <b>limits</b> (stops) the amount of product.</p></div><div><h3>Excess reactant</h3><p>The reactant that is <b>left over</b> when the reaction stops.</p></div></div>
+<div class="do"><b>The limiting reactant is not always the one with less!</b> You must compare using the recipe (the mole ratio).</div></section>
+
+<section><span class="tag">Objective 9</span><h2>How to find the limiting reactant</h2>
+<div class="split"><div><h3>Method: "Which makes less product?"</h3>
+<div class="step"><b>1</b><div>Change both reactants to <b>moles</b> (if given in grams).</div></div>
+<div class="step"><b>2</b><div>For <b>each</b> reactant, calculate the moles of product it could make.</div></div>
+<div class="step"><b>3</b><div>The reactant that makes the <b>smaller</b> amount is the <b>limiting reactant</b>. That smaller amount is the answer.</div></div>
+<h3>Molecule view: 2H₂ + O₂ → 2H₂O</h3><div data-ref="h2o"></div></div>
+<div><h3>Example</h3><p>2H₂ + O₂ → 2H₂O with <b>4.0 mol H₂</b> and <b>3.0 mol O₂</b>.</p>
+<div class="fx">4.0 mol H₂ × <span class="fr"><span>2 mol H₂O</span><span>2 mol H₂</span></span> = <b>4.0 mol H₂O</b></div>
+<div class="fx">3.0 mol O₂ × <span class="fr"><span>2 mol H₂O</span><span>1 mol O₂</span></span> = 6.0 mol H₂O</div>
+<p><b>H₂</b> makes less → H₂ is <b>limiting</b>. O₂ is in excess. Product = <span class="ans">4.0 mol H₂O</span></p>
+<p>Excess left: H₂ uses 4.0 × (1/2) = 2.0 mol O₂. 3.0 − 2.0 = <b>1.0 mol O₂ left over</b>.</p></div></div></section>
+
+<section><span class="tag">Objective 10</span><h2>Limiting reactant with masses</h2><div class="split"><div>
+<p>2Na + Cl₂ → 2NaCl. You have <b>46.0 g Na</b> and <b>50.0 g Cl₂</b>. What mass of NaCl forms?</p>
+<div class="step"><b>1</b><div>Moles: 46.0 g ÷ 22.99 = <b>2.00 mol Na</b> · 50.0 g ÷ 70.90 = <b>0.705 mol Cl₂</b></div></div>
+<div class="step"><b>2</b><div>Na: 2.00 mol × (2 mol NaCl / 2 mol Na) = 2.00 mol NaCl<br>Cl₂: 0.705 mol × (2 mol NaCl / 1 mol Cl₂) = <b>1.41 mol NaCl</b></div></div>
+<div class="step"><b>3</b><div>Cl₂ makes less → <b>Cl₂ is limiting</b>, Na is in excess.</div></div>
+<div class="step"><b>4</b><div>Mass: 1.41 mol × 58.44 g/mol = <span class="ans">82.4 g NaCl</span></div></div>
+<div class="do"><b>Notice:</b> there were more grams of Cl₂ (50.0 g) than Na (46.0 g), but Cl₂ is still limiting. Always compare in moles!</div></div>
+<div><div data-ref="mm"></div></div></div></section>
+
+<section><div class="nbp"><div class="nbt">&#9998; Notebook page 6 · Limiting reactants</div>
+<ul><li><b>Limiting reactant</b>: used up first; decides how much product forms.</li>
+<li><b>Excess reactant</b>: some is left over.</li>
+<li>Method: (1) change to moles, (2) calculate product from <b>each</b> reactant, (3) the <b>smaller</b> product amount wins; that reactant is limiting.</li>
+<li>Example: 2Na + Cl₂ → 2NaCl, 46.0 g Na and 50.0 g Cl₂ → Cl₂ limiting → <b>82.4 g NaCl</b>.</li>
+<li>Compare in <b>moles</b>, never in grams.</li></ul></div><div data-timer="5"></div></section>
+
+<section data-act="A9"></section>
+<section><h2>Break: 10 minutes</h2><p>Stretch and drink water. Next: percentage yield.</p></section>
+
+<section><span class="tag">Objective 11</span><h2>Theoretical, actual and percentage yield</h2>
+<div data-ref="popcorn"></div>
+<div class="grid"><div><h3>Theoretical yield</h3><p>The <b>maximum</b> amount of product that <b>can</b> form, calculated from the limiting reactant (with stoichiometry).</p></div>
+<div><h3>Actual yield</h3><p>The amount of product you <b>really</b> get in the lab (measured). Usually <b>less</b> than the theoretical yield.</p></div>
+<div><h3>Percentage yield</h3><p>Compares actual to theoretical:<br><span class="fx">% yield = <span class="fr"><span>actual yield</span><span>theoretical yield</span></span> × 100</span></p></div></div>
+<p><b>Why is actual yield smaller?</b> Some product is lost (spilled, stuck to glass), reactions do not finish, impure reactants, side reactions make other products.</p></section>
+
+<section><span class="tag">Objective 12</span><h2>Calculating percentage yield</h2><div class="split"><div>
+<p>CaCO₃ → CaO + CO₂. A student heats <b>100.09 g CaCO₃</b> and gets <b>50.0 g CaO</b>. What is the percentage yield?</p>
+<div class="step"><b>1</b><div>Theoretical yield (mass → mass):<br>100.09 g ÷ 100.09 g/mol = 1.000 mol CaCO₃ → 1.000 mol CaO → × 56.08 = <b>56.08 g CaO</b></div></div>
+<div class="step"><b>2</b><div>Actual yield = <b>50.0 g</b> (given)</div></div>
+<div class="step"><b>3</b><div class="fx">% yield = <span class="fr"><span>50.0 g</span><span>56.08 g</span></span> × 100 = <span class="ans">89.2%</span></div></div></div>
+<div><div data-ref="ybars"></div><div data-ref="mm"></div></div></div></section>
+
+<section><div class="nbp"><div class="nbt">&#9998; Notebook page 7 · Yield</div>
+<ul><li><b>Theoretical yield</b> = maximum product, calculated from the limiting reactant.</li>
+<li><b>Actual yield</b> = product really measured in the lab.</li>
+<li><b>% yield = (actual ÷ theoretical) × 100</b></li>
+<li>Actual is usually less: product lost, reaction not complete, side reactions, impure reactants.</li>
+<li>Example: theoretical 56.08 g CaO, actual 50.0 g → <b>89.2%</b></li></ul></div><div data-timer="5"></div></section>
+
+<section data-act="A10"></section>
+<section data-act="A11"></section>
+<section data-act="A12"></section>
+
+<section><h2>Module 6 summary</h2><div data-ref="map"></div><div class="grid">
+<div><h3>Mole ratio</h3><p>From the coefficients. Wanted on top, given on the bottom.</p></div>
+<div><h3>Calculations</h3><p>g → mol (÷ molar mass) · mol → mol (× ratio) · mol → g (× molar mass)</p></div>
+<div><h3>Limiting reactant</h3><p>Makes the least product. Compare in moles.</p></div>
+<div><h3>Yield</h3><p>% yield = actual ÷ theoretical × 100</p></div></div>
+<p>Review notebook pages 1–7 before the assessment.</p></section>
+
+</main>
+<nav><button class="btn" id="bk" aria-label="Previous slide">Back</button><div class="bar"><i id="pb"></i></div><span id="n"></span><button class="btn alt" id="mbtn">Class monitor</button><button class="btn alt" id="svbtn">Student view</button><button class="btn" id="nx" aria-label="Next slide">Next</button></nav>
+</div>
+
+<div id="ov"></div>
+<div id="stu"></div>
+<div id="boot" style="padding:40px;font-family:var(--head)">Loading…</div>
+<script>
+function fr(t,b){return '<span class="fr"><span>'+t+'</span><span>'+b+'</span></span>'}
+function smap(on){var B=[["Mass of A","grams (g)"],["Moles of A","mol"],["Moles of B","mol"],["Mass of B","grams (g)"]],S=[["÷ molar mass of A","①"],["× mole ratio","②"],["× molar mass of B","③"]],
+ act=function(i){return on.indexOf(i)>=0},boxOn=function(k){return act(k)||act(k+1)},s='<svg class="dg" viewBox="0 0 760 170" role="img" aria-label="Stoichiometry map: mass of A, moles of A, moles of B, mass of B">';
+ B.forEach(function(b,k){var x=10+k*190,o=boxOn(k);s+='<rect x="'+x+'" y="40" width="150" height="80" rx="14" style="fill:'+(o?'color-mix(in srgb,var(--g) 25%,var(--bg))':'var(--panel)')+';stroke:'+(o?'var(--g)':'var(--line)')+';stroke-width:3"/><text x="'+(x+75)+'" y="76" class="dtx" style="font-size:17px'+(o?'':';opacity:.45')+'">'+b[0]+'</text><text x="'+(x+75)+'" y="98" class="zs" style="'+(o?'':'opacity:.45')+'">'+b[1]+'</text>'+(k===1||k===2?'<text x="'+(x+75)+'" y="28" style="font-size:20px" text-anchor="middle">📦</text>':'<text x="'+(x+75)+'" y="28" style="font-size:20px" text-anchor="middle">⚖️</text>')});
+ S.forEach(function(t,k){var i=k+1,o=act(i),x=160+k*190,c=o?(i===2?'var(--a)':'var(--g)'):'var(--line)';s+='<path d="M'+(x+2)+' 80 L'+(x+34)+' 80" stroke="'+c+'" stroke-width="5"/><path d="M'+(x+30)+' 71 L'+(x+40)+' 80 L'+(x+30)+' 89 Z" fill="'+c+'"/><circle cx="'+(x+20)+'" cy="58" r="11" fill="'+c+'"/><text x="'+(x+20)+'" y="63" class="dnt">'+i+'</text><text x="'+(x+20)+'" y="145" class="zs" style="font-size:14px;font-weight:700;'+(o?'':'opacity:.45')+'">'+t[0]+'</text>'});
+ return s+'<text x="380" y="165" class="zs" style="fill:var(--a);font-weight:700">② the mole ratio is the bridge from A to B</text></svg>'}
+var MM=[["H₂",2.02],["O₂",32.00],["H₂O",18.02],["N₂",28.02],["NH₃",17.04],["CO₂",44.01],["CH₄",16.05],["Na",22.99],["Cl₂",70.90],["NaCl",58.44],["Mg",24.31],["MgO",40.31],["Al",26.98],["Al₂O₃",101.96],["CaCO₃",100.09],["CaO",56.08],["KClO₃",122.55],["KCl",74.55],["LiOH",23.95],["C₆H₁₂O₆",180.18],["HgO",216.59],["HF",20.01],["SnF₂",156.71],["Cu",63.55],["Ag",107.87],["PbI₂",461.00]];
+var REF={
+map:function(){return smap([1,2,3])},mapMM:function(){return smap([2])},mapMG:function(){return smap([2,3])},mapGM:function(){return smap([1,2])},
+mm:function(){return '<h3>Molar masses (g/mol)</h3><div class="mmt">'+MM.map(function(m){return '<div><b>'+m[0]+'</b> '+m[1].toFixed(2)+'</div>'}).join("")+'</div><p class="sm">Atoms: H 1.01 · Li 6.94 · C 12.01 · N 14.01 · O 16.00 · F 19.00 · Na 22.99 · Mg 24.31 · Al 26.98 · Cl 35.45 · K 39.10 · Ca 40.08 · Cu 63.55 · Ag 107.87 · Sn 118.71 · I 126.90 · Hg 200.59 · Pb 207.2</p><p class="sm"><b>Gas at STP:</b> 1 mol = 22.4 L</p>'},
+recipe:function(){return '<div class="vgrid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))"><div class="vc"><div class="emo">🍞🍞 + 🧀 → 🥪</div><b>2 bread + 1 cheese → 1 sandwich</b></div><div class="vc"><div class="emo">🍞🍞🍞🍞 + 🧀🧀 → 🥪🥪</div><b>double it: 4 + 2 → 2</b></div><div class="vc"><div class="emo">⚗️</div><b>2H₂ + O₂ → 2H₂O</b><span>same idea with molecules</span></div></div>'},
+molecules:function(){function h(x,y){return '<circle cx="'+x+'" cy="'+y+'" r="12" fill="#e8eef0" stroke="#4a626a" stroke-width="2"/><text x="'+x+'" y="'+(y+4)+'" style="font:700 11px sans-serif;fill:#12262e" text-anchor="middle">H</text>'}function o(x,y){return '<circle cx="'+x+'" cy="'+y+'" r="17" fill="#e0675a" stroke="#8a2e24" stroke-width="2"/><text x="'+x+'" y="'+(y+5)+'" style="font:700 13px sans-serif;fill:#fff" text-anchor="middle">O</text>'}
+ return '<svg class="dg" viewBox="0 0 760 150" role="img" aria-label="2 H2 plus O2 gives 2 H2O">'+h(40,50)+h(64,50)+h(40,100)+h(64,100)+'<text x="130" y="82" class="zl" style="font-size:26px">+</text>'+o(190,75)+o(222,75)+'<text x="320" y="84" class="zl" style="font-size:30px">→</text>'+o(440,50)+h(418,72)+h(462,72)+o(560,90)+h(538,112)+h(582,112)+
+ '<text x="52" y="140" class="zs">2 H₂</text><text x="206" y="140" class="zs">1 O₂</text><text x="500" y="140" class="zs">2 H₂O</text><text x="690" y="70" class="zs">4 H atoms</text><text x="690" y="88" class="zs">2 O atoms</text><text x="690" y="106" class="zs">both sides ✓</text></svg>'},
+ratios:function(){var P=[["1 mol N₂","3 mol H₂"],["3 mol H₂","1 mol N₂"],["1 mol N₂","2 mol NH₃"],["2 mol NH₃","1 mol N₂"],["3 mol H₂","2 mol NH₃"],["2 mol NH₃","3 mol H₂"]];
+ return '<p style="font:800 1.3em var(--head);text-align:center;margin:.3em 0"><span style="color:var(--a)">1</span> N₂ + <span style="color:var(--a)">3</span> H₂ → <span style="color:var(--a)">2</span> NH₃</p><div class="vgrid">'+P.map(function(p){return '<div class="vc" style="font-size:1.15em">'+fr(p[0],p[1])+'</div>'}).join("")+'</div><p class="sm" style="text-align:center">Six mole ratios from one equation (each pair can be flipped).</p>'},
+factory:function(){return '<div class="ix"><label>Moles of N₂: <b class="fv">2</b></label><br><input type="range" min="1" max="6" value="2" oninput="fac(this)"><div class="fo"></div></div><img alt="" src="data:," style="display:none" onerror="fac(this.previousElementSibling.querySelector(\'input\'))">'},
+sandwich:function(){return '<div class="ix sw"><label>🍞 Bread: <b class="bv">8</b></label> <input type="range" min="0" max="14" value="8" oninput="sand(this)"><br><label>🧀 Cheese: <b class="cv">3</b></label> <input type="range" min="0" max="8" value="3" oninput="sand(this)"><div class="so"></div></div><img alt="" src="data:," style="display:none" onerror="sand(this.previousElementSibling.querySelector(\'input\'))">'},
+h2o:function(){return '<div class="ix hw"><label>mol H₂: <b class="hv">4</b></label> <input type="range" min="0" max="10" value="4" oninput="hwo(this)"><br><label>mol O₂: <b class="ov">3</b></label> <input type="range" min="0" max="6" value="3" oninput="hwo(this)"><div class="ho"></div></div><img alt="" src="data:," style="display:none" onerror="hwo(this.previousElementSibling.querySelector(\'input\'))">'},
+popcorn:function(){var s='';for(var i=0;i<20;i++)s+=i<17?'🍿':'🌽';return '<div class="ix" style="max-width:none"><div class="parts">'+s+'</div><div class="big3" style="margin-top:.5em"><div><b>20</b>theoretical: the most that <i>could</i> pop</div><div><b>17</b>actual: what <i>really</i> popped</div><div><b>85%</b>percentage yield = 17 ÷ 20 × 100</div></div></div>'},
+ybars:function(){return '<h3>CaO yield</h3><div class="ybar"><span>Theoretical</span><div><i style="width:100%;background:var(--g)"></i></div><b>56.08 g</b></div><div class="ybar"><span>Actual</span><div><i style="width:89.2%;background:var(--a)"></i></div><b>50.0 g</b></div><p class="sm">The orange bar is 89.2% of the green bar.</p>'},
+yieldf:function(){return '<h3>Formula</h3><p class="fx">% yield = '+fr("actual yield","theoretical yield")+' × 100</p><p><b>Theoretical</b> = calculated (maximum). <b>Actual</b> = measured in the lab.</p>'},
+limm:function(){return '<h3>Limiting reactant method</h3><ol><li>Change both reactants to moles.</li><li>Calculate product from <b>each</b> reactant.</li><li><b>Smaller</b> product = limiting reactant = the answer.</li></ol>'}
+};
+REF.calc=function(){return smap([1,2,3])+REF.mm()};
+REF.mmcalc=function(){return smap([2])+'<p class="sm">Wanted on top, given on the bottom.</p>'};
+REF.lim=function(){return REF.limm()+REF.h2o()+REF.mm()};
+REF.yld=function(){return REF.yieldf()+REF.ybars()+REF.mm()};
+REF.eqs=function(){return REF.ratios()+'<p class="sm">Other equations: 2H₂ + O₂ → 2H₂O · 4Al + 3O₂ → 2Al₂O₃ · 2KClO₃ → 2KCl + 3O₂ · 4NH₃ + 5O₂ → 4NO + 6H₂O · 2HgO → 2Hg + O₂</p>'};
+function dots(n,used,ch){var s='';for(var i=0;i<n;i++)s+='<span class="'+(i<used?'':'left')+'">'+ch+'</span>';return '<div class="parts">'+(s||'<span class="sm">none</span>')+'</div>'}
+function fac(inp){if(!inp)return;var r=inp.closest('.ix'),n=+inp.value;r.querySelector('.fv').textContent=n;
+ r.querySelector('.fo').innerHTML='<div class="big3" style="margin:.6em 0"><div><b>'+n+'</b>mol N₂ used<br><span class="sm">'+(n*28.02).toFixed(2)+' g</span>'+dots(n,n,'🟦')+'</div><div><b>'+3*n+'</b>mol H₂ needed<br><span class="sm">'+(3*n*2.02).toFixed(2)+' g</span>'+dots(3*n,3*n,'⚪')+'</div><div><b>'+2*n+'</b>mol NH₃ made<br><span class="sm">'+(2*n*17.04).toFixed(2)+' g</span>'+dots(2*n,2*n,'🟩')+'</div></div><p>Mole ratio always <b>'+n+' : '+3*n+' : '+2*n+' = 1 : 3 : 2</b>. Mass: '+(n*28.02).toFixed(2)+' g + '+(3*n*2.02).toFixed(2)+' g = '+(2*n*17.04).toFixed(2)+' g ✓</p>'}
+function sand(inp){if(!inp)return;var r=inp.closest('.ix'),I=r.querySelectorAll('input'),b=+I[0].value,c=+I[1].value,s=Math.min(Math.floor(b/2),c),L=Math.floor(b/2)<c?'bread':Math.floor(b/2)>c?'cheese':'';
+ r.querySelector('.bv').textContent=b;r.querySelector('.cv').textContent=c;
+ r.querySelector('.so').innerHTML='<div class="big3" style="margin:.6em 0"><div class="'+(L==='bread'?'lim':'')+'">🍞 used '+2*s+', left '+(b-2*s)+dots(b,2*s,'🍞')+'</div><div class="'+(L==='cheese'?'lim':'')+'">🧀 used '+s+', left '+(c-s)+dots(c,s,'🧀')+'</div><div><b>'+s+'</b>sandwiches'+dots(s,s,'🥪')+'</div></div><p>'+(L?'<b>Limiting: '+(L==='bread'?'🍞 bread':'🧀 cheese')+'</b> (red box). Excess: '+(L==='bread'?'cheese':'bread')+'.':'Exactly right: nothing left over.')+'</p>'}
+function hwo(inp){if(!inp)return;var r=inp.closest('.ix'),I=r.querySelectorAll('input'),h=+I[0].value,o=+I[1].value,p=Math.min(h,2*o),L=h<2*o?'H₂':h>2*o?'O₂':'';
+ r.querySelector('.hv').textContent=h;r.querySelector('.ov').textContent=o;
+ r.querySelector('.ho').innerHTML='<div class="big3" style="margin:.6em 0"><div class="'+(L==='H₂'?'lim':'')+'">H₂ used '+p+', left '+(h-p)+dots(h,p,'⚪')+'</div><div class="'+(L==='O₂'?'lim':'')+'">O₂ used '+p/2+', left '+(o-p/2)+dots(o,Math.ceil(p/2),'🔴')+'</div><div><b>'+p+'</b>mol H₂O'+dots(p,p,'💧')+'</div></div><p>H₂ alone could make '+h+' mol H₂O. O₂ alone could make '+2*o+' mol H₂O. '+(L?'<b>'+L+' makes less → '+L+' is limiting.</b>':'Both make the same: no excess.')+'</p>'}
+
+var ACTS=[
+{id:"A1",c:1,t:"Warm-up: moles and equations review",ref:"mm",items:[
+ {k:"num",q:"What is the molar mass of H₂O? (H = 1.01, O = 16.00)",a:18.02,u:"g/mol"},
+ {k:"num",q:"How many moles are in 36.04 g of H₂O?",a:2,u:"mol"},
+ {k:"num",q:"What is the mass of 3.00 mol of O₂?",a:96,u:"g"},
+ {k:"mc",q:"Which equation is balanced?",o:["2H₂ + O₂ → 2H₂O","H₂ + O₂ → H₂O","H₂ + O₂ → 2H₂O","2H₂ + 2O₂ → H₂O"]},
+ {k:"mc",q:"1 mole of any substance contains…",o:["6.022 × 10²³ particles","100 particles","12 particles","1 gram"]}]},
+{id:"A2",c:1,t:"Recipes and reading equations",ref:"recipe",items:[
+ {k:"num",q:"Recipe: 2 bread + 1 cheese → 1 sandwich. You want 6 sandwiches. How many slices of bread do you need?",a:12,u:"slices"},
+ {k:"num",q:"Bike recipe: 1 frame + 2 wheels → 1 bike. You have 10 wheels and many frames. How many bikes can you make?",a:5,u:"bikes"},
+ {k:"mc",q:"Stoichiometry is…",o:["the study of the amounts of reactants and products in a reaction","the study of the speed of reactions","the study of atoms in the nucleus","the study of colors in reactions"]},
+ {k:"mc",q:"In N₂ + 3H₂ → 2NH₃, the coefficients tell us…",o:["1 mol N₂ reacts with 3 mol H₂ to make 2 mol NH₃","1 g N₂ reacts with 3 g H₂ to make 2 g NH₃","there are 3 atoms of N","the reaction is slow"]},
+ {k:"mc",q:"2H₂ + O₂ → 2H₂O. 4.04 g H₂ react with 32.00 g O₂. What mass of H₂O forms?",o:["36.04 g","28.00 g","2 g","4.04 g"]},
+ {k:"mc",q:"Which is TRUE about a balanced equation?",o:["Atoms and mass are conserved, but the number of moles can change","The number of moles is always the same on both sides","Mass is lost as products form","Coefficients are grams"]},
+ {k:"sort",q:"Is the statement about 2H₂ + O₂ → 2H₂O correct or wrong?",b:["Correct","Wrong"],i:["2 molecules H₂ react with 1 molecule O₂|Correct","2 mol H₂ react with 1 mol O₂|Correct","2 mol H₂O form|Correct","Total mass of reactants = total mass of products|Correct","2 g H₂ react with 1 g O₂|Wrong","The reaction makes 3 mol H₂O|Wrong","Mass is destroyed in the reaction|Wrong"]},
+ {k:"text",q:"In your own words: why is a balanced equation like a recipe?"}]},
+{id:"A3",c:1,t:"Writing mole ratios",ref:"eqs",items:[
+ {k:"mc",q:"N₂ + 3H₂ → 2NH₃. Which mole ratio changes mol N₂ into mol NH₃?",o:["2 mol NH₃ / 1 mol N₂","1 mol N₂ / 2 mol NH₃","3 mol H₂ / 1 mol N₂","2 g NH₃ / 1 g N₂"]},
+ {k:"mc",q:"N₂ + 3H₂ → 2NH₃. Which mole ratio changes mol H₂ into mol NH₃?",o:["2 mol NH₃ / 3 mol H₂","3 mol H₂ / 2 mol NH₃","1 mol NH₃ / 1 mol H₂","2 mol NH₃ / 1 mol H₂"]},
+ {k:"mc",q:"2H₂ + O₂ → 2H₂O. The mole ratio of H₂ to O₂ is…",o:["2 mol H₂ / 1 mol O₂","1 mol H₂ / 2 mol O₂","2 mol H₂ / 2 mol O₂","4 mol H₂ / 32 mol O₂"]},
+ {k:"mc",q:"2KClO₃ → 2KCl + 3O₂. Which mole ratio changes mol KClO₃ into mol O₂?",o:["3 mol O₂ / 2 mol KClO₃","2 mol KClO₃ / 3 mol O₂","1 mol O₂ / 1 mol KClO₃","3 mol O₂ / 2 mol KCl"]},
+ {k:"mc",q:"4Al + 3O₂ → 2Al₂O₃. Which mole ratio changes mol Al₂O₃ into mol Al?",o:["4 mol Al / 2 mol Al₂O₃","2 mol Al₂O₃ / 4 mol Al","3 mol O₂ / 2 mol Al₂O₃","4 mol Al / 3 mol O₂"]},
+ {k:"mc",q:"Where do the numbers in a mole ratio come from?",o:["the coefficients of the balanced equation","the subscripts in the formulas","the molar masses","the atomic numbers"]},
+ {k:"mc",q:"Why is the mole ratio important?",o:["It is the only way to go from one substance to a different substance","It changes grams into moles","It balances the equation","It tells the speed of the reaction"]},
+ {k:"sort",q:"4Al + 3O₂ → 2Al₂O₃. Is each one a correct mole ratio for this equation?",b:["Correct ratio","Not correct"],i:["4 mol Al / 3 mol O₂|Correct ratio","3 mol O₂ / 2 mol Al₂O₃|Correct ratio","2 mol Al₂O₃ / 4 mol Al|Correct ratio","3 mol O₂ / 4 mol Al|Correct ratio","1 mol Al / 1 mol O₂|Not correct","2 mol Al / 3 mol Al₂O₃|Not correct","4 g Al / 3 g O₂|Not correct"]},
+ {k:"mc",q:"4NH₃ + 5O₂ → 4NO + 6H₂O. What is the mole ratio of NO to H₂O?",o:["4 : 6 (= 2 : 3)","4 : 5","5 : 6","1 : 1"]},
+ {k:"mc",q:"2HgO → 2Hg + O₂. What is the mole ratio of HgO to O₂?",o:["2 : 1","1 : 2","2 : 2","1 : 1"]},
+ {k:"mc",q:"True or false: the coefficients in a balanced equation give the mole ratio of the substances.",o:["true","false"]},
+ {k:"text",q:"Write all 6 mole ratios for 2H₂ + O₂ → 2H₂O."}]},
+{id:"A4",c:1,t:"Mole → mole calculations",ref:"mmcalc",items:[
+ {k:"num",q:"N₂ + 3H₂ → 2NH₃. How many moles of NH₃ form from 3.0 mol N₂?",a:6,u:"mol NH₃"},
+ {k:"num",q:"N₂ + 3H₂ → 2NH₃. How many moles of NH₃ form from 6.0 mol H₂?",a:4,u:"mol NH₃"},
+ {k:"num",q:"N₂ + 3H₂ → 2NH₃. How many moles of H₂ are needed to react with 0.50 mol N₂?",a:1.5,u:"mol H₂"},
+ {k:"num",q:"2KClO₃ → 2KCl + 3O₂. How many moles of O₂ form from 10.0 mol KClO₃?",a:15,u:"mol O₂"},
+ {k:"num",q:"4Al + 3O₂ → 2Al₂O₃. How many moles of Al₂O₃ form from 4.0 mol Al?",a:2,u:"mol Al₂O₃"},
+ {k:"num",q:"CH₄ + 2O₂ → CO₂ + 2H₂O. How many moles of O₂ are needed to burn 5.0 mol CH₄?",a:10,u:"mol O₂"},
+ {k:"num",q:"2LiOH + CO₂ → Li₂CO₃ + H₂O (air cleaners in spacecraft). How many moles of LiOH are needed to remove 15.0 mol CO₂?",a:30,u:"mol LiOH"},
+ {k:"num",q:"2KClO₃ → 2KCl + 3O₂. How many moles of KClO₃ are needed to make 9.0 mol O₂?",a:6,u:"mol KClO₃"},
+ {k:"num",q:"4NH₃ + 5O₂ → 4NO + 6H₂O. How many moles of H₂O form from 20.0 mol NH₃?",a:30,u:"mol H₂O"},
+ {k:"mc",q:"In a mole → mole problem, which step do you need?",o:["only the mole ratio","only the molar mass","molar mass, then mole ratio","nothing: the moles stay the same"]},
+ {k:"text",q:"Explain each step you used to solve question 4."}]},
+{id:"A5",c:1,t:"Mole → mass calculations",ref:"calc",items:[
+ {k:"num",q:"2H₂ + O₂ → 2H₂O. What mass of H₂O forms from 2.0 mol H₂?",a:36.04,u:"g"},
+ {k:"num",q:"N₂ + 3H₂ → 2NH₃. What mass of NH₃ forms from 3.0 mol N₂?",a:102.24,u:"g"},
+ {k:"num",q:"2KClO₃ → 2KCl + 3O₂. What mass of O₂ forms from 0.50 mol KClO₃?",a:24,u:"g"},
+ {k:"num",q:"CH₄ + 2O₂ → CO₂ + 2H₂O. What mass of CO₂ forms from 1.5 mol CH₄?",a:66.0,u:"g"},
+ {k:"num",q:"2Mg + O₂ → 2MgO. What mass of MgO forms from 2.0 mol Mg?",a:80.62,u:"g"},
+ {k:"num",q:"Photosynthesis: 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂. What mass of glucose (C₆H₁₂O₆) forms from 2.00 mol CO₂?",a:60.06,u:"g"},
+ {k:"mc",q:"In a mole → mass problem, the LAST step is…",o:["multiply by the molar mass of the wanted substance","divide by the molar mass of the given substance","multiply by Avogadro's number","use the mole ratio"]},
+ {k:"mc",q:"What is the molar mass of NH₃? (N 14.01, H 1.01)",o:["17.04 g/mol","15.02 g/mol","14.01 g/mol","31.03 g/mol"]}]},
+{id:"A6",c:1,t:"Class 1 exit ticket",ref:"calc",items:[
+ {k:"mc",q:"Stoichiometry is about…",o:["amounts of reactants and products","the speed of a reaction","the color of products","the shape of molecules"]},
+ {k:"mc",q:"2H₂ + O₂ → 2H₂O. The mole ratio of H₂O to O₂ is…",o:["2 mol H₂O / 1 mol O₂","1 mol H₂O / 2 mol O₂","18.02 g H₂O / 32.00 g O₂","2 mol H₂O / 2 mol O₂"]},
+ {k:"num",q:"N₂ + 3H₂ → 2NH₃. How many moles of H₂ react with 2.0 mol N₂?",a:6,u:"mol"},
+ {k:"num",q:"2H₂ + O₂ → 2H₂O. What mass of H₂O forms from 1.0 mol O₂?",a:36.04,u:"g"},
+ {k:"text",q:"One thing I understand well today, and one thing I am still confused about:"}]},
+{id:"A7",c:2,t:"Warm-up: Class 1 review",ref:"calc",items:[
+ {k:"num",q:"4Al + 3O₂ → 2Al₂O₃. How many moles of O₂ react with 8.0 mol Al?",a:6,u:"mol"},
+ {k:"num",q:"N₂ + 3H₂ → 2NH₃. What mass of NH₃ forms from 0.50 mol N₂?",a:17.04,u:"g"},
+ {k:"num",q:"What is the volume of 0.500 mol O₂ gas at STP? (1 mol = 22.4 L)",a:11.2,u:"L"},
+ {k:"mc",q:"To change grams into moles you…",o:["divide by the molar mass","multiply by the molar mass","use the mole ratio","multiply by 100"]},
+ {k:"mc",q:"Mole ratios come from…",o:["coefficients","subscripts","molar masses","charges"]}]},
+{id:"A8",c:2,t:"Mass → mole and mass → mass",ref:"calc",items:[
+ {k:"num",q:"2Mg + O₂ → 2MgO. How many moles of MgO form from 48.62 g Mg?",a:2,u:"mol"},
+ {k:"num",q:"2H₂ + O₂ → 2H₂O. How many moles of H₂ react with 64.00 g O₂?",a:4,u:"mol"},
+ {k:"num",q:"N₂ + 3H₂ → 2NH₃. How many moles of N₂ are needed to make 34.08 g NH₃?",a:1,u:"mol"},
+ {k:"num",q:"2Mg + O₂ → 2MgO. What mass of MgO forms from 48.62 g Mg?",a:80.62,u:"g"},
+ {k:"num",q:"2KClO₃ → 2KCl + 3O₂. What mass of O₂ forms from 245.10 g KClO₃?",a:96,u:"g"},
+ {k:"num",q:"CH₄ + 2O₂ → CO₂ + 2H₂O. What mass of H₂O forms from 16.05 g CH₄?",a:36.04,u:"g"},
+ {k:"num",q:"N₂ + 3H₂ → 2NH₃. What mass of NH₃ forms from 28.02 g N₂?",a:34.08,u:"g"},
+ {k:"num",q:"2HgO → 2Hg + O₂. How many moles of O₂ form from 10.0 g HgO?",a:0.0231,u:"mol O₂"},
+ {k:"num",q:"Same reaction: what MASS of O₂ forms from 10.0 g HgO?",a:0.739,u:"g O₂"},
+ {k:"num",q:"Same reaction: what VOLUME of O₂ forms at STP from 10.0 g HgO? (1 mol gas = 22.4 L)",a:0.517,u:"L"},
+ {k:"num",q:"Sn + 2HF → SnF₂ + H₂ (toothpaste). What mass of SnF₂ forms from 20.00 g HF?",a:78.3,u:"g"},
+ {k:"num",q:"Cu + 2AgNO₃ → 2Ag + Cu(NO₃)₂. What mass of Ag forms from 50.0 g Cu?",a:169.7,u:"g"},
+ {k:"num",q:"6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂. What mass of glucose forms from 66.02 g CO₂?",a:45.05,u:"g"},
+ {k:"order",q:"Put the steps of a mass → mass problem in order.",s:["Write the balanced equation","Change grams of A to moles of A (÷ molar mass A)","Use the mole ratio to get moles of B","Change moles of B to grams of B (× molar mass B)"]},
+ {k:"mc",q:"Why can't you go from grams of A straight to grams of B?",o:["Coefficients are moles, so you must go through moles","Grams cannot be measured","Molar masses are always the same","You can: just use the coefficients"]}]},
+{id:"A9",c:2,t:"Limiting reactants",ref:"lim",items:[
+ {k:"mc",q:"Recipe: 2 bread + 1 cheese → 1 sandwich. You have 10 bread and 3 cheese. What is limiting?",o:["cheese","bread","both","neither"]},
+ {k:"num",q:"Same recipe, 10 bread and 3 cheese. How many sandwiches can you make?",a:3,u:"sandwiches"},
+ {k:"mc",q:"The limiting reactant is…",o:["the reactant that is used up first and limits the product","the reactant with the smallest mass","the reactant that is left over","always the first reactant written"]},
+ {k:"mc",q:"2H₂ + O₂ → 2H₂O. You have 6.0 mol H₂ and 2.0 mol O₂. Which is limiting?",o:["O₂","H₂","neither","both"]},
+ {k:"num",q:"Same reaction: 6.0 mol H₂ and 2.0 mol O₂. How many moles of H₂O form?",a:4,u:"mol"},
+ {k:"num",q:"N₂ + 3H₂ → 2NH₃. You have 2.0 mol N₂ and 3.0 mol H₂. How many moles of NH₃ form?",a:2,u:"mol"},
+ {k:"num",q:"4Al + 3O₂ → 2Al₂O₃. You have 2.0 mol Al and 2.0 mol O₂. What MASS of Al₂O₃ forms?",a:101.96,u:"g"},
+ {k:"num",q:"2Na + Cl₂ → 2NaCl. You have 46.0 g Na and 50.0 g Cl₂. What mass of NaCl forms?",a:82.4,u:"g"},
+ {k:"num",q:"Pb(NO₃)₂ + 2KI → PbI₂ + 2KNO₃. You have 1.00 mol Pb(NO₃)₂ and 1.50 mol KI. How many moles of PbI₂ form?",a:0.75,u:"mol"},
+ {k:"order",q:"Put the limiting reactant method in order.",s:["Change both reactants to moles","Calculate moles of product from reactant 1","Calculate moles of product from reactant 2","Choose the SMALLER amount of product","That reactant is limiting; the smaller amount is the answer"]},
+ {k:"text",q:"2Na + Cl₂ → 2NaCl: there were more grams of Cl₂ than Na, but Cl₂ was limiting. Explain why."}]},
+{id:"A10",c:2,t:"Percentage yield",ref:"yld",items:[
+ {k:"sort",q:"Match each description to the type of yield.",b:["Theoretical yield","Actual yield","Percentage yield"],i:["The maximum product that can form|Theoretical yield","Calculated with stoichiometry|Theoretical yield","Measured in the lab|Actual yield","Usually smaller because some product is lost|Actual yield","actual ÷ theoretical × 100|Percentage yield","Written with the % sign|Percentage yield"]},
+ {k:"num",q:"Theoretical yield = 50.0 g. Actual yield = 42.0 g. What is the percentage yield?",a:84,u:"%"},
+ {k:"num",q:"2Mg + O₂ → 2MgO. 24.31 g Mg reacts. What is the THEORETICAL yield of MgO?",a:40.31,u:"g"},
+ {k:"num",q:"Same reaction: the student collects 36.0 g MgO. What is the percentage yield?",a:89.3,u:"%"},
+ {k:"num",q:"N₂ + 3H₂ → 2NH₃. 28.02 g N₂ reacts (H₂ in excess) and 25.0 g NH₃ is collected. What is the percentage yield?",a:73.4,u:"%"},
+ {k:"num",q:"Cu + 2AgNO₃ → 2Ag + Cu(NO₃)₂. 25.0 g Cu reacts (AgNO₃ in excess) and 75.0 g Ag is collected. What is the percentage yield?",a:88.4,u:"%"},
+ {k:"mc",q:"Which is a reason the actual yield is less than the theoretical yield?",o:["Some product sticks to the glassware","The balanced equation is wrong","The molar mass changes","Atoms are destroyed"]},
+ {k:"mc",q:"A student reports a percentage yield of 115%. What is the most likely reason?",o:["The product was still wet or impure","The reaction worked perfectly","Some product was lost","The limiting reactant was used up"]}]},
+{id:"A11",c:2,t:"Module 6 review quiz",ref:"calc",items:[
+ {k:"mc",q:"Stoichiometry is…",o:["the study of amounts of reactants and products","balancing charges","the study of reaction speed","naming compounds"]},
+ {k:"mc",q:"CH₄ + 2O₂ → CO₂ + 2H₂O. Mole ratio to change mol CH₄ to mol H₂O?",o:["2 mol H₂O / 1 mol CH₄","1 mol CH₄ / 2 mol H₂O","2 mol O₂ / 1 mol CH₄","18.02 g H₂O / 16.05 g CH₄"]},
+ {k:"mc",q:"2H₂ + O₂ → 2H₂O. 5.0 mol O₂ makes how many mol H₂O?",o:["10 mol","5.0 mol","2.5 mol","20 mol"]},
+ {k:"mc",q:"Mole → mass: after the mole ratio you…",o:["multiply by the molar mass of the wanted substance","divide by the molar mass of the wanted substance","multiply by 100","stop"]},
+ {k:"mc",q:"2Mg + O₂ → 2MgO. 24.31 g Mg makes how many grams of MgO?",o:["40.31 g","80.62 g","24.31 g","20.16 g"]},
+ {k:"mc",q:"N₂ + 3H₂ → 2NH₃ with 1.0 mol N₂ and 6.0 mol H₂. The limiting reactant is…",o:["N₂","H₂","NH₃","neither"]},
+ {k:"mc",q:"In question 6, how many moles of H₂ are left over?",o:["3.0 mol","0 mol","1.0 mol","6.0 mol"]},
+ {k:"mc",q:"The theoretical yield is…",o:["the maximum calculated amount of product","the amount measured in the lab","always 100 g","the percentage yield"]},
+ {k:"mc",q:"Theoretical 80.0 g, actual 60.0 g. Percentage yield?",o:["75.0%","133%","20.0%","60.0%"]},
+ {k:"mc",q:"To find the limiting reactant, compare reactants using…",o:["moles of product each can make","their masses in grams","their colors","their coefficients only"]},
+ {k:"text",q:"Which type of problem is still the hardest for you? Why?"}]},
+{id:"A12",c:2,t:"Class 2 exit ticket",ref:"calc",items:[
+ {k:"num",q:"2H₂ + O₂ → 2H₂O. What mass of H₂O forms from 4.04 g H₂?",a:36.04,u:"g"},
+ {k:"mc",q:"The reactant that is left over is the…",o:["excess reactant","limiting reactant","product","catalyst"]},
+ {k:"num",q:"Theoretical yield 20.0 g, actual yield 18.0 g. Percentage yield?",a:90,u:"%"},
+ {k:"text",q:"Explain the difference between actual yield and theoretical yield."}]}
+];
+var ACT={};ACTS.forEach(function(a){ACT[a.id]=a;a.n=a.items.filter(function(x){return x.k!=="text"}).length});
+</script>
+<script>
+var SHEET_URL="/api"; var COURSE="chem6"; /* server is on the same site (Cloudflare) */
+var LINK=location.href.split("#")[0];
+function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function shuf(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t}return a}
+function ls(k,v){try{if(v===undefined){var r=localStorage.getItem(k);return r?JSON.parse(r):null}localStorage.setItem(k,JSON.stringify(v))}catch(e){return null}}
+function fmt(x){return Math.round(x*10)/10}
+function ck(s){var h=7,i;for(i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))%1679616;return ("000"+h.toString(36)).slice(-4)}
+function codeFor(id,name,sc,n){var t=fmt(sc)+"/"+n;return "#"+id+" "+name+" "+t+" "+ck(id+"|"+name.toLowerCase()+"|"+t+"|chem-m6")}
+function sumSc(rec){var t=0;(rec&&rec.s||[]).forEach(function(v){if(typeof v==="number")t+=v});return t}
+function cell(sc,ans){if(typeof sc==="number"){if(sc>=.999)return ["✓","c1"];if(sc<=0.001)return ["✗","c0"];return [Math.round(sc*100)+"%","cp"]}if(ans!=null&&ans!=="")return ["✎",""];return ["·","sm"]}
+var S={db:null,user:null,uid:null,owner:false,dbOK:false,docs:{},live:null};
+
+/* ================= TEACHER DECK ================= */
+var D={secs:[],i:0};
+function startDeck(){
+ document.getElementById("deck").classList.add("on");
+ D.secs=[].slice.call(document.querySelectorAll("#deck section"));
+ [].forEach.call(document.querySelectorAll("[data-ref]"),function(e){e.innerHTML=REF[e.dataset.ref](e.dataset.legend==="1")});
+ [].forEach.call(document.querySelectorAll("[data-join]"),function(e){e.innerHTML='<span class="tag">Every class</span><h2>Join the live class</h2><ol style="font-size:1.15em"><li>Open the class link: <span class="lnk">'+LINK+'</span></li><li>Type your <b>real name</b>: the same name you use in ClassIn.</li><li>Open the activity number I tell you, for example <b>A3</b>.</li><li>Answer every question.</li><li>At the end you get a <b>code</b>. Copy the code into the <b>ClassIn chat</b>.</li></ol><div class="do"><b>Tip:</b> a laptop or tablet is best. On a phone, turn it sideways.</div>'});
+ [].forEach.call(document.querySelectorAll("[data-act]"),buildActSlide);
+ [].forEach.call(document.querySelectorAll("[data-timer]"),function(e){var m=+e.dataset.timer,b=el("button","btn alt","Start "+m+"-minute copy timer"),o=el("span","timer"),iv;b.onclick=function(){clearInterval(iv);var end=Date.now()+m*60000;b.blur();iv=setInterval(function(){var r=Math.max(0,Math.round((end-Date.now())/1000));o.textContent="  ⏱ "+Math.floor(r/60)+":"+("0"+r%60).slice(-2)+(r?"":"  Time is up!");if(!r)clearInterval(iv)},250)};e.appendChild(b);e.appendChild(o)});
+ document.getElementById("bk").onclick=function(){go(D.i-1);this.blur()};
+ document.getElementById("nx").onclick=function(){go(D.i+1);this.blur()};
+ document.getElementById("mbtn").onclick=function(){this.blur();openOv()};
+ document.getElementById("svbtn").onclick=function(){this.blur();document.getElementById("deck").classList.remove("on");startStudent(true)};
+ document.addEventListener("keydown",function(e){if(!document.getElementById("deck").classList.contains("on")||document.getElementById("ov").classList.contains("on"))return;var t=e.target.tagName;if(t==="INPUT"||t==="TEXTAREA")return;
+  if(e.key===" "){if(t==="BUTTON")e.preventDefault();return}
+  if(e.key==="ArrowRight"||e.key==="PageDown"){e.preventDefault();go(D.i+1)}else if(e.key==="ArrowLeft"||e.key==="PageUp"){e.preventDefault();go(D.i-1)}});
+ go(ls("chem6_slide")||0);
+ teacherData();
+}
+function go(i){i=Math.max(0,Math.min(D.secs.length-1,i));D.secs[D.i].classList.remove("on");D.i=i;D.secs[i].classList.add("on");D.secs[i].scrollTop=0;
+ document.getElementById("pb").style.width=(100*(i+1)/D.secs.length)+"%";document.getElementById("n").textContent=(i+1)+" / "+D.secs.length;ls("chem6_slide",i);
+ var a=D.secs[i].dataset.act;if(a)renderMon(a)}
+function buildActSlide(sec){var A=ACT[sec.dataset.act];sec.innerHTML="";
+ sec.appendChild(el("span","tag","Activity "+A.id+" · Class "+A.c));sec.appendChild(el("h2","",A.t));
+ var tell=el("div","do");tell.appendChild(el("b","","Students: "));tell.appendChild(document.createTextNode("open the class link → choose "+A.id+" → answer all "+A.items.length+" questions → copy your code into the ClassIn chat."));tell.style.marginBottom="12px";sec.appendChild(tell);
+ if(SHEET_URL){var row=el("div","row"),send=el("button","btn go","▶ Send to students"),stop=el("button","btn alt","Stop"),st=el("span","");st.id="lv-"+A.id;
+  send.onclick=function(){send.blur();setLive(A.id)};stop.onclick=function(){stop.blur();setLive(null)};row.appendChild(send);row.appendChild(stop);row.appendChild(st);sec.appendChild(row)}
+ var sp=el("div","split act"),L=el("div"),R=el("div","mon");R.id="mon-"+A.id;
+ if(A.ref){var r=el("div");r.innerHTML=REF[A.ref](false);L.appendChild(r)}
+ else{var ol=el("ol");A.items.forEach(function(it){ol.appendChild(el("li","",it.q))});L.appendChild(ol)}
+ var d=el("details"),sm=el("summary","","Answer key (teacher only: do not screen-share)");d.appendChild(sm);var ok=el("ol","sm");
+ A.items.forEach(function(it){var t=it.k==="mc"?it.o[0]:it.k==="num"?(it.a+" "+(it.u||"")):it.k==="order"?it.s.join(" → "):it.k==="sort"?it.i.map(function(x){return x.replace("|"," → ")}).join("; "):"(written answer)";ok.appendChild(el("li","",it.q+"  ⟶  "+t))});
+ d.appendChild(ok);L.appendChild(d);sp.appendChild(L);sp.appendChild(R);sec.appendChild(sp);renderMon(A.id)}
+function lvMsg(t){[].forEach.call(document.querySelectorAll("[id^=lv-]"),function(s){s.textContent=t;s.className="sm c0"})}
+function setLive(id){if(!S.db){lvMsg("Live sending is off in this view. Tell students the activity number (they choose it from their list) and collect codes in the ClassIn chat.");return}
+ var op=(S.live&&S.live.opened)||[];if(id&&op.indexOf(id)<0)op=op.concat([id]);
+ S.db.doc("live/state").set({act:id,opened:op,at:Date.now()}).catch(function(e){lvMsg("Could not send: "+(e&&e.message||e))})}
+function liveLabel(){[].forEach.call(document.querySelectorAll("[id^=lv-]"),function(s){var id=s.id.slice(3);s.innerHTML="";s.className="";if(S.live&&S.live.act===id){var l=el("span","live");l.appendChild(el("i"));l.appendChild(document.createTextNode("LIVE now on student screens"));s.appendChild(l)}else if(S.live&&S.live.opened&&S.live.opened.indexOf(id)>=0)s.appendChild(el("span","sm","Opened earlier (students can still do it)"))})}
+function teacherData(){if(!S.db){[].forEach.call(document.querySelectorAll(".mon"),function(m){renderMon(m.id.slice(4))});return}
+ var tm=setTimeout(function(){S.slow=true;var a=D.secs[D.i].dataset.act;if(a)renderMon(a)},10000);
+ S.db.doc("live/state").onSnapshot(function(s){S.live=s.exists?s.data():null;liveLabel()},function(){});
+ S.db.collection("students").onSnapshot(function(q){clearTimeout(tm);S.slow=false;var o={};q.docs.forEach(function(d){if(d.exists)o[d.id]=d.data()});S.docs=o;var a=D.secs[D.i].dataset.act;if(a)renderMon(a);if(document.getElementById("ov").classList.contains("on"))renderOv()},function(e){clearTimeout(tm);S.dbErr=e&&e.code;var a=D.secs[D.i].dataset.act;if(a)renderMon(a)})}
+function codes(){return ls("chem6_codes")||[]}
+function parseCodes(txt){var re=/#(A\d{1,2})\s+(.+?)\s+(\d+(?:\.\d)?)\/(\d+)\s+([0-9a-z]{4})(?![0-9a-z])/gi,m,out=codes(),seen={};out.forEach(function(c){seen[c.id+"|"+c.name.toLowerCase()+"|"+c.sc]=1});
+ while((m=re.exec(txt))){var id=m[1].toUpperCase(),name=m[2].trim().slice(0,40),t=m[3]+"/"+m[4],ok=ck(id+"|"+name.toLowerCase()+"|"+t+"|chem-m6")===m[5].toLowerCase(),k=id+"|"+name.toLowerCase()+"|"+m[3];if(seen[k])continue;seen[k]=1;out.push({id:id,name:name,sc:+m[3],n:+m[4],ok:ok,at:Date.now()})}
+ ls("chem6_codes",out);return out}
+function rowsFor(id){var R=[],names={};
+ Object.keys(S.docs).forEach(function(u){var d=S.docs[u];if(!d||!d.p||!d.p[id])return;var nm=String(d.name||"?").slice(0,40);names[nm.toLowerCase()]=1;R.push({name:nm,rec:d.p[id],at:d.at})});
+ var pv=ls("chem6p_prog");if(pv&&pv[id])R.push({name:(ls("chem6p_name")||"Teacher")+" (your preview)",rec:pv[id]});
+ codes().forEach(function(c){if(c.id!==id)return;var k=c.name.toLowerCase();if(names[k])return;names[k]=1;R.push({name:c.name,code:c})});
+ R.sort(function(a,b){return a.name.localeCompare(b.name)});return R}
+function renderMon(id){var m=document.getElementById("mon-"+id);if(!m)return;var A=ACT[id];m.innerHTML="";
+ var joined=Object.keys(S.docs).length,R=rowsFor(id),fin=R.filter(function(r){return r.code||(r.rec&&r.rec.done)}).length;
+ m.appendChild(el("h3","","Results · "+A.id));
+ if(S.sheetErr)m.appendChild(el("p","c0","Server problem: "+S.sheetErr));
+ if(!S.db)m.appendChild(el("p","sm",SHEET_URL&&!tkey()?"Enter your teacher key in Class monitor to see live results.":"Students paste their codes in the ClassIn chat. Copy the chat and paste it into Class monitor: scores appear here."));
+ else if(S.slow)m.appendChild(el("p","sm","Waiting for the database… results may be out of date."));
+ else m.appendChild(el("p","sm",joined+" students joined · "+R.length+" started · "+fin+" finished"));
+ if(!R.length){m.appendChild(el("p","","No answers yet."));return}
+ var w=el("div","wrap"),t=el("table"),h=el("tr");["Student","Progress","Score"].forEach(function(x){h.appendChild(el("th","",x))});A.items.forEach(function(it,j){h.appendChild(el("th","",(j+1)+(it.k==="text"?"✎":"")))});t.appendChild(h);
+ var tot=A.items.map(function(){return [0,0]});
+ R.forEach(function(r){var tr=el("tr");tr.appendChild(el("td","",r.name+(r.code?" (code"+(r.code.ok?"":" ⚠")+")":"")));
+  if(r.code){tr.appendChild(el("td","sm","done"));tr.appendChild(el("td","",r.code.sc+"/"+r.code.n));A.items.forEach(function(){tr.appendChild(el("td","sm","·"))})}
+  else{var rec=r.rec,ans=(rec.s||[]).filter(function(v,k){return v!==undefined&&v!==null||(rec.a&&rec.a[k])}).length,p=el("td"),b=el("div","mbar"),i=el("i");i.style.width=Math.min(100,100*ans/A.items.length)+"%";b.appendChild(i);p.appendChild(b);p.appendChild(el("span","sm",rec.done?"done":ans+"/"+A.items.length));tr.appendChild(p);
+   tr.appendChild(el("td","",fmt(sumSc(rec))+"/"+A.n+(rec.t>1?" (try "+rec.t+")":"")));
+   A.items.forEach(function(it,j){var sc=rec.s?rec.s[j]:undefined,an=rec.a?rec.a[j]:undefined,c=cell(sc,an);tr.appendChild(el("td",c[1],c[0]));if(typeof sc==="number"){tot[j][0]+=sc;tot[j][1]++}})}
+  t.appendChild(tr)});
+ var fr=el("tr");fr.appendChild(el("td","sm","Class % correct"));fr.appendChild(el("td"));fr.appendChild(el("td"));tot.forEach(function(x,j){var td=el("td","sm",A.items[j].k==="text"||!x[1]?"":Math.round(100*x[0]/x[1])+"%");if(x[1]&&x[0]/x[1]<.6)td.className="c0";fr.appendChild(td)});t.appendChild(fr);
+ w.appendChild(t);m.appendChild(w);
+ A.items.forEach(function(it,j){if(it.k!=="text")return;var box=el("div");box.appendChild(el("h3","","✎ "+(j+1)+". "+it.q));var any=0;
+  R.forEach(function(r){var a=r.rec&&r.rec.a&&r.rec.a[j];if(!a)return;any=1;var d=el("div","txa");d.appendChild(el("b","",r.name+": "));d.appendChild(document.createTextNode(String(a).slice(0,600)));box.appendChild(d)});
+  if(!any)box.appendChild(el("p","sm","No written answers yet."));m.appendChild(box)});
+ var miss=A.items.map(function(it,j){return [j,tot[j][1]?tot[j][0]/tot[j][1]:1]}).filter(function(x){return A.items[x[0]].k!=="text"&&tot[x[0]][1]&&x[1]<.6});
+ if(miss.length)m.appendChild(el("p","c0","Review: question "+miss.map(function(x){return x[0]+1}).join(", ")+" (under 60% correct)."))}
+function openOv(){var o=document.getElementById("ov");o.classList.add("on");renderOv()}
+function renderOv(){var o=document.getElementById("ov");o.innerHTML="";var top=el("div","row"),cl=el("button","btn","← Back to slides");cl.onclick=function(){o.classList.remove("on")};top.appendChild(cl);o.appendChild(top);
+ o.appendChild(el("h2","","Class monitor · Module 6"));
+ o.appendChild(el("p","sm",SHEET_URL?(S.db?Object.keys(S.docs).length+" students connected live. Pasted codes are added too.":"Enter your teacher key below to see live results."):"Paste the ClassIn chat below. Codes are saved in this browser only."));
+ var names={},rows={};
+ Object.keys(S.docs).forEach(function(u){var d=S.docs[u];var nm=String(d&&d.name||"?").slice(0,40),k=nm.toLowerCase();names[k]=nm;rows[k]=rows[k]||{};Object.keys(d.p||{}).forEach(function(id){if(ACT[id])rows[k][id]={sc:sumSc(d.p[id]),n:ACT[id].n,done:d.p[id].done}})});
+ var pv=ls("chem6p_prog");if(pv&&Object.keys(pv).length){var pk="~preview";names[pk]=(ls("chem6p_name")||"Teacher")+" (your preview)";rows[pk]={};Object.keys(pv).forEach(function(id){if(ACT[id])rows[pk][id]={sc:sumSc(pv[id]),n:ACT[id].n,done:pv[id].done}})}
+ codes().forEach(function(c){var k=c.name.toLowerCase();names[k]=names[k]||c.name;rows[k]=rows[k]||{};if(!rows[k][c.id])rows[k][c.id]={sc:c.sc,n:c.n,done:true,code:1,ok:c.ok}});
+ var w=el("div","wrap"),t=el("table"),h=el("tr");h.appendChild(el("th","","Student"));ACTS.forEach(function(a){var th=el("th","",a.id);th.title=a.t;h.appendChild(th)});h.appendChild(el("th","","Average"));t.appendChild(h);
+ Object.keys(names).sort().forEach(function(k){var tr=el("tr"),s=0,c=0;tr.appendChild(el("td","",names[k]));ACTS.forEach(function(a){var r=rows[k][a.id];if(!r){tr.appendChild(el("td","sm","–"));return}var pc=a.n?r.sc/r.n:0;if(r.done&&a.n){s+=pc;c++}tr.appendChild(el("td",r.done?(pc>=.7?"c1":pc>=.5?"cp":"c0"):"sm",fmt(r.sc)+"/"+r.n+(r.done?"":"…")+(r.code&&!r.ok?"⚠":"")))});tr.appendChild(el("td","",c?Math.round(100*s/c)+"%":"–"));t.appendChild(tr)});
+ w.appendChild(t);o.appendChild(w);
+ o.appendChild(el("p","sm","“…” = still working · ⚠ = code check failed (maybe typed wrong)."));
+ if(SHEET_URL){o.appendChild(el("h3","","Teacher key (TEACHER_KEY in Cloudflare)"));var kr=el("div","row"),ki=el("input");ki.type="password";ki.value=tkey();ki.style.maxWidth="18em";var kb=el("button","btn go","Save key"),km=el("span","sm",S.db?"✓ Connected":"");
+  kb.onclick=function(){ls("chem6_tkey",ki.value.trim());km.textContent="Checking…";teacherData()};kr.appendChild(ki);kr.appendChild(kb);kr.appendChild(km);o.appendChild(kr)}
+ o.appendChild(el("h3","","Paste codes from the ClassIn chat"));var ta=el("textarea");ta.rows=5;ta.placeholder="Paste the whole chat here. Codes look like: #A3 Lily 11/13 x7k2";o.appendChild(ta);
+ var r2=el("div","row"),add=el("button","btn go","Add codes"),clr=el("button","btn alt","Clear all pasted codes"),msg=el("span","sm");
+ add.onclick=function(){var before=codes().length,after=parseCodes(ta.value).length;msg.textContent=(after-before)+" new codes added.";ta.value="";renderOv();var a=D.secs[D.i].dataset.act;if(a)renderMon(a)};
+ clr.onclick=function(){if(clr.dataset.c){ls("chem6_codes",[]);renderOv()}else{clr.dataset.c=1;clr.textContent="Click again to remove all codes"}};
+ var cp=el("button","btn alt","Clear my preview answers");cp.onclick=function(){ls("chem6p_prog",{});renderOv()};var wipe=el("button","btn alt","Delete ALL class results on the server");wipe.onclick=function(){if(!wipe.dataset.c){wipe.dataset.c=1;wipe.textContent="Click again: this deletes every student's answers";return}api({action:"clear",key:tkey()}).then(function(r){wipe.textContent=r.ok?"All results deleted":"Could not delete: "+(r.error||"");delete wipe.dataset.c;poll()})};r2.appendChild(add);r2.appendChild(clr);r2.appendChild(cp);if(SHEET_URL)r2.appendChild(wipe);r2.appendChild(msg);o.appendChild(r2)}
+
+/* ================= STUDENT APP ================= */
+var U={P:{},name:"",preview:false,live:null,lastAt:undefined,cur:null,writing:false,pending:false,ref:null};
+function K(k){return (U.preview?"chem6p_":"chem6_")+k}
+function startStudent(preview){U.preview=!!preview;document.getElementById("stu").classList.add("on");U.name=ls(K("name"))||"";U.P=ls(K("prog"))||{};
+ if(!preview&&S.db&&S.uid){U.ref=S.db.doc("students/"+S.uid);S.dbOK=true;
+  U.ref.get().then(function(s){if(s.exists){var d=s.data()||{};if(!U.name&&d.name){U.name=String(d.name);ls(K("name"),U.name)}var p=d.p||{};Object.keys(p).forEach(function(id){var a=p[id],b=U.P[id];if(!b||(a.done&&!b.done)||((a.i||0)>(b.i||0)&&!b.done))U.P[id]=a});ls(K("prog"),U.P)}if(!U.cur)home()}).catch(function(){});
+  S.db.doc("live/state").onSnapshot(function(s){var d=s.exists?s.data():null;U.live=d;if(d&&d.act&&ACT[d.act]&&d.at!==U.lastAt&&U.name){U.lastAt=d.at;openAct(d.act);return}U.lastAt=d?d.at:U.lastAt;if(!U.cur)home()},function(){S.dbOK=false;if(!U.cur)home()})}
+ home()}
+function push(){ls(K("prog"),U.P);if(U.preview||!U.ref||!S.dbOK)return;if(U.writing){U.pending=true;return}U.writing=true;
+ U.ref.set({name:U.name,at:Date.now(),cur:U.cur||null,p:U.P}).then(function(){U.sent=true;stat()}).catch(function(e){var c=e&&e.code;if(c!=="unavailable"&&c!=="resource_exhausted"){S.dbOK=false;stat()}}).then(function(){U.writing=false;if(U.pending){U.pending=false;push()}})}
+function head(){var s=document.getElementById("stu"),h=el("div","shead"),l=el("div");l.appendChild(el("span","tag","Chemistry · Module 6"));l.appendChild(el("h2","","Stoichiometry"));h.appendChild(l);
+ var r=el("div","row");if(U.name){var nm=el("span","pill","👤 "+U.name);r.appendChild(nm)}var st=el("span","pill");st.id="stat";r.appendChild(st);
+ if(U.preview){var b=el("button","btn alt","← Teacher slides");b.onclick=function(){s.classList.remove("on");document.getElementById("deck").classList.add("on");go(D.i)};r.appendChild(b)}
+ h.appendChild(r);s.appendChild(h);stat()}
+function stat(){var st=document.getElementById("stat");if(!st)return;if(U.preview){st.textContent="Teacher preview: shows only in your own monitor";st.className="pill warn"}else if(S.dbOK&&U.ref){st.textContent="✓ Connected to teacher";st.className="pill ok"}else if(SHEET_URL&&!U.tried){st.textContent="Connecting…";st.className="pill"}else{st.textContent=SHEET_URL?"Not connected: open the activity your teacher says, then copy your code into the ClassIn chat":"At the end, copy your code into the ClassIn chat";st.className="pill warn"}}
+function home(){U.cur=null;var s=document.getElementById("stu");s.innerHTML="";head();
+ if(!U.name){var q=el("div","qbox");q.appendChild(el("h3","","Type your name"));q.appendChild(el("p","","Use the same name as in ClassIn, so your teacher knows it is you."));var i=el("input");i.type="text";i.maxLength=30;i.placeholder="Your name";q.appendChild(i);var b=el("button","btn go","Start");b.style.marginTop="10px";
+  b.onclick=function(){var v=i.value.replace(/[#\/]/g,"").trim();if(v.length<2){i.focus();return}U.name=v;ls(K("name"),v);push();if(U.live&&U.live.act&&ACT[U.live.act]){U.lastAt=U.live.at;openAct(U.live.act)}else home()};
+  i.onkeydown=function(e){if(e.key==="Enter")b.click()};q.appendChild(b);s.appendChild(q);setTimeout(function(){i.focus()},50);return}
+ var liveMode=!U.preview&&S.dbOK&&U.ref,L=U.live;
+ if(liveMode&&L&&L.act&&ACT[L.act]){var c=el("div","qbox");c.appendChild(el("p","live","● Your teacher started an activity"));var b2=el("button","btn go","Open "+L.act+": "+ACT[L.act].t);b2.onclick=function(){openAct(L.act)};c.appendChild(b2);s.appendChild(c)}
+ else if(liveMode){s.appendChild(el("p","qbox","Wait here. When your teacher starts an activity, it will open by itself."))}
+ else s.appendChild(el("p","sm","Choose the activity your teacher tells you. At the end, copy your code into the ClassIn chat."));
+ [1,2,3].forEach(function(c){var list=ACTS.filter(function(a){return a.c===c&&(!liveMode||(L&&L.opened&&L.opened.indexOf(a.id)>=0))});if(!list.length)return;
+  s.appendChild(el("h3","","Class "+c));var g=el("div","alist");
+  list.forEach(function(a){var p=U.P[a.id],b=el("button","acard"+(p&&p.done?" done":"")+(L&&L.act===a.id?" now":""));b.appendChild(el("b","",a.id+" · "+a.t));b.appendChild(el("span","sm",p&&p.done?"Done: "+fmt(sumSc(p))+"/"+a.n:p?"In progress":a.items.length+" questions"));b.onclick=function(){openAct(a.id)};g.appendChild(b)});s.appendChild(g)});
+ var ch=el("button","btn alt","Change name");ch.style.marginTop="18px";ch.onclick=function(){U.name="";ls(K("name"),"");home()};s.appendChild(ch)}
+function rec(id){var r=U.P[id];if(!r){r=U.P[id]={a:[],s:[],i:0,done:false,t:1}}if(!r.a)r.a=[];if(!r.s)r.s=[];return r}
+function openAct(id){U.cur=id;rec(id);push();renderAct()}
+function renderAct(){var id=U.cur,A=ACT[id],r=rec(id),s=document.getElementById("stu");s.innerHTML="";head();window.scrollTo(0,0);
+ var top=el("div","row"),bk=el("button","btn alt","← All activities");bk.onclick=home;top.appendChild(bk);top.appendChild(el("b","",A.id+" · "+A.t));s.appendChild(top);
+ if(r.done){summary(s,A,r);return}
+ var run=el("div","run"+(A.ref?"":" noref"));if(A.ref){var rp=el("div","refp");rp.innerHTML=REF[A.ref](false);run.appendChild(rp)}
+ var qb=el("div","qbox"),idx=r.i,it=A.items[idx];qb.appendChild(el("div","qn","Question "+(idx+1)+" of "+A.items.length));var pr=el("div","prog"),pi=el("i");pi.style.width=(100*idx/A.items.length)+"%";pr.appendChild(pi);qb.appendChild(pr);
+ qb.appendChild(el("p","q",it.q));var body=el("div"),fb=el("p","fb"),nx=el("button","btn go",idx+1<A.items.length?"Next question →":"Finish ✓");nx.style.display="none";
+ nx.onclick=function(){r.i=idx+1;if(r.i>=A.items.length)r.done=true;push();renderAct()};
+ function done(ans,sc,msg,good){r.a[idx]=ans;r.s[idx]=sc;fb.textContent=msg;fb.className="fb "+(good?"good":"bad");nx.style.display="";push();setTimeout(function(){nx.focus()},30)}
+ ITEM[it.k](body,it,done);qb.appendChild(body);qb.appendChild(fb);qb.appendChild(nx);run.appendChild(qb);s.appendChild(run)}
+var ITEM={
+mc:function(b,it,done){var g=el("div","opts"),lock=0;shuf(it.o).forEach(function(o){var x=el("button","opt",o);x.onclick=function(){if(lock)return;lock=1;var ok=o===it.o[0];x.classList.add(ok?"ok":"no");if(!ok)[].forEach.call(g.children,function(c){if(c.textContent===it.o[0])c.classList.add("ok")});done(o,ok?1:0,ok?"Correct! ✓":"Not quite. The answer is: "+it.o[0],ok)};g.appendChild(x)});b.appendChild(g)},
+sort:function(b,it,done){var sel=null,miss={},placed=0,n=it.i.length,pool=el("div","pool"),bks=el("div","bks"),info=el("p","sm","Tap an item, then tap its group.");
+ shuf(it.i).forEach(function(x){var p=x.split("|"),c=el("button","chip",p[0]);c.dataset.a=p[1];c.onclick=function(){if(c.classList.contains("ok"))return;if(sel)sel.classList.remove("sel");sel=c;c.classList.add("sel")};pool.appendChild(c)});
+ it.b.forEach(function(bn){var k=el("div","bk");k.setAttribute("role","button");k.tabIndex=0;k.appendChild(el("h4","",bn));k.onclick=function(){if(!sel)return;var c=sel;if(c.dataset.a===bn){c.classList.remove("sel");c.classList.add("ok");k.appendChild(c);sel=null;placed++;if(placed===n){var good=n-Object.keys(miss).length;done("sorted",good/n,"All sorted! Right on the first try: "+good+" of "+n+".",good/n>=.7)}}else{miss[c.textContent]=1;c.classList.remove("shake");void c.offsetWidth;c.classList.add("shake")}info.textContent="Placed "+placed+" of "+n+"."};k.onkeydown=function(e){if(e.key==="Enter")k.click()};bks.appendChild(k)});
+ b.appendChild(pool);b.appendChild(bks);b.appendChild(info)},
+order:function(b,it,done){var seq=[],pool=el("div","pool"),ol=el("ol","seq"),row=el("div","row"),undo=el("button","btn alt","Undo"),chk=el("button","btn","Check order");chk.disabled=true;b.appendChild(el("p","sm","Tap the steps in the correct order."));
+ function draw(){ol.innerHTML="";seq.forEach(function(x){ol.appendChild(el("li","",x))});chk.disabled=seq.length!==it.s.length}
+ shuf(it.s).forEach(function(x){var c=el("button","chip",x);c.onclick=function(){if(c.disabled)return;c.disabled=true;c.style.opacity=.35;seq.push(x);draw()};pool.appendChild(c)});
+ undo.onclick=function(){var x=seq.pop();[].forEach.call(pool.children,function(c){if(c.textContent===x){c.disabled=false;c.style.opacity=1}});draw()};
+ chk.onclick=function(){undo.disabled=chk.disabled=true;[].forEach.call(pool.children,function(c){c.disabled=true});var g=0;[].forEach.call(ol.children,function(li,i){var ok=seq[i]===it.s[i];if(ok)g++;li.classList.add(ok?"ok":"no")});
+  if(g<it.s.length){var cor=el("div","");cor.appendChild(el("p","","Correct order:"));var o2=el("ol","seq");it.s.forEach(function(x){o2.appendChild(el("li","",x))});cor.appendChild(o2);b.appendChild(cor)}
+  done(seq.join(" > "),g/it.s.length,g===it.s.length?"Perfect order! ✓":g+" of "+it.s.length+" steps in the right place.",g===it.s.length)};
+ row.appendChild(undo);row.appendChild(chk);b.appendChild(pool);b.appendChild(ol);b.appendChild(row)},
+num:function(b,it,done){var row=el("div","row"),i=el("input");i.type="text";i.inputMode="decimal";i.style.maxWidth="12em";i.placeholder="Your answer";var u=el("span","",it.u||""),c=el("button","btn","Check"),tries=0,hint=el("p","sm","Show your working in your notebook.");
+ c.onclick=function(){var m=String(i.value).replace(/,/g,"").match(/-?\d*\.?\d+/);if(!m){i.focus();return}var v=parseFloat(m[0]),ok=Math.abs(v-it.a)<=Math.max(Math.abs(it.a)*.02,.01);tries++;
+  if(ok){c.disabled=i.disabled=true;done(v,tries===1?1:.5,tries===1?"Correct! ✓":"Correct on the second try ✓",true)}
+  else if(tries===1){hint.textContent="Not quite. Check your working and try once more.";hint.className="fb bad";i.select()}
+  else{c.disabled=i.disabled=true;done(v,0,"Not quite. The answer is "+it.a.toLocaleString("en-US")+" "+(it.u||""),false)}};
+ i.onkeydown=function(e){if(e.key==="Enter")c.click()};row.appendChild(i);row.appendChild(u);row.appendChild(c);b.appendChild(row);b.appendChild(hint);setTimeout(function(){i.focus()},50)},
+text:function(b,it,done){var t=el("textarea");t.rows=4;t.maxLength=600;t.placeholder="Write in full sentences.";var c=el("button","btn","Submit");c.style.marginTop="8px";
+ c.onclick=function(){var v=t.value.trim();if(v.length<2){t.focus();return}t.disabled=c.disabled=true;done(v,null,"Saved. Your teacher can read it.",true)};b.appendChild(t);b.appendChild(c)}
+};
+function summary(s,A,r){var q=el("div","qbox"),sc=sumSc(r);q.appendChild(el("h2","","Finished! 🎉"));
+ if(A.n){q.appendChild(el("p","q","Score: "+fmt(sc)+" / "+A.n+"  ("+Math.round(100*sc/A.n)+"%)"));q.appendChild(el("p","",sc/A.n>=.8?"Great work!":sc/A.n>=.5?"Good effort. Check your notebook for the ones you missed.":"Keep going. Read your notebook page again, then try again."))}
+ q.appendChild(el("p","","Your code:"));q.appendChild(el("div","code",codeFor(A.id,U.name,sc,A.n)));
+ q.appendChild(el("p","sm",S.dbOK&&U.ref&&!U.preview?"✓ Your answers were sent to your teacher. You do not need to send the code.":"Copy this code into the ClassIn chat so your teacher gets your score."));
+ var row=el("div","row"),h=el("button","btn go","← All activities"),again=el("button","btn alt","Try again");h.onclick=home;again.onclick=function(){var t=(r.t||1)+1;U.P[A.id]={a:[],s:[],i:0,done:false,t:t};push();renderAct()};row.appendChild(h);row.appendChild(again);q.appendChild(row);s.appendChild(q)}
+
+/* ================= GOOGLE SHEET MODE ================= */
+function api(o){o.course=COURSE;var c=window.AbortController?new AbortController():null,tm=setTimeout(function(){if(c)c.abort()},15000);return fetch(SHEET_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(o),signal:c?c.signal:undefined}).then(function(r){clearTimeout(tm);return r},function(e){clearTimeout(tm);throw e}).then(function(r){return r.text()}).then(function(t){try{return JSON.parse(t)}catch(e){return {error:"no connection to the class server"}}})}
+function tkey(){return ls("chem6_tkey")||""}
+function setLive(id){if(!SHEET_URL){lvMsg("Tell students the activity number. They paste their codes in the ClassIn chat.");return}
+ if(!tkey()){lvMsg("Enter your teacher key in Class monitor first.");return}
+ var op=((S.live&&S.live.opened)||[]).slice();if(id&&op.indexOf(id)<0)op.push(id);var st={act:id,opened:op,at:Date.now()};lvMsg("Sending…");
+ api({action:"setlive",key:tkey(),live:st}).then(function(r){if(r.ok){S.live=st;liveLabel()}else lvMsg("Could not send: "+(r.error||"unknown"))}).catch(function(){lvMsg("Could not reach the class server.")})}
+function refreshTeacher(){var a=D.secs[D.i]&&D.secs[D.i].dataset.act;if(a)renderMon(a);if(document.getElementById("ov").classList.contains("on"))renderOv()}
+function poll(){if(!SHEET_URL||!tkey())return;api({action:"results",key:tkey()}).then(function(r){
+  if(r.error){S.sheetErr=r.error;S.db=null;refreshTeacher();return}S.sheetErr=null;S.db="sheet";var o={};
+  (r.rows||[]).forEach(function(x){var d=o[x.sid]=o[x.sid]||{name:x.name,p:{}};d.name=String(x.name);try{d.p[x.act]=JSON.parse(x.rec)}catch(e){}});
+  S.docs=o;S.live=r.live||null;liveLabel();refreshTeacher()}).catch(function(){S.sheetErr="cannot reach the class server";refreshTeacher()})}
+function teacherData(){[].forEach.call(document.querySelectorAll(".mon"),function(m){renderMon(m.id.slice(4))});if(!SHEET_URL||!tkey())return;poll();if(!S.started){S.started=true;setInterval(poll,8000)}}
+function startStudent(preview){U.preview=!!preview;document.getElementById("stu").classList.add("on");U.name=ls(K("name"))||"";U.P=ls(K("prog"))||{};
+ if(!preview&&SHEET_URL){U.ref="sheet";S.dbOK=false;U.sid=ls("chem6_sid");if(!U.sid){U.sid="s"+Date.now().toString(36)+Math.random().toString(36).slice(2,8);ls("chem6_sid",U.sid)}
+  var pl=function(){api({action:"live"}).then(function(r){if(r.error)throw 0;var was=S.dbOK;S.dbOK=true;if(!was){stat();if(!U.cur)home()}var d=r.live||null;U.live=d;if(d&&d.act&&ACT[d.act]&&d.at!==U.lastAt&&U.name){U.lastAt=d.at;openAct(d.act);return}U.lastAt=d?d.at:U.lastAt;if(!U.cur)home()}).catch(function(){var was=S.dbOK;S.dbOK=false;U.tried=true;stat();if(was!==false||!U.shown){U.shown=true;if(!U.cur)home()}})};
+  pl();setInterval(pl,8000)}
+ home()}
+function push(){ls(K("prog"),U.P);if(U.preview||!U.ref||!U.cur||!S.dbOK)return;if(U.writing){U.pending=true;return}U.writing=true;var id=U.cur;
+ api({action:"save",sid:U.sid,name:U.name,act:id,n:ACT[id].n,rec:JSON.stringify(U.P[id])}).then(function(r){S.dbOK=!!r.ok;stat()}).catch(function(){S.dbOK=false;stat()}).then(function(){U.writing=false;if(U.pending){U.pending=false;push()}})}
+/* ================= BOOT ================= */
+(function(){var b=document.getElementById("boot");if(b)b.remove();S.owner=/^#teacher$/i.test(location.hash);if(S.owner)startDeck();else startStudent(false);
+ window.addEventListener("hashchange",function(){location.reload()})})();
+</script></body></html>

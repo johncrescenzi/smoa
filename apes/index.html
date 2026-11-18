@@ -1,0 +1,964 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>APES Unit 1: The Living World</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Serif+4:wght@400;600&display=swap"><style>
+:root{--bg:#f3f5ee;--panel:#e2eadb;--ink:#16251a;--mute:#4d6052;--g:#2e7d4f;--a:#b06a0c;--blue:#2a6f97;--bad:#b23a2e;--line:#bccbb4;
+--head:"Bricolage Grotesque","Trebuchet MS",sans-serif;--body:"Source Serif 4",Georgia,serif}
+@media (prefers-color-scheme:dark){:root{--bg:#101a13;--panel:#1b2e21;--ink:#e6efe7;--mute:#9fb5a4;--g:#5fc28a;--a:#eaa64a;--blue:#6fb3db;--bad:#e2776b;--line:#2f4a37}}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--ink);font:400 clamp(16px,1.6vw,21px)/1.5 var(--body)}
+h1,h2,h3,h4{font-family:var(--head);line-height:1.12;margin:0 0 .45em}
+h1{font-size:clamp(32px,5.4vw,68px);font-weight:800;letter-spacing:-.02em;max-width:15em}
+h2{font-size:clamp(24px,3.4vw,44px);font-weight:700}
+h3{font-size:1.05em;color:var(--g);margin-bottom:.3em}
+p{margin:.3em 0 .8em;max-width:40em}
+ul,ol{margin:.2em 0 .8em;padding-left:1.2em}li{margin:.2em 0}
+.sm{font-size:.85em;color:var(--mute)}
+.tag{display:inline-block;font:700 .7em var(--head);letter-spacing:.06em;text-transform:uppercase;color:var(--g);margin-bottom:.4em}
+.grid{display:grid;gap:clamp(12px,2vw,26px);grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));align-items:start}
+.grid>div{background:var(--panel);border-radius:10px;padding:.7em .9em}
+.do{border-left:5px solid var(--a);padding:.4em 0 .4em 1em;margin-top:1em;max-width:46em}.do b{font-family:var(--head);color:var(--a)}
+.nb{border:2px dashed var(--g);border-radius:8px;padding:.4em .8em;margin-top:1em;max-width:46em}.nb b{font-family:var(--head);color:var(--g)}
+.wrap{overflow-x:auto;max-width:100%}
+table{border-collapse:collapse;width:100%}
+th,td{text-align:left;padding:.42em .7em;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--head);color:var(--g)}
+.split{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:22px;align-items:start}
+@media(max-width:900px){.split{grid-template-columns:1fr}}
+svg.dg{width:100%;max-width:760px;height:auto;display:block}
+.dbox{fill:var(--panel);stroke:var(--g);stroke-width:2}.dtx{fill:var(--ink);font:700 14px sans-serif;text-anchor:middle}
+.darr{fill:none;stroke:var(--mute);stroke-width:2.2}.dnum{fill:var(--a)}.dnt{fill:#fff;font:800 13px sans-serif;text-anchor:middle}
+.dhead{fill:var(--mute)}
+.legend{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:4px 14px;font-size:.85em;margin:.4em 0}
+.legend span b{display:inline-block;min-width:1.6em;height:1.6em;line-height:1.6em;text-align:center;border-radius:50%;background:var(--a);color:#fff;font:800 .85em var(--head);margin-right:6px}
+.bgrid{display:grid;grid-template-columns:7.5em repeat(4,1fr);gap:4px;font-size:.82em;min-width:620px;max-width:900px}
+.bgrid div{padding:.45em .5em;border-radius:6px;background:var(--panel)}
+.bgrid .hd{background:none;font:700 1em var(--head);color:var(--mute);text-align:center}
+.bgrid .rh{background:none;font:700 1em var(--head);color:var(--blue)}
+.b-c{background:color-mix(in srgb,#7fa7c9 40%,var(--bg))!important}.b-w{background:color-mix(in srgb,#5aa36a 40%,var(--bg))!important}
+.b-h{background:color-mix(in srgb,#d9a441 40%,var(--bg))!important}.b-x{opacity:.45}
+.zsvg{width:100%;max-width:520px;height:auto;display:block}
+.water{fill:color-mix(in srgb,var(--blue) 30%,var(--bg))}.deep{fill:color-mix(in srgb,var(--blue) 55%,var(--bg))}.sedi{fill:none;stroke:#8a6a3c;stroke-width:5}
+.zl{fill:var(--ink);font:700 13px sans-serif;text-anchor:middle}.zs{fill:var(--ink);font:11px sans-serif;text-anchor:middle}.zd{stroke:var(--ink);stroke-dasharray:6 5;stroke-width:1.5}
+.plant{stroke:var(--g);stroke-width:3}
+.pyr{fill:color-mix(in srgb,var(--g) 30%,var(--bg));stroke:var(--g);stroke-width:2}
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:8px;margin:.6em 0}.flow>div{background:var(--panel);border-radius:8px;padding:.45em .7em;max-width:12em;font-size:.9em}.flow .ar{background:none;align-self:center;color:var(--g);font-weight:800;padding:0}
+.nbp{background:var(--panel);border-left:6px solid var(--g);border-radius:10px;padding:.6em 1.2em;font-size:1.12em;line-height:1.55;max-width:62em}
+.nbp h3{margin:.6em 0 .2em}.nbt{font:800 1.35em var(--head);color:var(--g)}
+.timer{font:700 .9em var(--head);margin-top:.8em}
+button{font:inherit}
+.btn{font:600 .95em var(--head);background:var(--ink);color:var(--bg);border:0;border-radius:8px;padding:.5em 1.1em;cursor:pointer}
+.btn.alt{background:var(--panel);color:var(--ink);border:2px solid var(--line)}
+.btn.go{background:var(--g);color:#fff}
+.btn:focus-visible,.chip:focus-visible,.opt:focus-visible{outline:3px solid var(--a);outline-offset:2px}
+.btn[disabled]{opacity:.45;cursor:default}
+.lnk{font-family:var(--head);color:var(--blue);word-break:break-all}
+/* deck */
+#deck{display:none;height:100%;flex-direction:column}
+#deck.on{display:flex}
+#deck main{flex:1;min-height:0;position:relative;overflow:hidden}
+#deck section{position:absolute;inset:0;padding:clamp(18px,3.4vw,48px) clamp(18px,5vw,76px);overflow-y:auto;display:none}
+#deck section.on{display:block}
+#deck nav{display:flex;align-items:center;gap:10px;padding:8px clamp(14px,5vw,76px);border-top:1px solid var(--line);font-family:var(--head)}
+.bar{flex:1;height:6px;background:var(--panel);border-radius:3px;overflow:hidden}.bar i{display:block;height:100%;width:0;background:var(--g)}
+#n{color:var(--mute);min-width:4em;text-align:right}
+.live{display:inline-flex;align-items:center;gap:6px;font:700 .8em var(--head);color:var(--bad)}.live i{width:10px;height:10px;border-radius:50%;background:var(--bad);animation:pulse 1.4s infinite}
+@keyframes pulse{50%{opacity:.25}}
+@media(prefers-reduced-motion:reduce){.live i{animation:none}}
+.mon{background:var(--panel);border-radius:12px;padding:.7em .9em;font-size:.82em}
+.mon table{font-size:.9em}.mon td,.mon th{padding:.28em .32em}.split.act{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)}
+.c1{color:var(--g);font-weight:800}.c0{color:var(--bad);font-weight:800}.cp{color:var(--a);font-weight:800}
+.mbar{height:8px;border-radius:4px;background:var(--line);overflow:hidden;min-width:60px}.mbar i{display:block;height:100%;background:var(--g)}
+.txa{border-top:1px solid var(--line);padding:.35em 0}
+.txa b{font-family:var(--head)}
+#ov{position:fixed;inset:0;background:var(--bg);z-index:30;overflow:auto;padding:24px clamp(16px,4vw,60px);display:none}
+#ov.on{display:block}
+textarea,input[type=text]{width:100%;font:inherit;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:.5em}
+/* student */
+#stu{display:none;max-width:1250px;margin:0 auto;padding:clamp(12px,2.6vw,30px)}
+#stu.on{display:block}
+.shead{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;border-bottom:2px solid var(--line);padding-bottom:.5em;margin-bottom:1em}
+.shead h2{margin:0;font-size:clamp(20px,2.6vw,30px)}
+.pill{font:600 .78em var(--head);padding:.25em .7em;border-radius:20px;background:var(--panel)}
+.pill.ok{background:color-mix(in srgb,var(--g) 25%,var(--bg))}.pill.warn{background:color-mix(in srgb,var(--a) 25%,var(--bg))}
+.alist{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.acard{text-align:left;background:var(--panel);border:2px solid var(--line);border-radius:12px;padding:.7em .9em;cursor:pointer;color:var(--ink)}
+.acard b{font-family:var(--head);display:block}.acard.now{border-color:var(--bad)}.acard.done{border-color:var(--g)}
+.run{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:22px;align-items:start}
+.run.noref{grid-template-columns:minmax(0,46em)}
+@media(max-width:860px){.run{grid-template-columns:1fr}}
+.refp{position:sticky;top:8px;background:var(--bg);border:2px solid var(--line);border-radius:12px;padding:10px;max-height:calc(100vh - 30px);overflow:auto;font-size:.88em}
+@media(max-width:860px){.refp{position:static;max-height:none}}
+.qbox{background:var(--panel);border-radius:12px;padding:1em 1.1em}
+.qn{font:700 .8em var(--head);color:var(--mute)}
+.q{font-size:1.12em;font-weight:600;margin:.3em 0 .7em}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;background:var(--bg);color:var(--ink);border:2px solid var(--line);border-radius:10px;padding:.55em .8em;cursor:pointer;font:inherit}
+.opt.ok,.chip.ok{border-color:var(--g);background:color-mix(in srgb,var(--g) 20%,var(--bg))}
+.opt.no,.chip.no{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 15%,var(--bg))}
+.fb{margin:.7em 0;font-weight:600}.fb.good{color:var(--g)}.fb.bad{color:var(--bad)}
+.pool{display:flex;flex-wrap:wrap;gap:8px;margin:.4em 0}
+.chip{background:var(--bg);border:2px solid var(--line);border-radius:8px;padding:.35em .7em;cursor:pointer;font:inherit;color:var(--ink);text-align:left}
+.chip.sel{border-color:var(--a);box-shadow:0 0 0 2px var(--a)}
+.shake{animation:sh .35s}@keyframes sh{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.bks{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));margin:.6em 0}
+.bk{border:2px dashed var(--line);border-radius:10px;padding:8px;min-height:80px;cursor:pointer;display:flex;flex-wrap:wrap;gap:6px;align-content:flex-start;background:var(--bg)}
+.bk h4{width:100%;margin:0;font:700 .92em var(--head);color:var(--g)}
+.seq{counter-reset:s;list-style:none;padding:0}.seq li{counter-increment:s;background:var(--bg);border-radius:8px;padding:.35em .6em;margin:4px 0}.seq li::before{content:counter(s) ". ";font-weight:800;color:var(--g)}
+.seq li.no{outline:2px solid var(--bad)}.seq li.ok{outline:2px solid var(--g)}
+.prog{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin:.4em 0 .8em}.prog i{display:block;height:100%;background:var(--g)}
+.code{font:800 1.3em var(--head);background:var(--bg);border:2px dashed var(--a);border-radius:10px;padding:.5em .8em;display:inline-block;user-select:all;word-break:break-all}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:.6em 0}
+.vgrid{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));margin:.5em 0}
+.vc{background:var(--panel);border-radius:12px;padding:.6em .7em;text-align:center;display:flex;flex-direction:column;align-items:center;gap:2px}
+.vc .emo{font-size:2em;line-height:1.25}.vc .emo small{font-size:.35em;color:var(--mute)}.vc b{font-family:var(--head)}.vc span{font-size:.82em;color:var(--mute)}
+.sign{font:800 1.2em var(--head)}.sp{color:var(--g);font-style:normal;font-weight:800}.sm2{color:var(--bad);font-style:normal;font-weight:800}.s0{color:var(--mute);font-style:normal;font-weight:800}
+.lgd{font-size:.85em}.kg,.kb{display:inline-block;color:#fff;border-radius:10px;padding:0 .6em;margin-right:6px}.kg{background:var(--g)}.kb{background:var(--blue)}
+.salt>div:first-child{height:22px;border-radius:11px;margin:.4em 0}.row3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;font-size:.88em;text-align:center}
+.wbar{display:flex;height:34px;border-radius:8px;overflow:hidden;margin:.3em 0;font:700 .78em var(--head);color:#fff}.wbar div{display:flex;align-items:center;padding-left:8px;white-space:nowrap;overflow:hidden}
+.ebr{display:grid;grid-template-columns:8.5em 1fr 6.5em;gap:8px;align-items:center;margin:4px 0;font-size:.9em}.ebr div{height:20px;background:var(--panel);border-radius:6px;overflow:hidden}.ebr i{display:block;height:100%;background:var(--g)}
+.bem{display:block;font-size:1.5em;line-height:1.2}td .bem{display:inline}
+</style></head><body>
+<div id="deck"><main>
+
+<!-- ================= CLASS 1 ================= -->
+<section class="on"><span class="tag">AP Environmental Science · Unit 1</span><h1>The Living World: Ecosystems</h1><h2>Class 1 · Ecosystems, biomes and the carbon cycle (2 hours)</h2>
+<p>By the end of today you can: explain how resources change the way species interact <span class="sm">(ERT-1.A)</span>; describe where the land biomes and water biomes are and what they are like <span class="sm">(ERT-1.B, 1.C)</span>; explain the steps of the carbon cycle <span class="sm">(ERT-1.D)</span>.</p>
+<div class="wrap"><table><tr><th>Block</th><th>Minutes</th></tr>
+<tr><td>Join the live class + warm-up (A1)</td><td>10</td></tr>
+<tr><td>1.1 Ecosystems and species interactions + activity A2</td><td>22</td></tr>
+<tr><td>1.2 Terrestrial biomes + activity A3</td><td>28</td></tr>
+<tr><td>Break</td><td>8</td></tr>
+<tr><td>1.3 Aquatic biomes + activity A4</td><td>20</td></tr>
+<tr><td>1.4 The carbon cycle + activity A5</td><td>22</td></tr>
+<tr><td>Exit ticket (A6)</td><td>10</td></tr></table></div>
+<div class="nb">&#9998; <b>Notebook:</b> start a new page. Title it <b>Unit 1: The Living World</b>.</div></section>
+
+<section data-join></section>
+<section data-act="A1"></section>
+
+<section><span class="tag">Topic 1.1</span><h2>What is an ecosystem?</h2>
+<div class="grid"><div><h3>Ecosystem</h3><p>All the living things in an area <b>and</b> the nonliving things they interact with.</p></div>
+<div><h3>Biotic</h3><p>The <b>living</b> parts: plants, animals, fungi, bacteria.</p></div>
+<div><h3>Abiotic</h3><p>The <b>nonliving</b> parts: sunlight, water, temperature, soil, air, nutrients.</p></div>
+<div><h3>Population · Community</h3><p>Population = one species in one area. Community = all the populations in one area.</p></div></div><div data-ref="eco" style="margin-top:.8em"></div>
+<h3 style="margin-top:1em">Resources</h3><p>Living things need <b>resources</b>: food, water, light, space, nutrients and shelter. When a resource is <b>limited</b> (there is not enough), organisms must <b>compete</b> for it.</p>
+<div class="do"><b>Big idea (ERT-1.A):</b> how much of a resource is available changes how species interact. Fewer resources → more competition.</div></section>
+
+<section><span class="tag">Topic 1.1</span><h2>Five species interactions</h2><div data-ref="inter"></div>
+<div class="wrap"><table><tr><th>Interaction</th><th>Effect</th><th>What happens</th><th>Example</th></tr>
+<tr><td><b>Competition</b></td><td>− / −</td><td>Two organisms use the same limited resource. Both lose some.</td><td>lions and hyenas hunting the same zebras</td></tr>
+<tr><td><b>Predation</b></td><td>+ / −</td><td>One organism eats another. <b>Herbivory</b> (an animal eats a plant) is a type of predation.</td><td>wolf eats deer; deer eats grass</td></tr>
+<tr><td><b>Mutualism</b></td><td>+ / +</td><td>Both species benefit.</td><td>bees and flowers; coral and algae</td></tr>
+<tr><td><b>Commensalism</b></td><td>+ / 0</td><td>One benefits. The other is not helped or harmed.</td><td>barnacles on a whale; a bird nest in a tree</td></tr>
+<tr><td><b>Parasitism</b></td><td>+ / −</td><td>The parasite lives on or in a host and harms it (usually does not kill it quickly).</td><td>tick on a dog; tapeworm in a gut</td></tr></table></div>
+<p><b>Symbiosis</b> = a close, long-term relationship between two species. Mutualism, commensalism and parasitism are all types of symbiosis.</p></section>
+
+<section><span class="tag">Topic 1.1</span><h2>Resource partitioning</h2>
+<p>When species compete for the same resource, over time they can evolve to use it in <b>different ways</b>. This <b>reduces competition</b>, so the species can live in the same place.</p>
+<div data-ref="part"></div>
+<div class="do"><b>Remember:</b> competition is the reason for resource partitioning. Partitioning lets species <b>share</b> a limited resource.</div></section>
+
+<section><div class="nbp"><div class="nbt">&#9998; Notebook page 1 · Topic 1.1 Ecosystems</div>
+<ul><li><b>Ecosystem</b> = biotic (living) + abiotic (nonliving) parts of an area.</li>
+<li><b>Competition</b> −/− · <b>Predation</b> +/− (includes herbivory) · <b>Mutualism</b> +/+ · <b>Commensalism</b> +/0 · <b>Parasitism</b> +/−</li>
+<li><b>Symbiosis</b> = close long-term relationship (mutualism, commensalism, parasitism).</li>
+<li><b>Resource partitioning</b> reduces competition: <b>temporal</b> (time), <b>spatial</b> (place), <b>morphological</b> (body).</li>
+<li>Fewer resources → <b>more</b> competition.</li></ul></div><div data-timer="5"></div></section>
+
+<section data-act="A2"></section>
+
+<section><span class="tag">Topic 1.2</span><h2>Terrestrial biomes: what decides a biome?</h2>
+<p>A <b>biome</b> is a large region with a similar <b>climate</b> and similar plants and animals. Two factors decide a biome: <b>average yearly temperature</b> and <b>average yearly precipitation</b> (rain + snow). Climate decides which <b>plants</b> can grow, and plants decide which <b>animals</b> can live there.</p>
+<div data-ref="biomes"></div></section>
+
+<section><span class="tag">Topic 1.2</span><h2>The nine land biomes</h2><div data-ref="biometable"></div>
+<div class="nb">&#9998; <b>Notebook:</b> copy one keyword for each biome.</div></section>
+
+<section><span class="tag">Topic 1.2</span><h2>Where are the biomes? Soil and change</h2><div data-ref="world"></div>
+<div class="grid"><div><h3>Global pattern (latitude)</h3><ul><li>Equator (0°): tropical rainforest, savanna</li><li>About 30° N and S: <b>deserts</b> (dry, sinking air)</li><li>30°–60°: temperate forests, grasslands, shrublands</li><li>50°–70°: boreal forest</li><li>Near the poles: tundra</li></ul><p class="sm">Climbing a mountain is like moving toward the poles: it gets colder.</p></div>
+<div><h3>Soil nutrients</h3><ul><li><b>Tropical rainforest:</b> poor soil. Plants take nutrients up fast and heavy rain washes the rest away.</li><li><b>Boreal forest:</b> poor, acidic soil. Cold makes decomposition very slow.</li><li><b>Temperate seasonal forest:</b> rich soil from fallen leaves.</li><li><b>Temperate grassland:</b> deep, very fertile soil (good farmland).</li></ul></div>
+<div><h3>Biomes can move</h3><p>When the climate changes, biomes <b>shift toward the poles and up mountains</b>. Species that cannot move or adapt may die out.</p></div></div></section>
+
+<section><div class="nbp"><div class="nbt">&#9998; Notebook page 2 · Topic 1.2 Terrestrial biomes</div>
+<ul><li>Biome = climate (<b>temperature + precipitation</b>) → plants → animals.</li>
+<li>Tundra: cold, dry, permafrost · Boreal forest: conifers, slow decay · Temperate rainforest: wet, giant conifers · Temperate seasonal forest: trees drop leaves, rich soil · Shrubland: dry summer, fires · Temperate grassland: grasses, fertile soil · Tropical rainforest: hot, wet, most species, poor soil · Savanna: grass + few trees, dry season · Desert: under 25 cm rain.</li>
+<li>Deserts at about 30° N/S. Mountains: higher = colder.</li>
+<li>Climate change → biomes move toward the poles.</li></ul></div><div data-timer="5"></div></section>
+
+<section data-act="A3"></section>
+<section><h2>Break: 8 minutes</h2><p>Stand up, stretch, drink water. Next: water biomes.</p></section>
+
+<section><span class="tag">Topic 1.3</span><h2>Aquatic biomes: what decides them?</h2>
+<p>Water biomes are not decided by rain. They are decided by:</p>
+<div class="grid"><div><h3>Salinity</h3><p>How much salt is in the water.</p></div><div><h3>Depth</h3><p>How far sunlight can reach.</p></div><div><h3>Flow</h3><p>Moving water (rivers) or still water (lakes).</p></div><div><h3>Temperature · oxygen · nutrients · turbidity</h3><p>Turbidity = how cloudy the water is. Cloudy water blocks light.</p></div></div>
+<div data-ref="salt"></div></section>
+
+<section><span class="tag">Topic 1.3</span><h2>Freshwater biomes</h2><div class="split"><div><div data-ref="lake"></div>
+<ul><li><b>Littoral zone:</b> shallow water near the shore. Rooted plants grow.</li><li><b>Limnetic zone:</b> open water where light reaches. Phytoplankton live here.</li><li><b>Profundal zone:</b> deep water, too dark for photosynthesis.</li><li><b>Benthic zone:</b> the bottom (mud, sediment). Decomposers live here.</li></ul></div>
+<div><h3>Rivers and streams</h3><p>Flowing water. Fast, cold water holds <b>more oxygen</b>. Rivers carry nutrient-rich sediment and drop it at the mouth (a delta).</p>
+<h3>Wetlands</h3><p>Land covered with water for part of the year: swamps (trees), marshes (grasses), bogs (acidic).</p><p><b>Why wetlands matter:</b> they store floodwater, filter pollutants, give habitat, and are very productive.</p></div></div></section>
+
+<section><span class="tag">Topic 1.3</span><h2>Marine biomes</h2><div class="split"><div><div data-ref="ocean"></div>
+<ul><li><b>Photic zone:</b> top layer with light. Phytoplankton make food and much of Earth's oxygen.</li><li><b>Aphotic zone:</b> no light, no photosynthesis.</li><li><b>Benthic zone:</b> the ocean floor.</li><li><b>Open ocean:</b> low productivity per m², but a huge area.</li></ul></div>
+<div><h3>Estuaries</h3><p>Where a <b>river meets the ocean</b>. Brackish water. Rivers bring nutrients and the water is shallow and sunny, so estuaries are <b>very productive</b>. Salt marshes (temperate) and mangrove swamps (tropical) protect coasts and are nurseries for young fish.</p>
+<h3>Intertidal zone</h3><p>Between high tide and low tide. Organisms must survive waves and drying out.</p>
+<h3>Coral reefs</h3><p><b>Warm, shallow, clear</b> water. Coral and algae live in <b>mutualism</b>. Highest biodiversity in the ocean. Warming water causes coral bleaching.</p></div></div></section>
+
+<section><div class="nbp"><div class="nbt">&#9998; Notebook page 3 · Topic 1.3 Aquatic biomes</div>
+<ul><li>Decided by <b>salinity, depth, flow, temperature</b> (also oxygen, nutrients, turbidity).</li>
+<li>Freshwater: rivers, lakes, wetlands · Brackish: estuaries, salt marshes, mangroves · Marine: ocean, reefs, intertidal.</li>
+<li>Lake zones: <b>littoral</b> (shore, plants) · <b>limnetic</b> (open, light) · <b>profundal</b> (deep, dark) · <b>benthic</b> (bottom).</li>
+<li>Ocean: <b>photic</b> (light) · <b>aphotic</b> (dark) · benthic (floor).</li>
+<li>Very productive: estuaries, wetlands, coral reefs. Wetlands store floods and filter water.</li></ul></div><div data-timer="5"></div></section>
+
+<section data-act="A4"></section>
+
+<section><span class="tag">Topic 1.4</span><h2>The carbon cycle</h2>
+<p>Carbon is in every living thing (sugars, proteins, DNA). The carbon cycle is the movement of carbon between <b>reservoirs</b>.</p>
+<div class="split"><div><div data-ref="carbon" data-legend="1"></div></div>
+<div><p><b>Reservoir</b> = a place where carbon is stored.</p><div data-ref="sinks"></div></div></div></section>
+
+<section><span class="tag">Topic 1.4</span><h2>Carbon cycle processes</h2><div class="wrap"><table><tr><th>#</th><th>Process</th><th>Carbon moves from → to</th><th>Speed</th></tr>
+<tr><td>1</td><td><b>Photosynthesis</b></td><td>atmosphere (CO₂) → producers</td><td>fast</td></tr>
+<tr><td>2</td><td><b>Cellular respiration</b></td><td>living things → atmosphere</td><td>fast</td></tr>
+<tr><td>3</td><td>Consumption (eating)</td><td>producers → consumers</td><td>fast</td></tr>
+<tr><td>4</td><td>Death and waste</td><td>living things → dead matter</td><td>fast</td></tr>
+<tr><td>5</td><td><b>Decomposition</b></td><td>dead matter → atmosphere and soil</td><td>fast</td></tr>
+<tr><td>6</td><td><b>Combustion</b> (burning)</td><td>fossil fuels, wood → atmosphere</td><td>fast (humans)</td></tr>
+<tr><td>7 · 8</td><td>Ocean–air exchange</td><td>CO₂ dissolves into the ocean (7) and is released back (8)</td><td>fast</td></tr>
+<tr><td>9</td><td><b>Sedimentation</b></td><td>ocean → sediments (shells become limestone rock)</td><td>slow</td></tr>
+<tr><td>10</td><td><b>Burial and compression</b></td><td>dead matter → fossil fuels</td><td>very slow (millions of years)</td></tr></table></div>
+<div data-ref="photoresp"></div></section>
+
+<section><span class="tag">Topic 1.4</span><h2>Humans and the carbon cycle</h2>
+<div class="grid"><div><h3>Largest reservoirs</h3><p>Sedimentary rock (largest) → ocean → fossil fuels → soil → atmosphere → plants.</p></div>
+<div><h3>Fast vs slow</h3><p>Photosynthesis and respiration move carbon in days or years. Making rock and fossil fuels takes <b>millions of years</b>.</p></div>
+<div><h3>The problem</h3><p>Burning fossil fuels and cutting forests move carbon from <b>slow</b> reservoirs to the atmosphere <b>faster</b> than sinks can take it back. CO₂ rises → global warming.</p></div>
+<div><h3>Ocean acidification</h3><p>The ocean absorbs extra CO₂ and becomes more acidic. This harms corals and animals with shells.</p></div></div></section>
+
+<section><div class="nbp"><div class="nbt">&#9998; Notebook page 4 · Topic 1.4 Carbon cycle</div>
+<ul><li>Reservoir = store · <b>Sink</b> takes in more than it releases · <b>Source</b> releases more.</li>
+<li>Removes CO₂ from air: <b>photosynthesis</b>, ocean dissolving.</li>
+<li>Adds CO₂ to air: <b>respiration, decomposition, combustion</b>, volcanoes.</li>
+<li>Slow: <b>sedimentation</b> (limestone), <b>burial</b> → fossil fuels (millions of years).</li>
+<li>Largest reservoir: sedimentary rock. Humans burn fossil fuels → more CO₂ → warming + ocean acidification.</li></ul></div><div data-timer="5"></div></section>
+
+<section data-act="A5"></section>
+<section data-act="A6"></section>
+
+<!-- ================= CLASS 2 ================= -->
+<section><span class="tag">AP Environmental Science · Unit 1</span><h1>Class 2 · Nutrient cycles and productivity</h1><h2>Nitrogen, phosphorus, water, primary productivity (2 hours)</h2>
+<p>By the end of today you can: explain the steps of the nitrogen, phosphorus and water cycles <span class="sm">(ERT-1.E, 1.F, 1.G)</span>; explain how producers capture solar energy, and calculate GPP and NPP <span class="sm">(ENG-1.A)</span>.</p>
+<div class="wrap"><table><tr><th>Block</th><th>Minutes</th></tr>
+<tr><td>Warm-up (A7)</td><td>8</td></tr>
+<tr><td>1.5 Nitrogen cycle + activity A8</td><td>27</td></tr>
+<tr><td>1.6 Phosphorus cycle and eutrophication + activity A9</td><td>22</td></tr>
+<tr><td>Break</td><td>8</td></tr>
+<tr><td>1.7 Water cycle + activity A10</td><td>20</td></tr>
+<tr><td>1.8 Primary productivity + activity A11</td><td>27</td></tr>
+<tr><td>Exit ticket (A12)</td><td>8</td></tr></table></div>
+<div class="nb">&#9998; <b>Notebook:</b> new page: <b>Nutrient cycles</b>. Open the class link again.</div></section>
+
+<section data-act="A7"></section>
+
+<section><span class="tag">Topic 1.5</span><h2>The nitrogen cycle</h2>
+<div class="split"><div><div data-ref="nitrogen" data-legend="1"></div></div>
+<div><p>Living things need nitrogen to make <b>proteins and DNA</b>.</p><p>The atmosphere is <b>78% N₂</b>, the largest nitrogen reservoir. But plants and animals <b>cannot use N₂ gas</b>: its triple bond is very strong. N₂ must first be <b>fixed</b> into a form plants can use (NH₄⁺ or NO₃⁻).</p>
+<p>Nitrogen is often a <b>limiting nutrient</b>: there is not enough usable nitrogen, so plants grow slowly.</p><div data-ref="nodule"></div></div></div></section>
+
+<section><span class="tag">Topic 1.5</span><h2>Nitrogen cycle steps</h2><div data-ref="nstrip"></div><div class="wrap"><table><tr><th>#</th><th>Step</th><th>What changes</th><th>Who / how</th></tr>
+<tr><td>1</td><td><b>Nitrogen fixation</b></td><td>N₂ → NH₃ / NH₄⁺ (ammonia / ammonium)</td><td>bacteria in root nodules of <b>legumes</b> (beans, peas, clover) and in soil; <b>lightning</b>; the <b>Haber-Bosch</b> process (fertilizer factories)</td></tr>
+<tr><td>2</td><td><b>Nitrification</b></td><td>NH₄⁺ → NO₂⁻ (nitrite) → NO₃⁻ (nitrate)</td><td>nitrifying bacteria in soil</td></tr>
+<tr><td>3</td><td><b>Assimilation</b></td><td>plants take up NO₃⁻ (and NH₄⁺) through roots</td><td>plants build proteins and DNA</td></tr>
+<tr><td>4</td><td>Consumption</td><td>plants → animals</td><td>eating</td></tr>
+<tr><td>5</td><td>Death and waste</td><td>organisms → dead matter, urine, feces</td><td></td></tr>
+<tr><td>6</td><td><b>Ammonification</b></td><td>dead matter and waste → NH₃ / NH₄⁺</td><td>decomposers (bacteria, fungi)</td></tr>
+<tr><td>7</td><td><b>Denitrification</b></td><td>NO₃⁻ → N₂O → N₂ gas (back to the air)</td><td>bacteria in soil with <b>little oxygen</b> (waterlogged)</td></tr></table></div>
+<div class="do"><b>Order to remember:</b> Fix → Nitrify → Assimilate → (eat, die) → Ammonify → Denitrify.</div></section>
+
+<section><span class="tag">Topic 1.5</span><h2>Humans and the nitrogen cycle</h2>
+<div class="grid"><div><h3>Fertilizer runoff</h3><p>The Haber-Bosch process makes huge amounts of synthetic fertilizer. Extra nitrate runs off fields into rivers and lakes → <b>eutrophication</b> (algal blooms).</p></div>
+<div><h3>Leaching</h3><p>Nitrate dissolves easily and moves down into <b>groundwater</b>. Too much nitrate in drinking water is unsafe.</p></div>
+<div><h3>Air pollution</h3><p>Burning fuels releases <b>NOx</b> → smog and acid rain. Fertilized soil releases <b>N₂O</b>, a greenhouse gas.</p></div></div>
+<p>The nitrogen cycle is <b>faster</b> than the phosphorus cycle because nitrogen has a <b>gas phase</b> in the atmosphere.</p></section>
+
+<section><div class="nbp"><div class="nbt">&#9998; Notebook page 5 · Topic 1.5 Nitrogen cycle</div>
+<ul><li>Largest reservoir: <b>atmosphere (78% N₂)</b>. Plants cannot use N₂ until it is fixed.</li>
+<li><b>Fixation</b> N₂ → NH₄⁺ (bacteria in legume roots, lightning, Haber-Bosch)</li>
+<li><b>Nitrification</b> NH₄⁺ → NO₂⁻ → NO₃⁻ (bacteria)</li>
+<li><b>Assimilation</b> plants take up NO₃⁻ / NH₄⁺</li>
+<li><b>Ammonification</b> dead matter → NH₄⁺ (decomposers)</li>
+<li><b>Denitrification</b> NO₃⁻ → N₂ (bacteria, low oxygen)</li>
+<li>Humans: fertilizer runoff → eutrophication; leaching; NOx, N₂O.</li></ul></div><div data-timer="5"></div></section>
+
+<section data-act="A8"></section>
+
+<section><span class="tag">Topic 1.6</span><h2>The phosphorus cycle</h2>
+<div class="split"><div><div data-ref="phosphorus" data-legend="1"></div></div>
+<div><ul><li>Phosphorus is needed for <b>DNA, ATP</b> (energy), cell membranes, bones and teeth.</li><li><b>No gas phase.</b> Phosphorus does not go into the atmosphere.</li><li>Main reservoir: <b>rocks and ocean sediments</b>.</li><li>Released slowly by <b>weathering</b> of rock → the <b>slowest</b> cycle.</li><li>Phosphate (PO₄³⁻) is often the <b>limiting nutrient</b> in water.</li><li>Humans add phosphorus by <b>mining</b> it for fertilizer, and from detergents and sewage.</li></ul></div></div></section>
+
+<section><span class="tag">Topic 1.6</span><h2>Eutrophication: too many nutrients</h2>
+<div data-ref="eutro"></div>
+<p>Example: the Gulf of Mexico dead zone, from fertilizer carried by the Mississippi River.</p>
+<div class="do"><b>Key reason:</b> P (and N) were the limiting nutrients. Adding them removes the limit, so algae explode.</div></section>
+
+<section><div class="nbp"><div class="nbt">&#9998; Notebook page 6 · Topic 1.6 Phosphorus cycle</div>
+<ul><li>Needed for DNA, ATP, membranes, bones.</li>
+<li><b>No gas phase</b> · reservoir: <b>rocks and sediments</b> · <b>slowest</b> cycle.</li>
+<li>Steps: weathering → soil/water PO₄³⁻ → plants → animals → decomposers → runoff → sediments → <b>geologic uplift</b> → rock.</li>
+<li>Often the <b>limiting nutrient</b> in water.</li>
+<li><b>Eutrophication:</b> extra N, P → algal bloom → algae die → decomposers use O₂ → hypoxia → dead zone.</li></ul></div><div data-timer="5"></div></section>
+
+<section data-act="A9"></section>
+<section><h2>Break: 8 minutes</h2><p>Stretch, drink water. Next: the water cycle.</p></section>
+
+<section><span class="tag">Topic 1.7</span><h2>The hydrologic (water) cycle</h2>
+<div class="split"><div><div data-ref="water" data-legend="1"></div></div>
+<div><h3>Reservoirs</h3><div data-ref="waterres"></div>
+<h3>What drives it?</h3><p>Energy from the <b>Sun</b> drives evaporation and transpiration. <b>Gravity</b> pulls water down: precipitation, runoff, infiltration.</p></div></div></section>
+
+<section><span class="tag">Topic 1.7</span><h2>Water cycle processes</h2><div class="wrap"><table><tr><th>#</th><th>Process</th><th>What happens</th></tr>
+<tr><td>1</td><td><b>Evaporation</b></td><td>liquid water → water vapor (from oceans, lakes, soil)</td></tr>
+<tr><td>2</td><td><b>Transpiration</b></td><td>water vapor leaves plant leaves</td></tr>
+<tr><td>3</td><td><b>Condensation</b></td><td>water vapor cools → liquid droplets (clouds)</td></tr>
+<tr><td>4</td><td><b>Precipitation</b></td><td>rain, snow, hail fall to Earth</td></tr>
+<tr><td>5</td><td><b>Runoff</b></td><td>water flows over land into rivers and the ocean</td></tr>
+<tr><td>6</td><td><b>Infiltration</b></td><td>water soaks down into soil → groundwater</td></tr>
+<tr><td>7</td><td>Groundwater flow</td><td>groundwater moves slowly to rivers and the ocean</td></tr>
+<tr><td>8</td><td>Root uptake</td><td>plants take water from the soil</td></tr></table></div>
+<p><b>Evapotranspiration</b> = evaporation + transpiration. An <b>aquifer</b> is underground rock or sediment that holds groundwater.</p>
+<div class="do"><b>Humans:</b> roads and parking lots are impermeable → <b>more runoff, less infiltration</b>, more floods. Pumping aquifers too fast lowers groundwater. Cutting forests lowers transpiration and rain.</div></section>
+
+<section><div class="nbp"><div class="nbt">&#9998; Notebook page 7 · Topic 1.7 Water cycle</div>
+<ul><li>Largest reservoir: <b>ocean (97%)</b>. Most fresh water: <b>ice caps and glaciers</b>.</li>
+<li>Sun drives <b>evaporation</b> and <b>transpiration</b> (together: evapotranspiration).</li>
+<li><b>Condensation</b> → clouds · <b>precipitation</b> → rain/snow.</li>
+<li><b>Runoff</b> over land · <b>infiltration</b> into soil → groundwater / <b>aquifers</b>.</li>
+<li>Paving → more runoff, less infiltration.</li></ul></div><div data-timer="5"></div></section>
+
+<section data-act="A10"></section>
+
+<section><span class="tag">Topic 1.8</span><h2>Primary productivity</h2>
+<p><b>Producers</b> (autotrophs) capture <b>solar energy</b> by photosynthesis and store it as chemical energy in glucose. Only about <b>1%</b> of sunlight that reaches a plant is captured. The rest is reflected, passes through, or becomes heat.</p>
+<div class="grid"><div><h3>GPP · Gross primary productivity</h3><p>The <b>total</b> energy producers capture by photosynthesis.</p></div>
+<div><h3>R · Respiration</h3><p>Energy producers use for their <b>own</b> life (cellular respiration).</p></div>
+<div><h3>NPP · Net primary productivity</h3><p>Energy <b>left</b> after respiration. It becomes plant growth (biomass) and food for consumers.</p></div></div>
+<div data-ref="gppbar"></div>
+<p>Units: kcal/m²/yr or g/m²/yr. <b>Example:</b> GPP = 20,000 kcal/m²/yr and R = 12,000 → NPP = 20,000 − 12,000 = <b>8,000 kcal/m²/yr</b>.</p></section>
+
+<section><span class="tag">Topic 1.8</span><h2>Measuring productivity in water: light and dark bottles</h2>
+<div class="grid"><div><h3>Light bottle</h3><p>Photosynthesis <b>and</b> respiration happen. Change in dissolved O₂ = <b>NPP</b>.</p></div>
+<div><h3>Dark bottle</h3><p>Only respiration happens (no light). O₂ lost = <b>R</b>.</p></div>
+<div><h3>Then</h3><p><b>GPP = NPP + R</b></p></div></div>
+<div class="wrap"><table><tr><th>Bottle</th><th>Start O₂ (mg/L)</th><th>After 24 h</th><th>Result</th></tr>
+<tr><td>Light</td><td>8.0</td><td>9.5</td><td>NPP = 9.5 − 8.0 = 1.5</td></tr>
+<tr><td>Dark</td><td>8.0</td><td>6.5</td><td>R = 8.0 − 6.5 = 1.5</td></tr>
+<tr><td colspan="3"><b>GPP</b></td><td><b>1.5 + 1.5 = 3.0 mg O₂/L/day</b></td></tr></table></div></section>
+
+<section><span class="tag">Topic 1.8</span><h2>Which ecosystems are most productive?</h2><div class="split"><div data-ref="npp"></div>
+<div><h3>Why?</h3><p>High NPP needs lots of <b>sunlight, water, warm temperatures and nutrients</b>. Deserts lack water; tundra is cold; the open ocean lacks nutrients.</p>
+<h3>Light in water</h3><div data-ref="light"></div>
+<p>The open ocean has <b>low NPP per m²</b> but a <b>huge total</b>, because it covers most of Earth.</p></div></div></section>
+
+<section><div class="nbp"><div class="nbt">&#9998; Notebook page 8 · Topic 1.8 Primary productivity</div>
+<ul><li>Producers capture solar energy by photosynthesis (only about 1% of sunlight).</li>
+<li><b>GPP</b> = total captured · <b>R</b> = used by plant · <b>NPP = GPP − R</b> (available to consumers).</li>
+<li>Light bottle change = NPP · dark bottle loss = R · GPP = NPP + R.</li>
+<li>Highest NPP: swamps/marshes, reefs, tropical rainforest, estuaries. Lowest: desert, tundra, open ocean (per m²).</li>
+<li>Blue light reaches deepest in water; red is absorbed first.</li></ul></div><div data-timer="5"></div></section>
+
+<section data-act="A11"></section>
+<section data-act="A12"></section>
+
+<!-- ================= CLASS 3 ================= -->
+<section><span class="tag">AP Environmental Science · Unit 1</span><h1>Class 3 · Energy flow</h1><h2>Trophic levels, the 10% rule, food webs (1 hour)</h2>
+<p>By the end of today you can: explain how energy flows and matter cycles through trophic levels <span class="sm">(ENG-1.B)</span>; calculate how energy decreases with the 10% rule <span class="sm">(ENG-1.C)</span>; describe food chains and food webs <span class="sm">(ENG-1.D)</span>.</p>
+<div class="wrap"><table><tr><th>Block</th><th>Minutes</th></tr>
+<tr><td>Warm-up (A13)</td><td>5</td></tr><tr><td>1.9 Trophic levels + 1.10 the 10% rule</td><td>15</td></tr><tr><td>Activity A14: energy calculations</td><td>10</td></tr>
+<tr><td>1.11 Food chains and food webs + activity A15</td><td>18</td></tr><tr><td>Unit 1 review quiz (A16) + wrap-up</td><td>12</td></tr></table></div></section>
+
+<section data-act="A13"></section>
+
+<section><span class="tag">Topic 1.9</span><h2>Trophic levels</h2>
+<div class="wrap"><table><tr><th>Level</th><th>Name</th><th>Gets energy from</th><th>Example</th></tr>
+<tr><td>1</td><td><b>Producers</b> (autotrophs)</td><td>sunlight (photosynthesis)</td><td>grass, trees, phytoplankton</td></tr>
+<tr><td>2</td><td><b>Primary consumers</b> (herbivores)</td><td>producers</td><td>rabbit, grasshopper, zooplankton</td></tr>
+<tr><td>3</td><td><b>Secondary consumers</b></td><td>primary consumers</td><td>snake, frog, small fish</td></tr>
+<tr><td>4</td><td><b>Tertiary consumers</b> (top predators)</td><td>secondary consumers</td><td>hawk, shark</td></tr>
+<tr><td>all</td><td><b>Decomposers & detritivores</b></td><td>dead matter and waste from every level</td><td>bacteria, fungi; worms, crabs</td></tr></table></div>
+<div data-ref="chain" style="margin-top:.6em"></div><div class="grid" style="margin-top:.8em"><div><h3>Energy flows one way</h3><p>Sun → producers → consumers → <b>lost as heat</b>. Energy does <b>not</b> cycle.</p></div>
+<div><h3>Matter cycles</h3><p>Carbon, nitrogen, phosphorus and water are <b>reused</b>. Decomposers return nutrients to the soil.</p></div>
+<div><h3>Laws of thermodynamics</h3><p><b>1st:</b> energy is not created or destroyed, only changed in form. <b>2nd:</b> each energy change loses some energy as <b>heat</b>.</p></div></div></section>
+
+<section><span class="tag">Topic 1.10</span><h2>Energy flow and the 10% rule</h2><div class="split"><div><div data-ref="pyramid"></div></div>
+<div><p>Only about <b>10%</b> of the energy at one trophic level passes to the next level. About <b>90% is lost</b>:</p><div data-ref="loss"></div><div data-ref="ebar"></div>
+<p><b>Going up</b> one level: × 0.1 · <b>Going down</b> one level: × 10</p>
+<p><b>Example:</b> producers 20,000 kcal → primary 2,000 → secondary 200 → tertiary 20 kcal.</p>
+<div class="do"><b>So:</b> there are few top predators, food chains are short (4–5 levels), and eating lower on the food chain feeds more people.</div></div></div></section>
+
+<section><div class="nbp"><div class="nbt">&#9998; Notebook page 9 · Topics 1.9–1.10 Energy flow</div>
+<ul><li>Producers → primary (herbivores) → secondary → tertiary consumers. Decomposers feed on all levels.</li>
+<li><b>Energy flows one way</b> (ends as heat). <b>Matter cycles.</b></li>
+<li>1st law: energy is not created or destroyed. 2nd law: each transfer loses energy as heat.</li>
+<li><b>10% rule:</b> about 10% passes up each level; 90% is lost (mostly heat from respiration).</li>
+<li>Up one level ×0.1 · down one level ×10. Example: 20,000 → 2,000 → 200 → 20 kcal.</li></ul></div><div data-timer="4"></div></section>
+
+<section data-act="A14"></section>
+
+<section><span class="tag">Topic 1.11</span><h2>Food chains and food webs</h2><div data-ref="webchain"></div><div class="split"><div><div data-ref="foodweb"></div></div>
+<div><ul><li>A <b>food chain</b> shows <b>one</b> path of energy: grass → rabbit → fox.</li><li>A <b>food web</b> shows <b>many</b> connected food chains.</li><li>Arrows point <b>from the food to the eater</b>: the direction energy flows.</li><li><b>Omnivores</b> can feed at more than one level. The sparrow is a primary consumer when it eats berries and a secondary consumer when it eats grasshoppers.</li><li>Remove one species and the effects spread through the web. No snakes → more mice → less grass.</li><li>Decomposers are usually not drawn, but they feed on every level.</li></ul></div></div></section>
+
+<section><div class="nbp"><div class="nbt">&#9998; Notebook page 10 · Topic 1.11 Food chains and webs</div>
+<ul><li>Food chain = one path · food web = many linked chains.</li>
+<li>Arrow = energy flow, <b>from food → eater</b>.</li>
+<li>Omnivores can be at more than one trophic level.</li>
+<li>Removing a species changes the whole web.</li>
+<li>All energy in the web starts with producers (and the Sun).</li></ul></div><div data-timer="4"></div></section>
+
+<section data-act="A15"></section>
+<section data-act="A16"></section>
+
+<section><h2>Unit 1 summary</h2><div data-ref="cycle4"></div><div class="grid">
+<div><h3>Ecosystems (1.1)</h3><p>Resources shape interactions: competition, predation, mutualism, commensalism, parasitism. Partitioning reduces competition.</p></div>
+<div><h3>Biomes (1.2–1.3)</h3><p>Land: temperature + precipitation. Water: salinity, depth, flow, temperature.</p></div>
+<div><h3>Cycles (1.4–1.7)</h3><p>Carbon, nitrogen, phosphorus (no gas, slowest), water. Matter cycles between reservoirs.</p></div>
+<div><h3>Energy (1.8–1.11)</h3><p>NPP = GPP − R. 10% rule. Energy flows one way through food chains and webs.</p></div></div>
+<p>Next: <b>Unit 2 · The Living World: Biodiversity</b>. Review your notebook pages 1–10.</p></section>
+
+</main>
+<nav><button class="btn" id="bk" aria-label="Previous slide">Back</button><div class="bar"><i id="pb"></i></div><span id="n"></span><button class="btn alt" id="mbtn">Class monitor</button><button class="btn alt" id="svbtn">Student view</button><button class="btn" id="nx" aria-label="Next slide">Next</button></nav>
+</div>
+
+<div id="ov"></div>
+<div id="stu"></div>
+<div id="boot" style="padding:40px;font-family:var(--head)">Loading…</div>
+<script>
+/* ---------- diagram helper ---------- */
+var DGN=0;
+function dg(D,legend){
+ var MID="ah"+D.id+(++DGN),W=D.w,H=D.h,s='<svg class="dg" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+D.label+'"><defs><marker id="'+MID+'" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="dhead"/></marker></defs>';
+ var N=D.n,labels='';
+ function ctr(k){var b=N[k];return [b[0]+b[2]/2,b[1]+b[3]/2]}
+ function clip(k,tx,ty){var b=N[k],c=ctr(k),dx=tx-c[0],dy=ty-c[1],hw=b[2]/2+3,hh=b[3]/2+3,t=Math.min(dx?hw/Math.abs(dx):1e9,dy?hh/Math.abs(dy):1e9);return [c[0]+dx*t,c[1]+dy*t]}
+ D.a.forEach(function(a){var c0=ctr(a[0]),c1=ctr(a[1]),cx,cy;
+  if(a.length>=6){cx=a[4];cy=a[5]}else{var mx=(c0[0]+c1[0])/2,my=(c0[1]+c1[1])/2,dx=c1[0]-c0[0],dy=c1[1]-c0[1],L=Math.hypot(dx,dy)||1,b=a[3]||0;cx=mx-dy/L*b;cy=my+dx/L*b}
+  var p0=clip(a[0],cx,cy),p1=clip(a[1],cx,cy);
+  s+='<path class="darr" d="M'+p0[0].toFixed(1)+' '+p0[1].toFixed(1)+' Q'+cx.toFixed(1)+' '+cy.toFixed(1)+' '+p1[0].toFixed(1)+' '+p1[1].toFixed(1)+'" marker-end="url(#'+MID+')"/>';
+  if(a[2]!=null){var lx=.25*p0[0]+.5*cx+.25*p1[0],ly=.25*p0[1]+.5*cy+.25*p1[1];labels+='<circle cx="'+lx.toFixed(1)+'" cy="'+ly.toFixed(1)+'" r="12" class="dnum"/><text x="'+lx.toFixed(1)+'" y="'+(ly+4.5).toFixed(1)+'" class="dnt">'+a[2]+'</text>'}});
+ for(var k in N){var b=N[k],ls=b[4].split("\n"),y0=b[1]+b[3]/2-(ls.length-1)*8+5;s+='<rect x="'+b[0]+'" y="'+b[1]+'" width="'+b[2]+'" height="'+b[3]+'" rx="8" class="dbox"/>';ls.forEach(function(l,i){s+='<text x="'+(b[0]+b[2]/2)+'" y="'+(y0+i*16)+'" class="dtx">'+l+'</text>'})}
+ s+=labels+'</svg>';
+ if(legend&&D.leg){s+='<div class="legend">'+D.leg.map(function(t,i){return '<span><b>'+(i+1)+'</b>'+t+'</span>'}).join("")+'</div>'}
+ return s}
+
+var DIAG={
+carbon:{id:"c",w:720,h:430,label:"Carbon cycle with numbered arrows",n:{
+ atm:[260,12,200,56,"Atmosphere\nCO₂"],prod:[15,120,165,56,"Producers\n(plants, algae)"],cons:[15,290,165,56,"Consumers\n(animals)"],
+ dead:[215,200,175,56,"Dead matter, waste\n& decomposers"],foss:[215,355,175,56,"Fossil fuels\n(coal, oil, gas)"],
+ ocean:[530,120,175,56,"Ocean\n(dissolved CO₂)"],sed:[530,320,175,56,"Sediments &\nlimestone rock"]},
+ a:[["atm","prod",1,40],["prod","atm",2,40],["cons","atm",2,0,205,150],["prod","cons",3,0],["prod","dead",4,0],["cons","dead",4,0],["dead","atm",5,0],["foss","atm",6,0,500,240],["atm","ocean",7,40],["ocean","atm",8,40],["ocean","sed",9,0],["dead","foss",10,0]],
+ leg:["Photosynthesis","Cellular respiration","Consumption (eating)","Death and waste","Decomposition","Combustion (burning)","Ocean absorbs CO₂ (dissolving)","Ocean releases CO₂","Sedimentation","Burial and compression"]},
+nitrogen:{id:"n",w:720,h:430,label:"Nitrogen cycle with numbered arrows",n:{
+ atm:[240,12,240,56,"Atmosphere\nN₂ gas (78%)"],plants:[530,140,175,56,"Plants\n(proteins, DNA)"],animals:[530,290,175,56,"Animals"],
+ dead:[215,190,150,56,"Dead matter\n& waste"],nh4:[15,360,170,56,"Ammonium\nNH₃ / NH₄⁺"],no2:[215,360,150,56,"Nitrite\nNO₂⁻"],no3:[395,360,150,56,"Nitrate\nNO₃⁻"]},
+ a:[["atm","nh4",1,0,60,110],["nh4","no2",2,0],["no2","no3",2,0],["no3","plants",3,0],["plants","animals",4,0],["plants","dead",5,0],["animals","dead",5,0],["dead","nh4",6,0],["no3","atm",7,0]],
+ leg:["Nitrogen fixation","Nitrification","Assimilation","Consumption (eating)","Death and waste","Ammonification","Denitrification"]},
+phosphorus:{id:"p",w:720,h:410,label:"Phosphorus cycle with numbered arrows",n:{
+ rock:[15,20,180,56,"Phosphate rock\n(on land)"],soil:[270,170,180,56,"Soil & water\nphosphate PO₄³⁻"],plants:[530,20,175,56,"Plants"],animals:[530,170,175,56,"Animals"],
+ dead:[530,330,175,56,"Dead matter, waste\n& decomposers"],sed:[15,330,180,56,"Ocean sediments"]},
+ a:[["rock","soil",1,30],["soil","plants",2,0],["plants","animals",3,0],["animals","dead",4,0],["dead","soil",5,0],["soil","sed",6,0],["sed","rock",7,0],["rock","soil",8,-30]],
+ leg:["Weathering of rock","Assimilation (plant roots)","Consumption (eating)","Death and waste","Decomposition","Runoff, leaching, sedimentation","Geologic uplift (very slow)","Mining for fertilizer (humans)"]},
+water:{id:"w",w:720,h:430,label:"Water cycle with numbered arrows",n:{
+ vapor:[250,12,210,56,"Water vapor\n(atmosphere)"],clouds:[520,12,180,56,"Clouds\n(liquid droplets)"],plants:[15,130,165,56,"Plants"],
+ land:[230,230,210,56,"Land surface\n(lakes, rivers, snow)"],ocean:[520,230,180,56,"Ocean\n(97% of water)"],ground:[230,365,210,56,"Groundwater\n(aquifers)"]},
+ a:[["ocean","vapor",1,90],["land","vapor",1,0],["plants","vapor",2,0],["vapor","clouds",3,0],["clouds","ocean",4,0],["clouds","land",4,0],["land","ocean",5,0],["land","ground",6,0],["ground","ocean",7,0],["land","plants",8,0]],
+ leg:["Evaporation","Transpiration","Condensation","Precipitation","Runoff","Infiltration","Groundwater flow","Root uptake"]},
+foodweb:{id:"f",w:720,h:420,label:"Food web: arrows point from food to eater",n:{
+ hawk:[290,10,140,44,"Hawk"],snake:[60,120,140,44,"Snake"],sparrow:[290,120,140,44,"Sparrow"],fox:[540,120,140,44,"Fox"],
+ grasshopper:[30,240,140,44,"Grasshopper"],mouse:[290,240,140,44,"Mouse"],rabbit:[550,240,140,44,"Rabbit"],
+ grass:[150,365,140,44,"Grass"],bush:[430,365,140,44,"Berry bush"]},
+ a:[["grass","grasshopper",null,0],["grass","mouse",null,0],["grass","rabbit",null,0],["bush","mouse",null,0],["bush","rabbit",null,0],["bush","sparrow",null,40],["grasshopper","sparrow",null,0],["mouse","snake",null,0],["sparrow","snake",null,0],["rabbit","fox",null,0],["mouse","fox",null,0],["snake","hawk",null,0],["sparrow","hawk",null,0],["mouse","hawk",null,180],["rabbit","hawk",null,0]]}
+};
+
+var REF={
+carbon:function(l){return '<h3>Carbon cycle</h3>'+dg(DIAG.carbon,l)},
+nitrogen:function(l){return '<h3>Nitrogen cycle</h3>'+dg(DIAG.nitrogen,l)},
+phosphorus:function(l){return '<h3>Phosphorus cycle</h3>'+dg(DIAG.phosphorus,l)},
+water:function(l){return '<h3>Water cycle</h3>'+dg(DIAG.water,l)},
+foodweb:function(){return '<h3>Food web</h3>'+dg(DIAG.foodweb,0)+'<p class="sm">Arrows point from the food to the eater (the way energy flows).</p>'},
+biomes:function(){return '<div class="wrap"><div class="bgrid">'+
+ '<div class="hd"></div><div class="hd">Cold<br>below 0 °C</div><div class="hd">Cool<br>0–10 °C</div><div class="hd">Warm<br>10–20 °C</div><div class="hd">Hot<br>above 20 °C</div>'+
+ '<div class="rh">Wet<br>over 150 cm/yr</div><div class="b-x">(rare)</div><div class="b-w" style="grid-column:span 2"><b>Temperate rainforest</b></div><div class="b-h"><b>Tropical rainforest</b></div>'+
+ '<div class="rh">Medium<br>50–150 cm/yr</div><div class="b-c" style="grid-column:span 2"><b>Boreal forest (taiga)</b></div><div class="b-w"><b>Temperate seasonal forest</b></div><div class="b-h"><b>Tropical seasonal forest / savanna</b></div>'+
+ '<div class="rh">Dry<br>under 50 cm/yr</div><div class="b-c"><b>Tundra</b></div><div class="b-w"><b>Temperate grassland</b> / cold desert</div><div class="b-w"><b>Shrubland (chaparral)</b></div><div class="b-h"><b>Subtropical desert</b></div>'+
+ '</div></div><p class="sm">Average yearly temperature (across) and precipitation (down). Simplified: real biomes overlap.</p>'},
+biometable:function(){return '<div class="wrap"><table><tr><th>Biome</th><th>Temperature</th><th>Precipitation</th><th>Key features</th></tr>'+
+ [["Tundra","very cold, below −5 °C","under 25 cm","mosses, lichens; permafrost (frozen ground); short summer"],
+  ["Boreal forest (taiga)","cold, −5 to 5 °C","30–90 cm","evergreen conifers; slow decomposition; acidic, poor soil"],
+  ["Temperate rainforest","mild, 10–20 °C","over 140 cm","giant conifers, moss; foggy coasts"],
+  ["Temperate seasonal forest","5–20 °C, 4 seasons","75–150 cm","trees drop leaves in fall; rich soil"],
+  ["Shrubland (chaparral)","10–25 °C","30–75 cm, rainy winter","hot dry summers; small woody shrubs; fires"],
+  ["Temperate grassland","0–20 °C, cold winter, hot summer","25–90 cm","grasses, few trees; deep fertile soil"],
+  ["Tropical rainforest","hot, 20–30 °C","over 200 cm","most biodiversity; poor soil"],
+  ["Tropical seasonal forest / savanna","hot, 20–30 °C","50–150 cm, long dry season","grasses with scattered trees; grazing animals"],
+  ["Subtropical desert","hot, over 20 °C","under 25 cm","cacti, succulents; animals active at night"]]
+ .map(function(r){return '<tr><td><b>'+r[0]+'</b></td><td>'+r[1]+'</td><td>'+r[2]+'</td><td>'+r[3]+'</td></tr>'}).join("")+'</table></div>'},
+lake:function(){return '<svg class="zsvg" viewBox="0 0 360 215" role="img" aria-label="Lake zones"><path class="water" d="M10 40 L350 40 L300 120 L250 180 L110 180 L60 120 Z"/><path class="deep" d="M70 112 L292 112 L250 180 L110 180 Z"/><path class="sedi" d="M10 40 L60 120 L110 180 L250 180 L300 120 L350 40"/><line class="zd" x1="60" y1="112" x2="300" y2="112"/>'+
+ '<line class="plant" x1="30" y1="70" x2="30" y2="40"/><line class="plant" x1="40" y1="84" x2="40" y2="44"/><line class="plant" x1="50" y1="98" x2="50" y2="48"/><line class="plant" x1="318" y1="78" x2="318" y2="44"/><line class="plant" x1="328" y1="64" x2="328" y2="40"/>'+
+ '<text x="70" y="30" class="zl">Littoral</text><text x="180" y="75" class="zl">Limnetic</text><text x="180" y="90" class="zs">(light reaches)</text><text x="180" y="145" class="zl">Profundal</text><text x="180" y="160" class="zs">(too dark)</text><text x="180" y="205" class="zl">Benthic (bottom)</text><text x="330" y="108" class="zs">light limit</text></svg>'},
+ocean:function(){return '<svg class="zsvg" viewBox="0 0 380 230" role="img" aria-label="Ocean zones"><path class="water" d="M0 30 L380 30 L380 205 L210 205 L170 80 L60 80 L20 30 Z"/><path class="deep" d="M150 100 L380 100 L380 205 L210 205 L176 100 Z"/><path class="sedi" d="M0 26 L20 30 L60 80 L170 80 L210 205 L380 205"/><line class="zd" x1="0" y1="100" x2="380" y2="100"/>'+
+ '<text x="22" y="20" class="zl">Intertidal</text><text x="110" y="62" class="zs">Neritic (over shelf):</text><text x="110" y="74" class="zs">coral reefs, kelp</text><text x="290" y="55" class="zl">Open ocean</text><text x="290" y="85" class="zs">Photic zone (light)</text><text x="290" y="150" class="zl">Aphotic zone</text><text x="290" y="165" class="zs">(no light)</text><text x="280" y="222" class="zl">Benthic (ocean floor)</text></svg>'},
+pyramid:function(){var L=[["Tertiary consumers","10 kcal"],["Secondary consumers","100 kcal"],["Primary consumers","1,000 kcal"],["Producers","10,000 kcal"]],s='<svg class="zsvg" viewBox="0 0 420 260" role="img" aria-label="Energy pyramid">';
+ L.forEach(function(r,i){var top=20+i*58,w0=60+i*80,w1=60+(i+1)*80,cx=170;s+='<path class="pyr" d="M'+(cx-w0/2)+' '+top+' L'+(cx+w0/2)+' '+top+' L'+(cx+w1/2)+' '+(top+54)+' L'+(cx-w1/2)+' '+(top+54)+' Z"/><text x="'+cx+'" y="'+(top+25)+'" class="zl">'+r[0]+'</text><text x="'+cx+'" y="'+(top+42)+'" class="zs">'+r[1]+'</text>';if(i<3)s+='<text x="'+(cx+w1/2+38)+'" y="'+(top+60)+'" class="zs" style="fill:var(--bad)">90% lost as heat</text>'});
+ return s+'</svg><p class="sm">About 10% of energy passes up to the next level.</p>'},
+npp:function(){return '<h3>Average NPP (g/m²/yr)</h3><div class="wrap"><table>'+[["Swamps and marshes",2500],["Coral reefs and algal beds",2500],["Tropical rainforest",2200],["Estuaries",1500],["Temperate seasonal forest",1200],["Savanna",900],["Boreal forest",800],["Farmland",650],["Temperate grassland",600],["Lakes and streams",250],["Tundra",140],["Open ocean",125],["Desert",90]].map(function(r){return '<tr><td>'+r[0]+'</td><td style="width:45%"><div class="mbar"><i style="width:'+(r[1]/25)+'%"></i></div></td><td>'+r[1]+'</td></tr>'}).join("")+'</table></div>'},
+formula:function(){return '<h3>Formulas</h3><p style="font:800 1.3em var(--head);color:var(--g)">NPP = GPP − R<br>GPP = NPP + R<br>R = GPP − NPP</p><p><b>Light bottle:</b> change in O₂ = NPP<br><b>Dark bottle:</b> O₂ lost = R<br>GPP = NPP + R</p>'}
+};
+REF.nppf=function(){return REF.formula()+REF.npp()};
+REF.zones=function(){return '<h3>Lake zones</h3>'+REF.lake()+'<h3>Ocean zones</h3>'+REF.ocean()};
+REF.biomeboth=function(){return REF.biomes()+REF.biometable()};
+
+/* ---------- activities ----------
+ item kinds: mc{q,o:[correct,...]} sort{q,b:[],i:["item|bucket"]} order{q,s:[in order]} num{q,a,tol,u} text{q}  */
+var ACTS=[
+{id:"A1",c:1,t:"Warm-up: what do you know?",items:[
+ {k:"mc",q:"Which of these is ABIOTIC (nonliving)?",o:["sunlight","a fungus","a deer","bacteria"]},
+ {k:"mc",q:"An ecosystem includes…",o:["all the living things AND the nonliving things in an area","only the animals","only plants and animals","only the weather"]},
+ {k:"mc",q:"Where does almost all the energy in ecosystems come from?",o:["the Sun","the soil","water","animals"]},
+ {k:"text",q:"Name one ecosystem near where you live. Write 2 living and 2 nonliving things in it."}]},
+{id:"A2",c:1,t:"Species interactions and resource partitioning",items:[
+ {k:"sort",q:"Sort each example into the correct interaction.",b:["Competition","Predation","Mutualism","Commensalism","Parasitism"],i:[
+  "Two lions fight over the same zebra|Competition","Two tree species grow tall to get the same sunlight|Competition","A wolf hunts and eats a deer|Predation","A heron catches a fish|Predation",
+  "Bees drink nectar and carry pollen for flowers|Mutualism","Algae make food for coral; coral gives algae a home|Mutualism","A barnacle rides on a whale; the whale is not affected|Commensalism",
+  "A bird builds a nest in a tree; the tree is not affected|Commensalism","A tapeworm lives in a dog's gut and takes its food|Parasitism","A tick drinks a deer's blood|Parasitism"]},
+ {k:"mc",q:"A rabbit eating grass (herbivory) is a type of…",o:["predation","mutualism","commensalism","parasitism"]},
+ {k:"mc",q:"Five warbler species feed in different parts of the same tree. This is…",o:["spatial resource partitioning","temporal resource partitioning","morphological resource partitioning","parasitism"]},
+ {k:"mc",q:"Hawks hunt mice in the day. Owls hunt mice at night. This is…",o:["temporal resource partitioning","spatial resource partitioning","morphological resource partitioning","mutualism"]},
+ {k:"mc",q:"Finches with different beak sizes eat different sizes of seeds. This is…",o:["morphological resource partitioning","temporal resource partitioning","spatial resource partitioning","commensalism"]},
+ {k:"mc",q:"Why does resource partitioning happen?",o:["It reduces competition, so species can live together","It increases competition","It kills the weaker species","It makes new resources"]},
+ {k:"mc",q:"When a resource becomes very limited, competition usually…",o:["increases","decreases","stops","does not change"]},
+ {k:"text",q:"In your own words: what is symbiosis? Give one example."}]},
+{id:"A3",c:1,t:"Biome detective",ref:"biomeboth",items:[
+ {k:"mc",q:"Average −12 °C, 20 cm of precipitation a year, permafrost, mosses and lichens.",o:["Tundra","Boreal forest","Subtropical desert","Temperate grassland"]},
+ {k:"mc",q:"Average 27 °C, 300 cm a year, the most species of any biome, poor soil.",o:["Tropical rainforest","Temperate rainforest","Savanna","Temperate seasonal forest"]},
+ {k:"mc",q:"Average 25 °C, 15 cm a year, cacti, animals active at night.",o:["Subtropical desert","Tundra","Shrubland (chaparral)","Savanna"]},
+ {k:"mc",q:"Average 0 °C, 50 cm a year, evergreen cone-bearing trees, acidic soil.",o:["Boreal forest (taiga)","Tundra","Temperate seasonal forest","Temperate grassland"]},
+ {k:"mc",q:"Average 24 °C, 100 cm a year with a long dry season, grasses with a few trees, zebras.",o:["Tropical seasonal forest / savanna","Tropical rainforest","Subtropical desert","Temperate grassland"]},
+ {k:"mc",q:"Hot dry summers, mild rainy winters, small woody shrubs, many fires.",o:["Shrubland (chaparral)","Tundra","Temperate rainforest","Boreal forest"]},
+ {k:"mc",q:"Average 12 °C, 90 cm a year, trees lose their leaves in fall, rich soil.",o:["Temperate seasonal forest","Temperate rainforest","Boreal forest","Shrubland (chaparral)"]},
+ {k:"mc",q:"Cold winters, hot summers, 50 cm a year, few trees, deep fertile soil.",o:["Temperate grassland","Tundra","Tropical rainforest","Temperate rainforest"]},
+ {k:"mc",q:"Average 12 °C, 250 cm a year, giant conifers and moss on a foggy coast.",o:["Temperate rainforest","Tropical rainforest","Boreal forest","Savanna"]},
+ {k:"mc",q:"The two main factors that decide a land biome are…",o:["temperature and precipitation","soil and wind","animals and plants","elevation and sunlight"]},
+ {k:"mc",q:"Why does the tropical rainforest have poor soil?",o:["Plants take up nutrients fast and heavy rain washes the rest away","There are no decomposers","It is too cold for decomposition","There are no plants"]},
+ {k:"mc",q:"Why does the boreal forest have nutrient-poor soil?",o:["Cold temperatures make decomposition very slow","There is too much rain","There are too many decomposers","Volcanoes remove nutrients"]},
+ {k:"mc",q:"As Earth's climate warms, biomes move…",o:["toward the poles and up mountains","toward the equator","down mountains","they never move"]},
+ {k:"text",q:"Choose one biome. Describe its temperature, its precipitation, and one plant or animal adaptation."}]},
+{id:"A4",c:1,t:"Aquatic biomes",ref:"zones",items:[
+ {k:"sort",q:"Sort each place by its water type.",b:["Freshwater","Brackish (mixed)","Marine (salt)"],i:["Lake|Freshwater","River|Freshwater","Pond|Freshwater","Freshwater marsh|Freshwater","Estuary|Brackish (mixed)","Mangrove swamp|Brackish (mixed)","Salt marsh|Brackish (mixed)","Coral reef|Marine (salt)","Open ocean|Marine (salt)","Intertidal zone|Marine (salt)"]},
+ {k:"mc",q:"The main factors that decide aquatic biomes are…",o:["salinity, depth, flow and temperature","only temperature","only latitude","soil type"]},
+ {k:"mc",q:"In a lake, the shallow zone near the shore where rooted plants grow is the…",o:["littoral zone","limnetic zone","profundal zone","benthic zone"]},
+ {k:"mc",q:"The open-water zone of a lake where light reaches and phytoplankton live is the…",o:["limnetic zone","littoral zone","profundal zone","benthic zone"]},
+ {k:"mc",q:"The deep lake zone that is too dark for photosynthesis is the…",o:["profundal zone","limnetic zone","littoral zone","photic zone"]},
+ {k:"mc",q:"The bottom (mud and sediment) of a lake or ocean is the…",o:["benthic zone","photic zone","littoral zone","limnetic zone"]},
+ {k:"mc",q:"Why are estuaries very productive?",o:["Rivers bring nutrients and sunlight reaches the shallow water","They are very deep","They have no salt","They are frozen most of the year"]},
+ {k:"mc",q:"Coral reefs grow best in…",o:["warm, clear, shallow water","cold, dark, deep water","fresh water","muddy water"]},
+ {k:"mc",q:"How do wetlands help people?",o:["They store floodwater and filter pollutants","They make water saltier","They cause more floods","They remove all oxygen"]},
+ {k:"mc",q:"Why can't photosynthesis happen in the aphotic zone?",o:["No sunlight reaches it","It is too salty","It is too warm","There are too many fish"]},
+ {k:"text",q:"Turbidity means how cloudy water is. Explain why high turbidity is bad for producers."}]},
+{id:"A5",c:1,t:"The carbon cycle",ref:"carbon",items:[
+ {k:"mc",q:"Look at the diagram. Arrow 1 (atmosphere → producers) is…",o:["photosynthesis","cellular respiration","combustion","decomposition"]},
+ {k:"mc",q:"Arrow 2 (producers and consumers → atmosphere) is…",o:["cellular respiration","photosynthesis","sedimentation","burial"]},
+ {k:"mc",q:"Arrow 6 (fossil fuels → atmosphere) is…",o:["combustion (burning)","photosynthesis","sedimentation","dissolving"]},
+ {k:"mc",q:"Arrow 9 (ocean → sediments) is…",o:["sedimentation (shells become limestone)","respiration","photosynthesis","combustion"]},
+ {k:"mc",q:"Arrow 10 (dead matter → fossil fuels) is…",o:["burial and compression over millions of years","combustion","respiration","transpiration"]},
+ {k:"sort",q:"Does each process ADD CO₂ to the atmosphere or REMOVE it?",b:["Adds CO₂ to the air","Removes CO₂ from the air"],i:["Photosynthesis|Removes CO₂ from the air","The ocean absorbs CO₂|Removes CO₂ from the air","Planting trees|Removes CO₂ from the air","Burning fossil fuels|Adds CO₂ to the air","Cellular respiration|Adds CO₂ to the air","Decomposition|Adds CO₂ to the air","A volcano erupts|Adds CO₂ to the air","Burning a forest|Adds CO₂ to the air"]},
+ {k:"mc",q:"The largest carbon reservoir on Earth is…",o:["sedimentary rock (like limestone)","the atmosphere","plants","animals"]},
+ {k:"mc",q:"A carbon SINK takes in more carbon than it releases. Which is a sink?",o:["the ocean","a coal power plant","a volcano","a car"]},
+ {k:"mc",q:"Which process is part of the SLOW carbon cycle?",o:["formation of fossil fuels","photosynthesis","respiration","eating"]},
+ {k:"mc",q:"Burning fossil fuels moves carbon from…",o:["a slow underground reservoir to the atmosphere","the atmosphere to the ocean","plants to animals","the ocean to rocks"]},
+ {k:"text",q:"Explain how CO₂ in the atmosphere can end up in limestone rock. Use 3 steps."}]},
+{id:"A6",c:1,t:"Class 1 exit ticket",items:[
+ {k:"mc",q:"Which biome has permafrost?",o:["Tundra","Tropical rainforest","Savanna","Shrubland"]},
+ {k:"mc",q:"A clownfish lives in a sea anemone and both benefit. This is…",o:["mutualism","commensalism","parasitism","competition"]},
+ {k:"mc",q:"The ocean layer that sunlight reaches is the…",o:["photic zone","aphotic zone","benthic zone","profundal zone"]},
+ {k:"mc",q:"Which process REMOVES CO₂ from the atmosphere?",o:["photosynthesis","combustion","respiration","decomposition"]},
+ {k:"mc",q:"An estuary is…",o:["where a river meets the ocean","the deepest part of a lake","a frozen desert","a type of forest"]},
+ {k:"text",q:"One thing I learned today, and one question I still have:"}]},
+{id:"A7",c:2,t:"Warm-up: Class 1 review",items:[
+ {k:"mc",q:"Carbon in fossil fuels enters the atmosphere by…",o:["combustion","photosynthesis","sedimentation","infiltration"]},
+ {k:"mc",q:"Which biome is hot and very wet?",o:["Tropical rainforest","Tundra","Subtropical desert","Boreal forest"]},
+ {k:"mc",q:"Coral reefs and estuaries are both…",o:["very productive","freshwater","frozen","deserts"]},
+ {k:"mc",q:"A tick feeding on a dog is…",o:["parasitism","mutualism","commensalism","resource partitioning"]}]},
+{id:"A8",c:2,t:"The nitrogen cycle",ref:"nitrogen",items:[
+ {k:"order",q:"Put these in order. Start with N₂ in the air and end with N₂ back in the air.",s:["N₂ gas in the atmosphere","Nitrogen fixation by bacteria","Ammonium (NH₄⁺) in soil","Nitrification by bacteria","Nitrate (NO₃⁻) in soil","Denitrification by bacteria","N₂ gas back in the atmosphere"]},
+ {k:"sort",q:"Match each process to what it does.",b:["N₂ → NH₄⁺","NH₄⁺ → NO₂⁻ → NO₃⁻","NO₃⁻ → plant tissue","Dead matter → NH₄⁺","NO₃⁻ → N₂"],i:["Nitrogen fixation|N₂ → NH₄⁺","Nitrification|NH₄⁺ → NO₂⁻ → NO₃⁻","Assimilation|NO₃⁻ → plant tissue","Ammonification|Dead matter → NH₄⁺","Denitrification|NO₃⁻ → N₂"]},
+ {k:"mc",q:"Look at the diagram. Arrow 1 is…",o:["nitrogen fixation","denitrification","assimilation","ammonification"]},
+ {k:"mc",q:"Arrow 7 (nitrate → atmosphere) is…",o:["denitrification","nitrification","fixation","assimilation"]},
+ {k:"mc",q:"Why can't most plants use N₂ from the air?",o:["The triple bond in N₂ is very strong, so it must be fixed first","N₂ is a solid","There is very little N₂ in the air","Plants don't need nitrogen"]},
+ {k:"mc",q:"Nitrogen-fixing bacteria live in the root nodules of…",o:["legumes (beans, peas, clover)","cacti","pine trees","mosses"]},
+ {k:"mc",q:"Which is NOT a way that nitrogen gets fixed?",o:["transpiration","bacteria","lightning","the Haber-Bosch process"]},
+ {k:"mc",q:"Living things need nitrogen to make…",o:["proteins and DNA","only sugars","only fats","only water"]},
+ {k:"mc",q:"The largest nitrogen reservoir is…",o:["the atmosphere (78% N₂)","soil","the ocean","animals"]},
+ {k:"mc",q:"Denitrification usually happens in soil that…",o:["is low in oxygen (waterlogged)","is very dry","is frozen","has lots of oxygen"]},
+ {k:"mc",q:"Which is a human impact on the nitrogen cycle?",o:["Fertilizer runs off fields into rivers","Breathing out N₂","Ice melting","Planting legumes stops lightning"]},
+ {k:"text",q:"Farmers often plant beans or clover between other crops. Use the nitrogen cycle to explain why."}]},
+{id:"A9",c:2,t:"Phosphorus and eutrophication",ref:"phosphorus",items:[
+ {k:"order",q:"Put the steps of eutrophication in order.",s:["Fertilizer with N and P runs off into a lake","Algae grow very fast (algal bloom)","Algae block sunlight and plants below die","The algae die","Decomposers break down dead algae and use up oxygen","Oxygen becomes very low (hypoxia)","Fish die and a dead zone forms"]},
+ {k:"sort",q:"Is each fact about the nitrogen cycle, the phosphorus cycle, or both?",b:["Nitrogen cycle","Phosphorus cycle","Both"],i:["Has a gas phase in the atmosphere|Nitrogen cycle","Main reservoir is the atmosphere|Nitrogen cycle","Bacteria fix it from the air|Nitrogen cycle","Main reservoir is rock and sediment|Phosphorus cycle","Released by weathering of rock|Phosphorus cycle","The slowest cycle|Phosphorus cycle","Needed to make DNA|Both","Fertilizer runoff causes eutrophication|Both","Taken up by plant roots|Both"]},
+ {k:"mc",q:"Why is phosphorus often the limiting nutrient in water?",o:["It has no gas phase and is released slowly by weathering","There is too much of it","It is a gas","Fish make it"]},
+ {k:"mc",q:"Look at the diagram. Arrow 1 (rock → soil) is…",o:["weathering","geologic uplift","denitrification","assimilation"]},
+ {k:"mc",q:"Arrow 7 (sediments → rock) happens by…",o:["geologic uplift over millions of years","evaporation","nitrogen fixation","photosynthesis"]},
+ {k:"mc",q:"Phosphorus enters water from human sources such as…",o:["detergents, fertilizer and sewage","car exhaust","lightning","nitrogen fixation"]},
+ {k:"mc",q:"Which is the slowest cycle?",o:["phosphorus","water","nitrogen","the fast part of the carbon cycle"]},
+ {k:"mc",q:"A dead zone in the ocean has very little…",o:["dissolved oxygen","salt","water","sunlight at the surface"]},
+ {k:"text",q:"Explain why adding phosphorus to a lake can kill fish."}]},
+{id:"A10",c:2,t:"The water cycle",ref:"water",items:[
+ {k:"mc",q:"Look at the diagram. Arrow 1 (ocean → water vapor) is…",o:["evaporation","condensation","infiltration","runoff"]},
+ {k:"mc",q:"Arrow 2 (plants → water vapor) is…",o:["transpiration","precipitation","infiltration","runoff"]},
+ {k:"mc",q:"Arrow 3 (water vapor → clouds) is…",o:["condensation","evaporation","transpiration","infiltration"]},
+ {k:"mc",q:"Arrow 6 (land → groundwater) is…",o:["infiltration","runoff","evaporation","condensation"]},
+ {k:"mc",q:"Arrow 5 (land → ocean, over the surface) is…",o:["runoff","infiltration","transpiration","condensation"]},
+ {k:"mc",q:"Which process is driven by energy from the Sun?",o:["evaporation","runoff","infiltration","groundwater flow"]},
+ {k:"mc",q:"The largest water reservoir on Earth is…",o:["the ocean (about 97%)","ice caps","groundwater","the atmosphere"]},
+ {k:"mc",q:"Most FRESH water on Earth is…",o:["frozen in ice caps and glaciers","in lakes","in rivers","in the air"]},
+ {k:"mc",q:"Evaporation + transpiration together are called…",o:["evapotranspiration","precipitation","condensation","infiltration"]},
+ {k:"mc",q:"Building more roads and parking lots causes…",o:["more runoff and less infiltration","more infiltration","more transpiration","fewer floods"]},
+ {k:"mc",q:"An aquifer is…",o:["underground rock or sediment that holds groundwater","a type of cloud","a river mouth","an ocean current"]},
+ {k:"text",q:"Describe the path of one water molecule from the ocean to a lake. Use at least 3 processes."}]},
+{id:"A11",c:2,t:"Primary productivity calculations",ref:"nppf",items:[
+ {k:"num",q:"GPP = 15,000 kcal/m²/yr. R = 9,000 kcal/m²/yr. What is NPP?",a:6000,u:"kcal/m²/yr"},
+ {k:"num",q:"NPP = 3,500 kcal/m²/yr. R = 6,500 kcal/m²/yr. What is GPP?",a:10000,u:"kcal/m²/yr"},
+ {k:"num",q:"GPP = 5,000 kcal/m²/yr. NPP = 2,000 kcal/m²/yr. How much energy did the plants use for respiration (R)?",a:3000,u:"kcal/m²/yr"},
+ {k:"num",q:"Light and dark bottles both start at 8.0 mg O₂/L. After 24 hours the dark bottle has 6.5 mg/L. What is R?",a:1.5,u:"mg O₂/L"},
+ {k:"num",q:"Same experiment: the light bottle has 9.5 mg/L after 24 hours. What is NPP?",a:1.5,u:"mg O₂/L"},
+ {k:"num",q:"Using your answers, what is GPP?",a:3,u:"mg O₂/L"},
+ {k:"mc",q:"NPP is the energy that…",o:["is left for growth and consumers after plants do respiration","plants capture in total","is lost as heat","is in the soil"]},
+ {k:"mc",q:"Use the table. Which has the HIGHEST NPP per m²?",o:["Swamps and marshes","Desert","Open ocean","Tundra"]},
+ {k:"mc",q:"The open ocean has low NPP per m² but high TOTAL productivity because…",o:["it covers a huge area","it has the most nutrients","it gets the most light per m²","it has no consumers"]},
+ {k:"mc",q:"Which color of light reaches the deepest into water?",o:["blue","red","orange","yellow"]},
+ {k:"text",q:"Explain why a desert has low primary productivity."}]},
+{id:"A12",c:2,t:"Class 2 exit ticket",items:[
+ {k:"mc",q:"Which cycle has NO gas phase in the atmosphere?",o:["phosphorus","nitrogen","carbon","water"]},
+ {k:"mc",q:"Nitrification changes ammonium into…",o:["nitrite and then nitrate","N₂ gas","proteins","phosphate"]},
+ {k:"mc",q:"Water soaking down into the soil is…",o:["infiltration","runoff","transpiration","condensation"]},
+ {k:"mc",q:"NPP = GPP − ___",o:["R (respiration)","NPP","sunlight","biomass"]},
+ {k:"mc",q:"Extra nutrients → algal bloom → low oxygen → dead zone. This is called…",o:["eutrophication","denitrification","sedimentation","transpiration"]},
+ {k:"text",q:"Which cycle is hardest for you to remember? Why?"}]},
+{id:"A13",c:3,t:"Warm-up: Class 2 review",items:[
+ {k:"mc",q:"GPP = 10,000 and R = 6,000. NPP = ?",o:["4,000","16,000","60,000","1,000"]},
+ {k:"mc",q:"Which reservoir holds the most nitrogen?",o:["the atmosphere","rocks","the ocean","animals"]},
+ {k:"mc",q:"Transpiration is water leaving…",o:["plant leaves","the ocean","clouds","groundwater"]}]},
+{id:"A14",c:3,t:"Trophic levels and the 10% rule",ref:"pyramid",items:[
+ {k:"num",q:"Producers store 20,000 kcal. How much energy reaches the primary consumers?",a:2000,u:"kcal"},
+ {k:"num",q:"Producers store 20,000 kcal. How much energy reaches the tertiary consumers?",a:20,u:"kcal"},
+ {k:"num",q:"A hawk (tertiary consumer) gets 15 kcal. How much energy did the producers have?",a:15000,u:"kcal"},
+ {k:"num",q:"About what percent of energy is LOST from one level to the next?",a:90,u:"%"},
+ {k:"num",q:"Grass stores 5,000 kcal. A snake is a secondary consumer in this chain. How much energy reaches the snake?",a:50,u:"kcal"},
+ {k:"mc",q:"Where does most of the lost energy go?",o:["It is lost as heat from cellular respiration","It is stored in the soil","It turns into matter","It goes back to the Sun"]},
+ {k:"mc",q:"Which law says some energy is lost as heat in every energy transfer?",o:["the second law of thermodynamics","the first law of thermodynamics","the law of conservation of mass","the law of gravity"]},
+ {k:"mc",q:"The first law of thermodynamics says energy…",o:["cannot be created or destroyed, only changed in form","is always lost","moves in a cycle","is made by plants"]},
+ {k:"mc",q:"Energy ___, but matter ___.",o:["flows one way; cycles","cycles; flows one way","is created; is destroyed","stays; leaves"]},
+ {k:"mc",q:"Why do food chains rarely have more than 4 or 5 levels?",o:["Too little energy is left at the top","Predators are too big","Plants stop growing","Decomposers eat the top level"]},
+ {k:"mc",q:"Decomposers and detritivores get their energy from…",o:["dead matter and waste from all levels","sunlight","only producers","only top predators"]},
+ {k:"mc",q:"A primary consumer is…",o:["an herbivore that eats producers","a plant","a carnivore that eats herbivores","a decomposer"]},
+ {k:"text",q:"Use the 10% rule to explain why a field of crops can feed more people if they eat the plants instead of feeding the plants to cows and eating the meat."}]},
+{id:"A15",c:3,t:"Food web analysis",ref:"foodweb",items:[
+ {k:"sort",q:"Use the food web. Put each organism or meal at the correct trophic level.",b:["Producer","Primary consumer","Secondary consumer","Tertiary consumer"],i:["Grass|Producer","Berry bush|Producer","Grasshopper|Primary consumer","Rabbit|Primary consumer","Sparrow eating berries|Primary consumer","Fox|Secondary consumer","Snake eating a mouse|Secondary consumer","Sparrow eating a grasshopper|Secondary consumer","Hawk eating a snake|Tertiary consumer","Hawk eating a sparrow that ate a grasshopper|Tertiary consumer"]},
+ {k:"mc",q:"In a food web, an arrow points…",o:["from the food to the eater (the way energy flows)","from the eater to the food","from big animals to small animals","toward the Sun"]},
+ {k:"mc",q:"Which animal feeds at more than one trophic level?",o:["sparrow","grasshopper","rabbit","fox"]},
+ {k:"mc",q:"If all the snakes are removed, the mouse population will probably…",o:["increase at first","decrease","become producers","not change"]},
+ {k:"mc",q:"A drought kills most of the grass. Which animals are affected?",o:["All of them, because all energy starts with producers","Only grasshoppers","Only hawks","None of them"]},
+ {k:"mc",q:"How many different food chains in this web end with the fox?",o:["4","2","3","6"]},
+ {k:"mc",q:"What important group is NOT shown in this food web?",o:["decomposers","producers","primary consumers","predators"]},
+ {k:"mc",q:"How is a food chain different from a food web?",o:["A food chain shows only one path of energy","A food chain shows all the feeding links","A food chain has no producers","A food chain includes only the Sun"]},
+ {k:"text",q:"Write one food chain from the web with 4 organisms. Use arrows and label each trophic level."}]},
+{id:"A16",c:3,t:"Unit 1 review quiz",items:[
+ {k:"mc",q:"Two bird species eat the same insects, but at different times of day. This is…",o:["temporal resource partitioning","spatial resource partitioning","mutualism","predation"]},
+ {k:"mc",q:"Low temperature, low precipitation and permafrost describe the…",o:["tundra","boreal forest","savanna","temperate rainforest"]},
+ {k:"mc",q:"Where a river meets the ocean is called…",o:["an estuary","a coral reef","the benthic zone","an aquifer"]},
+ {k:"mc",q:"Which process moves carbon from the atmosphere into producers?",o:["photosynthesis","respiration","combustion","decomposition"]},
+ {k:"mc",q:"Which process turns nitrate (NO₃⁻) back into N₂ gas?",o:["denitrification","nitrification","nitrogen fixation","ammonification"]},
+ {k:"mc",q:"The main reservoir of phosphorus is…",o:["rocks and sediments","the atmosphere","the ocean surface","animals"]},
+ {k:"mc",q:"Water vapor cooling into liquid droplets is…",o:["condensation","evaporation","precipitation","infiltration"]},
+ {k:"mc",q:"GPP = 8,000 and R = 5,000. NPP = ?",o:["3,000","13,000","40,000","1,600"]},
+ {k:"mc",q:"Producers have 50,000 kcal. How much reaches secondary consumers?",o:["500 kcal","5,000 kcal","50 kcal","5 kcal"]},
+ {k:"mc",q:"At each trophic level, most energy is lost as…",o:["heat","matter","sunlight","oxygen"]},
+ {k:"mc",q:"Extra nitrogen and phosphorus in a lake can lead to…",o:["eutrophication and a dead zone","more dissolved oxygen","less algae","colder water"]},
+ {k:"mc",q:"A close, long-term relationship where one species benefits and the other is not affected is…",o:["commensalism","mutualism","parasitism","competition"]},
+ {k:"text",q:"Which Unit 1 topic is still the hardest for you?"}]}
+];
+var ACT={};ACTS.forEach(function(a){ACT[a.id]=a;a.n=a.items.filter(function(x){return x.k!=="text"}).length});
+</script>
+<script>
+/* ---------- extra visuals for ESL learners ---------- */
+function card(emo,title,txt,sign){return '<div class="vc"><div class="emo">'+emo+'</div>'+(sign?'<div class="sign">'+sign+'</div>':'')+'<b>'+title+'</b>'+(txt?'<span>'+txt+'</span>':'')+'</div>'}
+function sg(a,b){function c(x){return '<i class="'+(x==="+"?"sp":x==="−"?"sm2":"s0")+'">'+x+'</i>'}return c(a)+' / '+c(b)}
+REF.eco=function(){var L=[["☀️",70,70,"sunlight",0],["🌧️",230,60,"rain / water",0],["🌡️",385,55,"temperature",0],["🌬️",520,50,"air / wind",0],["🐦",650,60,"bird",1],["🌳",590,165,"tree",1],["🦌",460,180,"deer",1],["🍄",330,215,"fungus",1],["🪨",120,215,"rock",0],["🦠",520,262,"bacteria",1],["🌱",200,262,"grass",1]],s='<svg class="dg" viewBox="0 0 720 300" role="img" aria-label="An ecosystem with living and nonliving parts"><rect width="720" height="205" fill="color-mix(in srgb,#7fb8e0 30%,var(--bg))"/><rect y="205" width="720" height="95" fill="color-mix(in srgb,#9b7a4c 35%,var(--bg))"/><ellipse cx="300" cy="265" rx="70" ry="18" fill="color-mix(in srgb,var(--blue) 45%,var(--bg))"/><text x="300" y="270" class="zs">pond water</text><text x="650" y="290" class="zs">soil</text>';
+ L.forEach(function(e){s+='<text x="'+e[1]+'" y="'+e[2]+'" font-size="38" text-anchor="middle">'+e[0]+'</text><rect x="'+(e[1]-46)+'" y="'+(e[2]+8)+'" width="92" height="20" rx="10" fill="'+(e[4]?'var(--g)':'var(--blue)')+'"/><text x="'+e[1]+'" y="'+(e[2]+22)+'" fill="#fff" font="700 12px sans-serif" style="font:700 12px sans-serif" text-anchor="middle">'+e[3]+'</text>'});
+ return s+'</svg><p class="lgd"><span class="kg">green = biotic (living)</span> <span class="kb">blue = abiotic (nonliving)</span></p>'};
+REF.inter=function(){return '<div class="vgrid">'+
+ card("🦁 → 🦓 ← 🐆","Competition","both want the same food",sg("−","−"))+
+ card("🐺 → 🦌","Predation","wolf eats deer",sg("+","−"))+
+ card("🐝 ⇄ 🌸","Mutualism","both are helped",sg("+","+"))+
+ card("🐦 🪺 🌳","Commensalism","bird helped, tree not affected",sg("+","0"))+
+ card("🦟 → 🐕","Parasitism","tick drinks a dog's blood",sg("+","−"))+'</div><p class="lgd"><i class="sp">+</i> helped · <i class="sm2">−</i> harmed · <i class="s0">0</i> not affected</p>'};
+REF.part=function(){return '<div class="vgrid">'+
+ '<div class="vc"><div class="emo">☀️🦅 &nbsp; 🌙🦉</div><b>Temporal (time)</b><span>hawk hunts mice in the day, owl hunts at night</span></div>'+
+ '<div class="vc"><svg viewBox="0 0 160 130" style="width:150px;height:120px"><path d="M80 10 L130 95 L30 95 Z" fill="color-mix(in srgb,var(--g) 45%,var(--bg))"/><rect x="73" y="95" width="14" height="30" fill="#8a6a3c"/><text x="80" y="38" font-size="20" text-anchor="middle">🐦</text><text x="62" y="68" font-size="20" text-anchor="middle">🐤</text><text x="104" y="90" font-size="20" text-anchor="middle">🐥</text><text x="140" y="34" class="zs">top</text><text x="140" y="68" class="zs">middle</text><text x="140" y="92" class="zs">bottom</text></svg><b>Spatial (place)</b><span>birds feed in different parts of one tree</span></div>'+
+ '<div class="vc"><div class="emo">🐦 <small>big beak</small> 🌰 &nbsp; 🐤 <small>small beak</small> ·</div><b>Morphological (body)</b><span>different beaks eat different seeds</span></div></div>'};
+REF.world=function(){var B=[["Ice / tundra ❄️",0,30,"#b9d3e6"],["Boreal forest 🌲",30,55,"#7fa7c9"],["Temperate forest & grassland 🍂🌾",55,85,"#8cc38f"],["Desert (30°) 🌵",85,110,"#e5c27a"],["Tropical rainforest 🌴 (equator 0°)",110,150,"#4f9d5d"],["Desert (30°) 🌵",150,175,"#e5c27a"],["Temperate forest & grassland 🍂🌾",175,205,"#8cc38f"],["Ocean / ice 🧊",205,240,"#b9d3e6"]],s='<svg class="dg" viewBox="0 0 720 260" role="img" aria-label="Biomes by latitude and on a mountain"><clipPath id="glb"><circle cx="150" cy="125" r="118"/></clipPath><g clip-path="url(#glb)">';
+ B.forEach(function(b){s+='<rect x="30" y="'+(b[1]+5)+'" width="240" height="'+(b[2]-b[1])+'" fill="'+b[3]+'"/>'});s+='</g><circle cx="150" cy="125" r="118" fill="none" stroke="var(--ink)" stroke-width="2"/>';
+ B.forEach(function(b){s+='<text x="280" y="'+((b[1]+b[2])/2+9)+'" style="font:600 12px sans-serif;fill:var(--ink)">'+b[0]+'</text>'});
+ s+='<path d="M500 240 L610 30 L720 240 Z" fill="#4f9d5d"/><path d="M552 140 L610 30 L668 140 Z" fill="#7fa7c9"/><path d="M584 80 L610 30 L636 80 Z" fill="#ffffff" stroke="#b9d3e6"/><text x="610" y="210" class="zl" style="fill:#fff">🌳 warm</text><text x="610" y="128" class="zs" style="fill:#fff">🌲 cool</text><text x="610" y="74" class="zs">❄️</text><text x="610" y="255" class="zs">Higher = colder</text></svg>';
+ return s+'<p class="sm">Left: Earth from the equator to the poles. Right: going up a mountain is like going toward the poles.</p>'};
+REF.salt=function(){return '<div class="salt"><div style="background:linear-gradient(90deg,#7fc4e8,#5aa0b8,#2a5f97)"></div><div class="row3"><span>🏞️ <b>Freshwater</b><br>rivers, lakes, ponds, wetlands<br><small>very little salt</small></span><span>🌿🌊 <b>Brackish</b><br>estuaries, salt marshes, mangroves<br><small>fresh + salt mixed</small></span><span>🐠🌊 <b>Marine</b><br>ocean, coral reefs, intertidal<br><small>salt water</small></span></div></div>'};
+REF.sinks=function(){return '<div class="vgrid"><div class="vc"><div class="emo">🌳 🌊 ⬇️</div><b>Sinks</b><span>take IN more CO₂ than they give out: forests, ocean</span></div><div class="vc"><div class="emo">🏭 🚗 🌋 🔥 ⬆️</div><b>Sources</b><span>give OUT more CO₂ than they take in: burning fuels, volcanoes, fires</span></div><div class="vc"><div class="emo">🛢️ 🪨</div><b>Slow reservoirs</b><span>fossil fuels and limestone hold carbon for millions of years</span></div></div>'};
+REF.photoresp=function(){return '<svg class="dg" viewBox="0 0 720 210" role="img" aria-label="Photosynthesis and respiration are opposite"><rect x="20" y="70" width="220" height="70" rx="12" class="dbox"/><text x="130" y="100" class="dtx">CO₂ + H₂O</text><text x="130" y="122" class="dtx" style="font-size:12px;font-weight:400">carbon dioxide + water</text><rect x="480" y="70" width="220" height="70" rx="12" class="dbox"/><text x="590" y="100" class="dtx">C₆H₁₂O₆ + O₂</text><text x="590" y="122" class="dtx" style="font-size:12px;font-weight:400">glucose (sugar) + oxygen</text>'+
+ '<path d="M240 85 Q360 10 480 85" class="darr" style="stroke:var(--g);stroke-width:4"/><path d="M470 78 L482 88 L466 92 Z" fill="var(--g)"/><text x="360" y="30" class="dtx" style="fill:var(--g)">☀️ Photosynthesis (plants)</text><text x="360" y="50" class="zs">uses sunlight energy · removes CO₂</text>'+
+ '<path d="M480 125 Q360 200 240 125" class="darr" style="stroke:var(--a);stroke-width:4"/><path d="M250 132 L238 122 L254 118 Z" fill="var(--a)"/><text x="360" y="186" class="dtx" style="fill:var(--a)">🔥 Respiration (all living things)</text><text x="360" y="203" class="zs">releases energy · adds CO₂</text></svg>'};
+REF.nstrip=function(){return '<div class="flow">'+[["🌬️","N₂ gas in air","plants can't use it"],["🦠⚡🏭","Fixation","→ NH₄⁺"],["🦠","Nitrification","NH₄⁺ → NO₂⁻ → NO₃⁻"],["🌱","Assimilation","roots take NO₃⁻"],["🐄","Eating","plant → animal"],["🍂💩🦠","Ammonification","waste → NH₄⁺"],["🦠💧","Denitrification","NO₃⁻ → N₂ (back to air)"]].map(function(x,i){return (i?'<div class="ar">→</div>':'')+'<div style="text-align:center"><div style="font-size:1.8em">'+x[0]+'</div><b>'+x[1]+'</b><br><small>'+x[2]+'</small></div>'}).join("")+'</div>'};
+REF.nodule=function(){return '<svg viewBox="0 0 260 230" style="width:260px;max-width:100%" role="img" aria-label="Bean plant with root nodules"><rect y="90" width="260" height="140" fill="color-mix(in srgb,#9b7a4c 35%,var(--bg))"/><path d="M130 90 L130 20" stroke="var(--g)" stroke-width="5"/><ellipse cx="108" cy="40" rx="22" ry="10" fill="var(--g)"/><ellipse cx="152" cy="55" rx="22" ry="10" fill="var(--g)"/><text x="160" y="30" font-size="20">🫘</text>'+
+ '<path d="M130 90 L130 200 M130 120 L80 170 M130 130 L185 180 M130 160 L100 210 M130 165 L170 215" stroke="#d8c7a0" stroke-width="4" fill="none"/>'+
+ [[96,152],[85,166],[160,152],[176,172],[110,196],[158,204],[130,185]].map(function(p){return '<circle cx="'+p[0]+'" cy="'+p[1]+'" r="7" fill="#e29a9a" stroke="#a04848"/>'}).join("")+
+ '<text x="200" y="135" class="zs" text-anchor="start" style="text-anchor:start">nodules</text><text x="200" y="149" class="zs" style="text-anchor:start">with 🦠</text><text x="10" y="112" class="zs" style="text-anchor:start">soil</text></svg><p class="sm">Legume roots (beans, peas, clover) have nodules. Bacteria inside fix N₂.</p>'};
+REF.eutro=function(){return '<div class="flow">'+[["🚜💩🧴","Fertilizer, sewage, detergent add N and P"],["🟢🟢🟢","Algal bloom"],["☀️🚫🌿","Algae block light; plants below die"],["🥀","Algae die"],["🦠⬇️O₂","Decomposers use up oxygen"],["📉O₂","Hypoxia (low oxygen)"],["🐟❌","Fish die: dead zone"]].map(function(x,i){return (i?'<div class="ar">→</div>':'')+'<div style="text-align:center"><div style="font-size:1.7em">'+x[0]+'</div>'+x[1]+'</div>'}).join("")+'</div>'+
+ '<svg class="dg" viewBox="0 0 720 150" role="img" aria-label="Healthy lake and eutrophic lake"><rect x="10" y="20" width="330" height="110" rx="10" fill="color-mix(in srgb,var(--blue) 35%,var(--bg))"/><text x="175" y="15" class="zl">Healthy lake</text><text x="60" y="75" font-size="26">🐟</text><text x="160" y="105" font-size="26">🐠</text><text x="250" y="70" font-size="26">🐟</text><text x="110" y="128" font-size="22">🌿🌿</text><text x="270" y="122" class="zs">lots of O₂</text>'+
+ '<rect x="380" y="20" width="330" height="110" rx="10" fill="color-mix(in srgb,#5a8a2a 55%,var(--bg))"/><rect x="380" y="20" width="330" height="22" rx="8" fill="#3f8f2f"/><text x="545" y="15" class="zl">Eutrophic lake</text><text x="545" y="36" class="zs" style="fill:#fff">green algae layer</text><text x="450" y="95" font-size="24">💀</text><text x="560" y="110" font-size="24">🐟❌</text><text x="660" y="122" class="zs">little O₂</text></svg>'};
+REF.waterres=function(){return '<div class="wbar"><div style="width:97%;background:#2a6f97">🌊 Ocean (salt) 97%</div><div style="width:2%;background:#b9d3e6"></div><div style="width:1%;background:#7fc4e8"></div></div><p class="sm">Only about 3% of Earth\'s water is fresh. Of that fresh water:</p><div class="wbar"><div style="width:69%;background:#b9d3e6;color:#16251a">🧊 Ice caps and glaciers 69%</div><div style="width:30%;background:#8a6a3c">💧 Groundwater 30%</div><div style="width:1%;background:#7fc4e8"></div></div><p class="sm">Lakes, rivers and the air hold only about 1% of fresh water.</p>'};
+REF.gppbar=function(){return '<svg class="dg" viewBox="0 0 720 170" role="img" aria-label="GPP split into R and NPP"><text x="10" y="30" class="dtx" style="text-anchor:start">☀️ GPP = all energy captured = 20,000</text><rect x="10" y="42" width="700" height="44" rx="8" fill="var(--g)"/><rect x="10" y="100" width="420" height="44" rx="8" fill="var(--a)"/><rect x="434" y="100" width="276" height="44" rx="8" fill="color-mix(in srgb,var(--g) 55%,var(--bg))" stroke="var(--g)" stroke-width="2"/><text x="220" y="127" fill="#fff" style="font:700 14px sans-serif" text-anchor="middle">🔥 R = plant uses it to live = 12,000</text><text x="572" y="127" style="font:700 14px sans-serif;fill:var(--ink)" text-anchor="middle">🐇 NPP = left over = 8,000</text><text x="360" y="165" class="zs">NPP = GPP − R → 20,000 − 12,000 = 8,000 kcal/m²/yr</text></svg>'};
+REF.light=function(){var C=[["red","#d9483b",30],["orange","#e98a2e",55],["yellow","#e9c62e",90],["green","#4fae5a",140],["blue","#3a6fd9",205]],s='<svg viewBox="0 0 360 250" style="width:360px;max-width:100%" role="img" aria-label="Colors of light reach different depths in water"><rect x="40" y="20" width="300" height="215" fill="color-mix(in srgb,var(--blue) 25%,var(--bg))"/><text x="190" y="14" class="zs">☀️ sunlight enters water</text>';
+ C.forEach(function(c,i){var x=70+i*55;s+='<rect x="'+x+'" y="20" width="26" height="'+c[2]+'" fill="'+c[1]+'"/><text x="'+(x+13)+'" y="'+(c[2]+34)+'" class="zs">'+c[0]+'</text>'});
+ return s+'<text x="22" y="30" class="zs">0 m</text><text x="22" y="230" class="zs">deep</text></svg><p class="sm">Red is absorbed first. Blue goes deepest.</p>'};
+REF.chain=function(){return '<svg class="dg" viewBox="0 0 720 230" role="img" aria-label="Energy flows from the Sun through trophic levels and is lost as heat"><text x="40" y="95" font-size="44" text-anchor="middle">☀️</text>'+
+ [["🌿","Producer","level 1",150],["🐇","Primary consumer","level 2",310],["🦊","Secondary consumer","level 3",470],["🦅","Tertiary consumer","level 4",630]].map(function(x,i){return '<text x="'+x[3]+'" y="100" font-size="46" text-anchor="middle">'+x[0]+'</text><text x="'+x[3]+'" y="130" class="zl">'+x[1]+'</text><text x="'+x[3]+'" y="146" class="zs">'+x[2]+'</text><text x="'+x[3]+'" y="30" class="zs" style="fill:var(--bad)">🔥 heat lost</text><path d="M'+x[3]+' 60 L'+x[3]+' 38" stroke="var(--bad)" stroke-width="2" stroke-dasharray="3 3"/>'+'<path d="M'+(x[3]-110+(i?0:20))+' 85 L'+(x[3]-40)+' 85" stroke="var(--g)" stroke-width="'+(8-i*1.6)+'"/><path d="M'+(x[3]-42)+' 76 L'+(x[3]-28)+' 85 L'+(x[3]-42)+' 94 Z" fill="var(--g)"/>'}).join("")+
+ '<rect x="110" y="168" width="560" height="48" rx="10" fill="color-mix(in srgb,#9b7a4c 30%,var(--bg))"/><text x="390" y="198" class="zl">🍄 🪱 🦠 Decomposers and detritivores eat dead matter from ALL levels → nutrients back to soil ♻️</text></svg>'};
+REF.ebar=function(){return [["🌿 Producers",10000,100],["🐇 Primary",1000,10],["🦊 Secondary",100,1],["🦅 Tertiary",10,.12]].map(function(r){return '<div class="ebr"><span>'+r[0]+'</span><div><i style="width:'+Math.max(r[2],.6)+'%"></i></div><b>'+r[1].toLocaleString("en-US")+' kcal</b></div>'}).join("")+'<p class="sm">Each step keeps only 10%. ×0.1 going up · ×10 going down.</p>'};
+REF.loss=function(){return '<div class="vgrid">'+card("🔥","Heat from respiration","the biggest loss")+card("🦴","Not eaten","bones, fur, roots")+card("💩","Not digested","leaves as feces")+card("✅","10% passes on","becomes the eater's body")+'</div>'};
+REF.webchain=function(){return '<div class="vgrid">'+card("🌿 → 🐇 → 🦊","Food chain","one path of energy")+card("🕸️","Food web","many chains joined together")+card("A → B","Arrow","points from food to eater")+'</div>'};
+REF.cycle4=function(){return '<div class="vgrid">'+card("♻️ C","Carbon","photosynthesis ⇄ respiration")+card("♻️ N","Nitrogen","bacteria fix N₂ from the air")+card("♻️ P","Phosphorus","rocks, no gas, slowest")+card("♻️ 💧","Water","evaporation → rain → runoff")+'</div>'};
+
+/* emoji on biome grid, table, food web */
+(function(){var E={"Tundra":"❄️🦌","Boreal forest (taiga)":"🌲🫎","Temperate rainforest":"🌲🍄","Temperate seasonal forest":"🍂🐿️","Shrubland (chaparral)":"🌿🔥","Temperate grassland":"🌾🦬","Tropical rainforest":"🌴🐒","Tropical seasonal forest / savanna":"🦓🦒","Subtropical desert":"🌵🦎"};
+ var g=REF.biomes;REF.biomes=function(){var s=g();Object.keys(E).forEach(function(k){s=s.split("<b>"+k+"</b>").join('<span class="bem">'+E[k]+'</span><b>'+k+'</b>')});return s};
+ var t=REF.biometable;REF.biometable=function(){var s=t();Object.keys(E).forEach(function(k){s=s.split("<td><b>"+k+"</b></td>").join('<td><span class="bem">'+E[k]+'</span> <b>'+k+'</b></td>')});return s};
+ var F={hawk:"🦅 Hawk",snake:"🐍 Snake",sparrow:"🐦 Sparrow",fox:"🦊 Fox",grasshopper:"🦗 Grasshopper",mouse:"🐭 Mouse",rabbit:"🐇 Rabbit",grass:"🌱 Grass",bush:"🫐 Berry bush"};Object.keys(F).forEach(function(k){DIAG.foodweb.n[k][4]=F[k]});
+ var C={atm:"☁️ Atmosphere\nCO₂",prod:"🌳 Producers\n(plants, algae)",cons:"🐄 Consumers\n(animals)",dead:"🍂 Dead matter, waste\n& decomposers 🍄",foss:"🛢️ Fossil fuels\n(coal, oil, gas)",ocean:"🌊 Ocean\n(dissolved CO₂)",sed:"🐚 Sediments &\nlimestone rock"};Object.keys(C).forEach(function(k){DIAG.carbon.n[k][4]=C[k]});
+ var N={atm:"☁️ Atmosphere\nN₂ gas (78%)",plants:"🌱 Plants\n(proteins, DNA)",animals:"🐄 Animals",dead:"🍂 Dead matter\n& waste"};Object.keys(N).forEach(function(k){DIAG.nitrogen.n[k][4]=N[k]});
+ var P={rock:"🪨 Phosphate rock\n(on land)",plants:"🌱 Plants",animals:"🐄 Animals",dead:"🍂 Dead matter, waste\n& decomposers 🍄",sed:"🌊 Ocean sediments"};Object.keys(P).forEach(function(k){DIAG.phosphorus.n[k][4]=P[k]});
+ var W={vapor:"💨 Water vapor\n(atmosphere)",clouds:"☁️ Clouds\n(liquid droplets)",plants:"🌳 Plants",land:"🏞️ Land surface\n(lakes, rivers, snow)",ocean:"🌊 Ocean\n(97% of water)",ground:"💧 Groundwater\n(aquifers)"};Object.keys(W).forEach(function(k){DIAG.water.n[k][4]=W[k]});
+ var pf=REF.pyramid;REF.pyramid=function(){return pf().replace(">Tertiary consumers<",">🦅 Tertiary consumers<").replace(">Secondary consumers<",">🦊 Secondary<").replace(">Primary consumers<",">🐇 Primary consumers<").replace(">Producers<",">🌿 Producers<")};
+})();
+REF.a1=function(){return REF.eco()};
+REF.a2=function(){return REF.inter()+REF.part()};
+REF.a9=function(){return REF.phosphorus(false)+REF.eutro()};
+REF.a10=function(){return REF.water(false)+REF.waterres()};
+REF.a11=function(){return REF.gppbar()+REF.nppf()+REF.light()};
+REF.a14=function(){return REF.pyramid()+REF.ebar()};
+REF.a4=function(){return REF.salt()+REF.zones()};
+ACT.A1.ref="a1";ACT.A2.ref="a2";ACT.A4.ref="a4";ACT.A9.ref="a9";ACT.A10.ref="a10";ACT.A11.ref="a11";ACT.A14.ref="a14";ACT.A13.ref="cycle4";ACT.A7.ref="cycle4";
+/* emoji hints on sort and answer choices */
+(function(){var M={"Two lions fight over the same zebra":"🦁🦁 ","Two tree species grow tall to get the same sunlight":"🌳🌳 ","A wolf hunts and eats a deer":"🐺🦌 ","A heron catches a fish":"🐦🐟 ","Bees drink nectar and carry pollen for flowers":"🐝🌸 ","Algae make food for coral; coral gives algae a home":"🪸 ","A barnacle rides on a whale; the whale is not affected":"🐋 ","A bird builds a nest in a tree; the tree is not affected":"🪺🌳 ","A tapeworm lives in a dog's gut and takes its food":"🪱🐕 ","A tick drinks a deer's blood":"🦟🦌 ",
+ "Lake":"🏞️ ","River":"🏞️ ","Pond":"🐸 ","Freshwater marsh":"🌾 ","Estuary":"🌿🌊 ","Mangrove swamp":"🌳🌊 ","Salt marsh":"🌾🌊 ","Coral reef":"🪸 ","Open ocean":"🌊 ","Intertidal zone":"🦀 ",
+ "Photosynthesis":"🌳 ","The ocean absorbs CO₂":"🌊 ","Planting trees":"🌱 ","Burning fossil fuels":"🏭 ","Cellular respiration":"🫁 ","Decomposition":"🍄 ","A volcano erupts":"🌋 ","Burning a forest":"🔥 ",
+ "Grass":"🌱 ","Berry bush":"🫐 ","Grasshopper":"🦗 ","Rabbit":"🐇 ","Sparrow eating berries":"🐦🫐 ","Fox":"🦊 ","Snake eating a mouse":"🐍🐭 ","Sparrow eating a grasshopper":"🐦🦗 ","Hawk eating a snake":"🦅🐍 ","Hawk eating a sparrow that ate a grasshopper":"🦅🐦 "};
+ ACTS.forEach(function(a){a.items.forEach(function(it){if(it.k==="sort")it.i=it.i.map(function(x){var p=x.split("|");return (M[p[0]]||"")+x})})});
+ var O={"sunlight":"☀️ sunlight","a fungus":"🍄 a fungus","a deer":"🦌 a deer","bacteria":"🦠 bacteria","the Sun":"☀️ the Sun","the soil":"🟫 the soil","water":"💧 water","animals":"🐄 animals"};
+ ACT.A1.items.slice(0,3).forEach(function(it){it.o=it.o.map(function(o){return O[o]||o})});
+})();
+</script>
+<script>
+var SHEET_URL="/api"; var COURSE="apes"; /* server is on the same site (Cloudflare) */
+var LINK=location.href.split("#")[0];
+function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function shuf(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t}return a}
+function ls(k,v){try{if(v===undefined){var r=localStorage.getItem(k);return r?JSON.parse(r):null}localStorage.setItem(k,JSON.stringify(v))}catch(e){return null}}
+function fmt(x){return Math.round(x*10)/10}
+function ck(s){var h=7,i;for(i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))%1679616;return ("000"+h.toString(36)).slice(-4)}
+function codeFor(id,name,sc,n){var t=fmt(sc)+"/"+n;return "#"+id+" "+name+" "+t+" "+ck(id+"|"+name.toLowerCase()+"|"+t+"|apes-u1")}
+function sumSc(rec){var t=0;(rec&&rec.s||[]).forEach(function(v){if(typeof v==="number")t+=v});return t}
+function cell(sc,ans){if(typeof sc==="number"){if(sc>=.999)return ["✓","c1"];if(sc<=0.001)return ["✗","c0"];return [Math.round(sc*100)+"%","cp"]}if(ans!=null&&ans!=="")return ["✎",""];return ["·","sm"]}
+var S={db:null,user:null,uid:null,owner:false,dbOK:false,docs:{},live:null};
+
+/* ================= TEACHER DECK ================= */
+var D={secs:[],i:0};
+function startDeck(){
+ document.getElementById("deck").classList.add("on");
+ D.secs=[].slice.call(document.querySelectorAll("#deck section"));
+ [].forEach.call(document.querySelectorAll("[data-ref]"),function(e){e.innerHTML=REF[e.dataset.ref](e.dataset.legend==="1")});
+ [].forEach.call(document.querySelectorAll("[data-join]"),function(e){e.innerHTML='<span class="tag">Every class</span><h2>Join the live class</h2><ol style="font-size:1.15em"><li>Open the class link: <span class="lnk">'+LINK+'</span></li><li>Type your <b>real name</b>: the same name you use in ClassIn.</li><li>Open the activity number I tell you, for example <b>A3</b>.</li><li>Answer every question.</li><li>At the end you get a <b>code</b>. Copy the code into the <b>ClassIn chat</b>.</li></ol><div class="do"><b>Tip:</b> a laptop or tablet is best. On a phone, turn it sideways.</div>'});
+ [].forEach.call(document.querySelectorAll("[data-act]"),buildActSlide);
+ [].forEach.call(document.querySelectorAll("[data-timer]"),function(e){var m=+e.dataset.timer,b=el("button","btn alt","Start "+m+"-minute copy timer"),o=el("span","timer"),iv;b.onclick=function(){clearInterval(iv);var end=Date.now()+m*60000;b.blur();iv=setInterval(function(){var r=Math.max(0,Math.round((end-Date.now())/1000));o.textContent="  ⏱ "+Math.floor(r/60)+":"+("0"+r%60).slice(-2)+(r?"":"  Time is up!");if(!r)clearInterval(iv)},250)};e.appendChild(b);e.appendChild(o)});
+ document.getElementById("bk").onclick=function(){go(D.i-1);this.blur()};
+ document.getElementById("nx").onclick=function(){go(D.i+1);this.blur()};
+ document.getElementById("mbtn").onclick=function(){this.blur();openOv()};
+ document.getElementById("svbtn").onclick=function(){this.blur();document.getElementById("deck").classList.remove("on");startStudent(true)};
+ document.addEventListener("keydown",function(e){if(!document.getElementById("deck").classList.contains("on")||document.getElementById("ov").classList.contains("on"))return;var t=e.target.tagName;if(t==="INPUT"||t==="TEXTAREA")return;
+  if(e.key===" "){if(t==="BUTTON")e.preventDefault();return}
+  if(e.key==="ArrowRight"||e.key==="PageDown"){e.preventDefault();go(D.i+1)}else if(e.key==="ArrowLeft"||e.key==="PageUp"){e.preventDefault();go(D.i-1)}});
+ go(ls("apes1_slide")||0);
+ teacherData();
+}
+function go(i){i=Math.max(0,Math.min(D.secs.length-1,i));D.secs[D.i].classList.remove("on");D.i=i;D.secs[i].classList.add("on");D.secs[i].scrollTop=0;
+ document.getElementById("pb").style.width=(100*(i+1)/D.secs.length)+"%";document.getElementById("n").textContent=(i+1)+" / "+D.secs.length;ls("apes1_slide",i);
+ var a=D.secs[i].dataset.act;if(a)renderMon(a)}
+function buildActSlide(sec){var A=ACT[sec.dataset.act];sec.innerHTML="";
+ sec.appendChild(el("span","tag","Activity "+A.id+" · Class "+A.c));sec.appendChild(el("h2","",A.t));
+ var tell=el("div","do");tell.appendChild(el("b","","Students: "));tell.appendChild(document.createTextNode("open the class link → choose "+A.id+" → answer all "+A.items.length+" questions → copy your code into the ClassIn chat."));tell.style.marginBottom="12px";sec.appendChild(tell);
+ if(SHEET_URL){var row=el("div","row"),send=el("button","btn go","▶ Send to students"),stop=el("button","btn alt","Stop"),st=el("span","");st.id="lv-"+A.id;
+  send.onclick=function(){send.blur();setLive(A.id)};stop.onclick=function(){stop.blur();setLive(null)};row.appendChild(send);row.appendChild(stop);row.appendChild(st);sec.appendChild(row)}
+ var sp=el("div","split act"),L=el("div"),R=el("div","mon");R.id="mon-"+A.id;
+ if(A.ref){var r=el("div");r.innerHTML=REF[A.ref](false);L.appendChild(r)}
+ else{var ol=el("ol");A.items.forEach(function(it){ol.appendChild(el("li","",it.q))});L.appendChild(ol)}
+ var d=el("details"),sm=el("summary","","Answer key (teacher only: do not screen-share)");d.appendChild(sm);var ok=el("ol","sm");
+ A.items.forEach(function(it){var t=it.k==="mc"?it.o[0]:it.k==="num"?(it.a+" "+(it.u||"")):it.k==="order"?it.s.join(" → "):it.k==="sort"?it.i.map(function(x){return x.replace("|"," → ")}).join("; "):"(written answer)";ok.appendChild(el("li","",it.q+"  ⟶  "+t))});
+ d.appendChild(ok);L.appendChild(d);sp.appendChild(L);sp.appendChild(R);sec.appendChild(sp);renderMon(A.id)}
+function lvMsg(t){[].forEach.call(document.querySelectorAll("[id^=lv-]"),function(s){s.textContent=t;s.className="sm c0"})}
+function setLive(id){if(!S.db){lvMsg("Live sending is off in this view. Tell students the activity number (they choose it from their list) and collect codes in the ClassIn chat.");return}
+ var op=(S.live&&S.live.opened)||[];if(id&&op.indexOf(id)<0)op=op.concat([id]);
+ S.db.doc("live/state").set({act:id,opened:op,at:Date.now()}).catch(function(e){lvMsg("Could not send: "+(e&&e.message||e))})}
+function liveLabel(){[].forEach.call(document.querySelectorAll("[id^=lv-]"),function(s){var id=s.id.slice(3);s.innerHTML="";s.className="";if(S.live&&S.live.act===id){var l=el("span","live");l.appendChild(el("i"));l.appendChild(document.createTextNode("LIVE now on student screens"));s.appendChild(l)}else if(S.live&&S.live.opened&&S.live.opened.indexOf(id)>=0)s.appendChild(el("span","sm","Opened earlier (students can still do it)"))})}
+function teacherData(){if(!S.db){[].forEach.call(document.querySelectorAll(".mon"),function(m){renderMon(m.id.slice(4))});return}
+ var tm=setTimeout(function(){S.slow=true;var a=D.secs[D.i].dataset.act;if(a)renderMon(a)},10000);
+ S.db.doc("live/state").onSnapshot(function(s){S.live=s.exists?s.data():null;liveLabel()},function(){});
+ S.db.collection("students").onSnapshot(function(q){clearTimeout(tm);S.slow=false;var o={};q.docs.forEach(function(d){if(d.exists)o[d.id]=d.data()});S.docs=o;var a=D.secs[D.i].dataset.act;if(a)renderMon(a);if(document.getElementById("ov").classList.contains("on"))renderOv()},function(e){clearTimeout(tm);S.dbErr=e&&e.code;var a=D.secs[D.i].dataset.act;if(a)renderMon(a)})}
+function codes(){return ls("apes1_codes")||[]}
+function parseCodes(txt){var re=/#(A\d{1,2})\s+(.+?)\s+(\d+(?:\.\d)?)\/(\d+)\s+([0-9a-z]{4})(?![0-9a-z])/gi,m,out=codes(),seen={};out.forEach(function(c){seen[c.id+"|"+c.name.toLowerCase()+"|"+c.sc]=1});
+ while((m=re.exec(txt))){var id=m[1].toUpperCase(),name=m[2].trim().slice(0,40),t=m[3]+"/"+m[4],ok=ck(id+"|"+name.toLowerCase()+"|"+t+"|apes-u1")===m[5].toLowerCase(),k=id+"|"+name.toLowerCase()+"|"+m[3];if(seen[k])continue;seen[k]=1;out.push({id:id,name:name,sc:+m[3],n:+m[4],ok:ok,at:Date.now()})}
+ ls("apes1_codes",out);return out}
+function rowsFor(id){var R=[],names={};
+ Object.keys(S.docs).forEach(function(u){var d=S.docs[u];if(!d||!d.p||!d.p[id])return;var nm=String(d.name||"?").slice(0,40);names[nm.toLowerCase()]=1;R.push({name:nm,rec:d.p[id],at:d.at})});
+ var pv=ls("apes1p_prog");if(pv&&pv[id])R.push({name:(ls("apes1p_name")||"Teacher")+" (your preview)",rec:pv[id]});
+ codes().forEach(function(c){if(c.id!==id)return;var k=c.name.toLowerCase();if(names[k])return;names[k]=1;R.push({name:c.name,code:c})});
+ R.sort(function(a,b){return a.name.localeCompare(b.name)});return R}
+function renderMon(id){var m=document.getElementById("mon-"+id);if(!m)return;var A=ACT[id];m.innerHTML="";
+ var joined=Object.keys(S.docs).length,R=rowsFor(id),fin=R.filter(function(r){return r.code||(r.rec&&r.rec.done)}).length;
+ m.appendChild(el("h3","","Results · "+A.id));
+ if(S.sheetErr)m.appendChild(el("p","c0","Server problem: "+S.sheetErr));
+ if(!S.db)m.appendChild(el("p","sm",SHEET_URL&&!tkey()?"Enter your teacher key in Class monitor to see live results.":"Students paste their codes in the ClassIn chat. Copy the chat and paste it into Class monitor: scores appear here."));
+ else if(S.slow)m.appendChild(el("p","sm","Waiting for the database… results may be out of date."));
+ else m.appendChild(el("p","sm",joined+" students joined · "+R.length+" started · "+fin+" finished"));
+ if(!R.length){m.appendChild(el("p","","No answers yet."));return}
+ var w=el("div","wrap"),t=el("table"),h=el("tr");["Student","Progress","Score"].forEach(function(x){h.appendChild(el("th","",x))});A.items.forEach(function(it,j){h.appendChild(el("th","",(j+1)+(it.k==="text"?"✎":"")))});t.appendChild(h);
+ var tot=A.items.map(function(){return [0,0]});
+ R.forEach(function(r){var tr=el("tr");tr.appendChild(el("td","",r.name+(r.code?" (code"+(r.code.ok?"":" ⚠")+")":"")));
+  if(r.code){tr.appendChild(el("td","sm","done"));tr.appendChild(el("td","",r.code.sc+"/"+r.code.n));A.items.forEach(function(){tr.appendChild(el("td","sm","·"))})}
+  else{var rec=r.rec,ans=(rec.s||[]).filter(function(v,k){return v!==undefined&&v!==null||(rec.a&&rec.a[k])}).length,p=el("td"),b=el("div","mbar"),i=el("i");i.style.width=Math.min(100,100*ans/A.items.length)+"%";b.appendChild(i);p.appendChild(b);p.appendChild(el("span","sm",rec.done?"done":ans+"/"+A.items.length));tr.appendChild(p);
+   tr.appendChild(el("td","",fmt(sumSc(rec))+"/"+A.n+(rec.t>1?" (try "+rec.t+")":"")));
+   A.items.forEach(function(it,j){var sc=rec.s?rec.s[j]:undefined,an=rec.a?rec.a[j]:undefined,c=cell(sc,an);tr.appendChild(el("td",c[1],c[0]));if(typeof sc==="number"){tot[j][0]+=sc;tot[j][1]++}})}
+  t.appendChild(tr)});
+ var fr=el("tr");fr.appendChild(el("td","sm","Class % correct"));fr.appendChild(el("td"));fr.appendChild(el("td"));tot.forEach(function(x,j){var td=el("td","sm",A.items[j].k==="text"||!x[1]?"":Math.round(100*x[0]/x[1])+"%");if(x[1]&&x[0]/x[1]<.6)td.className="c0";fr.appendChild(td)});t.appendChild(fr);
+ w.appendChild(t);m.appendChild(w);
+ A.items.forEach(function(it,j){if(it.k!=="text")return;var box=el("div");box.appendChild(el("h3","","✎ "+(j+1)+". "+it.q));var any=0;
+  R.forEach(function(r){var a=r.rec&&r.rec.a&&r.rec.a[j];if(!a)return;any=1;var d=el("div","txa");d.appendChild(el("b","",r.name+": "));d.appendChild(document.createTextNode(String(a).slice(0,600)));box.appendChild(d)});
+  if(!any)box.appendChild(el("p","sm","No written answers yet."));m.appendChild(box)});
+ var miss=A.items.map(function(it,j){return [j,tot[j][1]?tot[j][0]/tot[j][1]:1]}).filter(function(x){return A.items[x[0]].k!=="text"&&tot[x[0]][1]&&x[1]<.6});
+ if(miss.length)m.appendChild(el("p","c0","Review: question "+miss.map(function(x){return x[0]+1}).join(", ")+" (under 60% correct)."))}
+function openOv(){var o=document.getElementById("ov");o.classList.add("on");renderOv()}
+function renderOv(){var o=document.getElementById("ov");o.innerHTML="";var top=el("div","row"),cl=el("button","btn","← Back to slides");cl.onclick=function(){o.classList.remove("on")};top.appendChild(cl);o.appendChild(top);
+ o.appendChild(el("h2","","Class monitor · Unit 1"));
+ o.appendChild(el("p","sm",SHEET_URL?(S.db?Object.keys(S.docs).length+" students connected live. Pasted codes are added too.":"Enter your teacher key below to see live results."):"Paste the ClassIn chat below. Codes are saved in this browser only."));
+ var names={},rows={};
+ Object.keys(S.docs).forEach(function(u){var d=S.docs[u];var nm=String(d&&d.name||"?").slice(0,40),k=nm.toLowerCase();names[k]=nm;rows[k]=rows[k]||{};Object.keys(d.p||{}).forEach(function(id){if(ACT[id])rows[k][id]={sc:sumSc(d.p[id]),n:ACT[id].n,done:d.p[id].done}})});
+ var pv=ls("apes1p_prog");if(pv&&Object.keys(pv).length){var pk="~preview";names[pk]=(ls("apes1p_name")||"Teacher")+" (your preview)";rows[pk]={};Object.keys(pv).forEach(function(id){if(ACT[id])rows[pk][id]={sc:sumSc(pv[id]),n:ACT[id].n,done:pv[id].done}})}
+ codes().forEach(function(c){var k=c.name.toLowerCase();names[k]=names[k]||c.name;rows[k]=rows[k]||{};if(!rows[k][c.id])rows[k][c.id]={sc:c.sc,n:c.n,done:true,code:1,ok:c.ok}});
+ var w=el("div","wrap"),t=el("table"),h=el("tr");h.appendChild(el("th","","Student"));ACTS.forEach(function(a){var th=el("th","",a.id);th.title=a.t;h.appendChild(th)});h.appendChild(el("th","","Average"));t.appendChild(h);
+ Object.keys(names).sort().forEach(function(k){var tr=el("tr"),s=0,c=0;tr.appendChild(el("td","",names[k]));ACTS.forEach(function(a){var r=rows[k][a.id];if(!r){tr.appendChild(el("td","sm","–"));return}var pc=a.n?r.sc/r.n:0;if(r.done&&a.n){s+=pc;c++}tr.appendChild(el("td",r.done?(pc>=.7?"c1":pc>=.5?"cp":"c0"):"sm",fmt(r.sc)+"/"+r.n+(r.done?"":"…")+(r.code&&!r.ok?"⚠":"")))});tr.appendChild(el("td","",c?Math.round(100*s/c)+"%":"–"));t.appendChild(tr)});
+ w.appendChild(t);o.appendChild(w);
+ o.appendChild(el("p","sm","“…” = still working · ⚠ = code check failed (maybe typed wrong)."));
+ if(SHEET_URL){o.appendChild(el("h3","","Teacher key (TEACHER_KEY in Cloudflare)"));var kr=el("div","row"),ki=el("input");ki.type="password";ki.value=tkey();ki.style.maxWidth="18em";var kb=el("button","btn go","Save key"),km=el("span","sm",S.db?"✓ Connected":"");
+  kb.onclick=function(){ls("apes1_tkey",ki.value.trim());km.textContent="Checking…";teacherData()};kr.appendChild(ki);kr.appendChild(kb);kr.appendChild(km);o.appendChild(kr)}
+ o.appendChild(el("h3","","Paste codes from the ClassIn chat"));var ta=el("textarea");ta.rows=5;ta.placeholder="Paste the whole chat here. Codes look like: #A3 Lily 11/13 x7k2";o.appendChild(ta);
+ var r2=el("div","row"),add=el("button","btn go","Add codes"),clr=el("button","btn alt","Clear all pasted codes"),msg=el("span","sm");
+ add.onclick=function(){var before=codes().length,after=parseCodes(ta.value).length;msg.textContent=(after-before)+" new codes added.";ta.value="";renderOv();var a=D.secs[D.i].dataset.act;if(a)renderMon(a)};
+ clr.onclick=function(){if(clr.dataset.c){ls("apes1_codes",[]);renderOv()}else{clr.dataset.c=1;clr.textContent="Click again to remove all codes"}};
+ var cp=el("button","btn alt","Clear my preview answers");cp.onclick=function(){ls("apes1p_prog",{});renderOv()};var wipe=el("button","btn alt","Delete ALL class results on the server");wipe.onclick=function(){if(!wipe.dataset.c){wipe.dataset.c=1;wipe.textContent="Click again: this deletes every student's answers";return}api({action:"clear",key:tkey()}).then(function(r){wipe.textContent=r.ok?"All results deleted":"Could not delete: "+(r.error||"");delete wipe.dataset.c;poll()})};r2.appendChild(add);r2.appendChild(clr);r2.appendChild(cp);if(SHEET_URL)r2.appendChild(wipe);r2.appendChild(msg);o.appendChild(r2)}
+
+/* ================= STUDENT APP ================= */
+var U={P:{},name:"",preview:false,live:null,lastAt:undefined,cur:null,writing:false,pending:false,ref:null};
+function K(k){return (U.preview?"apes1p_":"apes1_")+k}
+function startStudent(preview){U.preview=!!preview;document.getElementById("stu").classList.add("on");U.name=ls(K("name"))||"";U.P=ls(K("prog"))||{};
+ if(!preview&&S.db&&S.uid){U.ref=S.db.doc("students/"+S.uid);S.dbOK=true;
+  U.ref.get().then(function(s){if(s.exists){var d=s.data()||{};if(!U.name&&d.name){U.name=String(d.name);ls(K("name"),U.name)}var p=d.p||{};Object.keys(p).forEach(function(id){var a=p[id],b=U.P[id];if(!b||(a.done&&!b.done)||((a.i||0)>(b.i||0)&&!b.done))U.P[id]=a});ls(K("prog"),U.P)}if(!U.cur)home()}).catch(function(){});
+  S.db.doc("live/state").onSnapshot(function(s){var d=s.exists?s.data():null;U.live=d;if(d&&d.act&&ACT[d.act]&&d.at!==U.lastAt&&U.name){U.lastAt=d.at;openAct(d.act);return}U.lastAt=d?d.at:U.lastAt;if(!U.cur)home()},function(){S.dbOK=false;if(!U.cur)home()})}
+ home()}
+function push(){ls(K("prog"),U.P);if(U.preview||!U.ref||!S.dbOK)return;if(U.writing){U.pending=true;return}U.writing=true;
+ U.ref.set({name:U.name,at:Date.now(),cur:U.cur||null,p:U.P}).then(function(){U.sent=true;stat()}).catch(function(e){var c=e&&e.code;if(c!=="unavailable"&&c!=="resource_exhausted"){S.dbOK=false;stat()}}).then(function(){U.writing=false;if(U.pending){U.pending=false;push()}})}
+function head(){var s=document.getElementById("stu"),h=el("div","shead"),l=el("div");l.appendChild(el("span","tag","AP Environmental Science · Unit 1"));l.appendChild(el("h2","","The Living World"));h.appendChild(l);
+ var r=el("div","row");if(U.name){var nm=el("span","pill","👤 "+U.name);r.appendChild(nm)}var st=el("span","pill");st.id="stat";r.appendChild(st);
+ if(U.preview){var b=el("button","btn alt","← Teacher slides");b.onclick=function(){s.classList.remove("on");document.getElementById("deck").classList.add("on");go(D.i)};r.appendChild(b)}
+ h.appendChild(r);s.appendChild(h);stat()}
+function stat(){var st=document.getElementById("stat");if(!st)return;if(U.preview){st.textContent="Teacher preview: shows only in your own monitor";st.className="pill warn"}else if(S.dbOK&&U.ref){st.textContent="✓ Connected to teacher";st.className="pill ok"}else if(SHEET_URL&&!U.tried){st.textContent="Connecting…";st.className="pill"}else{st.textContent=SHEET_URL?"Not connected: open the activity your teacher says, then copy your code into the ClassIn chat":"At the end, copy your code into the ClassIn chat";st.className="pill warn"}}
+function home(){U.cur=null;var s=document.getElementById("stu");s.innerHTML="";head();
+ if(!U.name){var q=el("div","qbox");q.appendChild(el("h3","","Type your name"));q.appendChild(el("p","","Use the same name as in ClassIn, so your teacher knows it is you."));var i=el("input");i.type="text";i.maxLength=30;i.placeholder="Your name";q.appendChild(i);var b=el("button","btn go","Start");b.style.marginTop="10px";
+  b.onclick=function(){var v=i.value.replace(/[#\/]/g,"").trim();if(v.length<2){i.focus();return}U.name=v;ls(K("name"),v);push();if(U.live&&U.live.act&&ACT[U.live.act]){U.lastAt=U.live.at;openAct(U.live.act)}else home()};
+  i.onkeydown=function(e){if(e.key==="Enter")b.click()};q.appendChild(b);s.appendChild(q);setTimeout(function(){i.focus()},50);return}
+ var liveMode=!U.preview&&S.dbOK&&U.ref,L=U.live;
+ if(liveMode&&L&&L.act&&ACT[L.act]){var c=el("div","qbox");c.appendChild(el("p","live","● Your teacher started an activity"));var b2=el("button","btn go","Open "+L.act+": "+ACT[L.act].t);b2.onclick=function(){openAct(L.act)};c.appendChild(b2);s.appendChild(c)}
+ else if(liveMode){s.appendChild(el("p","qbox","Wait here. When your teacher starts an activity, it will open by itself."))}
+ else s.appendChild(el("p","sm","Choose the activity your teacher tells you. At the end, copy your code into the ClassIn chat."));
+ [1,2,3].forEach(function(c){var list=ACTS.filter(function(a){return a.c===c&&(!liveMode||(L&&L.opened&&L.opened.indexOf(a.id)>=0))});if(!list.length)return;
+  s.appendChild(el("h3","","Class "+c));var g=el("div","alist");
+  list.forEach(function(a){var p=U.P[a.id],b=el("button","acard"+(p&&p.done?" done":"")+(L&&L.act===a.id?" now":""));b.appendChild(el("b","",a.id+" · "+a.t));b.appendChild(el("span","sm",p&&p.done?"Done: "+fmt(sumSc(p))+"/"+a.n:p?"In progress":a.items.length+" questions"));b.onclick=function(){openAct(a.id)};g.appendChild(b)});s.appendChild(g)});
+ var ch=el("button","btn alt","Change name");ch.style.marginTop="18px";ch.onclick=function(){U.name="";ls(K("name"),"");home()};s.appendChild(ch)}
+function rec(id){var r=U.P[id];if(!r){r=U.P[id]={a:[],s:[],i:0,done:false,t:1}}if(!r.a)r.a=[];if(!r.s)r.s=[];return r}
+function openAct(id){U.cur=id;rec(id);push();renderAct()}
+function renderAct(){var id=U.cur,A=ACT[id],r=rec(id),s=document.getElementById("stu");s.innerHTML="";head();window.scrollTo(0,0);
+ var top=el("div","row"),bk=el("button","btn alt","← All activities");bk.onclick=home;top.appendChild(bk);top.appendChild(el("b","",A.id+" · "+A.t));s.appendChild(top);
+ if(r.done){summary(s,A,r);return}
+ var run=el("div","run"+(A.ref?"":" noref"));if(A.ref){var rp=el("div","refp");rp.innerHTML=REF[A.ref](false);run.appendChild(rp)}
+ var qb=el("div","qbox"),idx=r.i,it=A.items[idx];qb.appendChild(el("div","qn","Question "+(idx+1)+" of "+A.items.length));var pr=el("div","prog"),pi=el("i");pi.style.width=(100*idx/A.items.length)+"%";pr.appendChild(pi);qb.appendChild(pr);
+ qb.appendChild(el("p","q",it.q));var body=el("div"),fb=el("p","fb"),nx=el("button","btn go",idx+1<A.items.length?"Next question →":"Finish ✓");nx.style.display="none";
+ nx.onclick=function(){r.i=idx+1;if(r.i>=A.items.length)r.done=true;push();renderAct()};
+ function done(ans,sc,msg,good){r.a[idx]=ans;r.s[idx]=sc;fb.textContent=msg;fb.className="fb "+(good?"good":"bad");nx.style.display="";push();setTimeout(function(){nx.focus()},30)}
+ ITEM[it.k](body,it,done);qb.appendChild(body);qb.appendChild(fb);qb.appendChild(nx);run.appendChild(qb);s.appendChild(run)}
+var ITEM={
+mc:function(b,it,done){var g=el("div","opts"),lock=0;shuf(it.o).forEach(function(o){var x=el("button","opt",o);x.onclick=function(){if(lock)return;lock=1;var ok=o===it.o[0];x.classList.add(ok?"ok":"no");if(!ok)[].forEach.call(g.children,function(c){if(c.textContent===it.o[0])c.classList.add("ok")});done(o,ok?1:0,ok?"Correct! ✓":"Not quite. The answer is: "+it.o[0],ok)};g.appendChild(x)});b.appendChild(g)},
+sort:function(b,it,done){var sel=null,miss={},placed=0,n=it.i.length,pool=el("div","pool"),bks=el("div","bks"),info=el("p","sm","Tap an item, then tap its group.");
+ shuf(it.i).forEach(function(x){var p=x.split("|"),c=el("button","chip",p[0]);c.dataset.a=p[1];c.onclick=function(){if(c.classList.contains("ok"))return;if(sel)sel.classList.remove("sel");sel=c;c.classList.add("sel")};pool.appendChild(c)});
+ it.b.forEach(function(bn){var k=el("div","bk");k.setAttribute("role","button");k.tabIndex=0;k.appendChild(el("h4","",bn));k.onclick=function(){if(!sel)return;var c=sel;if(c.dataset.a===bn){c.classList.remove("sel");c.classList.add("ok");k.appendChild(c);sel=null;placed++;if(placed===n){var good=n-Object.keys(miss).length;done("sorted",good/n,"All sorted! Right on the first try: "+good+" of "+n+".",good/n>=.7)}}else{miss[c.textContent]=1;c.classList.remove("shake");void c.offsetWidth;c.classList.add("shake")}info.textContent="Placed "+placed+" of "+n+"."};k.onkeydown=function(e){if(e.key==="Enter")k.click()};bks.appendChild(k)});
+ b.appendChild(pool);b.appendChild(bks);b.appendChild(info)},
+order:function(b,it,done){var seq=[],pool=el("div","pool"),ol=el("ol","seq"),row=el("div","row"),undo=el("button","btn alt","Undo"),chk=el("button","btn","Check order");chk.disabled=true;b.appendChild(el("p","sm","Tap the steps in the correct order."));
+ function draw(){ol.innerHTML="";seq.forEach(function(x){ol.appendChild(el("li","",x))});chk.disabled=seq.length!==it.s.length}
+ shuf(it.s).forEach(function(x){var c=el("button","chip",x);c.onclick=function(){if(c.disabled)return;c.disabled=true;c.style.opacity=.35;seq.push(x);draw()};pool.appendChild(c)});
+ undo.onclick=function(){var x=seq.pop();[].forEach.call(pool.children,function(c){if(c.textContent===x){c.disabled=false;c.style.opacity=1}});draw()};
+ chk.onclick=function(){undo.disabled=chk.disabled=true;[].forEach.call(pool.children,function(c){c.disabled=true});var g=0;[].forEach.call(ol.children,function(li,i){var ok=seq[i]===it.s[i];if(ok)g++;li.classList.add(ok?"ok":"no")});
+  if(g<it.s.length){var cor=el("div","");cor.appendChild(el("p","","Correct order:"));var o2=el("ol","seq");it.s.forEach(function(x){o2.appendChild(el("li","",x))});cor.appendChild(o2);b.appendChild(cor)}
+  done(seq.join(" > "),g/it.s.length,g===it.s.length?"Perfect order! ✓":g+" of "+it.s.length+" steps in the right place.",g===it.s.length)};
+ row.appendChild(undo);row.appendChild(chk);b.appendChild(pool);b.appendChild(ol);b.appendChild(row)},
+num:function(b,it,done){var row=el("div","row"),i=el("input");i.type="text";i.inputMode="decimal";i.style.maxWidth="12em";i.placeholder="Your answer";var u=el("span","",it.u||""),c=el("button","btn","Check"),tries=0,hint=el("p","sm","Show your working in your notebook.");
+ c.onclick=function(){var m=String(i.value).replace(/,/g,"").match(/-?\d*\.?\d+/);if(!m){i.focus();return}var v=parseFloat(m[0]),ok=Math.abs(v-it.a)<=Math.max(Math.abs(it.a)*.02,.01);tries++;
+  if(ok){c.disabled=i.disabled=true;done(v,tries===1?1:.5,tries===1?"Correct! ✓":"Correct on the second try ✓",true)}
+  else if(tries===1){hint.textContent="Not quite. Check your working and try once more.";hint.className="fb bad";i.select()}
+  else{c.disabled=i.disabled=true;done(v,0,"Not quite. The answer is "+it.a.toLocaleString("en-US")+" "+(it.u||""),false)}};
+ i.onkeydown=function(e){if(e.key==="Enter")c.click()};row.appendChild(i);row.appendChild(u);row.appendChild(c);b.appendChild(row);b.appendChild(hint);setTimeout(function(){i.focus()},50)},
+text:function(b,it,done){var t=el("textarea");t.rows=4;t.maxLength=600;t.placeholder="Write in full sentences.";var c=el("button","btn","Submit");c.style.marginTop="8px";
+ c.onclick=function(){var v=t.value.trim();if(v.length<2){t.focus();return}t.disabled=c.disabled=true;done(v,null,"Saved. Your teacher can read it.",true)};b.appendChild(t);b.appendChild(c)}
+};
+function summary(s,A,r){var q=el("div","qbox"),sc=sumSc(r);q.appendChild(el("h2","","Finished! 🎉"));
+ if(A.n){q.appendChild(el("p","q","Score: "+fmt(sc)+" / "+A.n+"  ("+Math.round(100*sc/A.n)+"%)"));q.appendChild(el("p","",sc/A.n>=.8?"Great work!":sc/A.n>=.5?"Good effort. Check your notebook for the ones you missed.":"Keep going. Read your notebook page again, then try again."))}
+ q.appendChild(el("p","","Your code:"));q.appendChild(el("div","code",codeFor(A.id,U.name,sc,A.n)));
+ q.appendChild(el("p","sm",S.dbOK&&U.ref&&!U.preview?"✓ Your answers were sent to your teacher. You do not need to send the code.":"Copy this code into the ClassIn chat so your teacher gets your score."));
+ var row=el("div","row"),h=el("button","btn go","← All activities"),again=el("button","btn alt","Try again");h.onclick=home;again.onclick=function(){var t=(r.t||1)+1;U.P[A.id]={a:[],s:[],i:0,done:false,t:t};push();renderAct()};row.appendChild(h);row.appendChild(again);q.appendChild(row);s.appendChild(q)}
+
+/* ================= GOOGLE SHEET MODE ================= */
+function api(o){o.course=COURSE;var c=window.AbortController?new AbortController():null,tm=setTimeout(function(){if(c)c.abort()},15000);return fetch(SHEET_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(o),signal:c?c.signal:undefined}).then(function(r){clearTimeout(tm);return r},function(e){clearTimeout(tm);throw e}).then(function(r){return r.text()}).then(function(t){try{return JSON.parse(t)}catch(e){return {error:"no connection to the class server"}}})}
+function tkey(){return ls("apes1_tkey")||""}
+function setLive(id){if(!SHEET_URL){lvMsg("Tell students the activity number. They paste their codes in the ClassIn chat.");return}
+ if(!tkey()){lvMsg("Enter your teacher key in Class monitor first.");return}
+ var op=((S.live&&S.live.opened)||[]).slice();if(id&&op.indexOf(id)<0)op.push(id);var st={act:id,opened:op,at:Date.now()};lvMsg("Sending…");
+ api({action:"setlive",key:tkey(),live:st}).then(function(r){if(r.ok){S.live=st;liveLabel()}else lvMsg("Could not send: "+(r.error||"unknown"))}).catch(function(){lvMsg("Could not reach the class server.")})}
+function refreshTeacher(){var a=D.secs[D.i]&&D.secs[D.i].dataset.act;if(a)renderMon(a);if(document.getElementById("ov").classList.contains("on"))renderOv()}
+function poll(){if(!SHEET_URL||!tkey())return;api({action:"results",key:tkey()}).then(function(r){
+  if(r.error){S.sheetErr=r.error;S.db=null;refreshTeacher();return}S.sheetErr=null;S.db="sheet";var o={};
+  (r.rows||[]).forEach(function(x){var d=o[x.sid]=o[x.sid]||{name:x.name,p:{}};d.name=String(x.name);try{d.p[x.act]=JSON.parse(x.rec)}catch(e){}});
+  S.docs=o;S.live=r.live||null;liveLabel();refreshTeacher()}).catch(function(){S.sheetErr="cannot reach the class server";refreshTeacher()})}
+function teacherData(){[].forEach.call(document.querySelectorAll(".mon"),function(m){renderMon(m.id.slice(4))});if(!SHEET_URL||!tkey())return;poll();if(!S.started){S.started=true;setInterval(poll,8000)}}
+function startStudent(preview){U.preview=!!preview;document.getElementById("stu").classList.add("on");U.name=ls(K("name"))||"";U.P=ls(K("prog"))||{};
+ if(!preview&&SHEET_URL){U.ref="sheet";S.dbOK=false;U.sid=ls("apes1_sid");if(!U.sid){U.sid="s"+Date.now().toString(36)+Math.random().toString(36).slice(2,8);ls("apes1_sid",U.sid)}
+  var pl=function(){api({action:"live"}).then(function(r){if(r.error)throw 0;var was=S.dbOK;S.dbOK=true;if(!was){stat();if(!U.cur)home()}var d=r.live||null;U.live=d;if(d&&d.act&&ACT[d.act]&&d.at!==U.lastAt&&U.name){U.lastAt=d.at;openAct(d.act);return}U.lastAt=d?d.at:U.lastAt;if(!U.cur)home()}).catch(function(){var was=S.dbOK;S.dbOK=false;U.tried=true;stat();if(was!==false||!U.shown){U.shown=true;if(!U.cur)home()}})};
+  pl();setInterval(pl,8000)}
+ home()}
+function push(){ls(K("prog"),U.P);if(U.preview||!U.ref||!U.cur||!S.dbOK)return;if(U.writing){U.pending=true;return}U.writing=true;var id=U.cur;
+ api({action:"save",sid:U.sid,name:U.name,act:id,n:ACT[id].n,rec:JSON.stringify(U.P[id])}).then(function(r){S.dbOK=!!r.ok;stat()}).catch(function(){S.dbOK=false;stat()}).then(function(){U.writing=false;if(U.pending){U.pending=false;push()}})}
+/* ================= BOOT ================= */
+(function(){var b=document.getElementById("boot");if(b)b.remove();S.owner=/^#teacher$/i.test(location.hash);if(S.owner)startDeck();else startStudent(false);
+ window.addEventListener("hashchange",function(){location.reload()})})();
+</script></body></html>
