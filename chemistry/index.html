@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Chemistry Module 6: Stoichiometry</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Serif+4:wght@400;600&display=swap"><style>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Chemistry Module 7: States of Matter and Gases</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Serif+4:wght@400;600&display=swap"><style>
 :root{--bg:#f1f5f4;--panel:#dfeae9;--ink:#12262e;--mute:#4a626a;--g:#1d7a8c;--a:#b06a0c;--blue:#2a6f97;--bad:#b23a2e;--line:#b9cdc6;
 --head:"Bricolage Grotesque","Trebuchet MS",sans-serif;--body:"Source Serif 4",Georgia,serif}
 @media (prefers-color-scheme:dark){:root{--bg:#0f1c21;--panel:#17303a;--ink:#e8f1ee;--mute:#9db5bb;--g:#52c0d4;--a:#eaa64a;--blue:#6fb3db;--bad:#e2776b;--line:#2b4650}}
@@ -130,229 +130,376 @@ textarea,input[type=text]{width:100%;font:inherit;background:var(--bg);color:var
 .vc{background:var(--panel);border-radius:12px;padding:.6em .7em;text-align:center;display:flex;flex-direction:column;align-items:center;gap:2px}
 .vc .emo{font-size:2em;line-height:1.25}.vc b{font-family:var(--head)}.vc span{font-size:.82em;color:var(--mute)}
 .ybar{display:grid;grid-template-columns:9em 1fr 5em;gap:8px;align-items:center;margin:6px 0}.ybar div{height:26px;background:var(--panel);border-radius:6px;overflow:hidden}.ybar i{display:block;height:100%}
+/* ===== Unit 2 additions ===== */
+.tbig{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:1em;background:var(--panel);border-radius:14px;padding:12px 18px;max-width:46em}
+.tbig svg{width:120px;height:120px;flex-shrink:0}
+.tbig .tr-bg{fill:none;stroke:var(--line);stroke-width:12}.tbig .tr-fg{fill:none;stroke:var(--g);stroke-width:12;stroke-linecap:round;transition:stroke-dashoffset .25s linear,stroke .3s}
+.tbig .tt{font:800 30px var(--head);fill:var(--ink);text-anchor:middle}
+.tbig .tl{font:700 1.1em var(--head)}.tbig .tl small{display:block;font-weight:600;font-size:.75em;color:var(--mute)}
+.tbig.warn .tr-fg{stroke:var(--a)}.tbig.end .tr-fg{stroke:var(--bad)}.tbig.end{animation:tflash 1s 4}
+@keyframes tflash{50%{background:color-mix(in srgb,var(--bad) 30%,var(--panel))}}
+.nbg{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:20px;align-items:start}
+@media(max-width:900px){.nbg{grid-template-columns:1fr}}
+.nbv{background:var(--panel);border-radius:10px;padding:10px;border:2px dashed var(--g)}.nbv>b{font:700 .9em var(--head);color:var(--g);display:block;margin-bottom:4px}
+.ply{background:var(--panel);border-radius:14px;padding:12px 14px;max-width:880px}
+.ply h3{margin:0 0 6px}.pls{width:100%;max-width:min(100%,108vh);height:auto;display:block;background:var(--bg);border-radius:10px;margin:0 auto}
+.split.pp{grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr)}.split.pp .opts{grid-template-columns:1fr}.split.pp .flow{flex-direction:column}.split.pp .flow .ar{transform:rotate(90deg);align-self:flex-start;margin-left:1em}.split.pp .flow>div{max-width:none}
+.pcap{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;margin:10px 0 6px;min-height:4.2em}
+.pnum{font:800 1.5em var(--head);background:var(--g);color:#fff;border-radius:10px;padding:.15em .55em}
+.pcap b{font-family:var(--head);font-size:1.12em;display:block}.pcap span{font-size:1em}
+.pdots{display:flex;gap:6px;flex-wrap:wrap}.pdots button{width:30px;height:30px;border-radius:50%;border:2px solid var(--line);background:var(--bg);cursor:pointer;font:700 .8em var(--head);color:var(--ink)}
+.pdots button.on{background:var(--g);border-color:var(--g);color:#fff}
+.pred{border:3px solid var(--a);border-radius:14px;padding:12px 16px;margin:.8em 0;max-width:62em;background:color-mix(in srgb,var(--a) 8%,var(--bg))}
+.pred h3{color:var(--a);margin:0 0 4px;font-size:1.15em}.pred .q{margin:.2em 0 .6em}
+.pred .opts{grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr))}.pred .opt.sel{border-color:var(--a);box-shadow:0 0 0 2px var(--a)}
+.pans{margin-top:.6em;padding:.6em .8em;border-radius:10px;background:color-mix(in srgb,var(--g) 15%,var(--bg));font-size:1.05em}
+.ix{background:var(--panel);border-radius:14px;padding:12px 14px;max-width:900px}
+.ix label{font:700 1em var(--head);display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:4px 0}
+.ix input[type=range],.sld input[type=range]{flex:1;min-width:180px;accent-color:var(--g);height:28px}
+.ixo{font:800 1.25em var(--head);margin:.3em 0}
+.sld{background:var(--bg);border-radius:10px;padding:10px 12px}.sld input[type=range]{width:100%;display:block}
+.sv{font:800 2em var(--head);color:var(--g);text-align:center}
+.sl2{display:flex;justify-content:space-between;font-size:.85em;color:var(--mute)}
+svg.hot{width:100%;max-width:700px;height:auto;display:block;background:var(--bg);border-radius:10px}
+.hz{fill:transparent;stroke:transparent;stroke-width:3;cursor:pointer}.hz:hover,.hz:focus{stroke:var(--a);fill:color-mix(in srgb,var(--a) 12%,transparent);outline:none}
+.hz.ok{stroke:var(--g);fill:color-mix(in srgb,var(--g) 25%,transparent)}.hz.no{stroke:var(--bad);fill:color-mix(in srgb,var(--bad) 20%,transparent)}
+.opt.tog.on{border-color:var(--a);box-shadow:0 0 0 2px var(--a)}.opt.miss{border-style:dashed;border-color:var(--g)}
+.qv{margin:.2em 0 .8em}
+.rv{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.rv>div{background:var(--panel);border-radius:12px;padding:.6em .8em}.rv h3{margin:.2em 0}.rv p{font-size:.9em;margin:.3em 0}
+.after{display:none}.after.show{display:block}.split.after.show{display:grid}
+.big2{font-size:1.15em}
+.pill2{fill:var(--ink)}.pl2{fill:var(--bg);font:700 13px sans-serif;text-anchor:middle}
+.zl2{fill:var(--ink);font:700 15px sans-serif;text-anchor:middle}.zs2{fill:var(--ink);font:12px sans-serif;text-anchor:middle}
+.ax{stroke:var(--ink);stroke-width:2}.gl{stroke:var(--line);stroke-width:1}
+
+.hl{background:color-mix(in srgb,var(--a) 22%,transparent);padding:0 .2em;border-radius:4px}
+canvas.sim{width:100%;max-width:min(100%,100vh);height:auto;display:block;background:var(--bg);border-radius:10px;margin:0 auto}
+.gauge{font:800 1.3em var(--head)}
 </style></head><body>
 <div id="deck"><main>
 
 <!-- ================= CLASS 1 ================= -->
-<section class="on"><span class="tag">Chemistry · Module 6</span><h1>Stoichiometry</h1><h2>Class 1 · Mole ratios and mole calculations (2.5 hours)</h2>
-<p>By the end of today you can: define stoichiometry; explain why the mole ratio matters; write a mole ratio from an equation; show that amounts in a reaction follow mole relationships; calculate moles or mass of one substance from moles of another.</p>
+<section class="on"><span class="tag">Chemistry · Module 7</span><h1>States of Matter and Gases</h1><h2>Class 1 · Kinetic theory, gases, liquids and solids (2.5 hours)</h2>
+<p>By the end of today you can: state the kinetic-molecular theory and its 5 assumptions; describe the properties of gases; compare ideal and real gases; explain solids, liquids and gases with particles and attractions.</p>
 <div class="wrap"><table><tr><th>Block</th><th>Minutes</th></tr>
-<tr><td>Join + warm-up (A1)</td><td>12</td></tr>
-<tr><td>What is stoichiometry? Reading an equation + A2</td><td>28</td></tr>
-<tr><td>Mole ratios + A3</td><td>25</td></tr>
-<tr><td>Investigate: the ammonia factory</td><td>15</td></tr>
+<tr><td>Join + warm-up (A1)</td><td>10</td></tr>
+<tr><td>Kinetic-molecular theory · simulator · A2</td><td>35</td></tr>
+<tr><td>Properties of gases · play: diffusion · A3</td><td>30</td></tr>
 <tr><td>Break</td><td>10</td></tr>
-<tr><td>Mole → mole calculations + A4</td><td>25</td></tr>
-<tr><td>Mole → mass calculations + A5</td><td>25</td></tr>
+<tr><td>Ideal vs real gases · A4</td><td>15</td></tr>
+<tr><td>Liquids and solids · phase simulator · A5</td><td>40</td></tr>
 <tr><td>Exit ticket (A6)</td><td>10</td></tr></table></div>
-<div class="nb">&#9998; <b>Notebook:</b> new page. Title it <b>Module 6: Stoichiometry</b>.</div></section>
+<div class="nb">&#9998; <b>Notebook:</b> new page. Title: <b>Module 7: States of Matter and Gases</b>.</div></section>
 
 <section data-join></section>
 <section data-act="A1"></section>
 
-<section><span class="tag">Objective 1</span><h2>What is stoichiometry?</h2>
-<p><b>Stoichiometry</b> (stoy-kee-OM-uh-tree) is the part of chemistry that studies the <b>amounts</b> of reactants and products in a chemical reaction.</p>
-<div data-ref="recipe"></div>
-<div class="grid"><div><h3>A recipe</h3><p>A recipe tells you how much of each ingredient you need. If you double the ingredients, you double the food.</p></div>
-<div><h3>A balanced equation</h3><p>A balanced equation is a chemistry recipe. The <b>coefficients</b> tell you how many particles (or moles) react and form.</p></div>
-<div><h3>Why it matters</h3><p>Factories, medicine and cooking all need to know: <i>how much do I need?</i> and <i>how much will I make?</i></p></div></div></section>
+<section><span class="tag">Kinetic-molecular theory</span><h2>Matter is made of moving particles</h2>
+<p class="big2">The <b>kinetic-molecular theory</b> (KMT) says: all matter is made of tiny particles that are <b>always moving</b>. "Kinetic" means motion. The theory explains the properties of solids, liquids and gases.</p>
+<div data-ref="phases3"></div>
+<div data-pred="smell"></div></section>
 
-<section><span class="tag">Objective 1</span><h2>Reading a balanced equation</h2>
-<div data-ref="molecules"></div>
-<div class="wrap"><table><tr><th>Read it as…</th><th>2H₂</th><th>+ O₂</th><th>→ 2H₂O</th></tr>
-<tr><td>🔵 particles (molecules)</td><td>2 molecules</td><td>1 molecule</td><td>2 molecules</td></tr>
-<tr><td>📦 moles</td><td>2 mol</td><td>1 mol</td><td>2 mol</td></tr>
-<tr><td>⚖️ mass (mol × molar mass)</td><td>2 × 2.02 = 4.04 g</td><td>1 × 32.00 = 32.00 g</td><td>2 × 18.02 = 36.04 g</td></tr></table></div>
-<div class="do"><b>Look:</b> 4.04 g + 32.00 g = 36.04 g. Mass is conserved. But the <b>coefficients are moles, not grams</b>. Never use coefficients with grams.</div></section>
+<section><span class="tag">Kinetic-molecular theory</span><h2>Simulator: watch a gas</h2>
+<div data-ix="gasbox"></div>
+<p class="sm">Try it: raise the temperature (particles move faster). Make the box smaller (more hits on the walls). Add particles.</p></section>
 
-<section><div class="nbp"><div class="nbt">&#9998; Notebook page 1 · What is stoichiometry?</div>
-<ul><li><b>Stoichiometry</b> = the study of the amounts of reactants and products in a reaction.</li>
-<li>A balanced equation is like a <b>recipe</b>.</li>
-<li><b>Coefficients</b> = number of particles <b>or</b> number of moles. They are NOT grams.</li>
-<li>2H₂ + O₂ → 2H₂O means 2 mol H₂ + 1 mol O₂ → 2 mol H₂O.</li>
-<li>Mass is conserved: 4.04 g + 32.00 g = 36.04 g.</li></ul></div><div data-timer="5"></div></section>
+<section><span class="tag">Kinetic-molecular theory</span><h2>The 5 assumptions of the KMT for gases</h2><div data-ref="kmt5"></div>
+<div class="do"><b>Memory trick:</b> <b>T</b>iny · <b>E</b>lastic · <b>R</b>andom motion · <b>N</b>o attraction · <b>T</b>emperature = KE</div></section>
+
+<section><span class="tag">Kinetic-molecular theory</span><h2>Temperature and kinetic energy</h2>
+<div class="split"><div><div class="fx" style="font-size:1.4em">KE = ½ m v²</div><ul><li>m = mass of a particle · v = speed</li><li>Temperature measures the <b>average</b> KE of the particles.</li><li>Higher temperature → particles move <b>faster</b>.</li><li>At the SAME temperature, all gases have the same average KE.</li></ul></div>
+<div><div data-pred="speed"></div></div></div>
+<div class="do after"><b>So:</b> at the same temperature, <b>lighter particles move faster</b>. H₂ (2 g/mol) is faster than O₂ (32 g/mol).</div></section>
+
+<section><div class="nbg"><div class="nbp"><div class="nbt">&#9998; Notebook page 1 · Kinetic-molecular theory</div>
+<ul><li><b>KMT</b>: matter is made of particles that are always moving.</li>
+<li>5 assumptions for gases: 1) tiny and far apart 2) elastic collisions (no KE lost) 3) constant, rapid, random motion 4) no attractions 5) temperature = average KE.</li>
+<li>KE = ½mv². Higher T → faster particles.</li>
+<li>Same T → same KE → lighter particles move faster.</li></ul></div>
+<div class="nbv"><b>✏️ Draw this</b><svg class="pls" viewBox="0 0 360 220" role="img" aria-label="Gas box sketch"><rect x="10" y="10" width="340" height="200" rx="10" fill="none" stroke="var(--ink)" stroke-width="3"/><circle cx="60" cy="60" r="7" fill="#1d7a8c"/><path d="M60 60 l40 20" stroke="var(--mute)" stroke-width="2"/><circle cx="200" cy="50" r="7" fill="#1d7a8c"/><path d="M200 50 l-30 30" stroke="var(--mute)" stroke-width="2"/><circle cx="290" cy="150" r="7" fill="#1d7a8c"/><path d="M290 150 l30 -35" stroke="var(--mute)" stroke-width="2"/><circle cx="120" cy="160" r="7" fill="#1d7a8c"/><path d="M120 160 l-40 10" stroke="var(--mute)" stroke-width="2"/><circle cx="230" cy="120" r="7" fill="#1d7a8c"/><path d="M230 120 l20 40" stroke="var(--mute)" stroke-width="2"/><text x="180" y="200" class="zs2">far apart · fast · random · no attraction</text></svg></div></div>
+<div data-timer="5"></div></section>
 
 <section data-act="A2"></section>
 
-<section><span class="tag">Objectives 2 and 3</span><h2>The mole ratio</h2>
-<p>A <b>mole ratio</b> is a conversion factor that relates the amounts in moles of <b>any two substances</b> in a chemical reaction. You get it from the <b>coefficients</b> of the balanced equation.</p>
-<div data-ref="ratios"></div>
-<div class="do"><b>Why it is important:</b> the mole ratio is the <b>bridge</b> between two different substances. Every stoichiometry problem uses it. You cannot go from substance A to substance B without it.</div></section>
+<section><span class="tag">Gases</span><h2>Six properties of gases</h2><div data-ref="gasprops"></div>
+<p class="sm">Every property comes from the KMT: particles are far apart (low density, compressible), move fast and randomly (expansion, diffusion), and do not attract (fluidity).</p></section>
 
-<section><span class="tag">Objective 3</span><h2>Writing and using a mole ratio</h2>
-<p>Put the substance you <b>want</b> on top. Put the substance you <b>have</b> on the bottom, so its unit cancels.</p>
-<div class="grid"><div><h3>Example: 2Al₂O₃ → 4Al + 3O₂</h3><p>Have mol Al₂O₃, want mol Al:</p><div class="fx"><span class="fr"><span>4 mol Al</span><span>2 mol Al₂O₃</span></span></div><p>Have mol Al₂O₃, want mol O₂:</p><div class="fx"><span class="fr"><span>3 mol O₂</span><span>2 mol Al₂O₃</span></span></div></div>
-<div><h3>Units cancel</h3><div class="fx">5.0 <span class="cx">mol Al₂O₃</span> × <span class="fr"><span>4 mol Al</span><span>2 <span class="cx">mol Al₂O₃</span></span></span> = <span class="ans">10 mol Al</span></div><p class="sm">The "mol Al₂O₃" on top and bottom cancel. Only "mol Al" is left.</p></div></div>
-<div class="do"><b>Remember:</b> wanted on top, given on the bottom. Use the equation's coefficients only.</div></section>
+<section><span class="tag">Gases</span><h2>Compressibility</h2><div class="split"><div><div data-pred="compress"></div></div>
+<div class="after"><svg class="pls" viewBox="0 0 360 260" role="img" aria-label="Syringes"><rect x="20" y="40" width="200" height="70" rx="6" fill="none" stroke="var(--ink)" stroke-width="3"/><rect x="220" y="62" width="110" height="26" fill="var(--ink)"/><circle cx="50" cy="60" r="6" fill="#1d7a8c"/><circle cx="110" cy="90" r="6" fill="#1d7a8c"/><circle cx="170" cy="60" r="6" fill="#1d7a8c"/><circle cx="80" cy="80" r="6" fill="#1d7a8c"/><text x="120" y="30" class="zl2">air: lots of space → pushes in ✓</text><rect x="20" y="160" width="200" height="70" rx="6" fill="color-mix(in srgb,var(--blue) 25%,var(--bg))" stroke="var(--ink)" stroke-width="3"/><rect x="220" y="182" width="110" height="26" fill="var(--ink)"/><text x="120" y="252" class="zl2">water: particles touching ✗</text></svg></div></div></section>
 
-<section><div class="nbp"><div class="nbt">&#9998; Notebook page 2 · Mole ratios</div>
-<ul><li><b>Mole ratio</b> = a conversion factor between the moles of any two substances in a reaction.</li>
-<li>It comes from the <b>coefficients</b> of the <b>balanced</b> equation.</li>
-<li>N₂ + 3H₂ → 2NH₃ gives: 1 mol N₂ / 3 mol H₂ · 2 mol NH₃ / 1 mol N₂ · 2 mol NH₃ / 3 mol H₂ (and each flipped).</li>
-<li><b>Wanted on top, given on the bottom</b>, so units cancel.</li>
-<li>It is the bridge from substance A to substance B.</li></ul></div><div data-timer="5"></div></section>
+<section><span class="tag">Gases</span><h2>Diffusion and effusion</h2><div data-play="diffuse"></div></section>
+
+<section><div class="nbg"><div class="nbp"><div class="nbt">&#9998; Notebook page 2 · Properties of gases</div>
+<ul><li><b>Expansion</b>: fills the whole container.</li><li><b>Fluidity</b>: flows; particles slide past each other.</li><li><b>Low density</b>: about 1/1000 of a liquid.</li><li><b>Compressibility</b>: can be squeezed (lots of empty space).</li><li><b>Diffusion</b>: spreads from high to low concentration.</li><li><b>Effusion</b>: passes through a tiny hole.</li><li>Lighter gases diffuse and effuse faster.</li></ul></div>
+<div class="nbv"><b>✏️ Draw this</b><svg class="pls" viewBox="0 0 360 200" role="img" aria-label="Diffusion and effusion sketch"><rect x="10" y="20" width="160" height="150" rx="8" fill="none" stroke="var(--ink)" stroke-width="3"/><circle cx="30" cy="150" r="5" fill="#c0577e"/><circle cx="45" cy="140" r="5" fill="#c0577e"/><circle cx="70" cy="100" r="5" fill="#c0577e"/><circle cx="110" cy="60" r="5" fill="#c0577e"/><circle cx="140" cy="120" r="5" fill="#c0577e"/><text x="90" y="192" class="zs2">diffusion: spreads</text><rect x="200" y="20" width="110" height="150" rx="8" fill="none" stroke="var(--ink)" stroke-width="3"/><rect x="306" y="85" width="8" height="14" fill="var(--bg)"/><circle cx="240" cy="60" r="5" fill="#1d7a8c"/><circle cx="270" cy="130" r="5" fill="#1d7a8c"/><circle cx="335" cy="92" r="5" fill="#1d7a8c"/><text x="270" y="192" class="zs2">effusion: tiny hole</text></svg></div></div>
+<div data-timer="5"></div></section>
 
 <section data-act="A3"></section>
 
-<section><span class="tag">Objective 4 · Investigate</span><h2>The ammonia factory</h2>
-<p>A factory makes ammonia: <b>N₂ + 3H₂ → 2NH₃</b>. Move the slider. Watch how the amounts change together. Then answer the questions below with your partner.</p>
-<div data-ref="factory"></div>
-<ol><li>When you double the N₂, what happens to the H₂ needed and the NH₃ made?</li><li>Is the ratio N₂ : H₂ : NH₃ always the same? What is it?</li><li>Do the <b>masses</b> follow 1 : 3 : 2? Why not?</li></ol>
-<div class="do"><b>Conclusion:</b> the amounts in a reaction always follow the <b>mole</b> ratio, not the mass ratio.</div></section>
-
-<section><h2>Break: 10 minutes</h2><p>Stand up, stretch, drink water. Next: stoichiometry calculations.</p></section>
-
-<section><span class="tag">Objective 5</span><h2>The stoichiometry map</h2>
-<p>Every problem in this module uses this map. Find where you <b>start</b> (given) and where you <b>finish</b> (wanted).</p>
-<div data-ref="map"></div>
-<div class="wrap"><table><tr><th>Problem type</th><th>Given</th><th>Wanted</th><th>Steps</th></tr>
-<tr><td>Mole → mole</td><td>mol A</td><td>mol B</td><td>② only</td></tr>
-<tr><td>Mole → mass</td><td>mol A</td><td>g B</td><td>② then ③</td></tr>
-<tr><td>Mass → mole</td><td>g A</td><td>mol B</td><td>① then ②</td></tr>
-<tr><td>Mass → mass</td><td>g A</td><td>g B</td><td>① ② ③</td></tr></table></div></section>
-
-<section><span class="tag">Objective 5</span><h2>Mole → mole calculations</h2><div class="split"><div><div data-ref="mapMM"></div>
-<h3>Example</h3><p>4Al + 3O₂ → 2Al₂O₃. How many moles of Al₂O₃ form from <b>6.0 mol Al</b>?</p>
-<div class="step"><b>1</b><div>Given: 6.0 mol Al. Wanted: mol Al₂O₃.</div></div>
-<div class="step"><b>2</b><div>Mole ratio (wanted / given): <span class="fr"><span>2 mol Al₂O₃</span><span>4 mol Al</span></span></div></div>
-<div class="step"><b>3</b><div class="fx">6.0 <span class="cx">mol Al</span> × <span class="fr"><span>2 mol Al₂O₃</span><span>4 <span class="cx">mol Al</span></span></span> = <span class="ans">3.0 mol Al₂O₃</span></div></div></div>
-<div><h3>Try it together</h3><p>2H₂ + O₂ → 2H₂O. How many moles of O₂ react with <b>8.0 mol H₂</b>?</p><details><summary>Show answer</summary><div class="fx">8.0 <span class="cx">mol H₂</span> × <span class="fr"><span>1 mol O₂</span><span>2 <span class="cx">mol H₂</span></span></span> = <span class="ans">4.0 mol O₂</span></div></details></div></div></section>
-
-<section><div class="nbp"><div class="nbt">&#9998; Notebook page 3 · Mole → mole</div>
-<ul><li>Map: <b>mol A → × mole ratio → mol B</b></li>
-<li>Steps: (1) write given and wanted, (2) write the mole ratio (wanted on top), (3) multiply.</li>
-<li>Example: 4Al + 3O₂ → 2Al₂O₃<br>6.0 mol Al × (2 mol Al₂O₃ / 4 mol Al) = <b>3.0 mol Al₂O₃</b></li></ul></div><div data-timer="5"></div></section>
+<section><span class="tag">Gases</span><h2>Ideal gases and real gases</h2>
+<div class="grid"><div><h3>Ideal gas</h3><p>An <b>imaginary</b> gas that fits ALL 5 KMT assumptions perfectly.</p></div><div><h3>Real gas</h3><p>A gas that does <b>not</b> behave completely like an ideal gas. All real gases act <b>almost</b> ideal at normal conditions.</p></div></div>
+<div data-pred="ideal"></div>
+<div class="after"><div data-ref="ideal"></div></div></section>
 
 <section data-act="A4"></section>
 
-<section><span class="tag">Objective 6</span><h2>Mole → mass calculations</h2><div class="split"><div><div data-ref="mapMG"></div>
-<h3>Example</h3><p>2Mg + O₂ → 2MgO. What mass of MgO forms from <b>2.0 mol Mg</b>?</p>
-<div class="step"><b>1</b><div>Molar mass of MgO = 24.31 + 16.00 = <b>40.31 g/mol</b></div></div>
-<div class="step"><b>2</b><div class="fx">2.0 <span class="cx">mol Mg</span> × <span class="fr"><span>2 <span class="cx">mol MgO</span></span><span>2 <span class="cx">mol Mg</span></span></span> × <span class="fr"><span>40.31 g MgO</span><span>1 <span class="cx">mol MgO</span></span></span> = <span class="ans">80.62 g MgO</span></div></div></div>
-<div><h3>Try it together</h3><p>N₂ + 3H₂ → 2NH₃. What mass of NH₃ forms from <b>1.0 mol N₂</b>? (NH₃ = 17.04 g/mol)</p><details><summary>Show answer</summary><div class="fx">1.0 <span class="cx">mol N₂</span> × <span class="fr"><span>2 <span class="cx">mol NH₃</span></span><span>1 <span class="cx">mol N₂</span></span></span> × <span class="fr"><span>17.04 g</span><span>1 <span class="cx">mol NH₃</span></span></span> = <span class="ans">34.08 g NH₃</span></div></details>
-<div data-ref="mm"></div></div></div></section>
+<section><span class="tag">Phases</span><h2>Why are there 3 phases?</h2>
+<p class="big2">Two things fight: <b>kinetic energy</b> (moves particles apart) vs <b>attractive forces</b> (pull particles together).</p>
+<div data-ix="phases"></div>
+<p class="sm">Low energy: attractions win → solid. Medium: particles move but stay close → liquid. High energy: KE wins → gas.</p></section>
 
-<section><div class="nbp"><div class="nbt">&#9998; Notebook page 4 · Mole → mass</div>
-<ul><li>Map: <b>mol A → × mole ratio → mol B → × molar mass B → g B</b></li>
-<li>Molar mass = add the atomic masses (g/mol). MgO = 24.31 + 16.00 = 40.31 g/mol.</li>
-<li>Example: 2Mg + O₂ → 2MgO<br>2.0 mol Mg × (2 mol MgO / 2 mol Mg) × (40.31 g / 1 mol MgO) = <b>80.62 g MgO</b></li></ul></div><div data-timer="5"></div></section>
+<section><span class="tag">Liquids</span><h2>Liquids</h2>
+<div class="split"><div><p>Particles are <b>close together</b> (attractions) but can <b>slide past</b> each other.</p><div class="vgrid">
+<div class="vc"><div class="emo">🥛↔️🍶</div><b>Definite volume</b><span>takes the shape of its container (fluid)</span></div>
+<div class="vc"><div class="emo">⚖️</div><b>High density</b><span>much denser than gases</span></div>
+<div class="vc"><div class="emo">💉✗</div><b>Almost incompressible</b><span>particles already close</span></div>
+<div class="vc"><div class="emo">🫖🟣</div><b>Diffusion (slow)</b><span>food coloring spreads slowly in water</span></div>
+<div class="vc"><div class="emo">🦟💧</div><b>Surface tension</b><span>surface particles are pulled inward; insects can stand on water</span></div></div></div>
+<div><svg class="pls" viewBox="0 0 360 300" role="img" aria-label="Surface tension"><rect x="20" y="80" width="320" height="200" fill="color-mix(in srgb,var(--blue) 25%,var(--bg))" stroke="var(--ink)" stroke-width="2"/><circle cx="180" cy="190" r="12" fill="#1d7a8c"/><path d="M180 190 l0 -45M180 190 l0 45M180 190 l-45 0M180 190 l45 0" stroke="var(--a)" stroke-width="3"/><circle cx="110" cy="92" r="12" fill="#1d7a8c"/><path d="M110 92 l0 45M110 92 l-40 0M110 92 l40 0" stroke="var(--a)" stroke-width="3"/><text x="180" y="40" class="zl2">surface particle: pulled DOWN and sideways only</text><text x="180" y="62" class="zs2">→ surface tension</text><text x="270" y="240" class="zs2">inside: pulled all ways</text></svg></div></div></section>
+
+<section><span class="tag">Solids</span><h2>Solids</h2>
+<div class="split"><div><p>Particles <b>vibrate in fixed positions</b>. Attractions are strong.</p>
+<ul><li><b>Definite shape and volume</b></li><li><b>Definite melting point</b> (crystalline solids)</li><li><b>High density</b>, almost <b>incompressible</b></li><li><b>Very slow diffusion</b></li></ul>
+<div class="grid"><div><h3>Crystalline solid</h3><p>Particles in a regular, repeating pattern. Salt, ice, diamond.</p></div><div><h3>Amorphous solid</h3><p>Particles in a random arrangement. No definite melting point. Glass, plastic.</p></div></div></div>
+<div><svg class="pls" viewBox="0 0 360 200" role="img" aria-label="Crystalline vs amorphous"><rect x="10" y="10" width="160" height="150" rx="8" fill="none" stroke="var(--ink)" stroke-width="2"/><g fill="#1d7a8c"><circle cx="35" cy="35" r="9"/><circle cx="65" cy="35" r="9"/><circle cx="95" cy="35" r="9"/><circle cx="125" cy="35" r="9"/><circle cx="35" cy="65" r="9"/><circle cx="65" cy="65" r="9"/><circle cx="95" cy="65" r="9"/><circle cx="125" cy="65" r="9"/><circle cx="35" cy="95" r="9"/><circle cx="65" cy="95" r="9"/><circle cx="95" cy="95" r="9"/><circle cx="125" cy="95" r="9"/><circle cx="35" cy="125" r="9"/><circle cx="65" cy="125" r="9"/><circle cx="95" cy="125" r="9"/><circle cx="125" cy="125" r="9"/></g><rect x="190" y="10" width="160" height="150" rx="8" fill="none" stroke="var(--ink)" stroke-width="2"/><g fill="#b06a0c"><circle cx="215" cy="40" r="9"/><circle cx="250" cy="30" r="9"/><circle cx="300" cy="45" r="9"/><circle cx="330" cy="80" r="9"/><circle cx="230" cy="80" r="9"/><circle cx="270" cy="70" r="9"/><circle cx="210" cy="120" r="9"/><circle cx="255" cy="110" r="9"/><circle cx="300" cy="105" r="9"/><circle cx="240" cy="140" r="9"/><circle cx="285" cy="140" r="9"/><circle cx="325" cy="135" r="9"/></g><text x="90" y="185" class="zl2">crystalline</text><text x="270" y="185" class="zl2">amorphous</text></svg></div></div></section>
+
+<section><div class="nbg"><div class="nbp"><div class="nbt">&#9998; Notebook page 3 · Liquids and solids</div>
+<ul><li>Phases = <b>kinetic energy</b> vs <b>attractive forces</b>.</li>
+<li><b>Liquid</b>: close particles slide past each other; definite volume; high density; incompressible; slow diffusion; surface tension.</li>
+<li><b>Solid</b>: particles vibrate in fixed places; definite shape and volume; definite melting point; high density; incompressible; very slow diffusion.</li>
+<li><b>Crystalline</b> = regular pattern. <b>Amorphous</b> = random (glass).</li></ul></div>
+<div class="nbv"><b>✏️ Draw this</b><div data-ref="phases3"></div></div></div>
+<div data-timer="6"></div></section>
 
 <section data-act="A5"></section>
 <section data-act="A6"></section>
 
 <!-- ================= CLASS 2 ================= -->
-<section><span class="tag">Chemistry · Module 6</span><h1>Class 2 · Mass, limiting reactants and yield</h1><h2>(2.5 hours)</h2>
-<p>By the end of today you can: calculate moles or mass from the <b>mass</b> of another substance; find the limiting reactant; calculate product when one reactant is in excess; explain and calculate theoretical, actual and percentage yield.</p>
+<section><span class="tag">Chemistry · Module 7</span><h1>Phase changes, water and pressure</h1><h2>Class 2 (2.5 hours)</h2>
+<p>By the end of today you can: describe vaporization, boiling, freezing, melting and sublimation; explain water's properties; calculate energy for phase changes of water; convert pressure units; use Dalton's law.</p>
 <div class="wrap"><table><tr><th>Block</th><th>Minutes</th></tr>
-<tr><td>Warm-up (A7)</td><td>10</td></tr>
-<tr><td>Mass → mole and mass → mass + A8</td><td>35</td></tr>
-<tr><td>Limiting reactants: sandwiches and molecules</td><td>25</td></tr>
-<tr><td>Limiting reactant calculations + A9</td><td>25</td></tr>
+<tr><td>Join + warm-up (A7)</td><td>8</td></tr>
+<tr><td>Phase changes · play: evaporation, heating curve · A8</td><td>40</td></tr>
+<tr><td>Water: structure, properties and energy · A9</td><td>35</td></tr>
 <tr><td>Break</td><td>10</td></tr>
-<tr><td>Theoretical, actual and percentage yield + A10</td><td>25</td></tr>
-<tr><td>Module review (A11) + exit ticket (A12)</td><td>20</td></tr></table></div></section>
+<tr><td>Pressure, units and STP · A10</td><td>25</td></tr>
+<tr><td>Dalton's law · play: collecting gas over water · A11</td><td>22</td></tr>
+<tr><td>Exit ticket (A12)</td><td>10</td></tr></table></div></section>
 
+<section data-join></section>
 <section data-act="A7"></section>
 
-<section><span class="tag">Objective 7</span><h2>Mass → mole calculations</h2><div class="split"><div><div data-ref="mapGM"></div>
-<h3>Example</h3><p>2H₂ + O₂ → 2H₂O. How many moles of H₂O form from <b>64.00 g O₂</b>?</p>
-<div class="step"><b>1</b><div>Grams → moles: divide by molar mass (O₂ = 32.00 g/mol)</div></div>
-<div class="step"><b>2</b><div class="fx">64.00 <span class="cx">g O₂</span> × <span class="fr"><span>1 <span class="cx">mol O₂</span></span><span>32.00 <span class="cx">g O₂</span></span></span> × <span class="fr"><span>2 mol H₂O</span><span>1 <span class="cx">mol O₂</span></span></span> = <span class="ans">4.00 mol H₂O</span></div></div></div>
-<div><div data-ref="mm"></div><div class="do"><b>Tip:</b> "× 1 mol / molar mass" is the same as "÷ molar mass".</div></div></div></section>
+<section><span class="tag">Phase changes</span><h2>Six phase changes</h2><div data-ref="phasechg"></div></section>
 
-<section><span class="tag">Objective 8</span><h2>Mass → mass calculations</h2><div class="split"><div><div data-ref="map"></div>
-<h3>Example</h3><p>2Mg + O₂ → 2MgO. What mass of MgO forms from <b>48.62 g Mg</b>?</p>
-<div class="step"><b>①</b><div>48.62 g Mg ÷ 24.31 g/mol = 2.000 mol Mg</div></div>
-<div class="step"><b>②</b><div>2.000 mol Mg × (2 mol MgO / 2 mol Mg) = 2.000 mol MgO</div></div>
-<div class="step"><b>③</b><div>2.000 mol MgO × 40.31 g/mol = <span class="ans">80.62 g MgO</span></div></div>
-<p class="sm">All in one line:</p><div class="fx" style="font-size:.95em">48.62 <span class="cx">g Mg</span> × <span class="fr"><span>1 <span class="cx">mol Mg</span></span><span>24.31 <span class="cx">g Mg</span></span></span> × <span class="fr"><span>2 <span class="cx">mol MgO</span></span><span>2 <span class="cx">mol Mg</span></span></span> × <span class="fr"><span>40.31 g MgO</span><span>1 <span class="cx">mol MgO</span></span></span></div></div>
-<div><div data-ref="mm"></div><div class="do"><b>You can never go grams → grams directly.</b> Always go through moles: g → mol → mol → g.</div></div></div></section>
+<section><span class="tag">Phase changes</span><h2>Vaporization: liquid → gas</h2>
+<p><b>Vaporization</b> = a liquid (or solid) changes into a gas. Two kinds: <b>evaporation</b> (at the surface, any temperature) and <b>boiling</b> (bubbles inside, at the boiling point).</p>
+<div class="split pp"><div data-pred="sweat"></div><div data-play="evap"></div></div></section>
 
-<section><span class="tag">Skill practice 2</span><h2>Bonus: gas volume at STP</h2><div class="split"><div>
-<p>At <b>STP</b> (standard temperature and pressure: 0 °C and 1 atm), <b>1 mol of any gas = 22.4 L</b>.</p>
-<div class="vgrid"><div class="vc"><div class="emo">🎈</div><b>1 mol O₂</b><span>22.4 L</span></div><div class="vc"><div class="emo">🎈</div><b>1 mol CO₂</b><span>22.4 L</span></div><div class="vc"><div class="emo">🎈🎈</div><b>2 mol H₂</b><span>44.8 L</span></div></div>
-<p class="fx">moles of gas × <span class="fr"><span>22.4 L</span><span>1 mol</span></span> = litres at STP</p>
-<h3>Example</h3><p>2HgO → 2Hg + O₂. What volume of O₂ at STP forms from <b>15.0 g HgO</b>?</p>
-<div class="fx" style="font-size:.95em">15.0 <span class="cx">g HgO</span> × <span class="fr"><span>1 <span class="cx">mol HgO</span></span><span>216.59 <span class="cx">g</span></span></span> × <span class="fr"><span>1 <span class="cx">mol O₂</span></span><span>2 <span class="cx">mol HgO</span></span></span> × <span class="fr"><span>22.4 L</span><span>1 <span class="cx">mol</span></span></span> = <span class="ans">0.776 L O₂</span></div></div>
-<div><div data-ref="mm"></div></div></div></section>
+<section><span class="tag">Phase changes</span><h2>Boiling point and air pressure</h2>
+<div data-pred="altitude"></div>
+<div class="grid after"><div><h3>🏔️ High mountain</h3><p>Less air pressure → water boils <b>below</b> 100 °C. Food cooks slower.</p></div><div><h3>🍲 Pressure cooker</h3><p>Higher pressure inside → water boils <b>above</b> 100 °C (about 120 °C). Food cooks faster.</p></div><div><h3>📏 Normal boiling point</h3><p>The boiling point at <b>1 atm</b>. Water: 100 °C.</p></div></div></section>
 
-<section><div class="nbp"><div class="nbt">&#9998; Notebook page 5 · Mass → mole, mass → mass</div>
-<ul><li>Mass → mole: <b>g A ÷ molar mass A → mol A → × mole ratio → mol B</b></li>
-<li>Mass → mass: <b>g A → mol A → mol B → g B</b> (3 steps ① ② ③)</li>
-<li>Never go grams → grams directly. Always go through moles.</li>
-<li>Gas at STP: <b>1 mol = 22.4 L</b>. Moles × 22.4 = litres.</li>
-<li>Example: 48.62 g Mg → 2.000 mol Mg → 2.000 mol MgO → <b>80.62 g MgO</b></li></ul></div><div data-timer="5"></div></section>
+<section><span class="tag">Phase changes</span><h2>Freezing, melting and sublimation</h2>
+<div class="vgrid">
+<div class="vc"><div class="emo">💧➡️🧊</div><b>Freezing</b><span>liquid → solid. RELEASES energy. Particles slow down and lock into place. Water freezes at 0 °C.</span></div>
+<div class="vc"><div class="emo">🧊➡️💧</div><b>Melting</b><span>solid → liquid. ABSORBS energy. Melting point = freezing point for a pure substance.</span></div>
+<div class="vc"><div class="emo">🧊➡️♨️</div><b>Sublimation</b><span>solid → gas directly. Dry ice (CO₂), snow disappearing on a cold sunny day.</span></div>
+<div class="vc"><div class="emo">♨️➡️❄️</div><b>Deposition</b><span>gas → solid directly. Frost on a window.</span></div></div>
+<div class="do"><b>Real life:</b> farmers spray water on fruit trees on frosty nights. As the water freezes it RELEASES energy, which keeps the fruit from freezing.</div></section>
+
+<section><span class="tag">Phase changes</span><h2>Heating curve of water</h2><div class="split pp"><div data-pred="plateau"></div><div data-play="heat"></div></div></section>
+
+<section><div class="nbg"><div class="nbp"><div class="nbt">&#9998; Notebook page 4 · Phase changes</div>
+<ul><li><b>Vaporization</b>: liquid → gas (absorbs energy). Evaporation = at the surface. Boiling = vapor pressure = air pressure.</li>
+<li>Evaporation cools: fastest particles leave.</li>
+<li>Lower air pressure → lower boiling point.</li>
+<li><b>Freezing</b>: liquid → solid (releases energy). <b>Melting</b>: solid → liquid (absorbs).</li>
+<li><b>Sublimation</b>: solid → gas. <b>Deposition</b>: gas → solid.</li>
+<li>During a phase change, temperature stays the same.</li></ul></div>
+<div class="nbv"><b>✏️ Draw this</b><svg class="pls" viewBox="0 0 360 220" role="img" aria-label="Heating curve sketch"><path d="M30 190 L60 160 L110 160 L150 80 L280 80 L320 40" fill="none" stroke="var(--g)" stroke-width="5"/><line x1="25" y1="200" x2="340" y2="200" stroke="var(--ink)" stroke-width="2"/><line x1="25" y1="20" x2="25" y2="200" stroke="var(--ink)" stroke-width="2"/><text x="85" y="150" class="zs2">melt 0 °C</text><text x="215" y="70" class="zs2">boil 100 °C</text><text x="180" y="215" class="zs2">energy →</text></svg></div></div>
+<div data-timer="5"></div></section>
 
 <section data-act="A8"></section>
 
-<section><span class="tag">Objective 9</span><h2>Limiting reactants: the sandwich shop</h2>
-<p>Recipe: <b>2 bread + 1 cheese → 1 sandwich</b>. Move the sliders.</p>
-<div data-ref="sandwich"></div>
-<div class="grid"><div><h3>Limiting reactant</h3><p>The reactant that is <b>used up first</b>. It <b>limits</b> (stops) the amount of product.</p></div><div><h3>Excess reactant</h3><p>The reactant that is <b>left over</b> when the reaction stops.</p></div></div>
-<div class="do"><b>The limiting reactant is not always the one with less!</b> You must compare using the recipe (the mole ratio).</div></section>
+<section><span class="tag">Water</span><h2>The structure of water</h2><div class="split pp"><div data-pred="icefloat"></div><div data-play="ice"></div></div></section>
 
-<section><span class="tag">Objective 9</span><h2>How to find the limiting reactant</h2>
-<div class="split"><div><h3>Method: "Which makes less product?"</h3>
-<div class="step"><b>1</b><div>Change both reactants to <b>moles</b> (if given in grams).</div></div>
-<div class="step"><b>2</b><div>For <b>each</b> reactant, calculate the moles of product it could make.</div></div>
-<div class="step"><b>3</b><div>The reactant that makes the <b>smaller</b> amount is the <b>limiting reactant</b>. That smaller amount is the answer.</div></div>
-<h3>Molecule view: 2H₂ + O₂ → 2H₂O</h3><div data-ref="h2o"></div></div>
-<div><h3>Example</h3><p>2H₂ + O₂ → 2H₂O with <b>4.0 mol H₂</b> and <b>3.0 mol O₂</b>.</p>
-<div class="fx">4.0 mol H₂ × <span class="fr"><span>2 mol H₂O</span><span>2 mol H₂</span></span> = <b>4.0 mol H₂O</b></div>
-<div class="fx">3.0 mol O₂ × <span class="fr"><span>2 mol H₂O</span><span>1 mol O₂</span></span> = 6.0 mol H₂O</div>
-<p><b>H₂</b> makes less → H₂ is <b>limiting</b>. O₂ is in excess. Product = <span class="ans">4.0 mol H₂O</span></p>
-<p>Excess left: H₂ uses 4.0 × (1/2) = 2.0 mol O₂. 3.0 − 2.0 = <b>1.0 mol O₂ left over</b>.</p></div></div></section>
+<section><span class="tag">Water</span><h2>Properties of water come from hydrogen bonds</h2>
+<div class="vgrid">
+<div class="vc"><div class="emo">🌡️⬆️</div><b>High boiling point</b><span>100 °C. Similar molecules with no H-bonds (H₂S) boil at about −60 °C.</span></div>
+<div class="vc"><div class="emo">🧊🔝</div><b>Ice floats</b><span>ice 0.917 g/cm³ &lt; water 1.00 g/cm³</span></div>
+<div class="vc"><div class="emo">🦟💧</div><b>High surface tension</b><span>strong attractions at the surface</span></div>
+<div class="vc"><div class="emo">♨️⚡</div><b>Lots of energy to vaporize</b><span>many H-bonds must be broken</span></div></div></section>
 
-<section><span class="tag">Objective 10</span><h2>Limiting reactant with masses</h2><div class="split"><div>
-<p>2Na + Cl₂ → 2NaCl. You have <b>46.0 g Na</b> and <b>50.0 g Cl₂</b>. What mass of NaCl forms?</p>
-<div class="step"><b>1</b><div>Moles: 46.0 g ÷ 22.99 = <b>2.00 mol Na</b> · 50.0 g ÷ 70.90 = <b>0.705 mol Cl₂</b></div></div>
-<div class="step"><b>2</b><div>Na: 2.00 mol × (2 mol NaCl / 2 mol Na) = 2.00 mol NaCl<br>Cl₂: 0.705 mol × (2 mol NaCl / 1 mol Cl₂) = <b>1.41 mol NaCl</b></div></div>
-<div class="step"><b>3</b><div>Cl₂ makes less → <b>Cl₂ is limiting</b>, Na is in excess.</div></div>
-<div class="step"><b>4</b><div>Mass: 1.41 mol × 58.44 g/mol = <span class="ans">82.4 g NaCl</span></div></div>
-<div class="do"><b>Notice:</b> there were more grams of Cl₂ (50.0 g) than Na (46.0 g), but Cl₂ is still limiting. Always compare in moles!</div></div>
-<div><div data-ref="mm"></div></div></div></section>
+<section><span class="tag">Water</span><h2>Energy for phase changes</h2>
+<div class="split"><div><div class="fx" style="font-size:1.5em">q = n × ΔH</div><ul><li>q = energy (kJ) · n = moles</li><li><b>ΔH<sub>fus</sub></b> (molar enthalpy of fusion) = energy to MELT 1 mol = <b>6.009 kJ/mol</b></li><li><b>ΔH<sub>vap</sub></b> (molar enthalpy of vaporization) = energy to VAPORIZE 1 mol = <b>40.79 kJ/mol</b></li><li>Freezing and condensing RELEASE the same amounts.</li></ul></div>
+<div><h3>Example 1: moles</h3><p>How much energy is needed to melt <b>3.00 mol</b> of ice?</p>
+<div class="step"><b>1</b><div>Melting → use ΔH<sub>fus</sub></div></div>
+<div class="step"><b>2</b><div class="fx">3.00 <span class="cx">mol</span> × <span class="fr"><span>6.009 kJ</span><span>1 <span class="cx">mol</span></span></span> = <span class="ans">18.0 kJ</span></div></div>
+<h3>Try it together</h3><p>Energy released when <b>1.50 mol</b> of water freezes?</p><details><summary>Show answer</summary><div class="fx">1.50 <span class="cx">mol</span> × <span class="fr"><span>6.009 kJ</span><span>1 <span class="cx">mol</span></span></span> = <span class="ans">9.01 kJ released</span></div></details></div></div></section>
 
-<section><div class="nbp"><div class="nbt">&#9998; Notebook page 6 · Limiting reactants</div>
-<ul><li><b>Limiting reactant</b>: used up first; decides how much product forms.</li>
-<li><b>Excess reactant</b>: some is left over.</li>
-<li>Method: (1) change to moles, (2) calculate product from <b>each</b> reactant, (3) the <b>smaller</b> product amount wins; that reactant is limiting.</li>
-<li>Example: 2Na + Cl₂ → 2NaCl, 46.0 g Na and 50.0 g Cl₂ → Cl₂ limiting → <b>82.4 g NaCl</b>.</li>
-<li>Compare in <b>moles</b>, never in grams.</li></ul></div><div data-timer="5"></div></section>
+<section><span class="tag">Water</span><h2>Energy for phase changes: starting with grams</h2>
+<div class="split"><div><h3>Example 2</h3><p>How much energy is needed to vaporize <b>45.0 g</b> of water? (H₂O = 18.02 g/mol)</p>
+<div class="step"><b>1</b><div>Grams → moles: <div class="fx">45.0 <span class="cx">g</span> × <span class="fr"><span>1 mol</span><span>18.02 <span class="cx">g</span></span></span> = 2.497 mol</div></div></div>
+<div class="step"><b>2</b><div>Vaporizing → use ΔH<sub>vap</sub>: <div class="fx">2.497 <span class="cx">mol</span> × <span class="fr"><span>40.79 kJ</span><span>1 <span class="cx">mol</span></span></span> = <span class="ans">102 kJ</span></div></div></div></div>
+<div><h3>Which ΔH do I use?</h3><div class="wrap"><table><tr><th>Change</th><th>ΔH</th><th>Energy</th></tr><tr><td>🧊→💧 melting</td><td>6.009</td><td>absorbed</td></tr><tr><td>💧→🧊 freezing</td><td>6.009</td><td>released</td></tr><tr><td>💧→♨️ vaporizing</td><td>40.79</td><td>absorbed</td></tr><tr><td>♨️→💧 condensing</td><td>40.79</td><td>released</td></tr></table></div>
+<h3>Try it together</h3><p>Energy to vaporize <b>36.04 g</b> of water?</p><details><summary>Show answer</summary><div class="fx">36.04 g ÷ 18.02 = 2.000 mol × 40.79 = <span class="ans">81.6 kJ</span></div></details></div></div></section>
+
+<section><div class="nbg"><div class="nbp"><div class="nbt">&#9998; Notebook page 5 · Water</div>
+<ul><li>Water is polar → <b>hydrogen bonds</b>.</li>
+<li>Ice: open hexagonal pattern → less dense → floats.</li>
+<li>H-bonds → high boiling point, high surface tension, lots of energy to vaporize.</li>
+<li><b>q = n × ΔH</b>. ΔH<sub>fus</sub> = 6.009 kJ/mol. ΔH<sub>vap</sub> = 40.79 kJ/mol.</li>
+<li>Grams → ÷ 18.02 → moles → × ΔH → kJ.</li></ul></div>
+<div class="nbv"><b>✏️ Draw this</b><svg class="pls" viewBox="0 0 360 200" role="img" aria-label="Water molecules sketch"><g transform="translate(110 100) scale(1.6)"><circle cx="-13" cy="10" r="8" fill="#f2f2f2" stroke="#666"/><circle cx="13" cy="10" r="8" fill="#f2f2f2" stroke="#666"/><circle cx="0" cy="0" r="14" fill="#d1495b"/></g><g transform="translate(260 110) rotate(200) scale(1.6)"><circle cx="-13" cy="10" r="8" fill="#f2f2f2" stroke="#666"/><circle cx="13" cy="10" r="8" fill="#f2f2f2" stroke="#666"/><circle cx="0" cy="0" r="14" fill="#d1495b"/></g><line x1="135" y1="120" x2="235" y2="112" stroke="var(--blue)" stroke-width="3" stroke-dasharray="6 5"/><text x="185" y="160" class="zl2">hydrogen bond</text><text x="110" y="60" class="zs2">δ− O</text><text x="80" y="150" class="zs2">δ+ H</text></svg></div></div>
+<div data-timer="5"></div></section>
 
 <section data-act="A9"></section>
-<section><h2>Break: 10 minutes</h2><p>Stretch and drink water. Next: percentage yield.</p></section>
 
-<section><span class="tag">Objective 11</span><h2>Theoretical, actual and percentage yield</h2>
-<div data-ref="popcorn"></div>
-<div class="grid"><div><h3>Theoretical yield</h3><p>The <b>maximum</b> amount of product that <b>can</b> form, calculated from the limiting reactant (with stoichiometry).</p></div>
-<div><h3>Actual yield</h3><p>The amount of product you <b>really</b> get in the lab (measured). Usually <b>less</b> than the theoretical yield.</p></div>
-<div><h3>Percentage yield</h3><p>Compares actual to theoretical:<br><span class="fx">% yield = <span class="fr"><span>actual yield</span><span>theoretical yield</span></span> × 100</span></p></div></div>
-<p><b>Why is actual yield smaller?</b> Some product is lost (spilled, stuck to glass), reactions do not finish, impure reactants, side reactions make other products.</p></section>
+<section><span class="tag">Pressure</span><h2>What is pressure?</h2>
+<div class="split"><div><div class="fx" style="font-size:1.4em">pressure = <span class="fr"><span>force</span><span>area</span></span></div><ul><li>Gas particles hit the walls of their container. Each hit pushes. All the pushes together = <b>gas pressure</b>.</li><li>The air above us pushes down: <b>atmospheric pressure</b>. Higher up (mountains) → less air above → lower pressure.</li><li>A <b>barometer</b> measures atmospheric pressure. At sea level, air pushes mercury up a tube about <b>760 mm</b>.</li></ul></div>
+<div><svg class="pls" viewBox="0 0 360 300" role="img" aria-label="Mercury barometer"><rect x="40" y="220" width="280" height="60" fill="#9aa3a8" stroke="var(--ink)" stroke-width="2"/><rect x="160" y="20" width="40" height="250" fill="none" stroke="var(--ink)" stroke-width="3"/><rect x="163" y="60" width="34" height="210" fill="#9aa3a8"/><line x1="215" y1="60" x2="215" y2="220" stroke="var(--a)" stroke-width="2"/><text x="270" y="140" class="zl2">760 mm Hg</text><path d="M70 160 v50 M110 160 v50 M250 160 v50 M290 160 v50" stroke="var(--blue)" stroke-width="3"/><text x="90" y="150" class="zs2">air pushes</text><text x="180" y="45" class="zs2">vacuum</text></svg></div></div></section>
 
-<section><span class="tag">Objective 12</span><h2>Calculating percentage yield</h2><div class="split"><div>
-<p>CaCO₃ → CaO + CO₂. A student heats <b>100.09 g CaCO₃</b> and gets <b>50.0 g CaO</b>. What is the percentage yield?</p>
-<div class="step"><b>1</b><div>Theoretical yield (mass → mass):<br>100.09 g ÷ 100.09 g/mol = 1.000 mol CaCO₃ → 1.000 mol CaO → × 56.08 = <b>56.08 g CaO</b></div></div>
-<div class="step"><b>2</b><div>Actual yield = <b>50.0 g</b> (given)</div></div>
-<div class="step"><b>3</b><div class="fx">% yield = <span class="fr"><span>50.0 g</span><span>56.08 g</span></span> × 100 = <span class="ans">89.2%</span></div></div></div>
-<div><div data-ref="ybars"></div><div data-ref="mm"></div></div></div></section>
+<section><span class="tag">Pressure</span><h2>Units of pressure and STP</h2><div data-ref="press"></div>
+<div class="split"><div><h3>Example: atm → kPa</h3><p>Convert <b>1.75 atm</b> to kPa.</p><div class="fx">1.75 <span class="cx">atm</span> × <span class="fr"><span>101.325 kPa</span><span>1 <span class="cx">atm</span></span></span> = <span class="ans">177 kPa</span></div></div>
+<div><h3>Example: mm Hg → atm</h3><p>Convert <b>650 mm Hg</b> to atm.</p><div class="fx">650 <span class="cx">mm Hg</span> × <span class="fr"><span>1 atm</span><span>760 <span class="cx">mm Hg</span></span></span> = <span class="ans">0.855 atm</span></div>
+<h3>Try it together</h3><p>Convert <b>50.0 kPa</b> to mm Hg.</p><details><summary>Show answer</summary><div class="fx">50.0 <span class="cx">kPa</span> × <span class="fr"><span>760 mm Hg</span><span>101.325 <span class="cx">kPa</span></span></span> = <span class="ans">375 mm Hg</span></div></details></div></div></section>
 
-<section><div class="nbp"><div class="nbt">&#9998; Notebook page 7 · Yield</div>
-<ul><li><b>Theoretical yield</b> = maximum product, calculated from the limiting reactant.</li>
-<li><b>Actual yield</b> = product really measured in the lab.</li>
-<li><b>% yield = (actual ÷ theoretical) × 100</b></li>
-<li>Actual is usually less: product lost, reaction not complete, side reactions, impure reactants.</li>
-<li>Example: theoretical 56.08 g CaO, actual 50.0 g → <b>89.2%</b></li></ul></div><div data-timer="5"></div></section>
+<section><div class="nbg"><div class="nbp"><div class="nbt">&#9998; Notebook page 6 · Pressure</div>
+<ul><li>Pressure = force ÷ area. Gas pressure = particles hitting walls.</li>
+<li><b>1 atm = 760 mm Hg = 760 torr = 101.325 kPa</b></li>
+<li><b>STP = 0 °C (273 K) and 1 atm</b></li>
+<li>K = °C + 273</li>
+<li>Convert with a fraction: the unit you HAVE on the bottom.</li></ul></div>
+<div class="nbv"><b>✏️ Draw this</b><svg class="pls" viewBox="0 0 360 180" role="img" aria-label="Pressure units sketch"><rect x="20" y="20" width="320" height="140" rx="12" fill="var(--panel)" stroke="var(--g)" stroke-width="2"/><text x="180" y="60" class="zl2">1 atm</text><text x="80" y="110" class="zl2">760 mm Hg</text><text x="180" y="110" class="zl2">760 torr</text><text x="285" y="110" class="zl2">101.325 kPa</text><text x="180" y="145" class="zs2">all equal!</text></svg></div></div>
+<div data-timer="4"></div></section>
 
 <section data-act="A10"></section>
+
+<section><span class="tag">Dalton's law</span><h2>Dalton's law of partial pressures</h2>
+<div class="split"><div><p>In a mixture, each gas pushes on its own: its <b>partial pressure</b>. The total pressure is the sum.</p><div class="fx" style="font-size:1.4em">P<sub>T</sub> = P₁ + P₂ + P₃ + …</div>
+<h3>Example</h3><p>He 0.40 atm, Ne 0.25 atm, Ar 0.35 atm. Total?</p><div class="fx">0.40 + 0.25 + 0.35 = <span class="ans">1.00 atm</span></div></div>
+<div><svg class="pls" viewBox="0 0 360 200" role="img" aria-label="Partial pressures add"><rect x="10" y="40" width="80" height="80" rx="6" fill="none" stroke="var(--ink)" stroke-width="2"/><circle cx="35" cy="65" r="6" fill="#1d7a8c"/><circle cx="65" cy="95" r="6" fill="#1d7a8c"/><text x="50" y="140" class="zs2">0.40 atm</text><text x="105" y="85" class="zl2">+</text><rect x="120" y="40" width="80" height="80" rx="6" fill="none" stroke="var(--ink)" stroke-width="2"/><circle cx="160" cy="80" r="6" fill="#b06a0c"/><text x="160" y="140" class="zs2">0.25 atm</text><text x="215" y="85" class="zl2">=</text><rect x="230" y="40" width="80" height="80" rx="6" fill="none" stroke="var(--ink)" stroke-width="2"/><circle cx="255" cy="65" r="6" fill="#1d7a8c"/><circle cx="285" cy="95" r="6" fill="#1d7a8c"/><circle cx="270" cy="80" r="6" fill="#b06a0c"/><text x="270" y="140" class="zs2">0.65 atm</text></svg></div></div></section>
+
+<section><span class="tag">Dalton's law</span><h2>Collecting a gas over water</h2><div class="split pp"><div><div data-ref="dalton"></div><h3>Example</h3><p>O₂ collected over water at 25 °C. Total = 99.5 kPa.</p><div class="fx">P<sub>O₂</sub> = 99.5 − 3.17 = <span class="ans">96.3 kPa</span></div></div><div data-play="collect"></div></div></section>
+
 <section data-act="A11"></section>
 <section data-act="A12"></section>
 
-<section><h2>Module 6 summary</h2><div data-ref="map"></div><div class="grid">
-<div><h3>Mole ratio</h3><p>From the coefficients. Wanted on top, given on the bottom.</p></div>
-<div><h3>Calculations</h3><p>g → mol (÷ molar mass) · mol → mol (× ratio) · mol → g (× molar mass)</p></div>
-<div><h3>Limiting reactant</h3><p>Makes the least product. Compare in moles.</p></div>
-<div><h3>Yield</h3><p>% yield = actual ÷ theoretical × 100</p></div></div>
-<p>Review notebook pages 1–7 before the assessment.</p></section>
+<!-- ================= CLASS 3 ================= -->
+<section><span class="tag">Chemistry · Module 7</span><h1>The gas laws</h1><h2>Class 3 (2.5 hours)</h2>
+<p>By the end of today you can: use the KMT to explain how P, V and T are related; use Boyle's, Charles's, Gay-Lussac's and the combined gas law; state the law of combining volumes and Avogadro's law; use the ideal gas law.</p>
+<div class="wrap"><table><tr><th>Block</th><th>Minutes</th></tr>
+<tr><td>Join + warm-up (A13)</td><td>8</td></tr>
+<tr><td>P, V and T with the simulator · predictions</td><td>15</td></tr>
+<tr><td>Boyle, Charles, Gay-Lussac · A14</td><td>40</td></tr>
+<tr><td>Combined gas law · A15</td><td>15</td></tr>
+<tr><td>Break</td><td>10</td></tr>
+<tr><td>Combining volumes, Avogadro · A16</td><td>20</td></tr>
+<tr><td>Ideal gas law · A17</td><td>25</td></tr>
+<tr><td>Visual review + A18</td><td>17</td></tr></table></div></section>
+
+<section data-join></section>
+<section data-act="A13"></section>
+
+<section><span class="tag">Gas laws</span><h2>Predict, then test with the simulator</h2>
+<div class="split"><div><div data-pred="syringe"></div><div data-pred="balloon"></div></div><div><div data-ix="gasbox"></div></div></div></section>
+
+<section><span class="tag">Gas laws</span><h2>Boyle's law: pressure and volume</h2>
+<div class="split"><div><p>At <b>constant temperature</b>, volume ↓ → pressure ↑ (inversely proportional).</p><div class="fx" style="font-size:1.4em">P₁V₁ = P₂V₂</div><p class="sm">Why? Same particles in less space → more hits on the walls. Examples: 💉 pushing a syringe; 🤿 air bubbles get BIGGER as they rise in water (less pressure on them).</p>
+<h3>Example</h3><p>2.40 L of gas at 98.0 kPa is compressed to 1.20 L. New pressure?</p>
+<div class="fx">P₂ = <span class="fr"><span>P₁V₁</span><span>V₂</span></span> = <span class="fr"><span>98.0 kPa × 2.40 <span class="cx">L</span></span><span>1.20 <span class="cx">L</span></span></span> = <span class="ans">196 kPa</span></div></div>
+<div><svg class="pls" viewBox="0 0 360 260" role="img" aria-label="Boyle graph"><line x1="50" y1="220" x2="340" y2="220" class="ax"/><line x1="50" y1="20" x2="50" y2="220" class="ax"/><path d="M70 30 Q110 170 330 200" fill="none" stroke="var(--g)" stroke-width="5"/><text x="195" y="250" class="zl2">Volume →</text><text x="22" y="120" class="zl2" transform="rotate(-90 22 120)">Pressure →</text><text x="240" y="160" class="zs2">V ↓ P ↑</text></svg></div></div></section>
+
+<section><span class="tag">Gas laws</span><h2>Charles's law: volume and temperature</h2>
+<div class="split"><div><p>At <b>constant pressure</b>, temperature ↑ → volume ↑ (directly proportional). <b>Temperature must be in kelvin!</b> Examples: 🎈 a balloon shrinks in the freezer; 🔥 air in a hot-air balloon expands when heated.</p><div class="fx" style="font-size:1.4em"><span class="fr"><span>V₁</span><span>T₁</span></span> = <span class="fr"><span>V₂</span><span>T₂</span></span></div>
+<h3>Example</h3><p>2.00 L of gas at 27 °C is heated to 177 °C. New volume?</p>
+<div class="step"><b>1</b><div>T₁ = 27 + 273 = 300 K · T₂ = 177 + 273 = 450 K</div></div>
+<div class="step"><b>2</b><div class="fx">V₂ = <span class="fr"><span>V₁T₂</span><span>T₁</span></span> = <span class="fr"><span>2.00 L × 450 <span class="cx">K</span></span><span>300 <span class="cx">K</span></span></span> = <span class="ans">3.00 L</span></div></div></div>
+<div><svg class="pls" viewBox="0 0 360 260" role="img" aria-label="Charles graph to absolute zero"><line x1="30" y1="220" x2="340" y2="220" class="ax"/><line x1="200" y1="20" x2="200" y2="220" class="gl"/><line x1="40" y1="220" x2="330" y2="40" stroke="var(--g)" stroke-width="5" stroke-dasharray="0"/><line x1="40" y1="220" x2="150" y2="152" stroke="var(--bg)" stroke-width="5" stroke-dasharray="6 6"/><circle cx="40" cy="220" r="7" fill="var(--a)"/><text x="60" y="245" class="zs2">−273 °C = 0 K</text><text x="200" y="245" class="zs2">0 °C</text><text x="180" y="15" class="zl2">Volume vs temperature</text><text x="270" y="140" class="zs2">T ↑ V ↑</text></svg><p class="sm">The line points to <b>absolute zero</b> (0 K = −273 °C), where gas volume would be zero.</p></div></div></section>
+
+<section><span class="tag">Gas laws</span><h2>Gay-Lussac's law: pressure and temperature</h2>
+<div class="split"><div><p>At <b>constant volume</b>, temperature ↑ → pressure ↑ (directly proportional). Examples: 🥫 a spray can in a fire; 🚗 tire pressure rises after a long drive.</p><div class="fx" style="font-size:1.4em"><span class="fr"><span>P₁</span><span>T₁</span></span> = <span class="fr"><span>P₂</span><span>T₂</span></span></div>
+<h3>Example</h3><p>A gas at 1.20 atm and 22 °C is heated to 85 °C. New pressure?</p>
+<div class="fx">P₂ = <span class="fr"><span>1.20 atm × 358 <span class="cx">K</span></span><span>295 <span class="cx">K</span></span></span> = <span class="ans">1.46 atm</span></div></div>
+<div><div data-pred="aerosol"></div></div></div></section>
+
+<section><div class="nbg"><div class="nbp"><div class="nbt">&#9998; Notebook page 7 · Gas laws</div>
+<ul><li><b>Boyle</b> (T constant): P₁V₁ = P₂V₂. V↓ P↑.</li>
+<li><b>Charles</b> (P constant): V₁/T₁ = V₂/T₂. T↑ V↑.</li>
+<li><b>Gay-Lussac</b> (V constant): P₁/T₁ = P₂/T₂. T↑ P↑.</li>
+<li>ALWAYS use kelvin: K = °C + 273.</li>
+<li>Absolute zero = 0 K = −273 °C.</li></ul></div>
+<div class="nbv"><b>✏️ Draw this</b><svg class="pls" viewBox="0 0 360 160" role="img" aria-label="Three laws sketch"><rect x="5" y="10" width="110" height="140" rx="10" fill="var(--panel)" stroke="var(--g)"/><rect x="125" y="10" width="110" height="140" rx="10" fill="var(--panel)" stroke="var(--g)"/><rect x="245" y="10" width="110" height="140" rx="10" fill="var(--panel)" stroke="var(--g)"/><text x="60" y="55" font-size="34" text-anchor="middle">💉</text><text x="180" y="55" font-size="34" text-anchor="middle">🎈</text><text x="300" y="55" font-size="34" text-anchor="middle">🥫</text><text x="60" y="95" class="zl2">Boyle</text><text x="180" y="95" class="zl2">Charles</text><text x="300" y="95" class="zl2">Gay-Lussac</text><text x="60" y="125" class="zs2">PV const.</text><text x="180" y="125" class="zs2">V/T const.</text><text x="300" y="125" class="zs2">P/T const.</text></svg></div></div>
+<div data-timer="5"></div></section>
+
+<section data-act="A14"></section>
+
+<section><span class="tag">Gas laws</span><h2>The combined gas law</h2>
+<div class="split"><div><p>When P, V and T all change, use:</p><div class="fx" style="font-size:1.5em"><span class="fr"><span>P₁V₁</span><span>T₁</span></span> = <span class="fr"><span>P₂V₂</span><span>T₂</span></span></div><p class="sm">If one quantity stays the same, cross it out: you get Boyle, Charles or Gay-Lussac.</p></div>
+<div><h3>Example</h3><p>1.00 L of gas at 25 °C and 100. kPa. What is the volume at STP (0 °C, 101.3 kPa)?</p>
+<div class="step"><b>1</b><div>T₁ = 298 K, T₂ = 273 K</div></div>
+<div class="step"><b>2</b><div class="fx">V₂ = <span class="fr"><span>P₁V₁T₂</span><span>T₁P₂</span></span> = <span class="fr"><span>100. × 1.00 L × 273</span><span>298 × 101.3</span></span> = <span class="ans">0.904 L</span></div></div>
+<div class="do"><b>Tip:</b> write a table: P₁ V₁ T₁ | P₂ V₂ T₂. Put a ? on the unknown.</div></div></div></section>
+
+<section data-act="A15"></section>
+
+<section><span class="tag">Volumes and moles</span><h2>The law of combining volumes</h2>
+<p>At the same T and P, the volumes of gases in a reaction are in <b>small whole-number ratios</b>: the same as the coefficients.</p>
+<svg class="pls" viewBox="0 0 720 200" role="img" aria-label="2 H2 + O2 makes 2 H2O"><rect x="20" y="40" width="110" height="110" rx="8" fill="none" stroke="var(--ink)" stroke-width="2.5"/><rect x="145" y="40" width="110" height="110" rx="8" fill="none" stroke="var(--ink)" stroke-width="2.5"/><text x="275" y="105" class="zl2" style="font-size:30px">+</text><rect x="300" y="40" width="110" height="110" rx="8" fill="none" stroke="var(--ink)" stroke-width="2.5"/><text x="440" y="105" class="zl2" style="font-size:30px">→</text><rect x="470" y="40" width="110" height="110" rx="8" fill="none" stroke="var(--ink)" stroke-width="2.5"/><rect x="595" y="40" width="110" height="110" rx="8" fill="none" stroke="var(--ink)" stroke-width="2.5"/><text x="137" y="180" class="zl2">2 L H₂</text><text x="355" y="180" class="zl2">1 L O₂</text><text x="587" y="180" class="zl2">2 L H₂O(g)</text><text x="75" y="105" class="zl2">1 L</text><text x="200" y="105" class="zl2">1 L</text><text x="355" y="105" class="zl2">1 L</text><text x="525" y="105" class="zl2">1 L</text><text x="650" y="105" class="zl2">1 L</text></svg>
+<div class="split"><div><h3>Example</h3><p>CH₄(g) + 2O₂(g) → CO₂(g) + 2H₂O(g). How many L of O₂ react with 5.0 L of CH₄?</p><div class="fx">5.0 <span class="cx">L CH₄</span> × <span class="fr"><span>2 L O₂</span><span>1 <span class="cx">L CH₄</span></span></span> = <span class="ans">10. L O₂</span></div></div><div><div data-pred="avogp"></div></div></div></section>
+
+<section><span class="tag">Volumes and moles</span><h2>Avogadro's law and molar volume</h2>
+<div class="split"><div><p><b>Avogadro's law:</b> equal volumes of gases at the same T and P contain <b>equal numbers of molecules</b>. So V ∝ n: double the moles → double the volume.</p>
+<p><b>Why it matters:</b> it explains the law of combining volumes, and it lets us count molecules by measuring volume.</p>
+<div class="fx" style="font-size:1.3em">1 mol of ANY gas at STP = <b>22.4 L</b></div>
+<h3>Example</h3><p>Volume of 3.50 mol of N₂ at STP?</p><div class="fx">3.50 <span class="cx">mol</span> × <span class="fr"><span>22.4 L</span><span>1 <span class="cx">mol</span></span></span> = <span class="ans">78.4 L</span></div></div>
+<div><svg class="pls" viewBox="0 0 360 260" role="img" aria-label="22.4 L cube"><path d="M80 90 L180 50 L300 90 L200 130Z" fill="color-mix(in srgb,var(--g) 30%,var(--bg))" stroke="var(--ink)" stroke-width="2"/><path d="M80 90 V210 L200 250 V130Z" fill="color-mix(in srgb,var(--g) 20%,var(--bg))" stroke="var(--ink)" stroke-width="2"/><path d="M200 130 V250 L300 210 V90Z" fill="color-mix(in srgb,var(--g) 40%,var(--bg))" stroke="var(--ink)" stroke-width="2"/><text x="190" y="30" class="zl2">22.4 L (about 28 cm on each side)</text><text x="140" y="180" class="zl2">1 mol</text><text x="250" y="180" class="zs2">6.02 × 10²³</text><text x="250" y="198" class="zs2">molecules</text></svg></div></div></section>
+
+<section><div class="nbg"><div class="nbp"><div class="nbt">&#9998; Notebook page 8 · Volumes and moles</div>
+<ul><li><b>Combined gas law</b>: P₁V₁/T₁ = P₂V₂/T₂.</li>
+<li><b>Law of combining volumes</b>: gas volumes in reactions = small whole-number ratios (the coefficients).</li>
+<li><b>Avogadro's law</b>: equal volumes, same T and P → equal numbers of molecules. V ∝ n.</li>
+<li>Molar volume at STP = <b>22.4 L/mol</b>.</li></ul></div>
+<div class="nbv"><b>✏️ Draw this</b><svg class="pls" viewBox="0 0 360 150" role="img" aria-label="Combining volumes sketch"><rect x="10" y="30" width="60" height="60" fill="none" stroke="var(--ink)" stroke-width="2"/><rect x="80" y="30" width="60" height="60" fill="none" stroke="var(--ink)" stroke-width="2"/><text x="155" y="68" class="zl2">+</text><rect x="170" y="30" width="60" height="60" fill="none" stroke="var(--ink)" stroke-width="2"/><text x="245" y="68" class="zl2">→</text><rect x="260" y="30" width="40" height="60" fill="none" stroke="var(--ink)" stroke-width="2"/><rect x="305" y="30" width="40" height="60" fill="none" stroke="var(--ink)" stroke-width="2"/><text x="75" y="115" class="zs2">2 H₂</text><text x="200" y="115" class="zs2">1 O₂</text><text x="302" y="115" class="zs2">2 H₂O</text><text x="180" y="142" class="zs2">2 : 1 : 2</text></svg></div></div>
+<div data-timer="4"></div></section>
+
+<section data-act="A16"></section>
+
+<section><span class="tag">Ideal gas law</span><h2>The ideal gas law</h2>
+<div class="split"><div><div class="fx" style="font-size:1.8em">PV = nRT</div><ul><li>P = pressure · V = volume (L) · n = moles · T = temperature (K)</li><li>R = <b>0.0821 L·atm/(mol·K)</b> when P is in atm</li><li>R = <b>8.314 L·kPa/(mol·K)</b> when P is in kPa</li><li>Use it when there is ONE set of conditions (no "1" and "2").</li></ul>
+<div class="do">It combines all the laws: Boyle (P ∝ 1/V), Charles (V ∝ T), Gay-Lussac (P ∝ T) and Avogadro (V ∝ n).</div></div>
+<div><h3>Example 1: find P</h3><p>2.00 mol of gas in 10.0 L at 300 K.</p><div class="fx">P = <span class="fr"><span>nRT</span><span>V</span></span> = <span class="fr"><span>2.00 × 0.0821 × 300</span><span>10.0</span></span> = <span class="ans">4.93 atm</span></div>
+<h3>Example 2: find n</h3><p>3.00 L of gas at 1.20 atm and 27 °C.</p><div class="fx">n = <span class="fr"><span>PV</span><span>RT</span></span> = <span class="fr"><span>1.20 × 3.00</span><span>0.0821 × 300</span></span> = <span class="ans">0.146 mol</span></div>
+<h3>Try it together</h3><p>Volume of 0.500 mol of gas at 1.00 atm and 273 K?</p><details><summary>Show answer</summary><div class="fx">V = 0.500 × 0.0821 × 273 ÷ 1.00 = <span class="ans">11.2 L</span> (half of 22.4 ✓)</div></details></div></div></section>
+
+<section><div class="nbg"><div class="nbp"><div class="nbt">&#9998; Notebook page 9 · Ideal gas law</div>
+<ul><li><b>PV = nRT</b></li><li>R = 0.0821 L·atm/(mol·K) or 8.314 L·kPa/(mol·K)</li><li>V in L, n in mol, T in K.</li><li>Solve: P = nRT/V · V = nRT/P · n = PV/RT · T = PV/nR</li><li>Grams? Change to moles first (÷ molar mass).</li></ul></div>
+<div class="nbv"><b>✏️ Draw this</b><svg class="pls" viewBox="0 0 360 180" role="img" aria-label="Ideal gas law triangle"><path d="M180 20 L330 160 H30Z" fill="var(--panel)" stroke="var(--g)" stroke-width="3"/><line x1="90" y1="104" x2="270" y2="104" stroke="var(--g)" stroke-width="3"/><line x1="180" y1="104" x2="180" y2="160" stroke="var(--g)" stroke-width="3"/><text x="180" y="80" class="zl2">P V</text><text x="125" y="140" class="zl2">n R</text><text x="235" y="140" class="zl2">T</text></svg></div></div>
+<div data-timer="4"></div></section>
+
+<section data-act="A17"></section>
+
+<section><h2>Module 7 visual review</h2>
+<div class="rv">
+<div><h3>🔵 KMT</h3><p>Tiny · elastic · random · no attraction · T = average KE</p></div>
+<div><h3>🎈 Gases</h3><p>expansion · fluidity · low density · compressible · diffusion · effusion</p></div>
+<div><h3>⚖️ Ideal vs real</h3><p>Real gases are least ideal at HIGH P and LOW T</p></div>
+<div><h3>🧊💧♨️ Phases</h3><p>KE vs attractions. Solid vibrates · liquid slides · gas flies</p></div>
+<div><h3>🔁 Phase changes</h3><p>melt/vaporize/sublime absorb · freeze/condense/deposit release</p></div>
+<div><h3>💧 Water</h3><p>H-bonds · ice floats · q = n × ΔH (6.009 / 40.79 kJ/mol)</p></div>
+<div><h3>📏 Pressure</h3><p>1 atm = 760 mm Hg = 101.325 kPa · STP = 0 °C, 1 atm · Dalton: P_T = sum</p></div>
+<div><h3>🧮 Gas laws</h3><p>P₁V₁/T₁ = P₂V₂/T₂ · PV = nRT · 22.4 L/mol at STP</p></div></div>
+<div class="split" style="margin-top:.8em"><div data-ref="heatS"></div><div data-ref="phasechg"></div></div></section>
+
+<section><div class="nbp"><div class="nbt">&#9998; Notebook page 10 · Module 7 one-page summary (copy the pictures too!)</div></div>
+<div class="split"><div data-ref="phases3"></div><div data-ref="laws"></div></div>
+<div class="split"><div data-ref="heatS"></div><div data-ref="igl"></div></div>
+<div data-timer="8"></div></section>
+
+<section data-act="A18"></section>
+
+<section><h2>Module 7 complete 🎉</h2><p class="big2">Review notebook pages 1–10. Practice the calculations: phase-change energy, pressure units, Dalton, gas laws, PV = nRT.</p><div data-ref="laws"></div></section>
 
 </main>
 <nav><button class="btn" id="bk" aria-label="Previous slide">Back</button><div class="bar"><i id="pb"></i></div><span id="n"></span><button class="btn alt" id="mbtn">Class monitor</button><button class="btn alt" id="svbtn">Student view</button><button class="btn" id="nx" aria-label="Next slide">Next</button></nav>
@@ -362,176 +509,337 @@ textarea,input[type=text]{width:100%;font:inherit;background:var(--bg);color:var
 <div id="stu"></div>
 <div id="boot" style="padding:40px;font-family:var(--head)">Loading…</div>
 <script>
-function fr(t,b){return '<span class="fr"><span>'+t+'</span><span>'+b+'</span></span>'}
-function smap(on){var B=[["Mass of A","grams (g)"],["Moles of A","mol"],["Moles of B","mol"],["Mass of B","grams (g)"]],S=[["÷ molar mass of A","①"],["× mole ratio","②"],["× molar mass of B","③"]],
- act=function(i){return on.indexOf(i)>=0},boxOn=function(k){return act(k)||act(k+1)},s='<svg class="dg" viewBox="0 0 760 170" role="img" aria-label="Stoichiometry map: mass of A, moles of A, moles of B, mass of B">';
- B.forEach(function(b,k){var x=10+k*190,o=boxOn(k);s+='<rect x="'+x+'" y="40" width="150" height="80" rx="14" style="fill:'+(o?'color-mix(in srgb,var(--g) 25%,var(--bg))':'var(--panel)')+';stroke:'+(o?'var(--g)':'var(--line)')+';stroke-width:3"/><text x="'+(x+75)+'" y="76" class="dtx" style="font-size:17px'+(o?'':';opacity:.45')+'">'+b[0]+'</text><text x="'+(x+75)+'" y="98" class="zs" style="'+(o?'':'opacity:.45')+'">'+b[1]+'</text>'+(k===1||k===2?'<text x="'+(x+75)+'" y="28" style="font-size:20px" text-anchor="middle">📦</text>':'<text x="'+(x+75)+'" y="28" style="font-size:20px" text-anchor="middle">⚖️</text>')});
- S.forEach(function(t,k){var i=k+1,o=act(i),x=160+k*190,c=o?(i===2?'var(--a)':'var(--g)'):'var(--line)';s+='<path d="M'+(x+2)+' 80 L'+(x+34)+' 80" stroke="'+c+'" stroke-width="5"/><path d="M'+(x+30)+' 71 L'+(x+40)+' 80 L'+(x+30)+' 89 Z" fill="'+c+'"/><circle cx="'+(x+20)+'" cy="58" r="11" fill="'+c+'"/><text x="'+(x+20)+'" y="63" class="dnt">'+i+'</text><text x="'+(x+20)+'" y="145" class="zs" style="font-size:14px;font-weight:700;'+(o?'':'opacity:.45')+'">'+t[0]+'</text>'});
- return s+'<text x="380" y="165" class="zs" style="fill:var(--a);font-weight:700">② the mole ratio is the bridge from A to B</text></svg>'}
-var MM=[["H₂",2.02],["O₂",32.00],["H₂O",18.02],["N₂",28.02],["NH₃",17.04],["CO₂",44.01],["CH₄",16.05],["Na",22.99],["Cl₂",70.90],["NaCl",58.44],["Mg",24.31],["MgO",40.31],["Al",26.98],["Al₂O₃",101.96],["CaCO₃",100.09],["CaO",56.08],["KClO₃",122.55],["KCl",74.55],["LiOH",23.95],["C₆H₁₂O₆",180.18],["HgO",216.59],["HF",20.01],["SnF₂",156.71],["Cu",63.55],["Ag",107.87],["PbI₂",461.00]];
-var REF={
-map:function(){return smap([1,2,3])},mapMM:function(){return smap([2])},mapMG:function(){return smap([2,3])},mapGM:function(){return smap([1,2])},
-mm:function(){return '<h3>Molar masses (g/mol)</h3><div class="mmt">'+MM.map(function(m){return '<div><b>'+m[0]+'</b> '+m[1].toFixed(2)+'</div>'}).join("")+'</div><p class="sm">Atoms: H 1.01 · Li 6.94 · C 12.01 · N 14.01 · O 16.00 · F 19.00 · Na 22.99 · Mg 24.31 · Al 26.98 · Cl 35.45 · K 39.10 · Ca 40.08 · Cu 63.55 · Ag 107.87 · Sn 118.71 · I 126.90 · Hg 200.59 · Pb 207.2</p><p class="sm"><b>Gas at STP:</b> 1 mol = 22.4 L</p>'},
-recipe:function(){return '<div class="vgrid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))"><div class="vc"><div class="emo">🍞🍞 + 🧀 → 🥪</div><b>2 bread + 1 cheese → 1 sandwich</b></div><div class="vc"><div class="emo">🍞🍞🍞🍞 + 🧀🧀 → 🥪🥪</div><b>double it: 4 + 2 → 2</b></div><div class="vc"><div class="emo">⚗️</div><b>2H₂ + O₂ → 2H₂O</b><span>same idea with molecules</span></div></div>'},
-molecules:function(){function h(x,y){return '<circle cx="'+x+'" cy="'+y+'" r="12" fill="#e8eef0" stroke="#4a626a" stroke-width="2"/><text x="'+x+'" y="'+(y+4)+'" style="font:700 11px sans-serif;fill:#12262e" text-anchor="middle">H</text>'}function o(x,y){return '<circle cx="'+x+'" cy="'+y+'" r="17" fill="#e0675a" stroke="#8a2e24" stroke-width="2"/><text x="'+x+'" y="'+(y+5)+'" style="font:700 13px sans-serif;fill:#fff" text-anchor="middle">O</text>'}
- return '<svg class="dg" viewBox="0 0 760 150" role="img" aria-label="2 H2 plus O2 gives 2 H2O">'+h(40,50)+h(64,50)+h(40,100)+h(64,100)+'<text x="130" y="82" class="zl" style="font-size:26px">+</text>'+o(190,75)+o(222,75)+'<text x="320" y="84" class="zl" style="font-size:30px">→</text>'+o(440,50)+h(418,72)+h(462,72)+o(560,90)+h(538,112)+h(582,112)+
- '<text x="52" y="140" class="zs">2 H₂</text><text x="206" y="140" class="zs">1 O₂</text><text x="500" y="140" class="zs">2 H₂O</text><text x="690" y="70" class="zs">4 H atoms</text><text x="690" y="88" class="zs">2 O atoms</text><text x="690" y="106" class="zs">both sides ✓</text></svg>'},
-ratios:function(){var P=[["1 mol N₂","3 mol H₂"],["3 mol H₂","1 mol N₂"],["1 mol N₂","2 mol NH₃"],["2 mol NH₃","1 mol N₂"],["3 mol H₂","2 mol NH₃"],["2 mol NH₃","3 mol H₂"]];
- return '<p style="font:800 1.3em var(--head);text-align:center;margin:.3em 0"><span style="color:var(--a)">1</span> N₂ + <span style="color:var(--a)">3</span> H₂ → <span style="color:var(--a)">2</span> NH₃</p><div class="vgrid">'+P.map(function(p){return '<div class="vc" style="font-size:1.15em">'+fr(p[0],p[1])+'</div>'}).join("")+'</div><p class="sm" style="text-align:center">Six mole ratios from one equation (each pair can be flipped).</p>'},
-factory:function(){return '<div class="ix"><label>Moles of N₂: <b class="fv">2</b></label><br><input type="range" min="1" max="6" value="2" oninput="fac(this)"><div class="fo"></div></div><img alt="" src="data:," style="display:none" onerror="fac(this.previousElementSibling.querySelector(\'input\'))">'},
-sandwich:function(){return '<div class="ix sw"><label>🍞 Bread: <b class="bv">8</b></label> <input type="range" min="0" max="14" value="8" oninput="sand(this)"><br><label>🧀 Cheese: <b class="cv">3</b></label> <input type="range" min="0" max="8" value="3" oninput="sand(this)"><div class="so"></div></div><img alt="" src="data:," style="display:none" onerror="sand(this.previousElementSibling.querySelector(\'input\'))">'},
-h2o:function(){return '<div class="ix hw"><label>mol H₂: <b class="hv">4</b></label> <input type="range" min="0" max="10" value="4" oninput="hwo(this)"><br><label>mol O₂: <b class="ov">3</b></label> <input type="range" min="0" max="6" value="3" oninput="hwo(this)"><div class="ho"></div></div><img alt="" src="data:," style="display:none" onerror="hwo(this.previousElementSibling.querySelector(\'input\'))">'},
-popcorn:function(){var s='';for(var i=0;i<20;i++)s+=i<17?'🍿':'🌽';return '<div class="ix" style="max-width:none"><div class="parts">'+s+'</div><div class="big3" style="margin-top:.5em"><div><b>20</b>theoretical: the most that <i>could</i> pop</div><div><b>17</b>actual: what <i>really</i> popped</div><div><b>85%</b>percentage yield = 17 ÷ 20 × 100</div></div></div>'},
-ybars:function(){return '<h3>CaO yield</h3><div class="ybar"><span>Theoretical</span><div><i style="width:100%;background:var(--g)"></i></div><b>56.08 g</b></div><div class="ybar"><span>Actual</span><div><i style="width:89.2%;background:var(--a)"></i></div><b>50.0 g</b></div><p class="sm">The orange bar is 89.2% of the green bar.</p>'},
-yieldf:function(){return '<h3>Formula</h3><p class="fx">% yield = '+fr("actual yield","theoretical yield")+' × 100</p><p><b>Theoretical</b> = calculated (maximum). <b>Actual</b> = measured in the lab.</p>'},
-limm:function(){return '<h3>Limiting reactant method</h3><ol><li>Change both reactants to moles.</li><li>Calculate product from <b>each</b> reactant.</li><li><b>Smaller</b> product = limiting reactant = the answer.</li></ol>'}
-};
-REF.calc=function(){return smap([1,2,3])+REF.mm()};
-REF.mmcalc=function(){return smap([2])+'<p class="sm">Wanted on top, given on the bottom.</p>'};
-REF.lim=function(){return REF.limm()+REF.h2o()+REF.mm()};
-REF.yld=function(){return REF.yieldf()+REF.ybars()+REF.mm()};
-REF.eqs=function(){return REF.ratios()+'<p class="sm">Other equations: 2H₂ + O₂ → 2H₂O · 4Al + 3O₂ → 2Al₂O₃ · 2KClO₃ → 2KCl + 3O₂ · 4NH₃ + 5O₂ → 4NO + 6H₂O · 2HgO → 2Hg + O₂</p>'};
-function dots(n,used,ch){var s='';for(var i=0;i<n;i++)s+='<span class="'+(i<used?'':'left')+'">'+ch+'</span>';return '<div class="parts">'+(s||'<span class="sm">none</span>')+'</div>'}
-function fac(inp){if(!inp)return;var r=inp.closest('.ix'),n=+inp.value;r.querySelector('.fv').textContent=n;
- r.querySelector('.fo').innerHTML='<div class="big3" style="margin:.6em 0"><div><b>'+n+'</b>mol N₂ used<br><span class="sm">'+(n*28.02).toFixed(2)+' g</span>'+dots(n,n,'🟦')+'</div><div><b>'+3*n+'</b>mol H₂ needed<br><span class="sm">'+(3*n*2.02).toFixed(2)+' g</span>'+dots(3*n,3*n,'⚪')+'</div><div><b>'+2*n+'</b>mol NH₃ made<br><span class="sm">'+(2*n*17.04).toFixed(2)+' g</span>'+dots(2*n,2*n,'🟩')+'</div></div><p>Mole ratio always <b>'+n+' : '+3*n+' : '+2*n+' = 1 : 3 : 2</b>. Mass: '+(n*28.02).toFixed(2)+' g + '+(3*n*2.02).toFixed(2)+' g = '+(2*n*17.04).toFixed(2)+' g ✓</p>'}
-function sand(inp){if(!inp)return;var r=inp.closest('.ix'),I=r.querySelectorAll('input'),b=+I[0].value,c=+I[1].value,s=Math.min(Math.floor(b/2),c),L=Math.floor(b/2)<c?'bread':Math.floor(b/2)>c?'cheese':'';
- r.querySelector('.bv').textContent=b;r.querySelector('.cv').textContent=c;
- r.querySelector('.so').innerHTML='<div class="big3" style="margin:.6em 0"><div class="'+(L==='bread'?'lim':'')+'">🍞 used '+2*s+', left '+(b-2*s)+dots(b,2*s,'🍞')+'</div><div class="'+(L==='cheese'?'lim':'')+'">🧀 used '+s+', left '+(c-s)+dots(c,s,'🧀')+'</div><div><b>'+s+'</b>sandwiches'+dots(s,s,'🥪')+'</div></div><p>'+(L?'<b>Limiting: '+(L==='bread'?'🍞 bread':'🧀 cheese')+'</b> (red box). Excess: '+(L==='bread'?'cheese':'bread')+'.':'Exactly right: nothing left over.')+'</p>'}
-function hwo(inp){if(!inp)return;var r=inp.closest('.ix'),I=r.querySelectorAll('input'),h=+I[0].value,o=+I[1].value,p=Math.min(h,2*o),L=h<2*o?'H₂':h>2*o?'O₂':'';
- r.querySelector('.hv').textContent=h;r.querySelector('.ov').textContent=o;
- r.querySelector('.ho').innerHTML='<div class="big3" style="margin:.6em 0"><div class="'+(L==='H₂'?'lim':'')+'">H₂ used '+p+', left '+(h-p)+dots(h,p,'⚪')+'</div><div class="'+(L==='O₂'?'lim':'')+'">O₂ used '+p/2+', left '+(o-p/2)+dots(o,Math.ceil(p/2),'🔴')+'</div><div><b>'+p+'</b>mol H₂O'+dots(p,p,'💧')+'</div></div><p>H₂ alone could make '+h+' mol H₂O. O₂ alone could make '+2*o+' mol H₂O. '+(L?'<b>'+L+' makes less → '+L+' is limiting.</b>':'Both make the same: no excess.')+'</p>'}
+/* ================= drawing helpers ================= */
+var SKY="color-mix(in srgb,#7fb8e0 30%,var(--bg))",SOIL="color-mix(in srgb,#9b7a4c 45%,var(--bg))",WAT="color-mix(in srgb,var(--blue) 38%,var(--bg))",
+ ROCK="color-mix(in srgb,#8d8d8d 55%,var(--bg))",GRN="color-mix(in srgb,var(--g) 45%,var(--bg))",MUD="color-mix(in srgb,#8a5a2b 60%,var(--bg))";
+var PAL=["#d1495b","#edae49","#00798c","#7b4fa0","#30a14e","#8c5a3c"];
+function E(x,y,e,s){return '<text x="'+x+'" y="'+y+'" font-size="'+(s||34)+'" text-anchor="middle">'+e+'</text>'}
+function T(x,y,t,c,ex){return '<text x="'+x+'" y="'+y+'" class="'+(c||"zl2")+'"'+(ex||"")+'>'+t+'</text>'}
+function P(x,y,t){var w=t.length*7.6+20;return '<rect x="'+(x-w/2).toFixed(0)+'" y="'+(y-15)+'" width="'+w.toFixed(0)+'" height="23" rx="11" class="pill2"/><text x="'+x+'" y="'+(y+2)+'" class="pl2">'+t+'</text>'}
+function X(x,y,s){s=s||11;return '<path d="M'+(x-s)+' '+(y-s)+'L'+(x+s)+' '+(y+s)+'M'+(x+s)+' '+(y-s)+'L'+(x-s)+' '+(y+s)+'" stroke="#c0392b" stroke-width="4" stroke-linecap="round"/>'}
+function arrow(x1,y1,x2,y2,c,dash){var a=Math.atan2(y2-y1,x2-x1),h=10;return '<path d="M'+x1+' '+y1+'L'+x2+' '+y2+'" stroke="'+(c||"var(--ink)")+'" stroke-width="3" fill="none"'+(dash?' stroke-dasharray="8 6"':'')+'/><path d="M'+x2+' '+y2+'L'+(x2-h*Math.cos(a-.45)).toFixed(1)+' '+(y2-h*Math.sin(a-.45)).toFixed(1)+'L'+(x2-h*Math.cos(a+.45)).toFixed(1)+' '+(y2-h*Math.sin(a+.45)).toFixed(1)+'Z" fill="'+(c||"var(--ink)")+'"/>'}
+function svgw(inner,h,label){return '<svg class="pls" viewBox="0 0 720 '+(h||330)+'" role="img" aria-label="'+(label||"diagram")+'">'+inner+'</svg>'}
 
+
+var PLAY={};
+</script>
+<script>
+/* ================= particle helpers ================= */
+var PC="#1d7a8c",PC2="#b06a0c";
+function dot(x,y,c,r){return '<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+(r||9)+'" fill="'+(c||PC)+'" stroke="#0b3b44" stroke-width="1.2"/>'}
+function rnd(seed){var s=seed||1;return function(){s=(s*9301+49297)%233280;return s/233280}}
+/* box of particles: state = solid | liquid | gas */
+function pbox(x,y,w,h,state,o){o=o||{};var r=rnd(o.seed||7),s='<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="8" fill="var(--bg)" stroke="var(--ink)" stroke-width="2.5"/>',R=o.r||9,c=o.c||PC;
+ if(state==="solid"){var cols=o.cols||6,rows=o.rows||4,gx=2*R+2,x0=x+w/2-(cols-1)*gx/2,y0=y+h-R-6;for(var j=0;j<rows;j++)for(var i=0;i<cols;i++){var px=x0+i*gx,py=y0-j*gx;s+='<path d="M'+(px-R-4)+' '+py+'h4M'+(px+R)+' '+py+'h4" stroke="var(--mute)" stroke-width="1.5"/>'+dot(px,py,c,R)}}
+ else if(state==="liquid"){var n=o.n||24,hh=o.lh||h*.5,ly=y+h-hh;s+='<path d="M'+(x+3)+' '+ly+'H'+(x+w-3)+'" stroke="var(--blue)" stroke-width="2" stroke-dasharray="5 4"/>';var placed=[];for(var k=0;k<n;k++){for(var t=0;t<40;t++){var px=x+R+4+r()*(w-2*R-8),py=ly+R+3+r()*(hh-2*R-6),ok=placed.every(function(p){return Math.hypot(p[0]-px,p[1]-py)>2*R+1});if(ok){placed.push([px,py]);break}}}placed.forEach(function(p){s+=dot(p[0],p[1],c,R)})}
+ else{var n2=o.n||8;for(var k2=0;k2<n2;k2++){var px2=x+R+6+r()*(w-2*R-12),py2=y+R+6+r()*(h-2*R-12),a=r()*6.28;s+=arrow(px2,py2,px2+Math.cos(a)*24,py2+Math.sin(a)*24,"var(--mute)")+dot(px2,py2,c,R)}}
+ if(o.lab)s+=T(x+w/2,y+h+22,o.lab);return s}
+
+/* ================= diffusion & effusion ================= */
+function room(pts,ex){var s='<rect width="720" height="330" fill="var(--bg)"/><rect x="20" y="20" width="680" height="290" rx="10" fill="none" stroke="var(--ink)" stroke-width="2.5"/>';pts.forEach(function(p){s+=dot(p[0],p[1],"#c0577e",7)});return s+(ex||"")}
+function spread(n,cx,cy,sp,seed){var r=rnd(seed),a=[];for(var i=0;i<n;i++)a.push([Math.max(35,Math.min(685,cx+(r()-.5)*sp*1.9)),Math.max(35,Math.min(295,cy+(r()-.5)*sp))]);return a}
+PLAY.diffuse={title:"▶ Play: diffusion and effusion",st:[
+ {t:"Open a bottle of perfume",d:"The perfume gas particles are all close to the bottle (high concentration). The rest of the room has none (low concentration).",s:room(spread(30,90,250,70,3),E(70,290,"🧴",44)+E(640,280,"🧍",54))},
+ {t:"Diffusion begins",d:"Gas particles move fast and randomly. They mix with the air particles and spread out. Diffusion = particles spread from HIGH concentration to LOW concentration.",s:room(spread(30,230,190,240,5),E(70,290,"🧴",44)+E(640,280,"🧍",54)+arrow(120,170,300,120,"var(--a)")+arrow(130,230,330,250,"var(--a)"))},
+ {t:"The whole room smells",d:"After a few minutes the particles are spread evenly through the room. The person on the other side can smell the perfume.",s:room(spread(30,360,165,560,9),E(70,290,"🧴",44)+E(640,280,"🧍",54)+E(600,215,"👃",30))},
+ {t:"Effusion: through a tiny hole",d:"Effusion = gas particles pass through a TINY opening one by one. Example: a balloon slowly goes flat, or a tire with a tiny hole slowly loses air.",s:'<rect width="720" height="330" fill="var(--bg)"/><rect x="60" y="60" width="300" height="220" rx="12" fill="none" stroke="var(--ink)" stroke-width="3"/><rect x="356" y="160" width="8" height="18" fill="var(--bg)"/>'+spread(18,210,170,190,4).map(function(p){return dot(p[0],p[1],PC,8)}).join("")+dot(395,170,PC,8)+dot(460,150,PC,8)+dot(540,190,PC,8)+arrow(370,169,430,169,"var(--a)")+P(360,120,"tiny hole")},
+ {t:"Lighter gases move faster",d:"At the same temperature all gases have the same average kinetic energy (KE = ½mv²). LIGHTER particles must move FASTER. NH₃ (17 g/mol) and HCl (36.5 g/mol) meet closer to the HCl end, where they make a white ring.",s:'<rect width="720" height="330" fill="var(--bg)"/><rect x="60" y="140" width="600" height="50" rx="25" fill="none" stroke="var(--ink)" stroke-width="3"/>'+E(40,175,"🧪",34)+E(680,175,"🧪",34)+T(110,125,"NH₃ (light)")+T(610,125,"HCl (heavy)")+'<rect x="455" y="143" width="22" height="44" fill="#f4f4f4" stroke="#999"/>'+arrow(90,165,440,165,PC)+arrow(640,165,490,165,PC2)+P(466,225,"white ring forms here")+T(265,260,"NH₃ travels farther","zs2")+T(565,260,"HCl travels less","zs2")}]};
+
+/* ================= evaporation and boiling ================= */
+function beaker(o){var s='<rect width="720" height="330" fill="var(--bg)"/><path d="M200 60 V290 H520 V60" fill="none" stroke="var(--ink)" stroke-width="4"/>'+(o.lid?'<rect x="190" y="50" width="340" height="12" rx="4" fill="var(--ink)"/>':'')+'<rect x="203" y="170" width="314" height="118" fill="color-mix(in srgb,var(--blue) 25%,var(--bg))"/>';
+ var r=rnd(o.seed||11);for(var i=0;i<22;i++){var px=220+r()*280,py=185+r()*95,sp=r();s+=dot(px,py,sp>.8?PC2:PC,8);if(o.arrows&&sp>.8)s+=arrow(px,py,px+8,py-26,PC2)}
+ (o.vap||[]).forEach(function(p){s+=dot(p[0],p[1],PC2,8)});if(o.bub)[[260,240],[330,210],[420,250],[470,200]].forEach(function(b){s+='<circle cx="'+b[0]+'" cy="'+b[1]+'" r="16" fill="var(--bg)" stroke="var(--blue)" stroke-width="2"/>'+dot(b[0]-4,b[1]-3,PC2,5)+dot(b[0]+5,b[1]+4,PC2,5)});
+ if(o.fire)s+=E(300,325,"🔥",36)+E(360,325,"🔥",36)+E(420,325,"🔥",36);return s+(o.x||"")}
+PLAY.evap={title:"▶ Play: evaporation and boiling",st:[
+ {t:"Particles in a liquid have different speeds",d:"Some particles move slowly, some fast (orange = fastest). The temperature measures their AVERAGE kinetic energy.",s:beaker({arrows:1,x:P(610,120,"orange = fastest")})},
+ {t:"Evaporation",d:"Only the FASTEST particles at the SURFACE have enough energy to escape the attractions and become gas. This is evaporation: vaporization at the surface of a liquid that is not boiling.",s:beaker({arrows:1,vap:[[300,120],[400,95],[460,135]],x:arrow(300,165,300,132,PC2)+P(610,120,"escape → gas")})},
+ {t:"Evaporation cools the liquid",d:"The fast particles leave, so the particles that stay are slower: the average kinetic energy goes DOWN. That is why sweat cools your skin.",s:beaker({seed:4,vap:[[280,40],[410,30],[470,60]],x:P(610,230,"left behind: slower = cooler")+E(640,90,"💦",40)})},
+ {t:"Closed container: vapor pressure",d:"With a lid, gas particles also go back into the liquid (condensation). Soon the rates are equal (equilibrium). The pressure of the vapor is the EQUILIBRIUM VAPOR PRESSURE. It rises when temperature rises.",s:beaker({lid:1,arrows:1,vap:[[260,100],[340,80],[420,120],[480,90],[300,140]],x:arrow(380,90,380,160,PC)+arrow(450,160,450,100,PC2)+P(620,100,"evaporate ⇄ condense")})},
+ {t:"Boiling",d:"Heat the liquid. When its vapor pressure EQUALS the atmospheric pressure, bubbles of vapor form INSIDE the liquid. This is boiling. At 1 atm (101.3 kPa), water boils at 100 °C.",s:beaker({fire:1,bub:1,vap:[[300,110],[380,90],[450,120]],x:P(360,28,"boiling: vapor pressure = air pressure")+arrow(620,40,620,80,"var(--ink)")+T(620,32,"air pressure")})}]};
+
+/* ================= heating curve ================= */
+var HC=[[0,-20,40,0,"warm"],[40,0,110,0,"melt"],[110,0,200,100,"warm"],[200,100,560,100,"boil"],[560,100,600,120,"warm"]];
+function hx(e){return 70+e}function hy(t){return 270-(t+20)*1.6}
+function heatSVG(upto,mark,noLab){var s='<rect width="720" height="330" fill="var(--bg)"/><line x1="70" y1="270" x2="680" y2="270" class="ax"/><line x1="70" y1="40" x2="70" y2="270" class="ax"/>'+T(380,312,"Energy added (heat) →")+T(26,160,"Temperature (°C)","zl2",' transform="rotate(-90 26 160)"');
+ [-20,0,50,100,120].forEach(function(t){s+='<line x1="64" y1="'+hy(t)+'" x2="680" y2="'+hy(t)+'" class="gl"/>'+T(52,hy(t)+5,t,"zs2",' style="text-anchor:end"')});
+ var d="";HC.forEach(function(g,i){if(i>upto)return;d+=(i?"":"M"+hx(g[0])+" "+hy(g[1]))+"L"+hx(g[2])+" "+hy(g[3])});s+='<path d="'+d+'" fill="none" stroke="var(--g)" stroke-width="6" stroke-linejoin="round"/>';
+ if(!noLab){var LP=[[150,262,"ice warms"],[145,226,"ice melts (0 °C)"],[290,200,"water warms"],[420,66,"water boils (100 °C)"],[640,40,"steam warms"]];LP.forEach(function(p,i){if(i<=upto)s+=T(p[0],p[1],p[2],"zs2",' style="font-weight:700"')})}
+ if(mark!=null){var g=HC[mark];s+='<circle cx="'+hx((g[0]+g[2])/2)+'" cy="'+hy((g[1]+g[3])/2)+'" r="10" fill="var(--a)"/>'}return s}
+function inset(state,extra){return '<g transform="translate(560,150) scale(.55)">'+pbox(0,0,200,160,state,{n:state==="gas"?7:16,cols:5,rows:3})+'</g>'+(extra||"")}
+PLAY.heat={title:"▶ Play: heating curve of water",st:[
+ {t:"Ice warms from −20 °C to 0 °C",d:"Energy makes the particles VIBRATE faster. Average kinetic energy goes up, so temperature goes up.",s:heatSVG(0,0)+inset("solid")},
+ {t:"Ice melts at 0 °C",d:"Temperature STAYS at 0 °C. The energy breaks the attractions between particles (it does not make them faster). Energy needed: q = n × ΔH_fus (6.009 kJ/mol).",s:heatSVG(1,1)+inset("liquid")},
+ {t:"Water warms from 0 °C to 100 °C",d:"All the ice is liquid now. Energy makes the particles move faster, so the temperature rises.",s:heatSVG(2,2)+inset("liquid")},
+ {t:"Water boils at 100 °C",d:"Temperature STAYS at 100 °C. The energy separates the particles completely. This step needs the MOST energy: q = n × ΔH_vap (40.79 kJ/mol), almost 7 times more than melting.",s:heatSVG(3,3)+inset("gas")},
+ {t:"Steam warms above 100 °C",d:"All the water is gas. Energy makes the gas particles move faster, so temperature rises again.",s:heatSVG(4,4)+inset("gas")}]};
+
+/* ================= water and ice ================= */
+function h2o(x,y,rot,s){s=s||1;return '<g transform="translate('+x+' '+y+') rotate('+(rot||0)+') scale('+s+')"><circle cx="-13" cy="10" r="8" fill="#f2f2f2" stroke="#666"/><circle cx="13" cy="10" r="8" fill="#f2f2f2" stroke="#666"/><circle cx="0" cy="0" r="14" fill="#d1495b" stroke="#7a1f2b"/></g>'}
+function hexice(cx,cy,R){var s="",pts=[];for(var i=0;i<6;i++){var a=Math.PI/3*i+Math.PI/6;pts.push([cx+R*Math.cos(a),cy+R*Math.sin(a)])}pts.forEach(function(p,i){var q=pts[(i+1)%6];s+='<line x1="'+p[0].toFixed(0)+'" y1="'+p[1].toFixed(0)+'" x2="'+q[0].toFixed(0)+'" y2="'+q[1].toFixed(0)+'" stroke="var(--blue)" stroke-width="2.5" stroke-dasharray="5 4"/>'});pts.forEach(function(p,i){s+=h2o(p[0],p[1],i*60,.8)});return s}
+PLAY.ice={title:"▶ Play: why ice floats",st:[
+ {t:"Water molecules are polar",d:"O is partly negative (δ−) and H is partly positive (δ+). The H of one molecule is attracted to the O of another: a HYDROGEN BOND (dashed line).",s:'<rect width="720" height="330" fill="var(--bg)"/>'+h2o(260,160,0,2.4)+T(260,120,"δ−")+T(200,230,"δ+")+T(320,230,"δ+")+h2o(470,170,200,2.4)+'<line x1="292" y1="185" x2="440" y2="178" stroke="var(--blue)" stroke-width="3" stroke-dasharray="7 5"/>'+P(370,90,"hydrogen bond")},
+ {t:"Liquid water: molecules close together",d:"In liquid water, hydrogen bonds break and form again all the time. The molecules can pack CLOSE together.",s:'<rect width="720" height="330" fill="var(--bg)"/><rect x="160" y="40" width="400" height="260" rx="10" fill="color-mix(in srgb,var(--blue) 18%,var(--bg))" stroke="var(--ink)" stroke-width="2"/>'+(function(){var r=rnd(5),s="";for(var i=0;i<20;i++)s+=h2o(195+(i%5)*82+r()*14,80+Math.floor(i/5)*58+r()*10,r()*360,.9);return s})()+P(360,320,"density ≈ 1.00 g/cm³")},
+ {t:"Ice: an open pattern with empty space",d:"When water freezes, each molecule makes hydrogen bonds to 4 neighbors in a fixed hexagonal (6-sided) pattern. This pattern has a lot of EMPTY SPACE.",s:'<rect width="720" height="330" fill="var(--bg)"/>'+hexice(220,165,75)+hexice(400,165,75)+hexice(310,165-130,75).replace(/^/,"")+P(560,300,"empty space in the middle")},
+ {t:"Ice is LESS dense, so it floats",d:"Same mass, more volume → lower density (0.917 g/cm³). Ice floats on water. Lakes freeze from the TOP, and the ice layer protects the fish in the water below.",s:'<rect width="720" height="330" fill="var(--bg)"/><rect x="100" y="110" width="520" height="200" fill="color-mix(in srgb,var(--blue) 30%,var(--bg))"/><rect x="100" y="90" width="520" height="34" fill="#e8f4fb" stroke="#9ec3d8"/>'+T(360,113,"ice (0.917 g/cm³)")+T(360,170,"liquid water (1.00 g/cm³)")+E(250,250,"🐟",40)+E(470,270,"🐟",40)+E(560,70,"⛸️",36)}]};
+
+/* ================= collecting a gas over water ================= */
+function trough(o){var lv=o.lv||70,s='<rect width="720" height="330" fill="var(--bg)"/><rect x="300" y="200" width="380" height="110" fill="color-mix(in srgb,var(--blue) 30%,var(--bg))" stroke="var(--ink)" stroke-width="2.5"/>';
+ s+='<rect x="430" y="60" width="120" height="200" rx="10" fill="var(--bg)" stroke="var(--ink)" stroke-width="3"/><rect x="433" y="'+(60+lv)+'" width="114" height="'+(197-lv)+'" fill="color-mix(in srgb,var(--blue) 30%,var(--bg))"/>';
+ s+='<path d="M60 300 V200 Q60 170 90 160 V110 H130 V160 Q160 170 160 200 V300Z" fill="none" stroke="var(--ink)" stroke-width="3"/><rect x="63" y="240" width="94" height="58" fill="color-mix(in srgb,#9b7a4c 30%,var(--bg))"/>'+T(110,275,"Zn + HCl","zs2");
+ s+='<path d="M110 110 V80 H380 V280 H470 V240" fill="none" stroke="var(--ink)" stroke-width="5"/>';
+ if(o.gas){var r=rnd(3);for(var i=0;i<o.gas;i++)s+=dot(445+r()*90,72+r()*(lv-18),PC,6)}
+ if(o.wv){var r2=rnd(9);for(var j=0;j<o.wv;j++)s+=dot(445+r2()*90,72+r2()*(lv-18),"#d1495b",5)}
+ if(o.bub)[[470,220],[480,190],[465,165]].forEach(function(b){s+='<circle cx="'+b[0]+'" cy="'+b[1]+'" r="7" fill="var(--bg)" stroke="var(--blue)"/>'});return s+(o.x||"")}
+PLAY.collect={title:"▶ Play: collecting a gas over water",st:[
+ {t:"A reaction makes hydrogen gas",d:"Zinc reacts with hydrochloric acid and makes H₂ gas. A tube carries the gas into an upside-down bottle that is FULL of water.",s:trough({lv:6,x:T(110,140,"reaction","zs2")})},
+ {t:"Gas bubbles push the water down",d:"H₂ bubbles rise into the bottle. The gas pushes the water out of the bottle.",s:trough({lv:90,gas:10,bub:1})},
+ {t:"The bottle has TWO gases",d:"Some water evaporates into the gas space. So the bottle contains H₂ (blue) AND water vapor (red). Both push: P_total = P_H₂ + P_H₂O.",s:trough({lv:120,gas:14,wv:5,x:P(610,40,"H₂ + water vapor")})},
+ {t:"Find the pressure of the dry gas",d:"Move the bottle until the water level inside = outside. Then P_total = atmospheric pressure. Look up P_H₂O in a table for that temperature. P_H₂ = P_atm − P_H₂O.",s:trough({lv:140,gas:14,wv:5,x:'<line x1="300" y1="200" x2="680" y2="200" stroke="var(--a)" stroke-width="2" stroke-dasharray="6 4"/>'+P(615,185,"levels equal")+P(190,40,"P_H₂ = P_atm − P_H₂O")})}]};
+
+/* ================= live simulators ================= */
+function cssv(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim()||"#1d7a8c"}
+var IX={
+gasbox:function(e){e.className="ix";e.innerHTML='<h3>🎈 Gas particle simulator</h3><div class="split" style="gap:6px 18px"><label>🌡️ Temperature <input type="range" min="100" max="600" step="10" value="300" class="gT"> <b class="vT"></b></label><label>📦 Volume <input type="range" min="25" max="100" step="5" value="100" class="gV"> <b class="vV"></b></label><label>🔢 Number of particles <input type="range" min="5" max="60" step="1" value="30" class="gN"> <b class="vN"></b></label><div class="gauge">Pressure: <span class="vP"></span></div></div><canvas class="sim" width="720" height="300"></canvas><p class="sm">Every bounce on a wall pushes on the wall: that push is PRESSURE. Walls flash when particles hit them.</p>';
+ var cv=e.querySelector("canvas"),cx=cv.getContext("2d"),gT=e.querySelector(".gT"),gV=e.querySelector(".gV"),gN=e.querySelector(".gN"),ps=[],hits=0,flash=0,col,ink;
+ function mk(){var n=+gN.value;while(ps.length<n){var a=Math.random()*6.28;ps.push({x:30+Math.random()*300,y:30+Math.random()*240,dx:Math.cos(a),dy:Math.sin(a)})}ps.length=n}
+ function upd(){mk();var T=+gT.value,V=+gV.value,N=+gN.value,P=(N/30)*(T/300)/(V/100);e.querySelector(".vT").textContent=T+" K";e.querySelector(".vV").textContent=(V/10).toFixed(1)+" L";e.querySelector(".vN").textContent=N;e.querySelector(".vP").textContent=P.toFixed(2)+" atm"}
+ gT.oninput=gV.oninput=gN.oninput=upd;upd();
+ function frame(){if(!document.body.contains(cv))return;if(cv.offsetParent){col=col||cssv("--g");ink=ink||cssv("--ink");var W=20+680*(+gV.value/100),sp=2.4*Math.sqrt(+gT.value/300),hitNow=false;cx.clearRect(0,0,720,300);
+  ps.forEach(function(p){p.x+=p.dx*sp;p.y+=p.dy*sp;if(p.x<28){p.x=28;p.dx=-p.dx;hitNow=true}if(p.x>W-8){p.x=W-8;p.dx=-Math.abs(p.dx);hitNow=true}if(p.y<28){p.y=28;p.dy=-p.dy;hitNow=true}if(p.y>272){p.y=272;p.dy=-p.dy;hitNow=true}});
+  if(hitNow)flash=6;cx.lineWidth=flash>0?7:4;cx.strokeStyle=flash>0?cssv("--a"):ink;flash--;cx.strokeRect(20,20,W-20,260);cx.fillStyle=ink;cx.fillRect(W,10,14,280);cx.fillRect(W+14,140,700-W,20);
+  ps.forEach(function(p){cx.beginPath();cx.arc(p.x,p.y,7,0,6.283);cx.fillStyle=col;cx.fill()})}requestAnimationFrame(frame)}requestAnimationFrame(frame)},
+phases:function(e){e.className="ix";e.innerHTML='<h3>🧊💧♨️ Phase simulator: add energy</h3><label>Energy (temperature) <input type="range" min="0" max="100" value="10"> <b class="st"></b></label><div class="ixo"></div><canvas class="sim" width="720" height="300"></canvas>';
+ var cv=e.querySelector("canvas"),cx=cv.getContext("2d"),r=e.querySelector("input"),N=30,ps=[],col;for(var i=0;i<N;i++){var gx=230+(i%6)*44,gy=270-Math.floor(i/6)*44;ps.push({hx:gx,hy:gy,x:gx,y:gy,dx:Math.random()-.5,dy:Math.random()-.5})}
+ function st(){var v=+r.value;return v<30?0:v<65?1:2}
+ function upd(){var s=st();e.querySelector(".st").textContent=["SOLID","LIQUID","GAS"][s];e.querySelector(".ixo").innerHTML=["🧊 <b>Solid:</b> particles VIBRATE in fixed places. Strong attractions. Definite shape and volume.","💧 <b>Liquid:</b> particles are close but SLIDE past each other. Definite volume, takes the shape of its container.","♨️ <b>Gas:</b> particles move fast and far apart. Almost no attractions. Fills the whole container."][s]}r.oninput=upd;upd();
+ function frame(){if(!document.body.contains(cv))return;if(cv.offsetParent){col=col||cssv("--g");var v=+r.value,s=st();cx.clearRect(0,0,720,300);cx.lineWidth=4;cx.strokeStyle=cssv("--ink");cx.strokeRect(20,10,680,285);
+  ps.forEach(function(p){if(s===0){var a=1+v/6;p.x+=(p.hx-p.x)*.3+(Math.random()-.5)*a;p.y+=(p.hy-p.y)*.3+(Math.random()-.5)*a}else{var sp=s===1?1.2+v/40:2+v/18;p.dx+=(Math.random()-.5)*.3;p.dy+=(Math.random()-.5)*.3+(s===1?.05:0);var m=Math.hypot(p.dx,p.dy)||1;p.dx/=m;p.dy/=m;p.x+=p.dx*sp;p.y+=p.dy*sp;var top=s===1?165:30;if(p.x<32){p.x=32;p.dx=Math.abs(p.dx)}if(p.x>688){p.x=688;p.dx=-Math.abs(p.dx)}if(p.y<top){p.y=top;p.dy=Math.abs(p.dy)}if(p.y>282){p.y=282;p.dy=-Math.abs(p.dy)}}
+   cx.beginPath();cx.arc(p.x,p.y,11,0,6.283);cx.fillStyle=col;cx.fill()})}requestAnimationFrame(frame)}requestAnimationFrame(frame)}
+};
+</script>
+<script>
+function card(emo,title,txt){return '<div class="vc"><div class="emo">'+emo+'</div><b>'+title+'</b>'+(txt?'<span>'+txt+'</span>':'')+'</div>'}
+function three(lbl,order){var st=order||["solid","liquid","gas"],L=lbl||["Solid","Liquid","Gas"];return st.map(function(s,i){return pbox(20+i*235,20,210,170,s,{lab:L[i],seed:3+i})}).join("")}
+function idealPanels(){return pbox(20,20,320,200,"gas",{n:6,seed:2,lab:"A: low pressure, high temperature"})+'<rect x="380" y="20" width="320" height="200" rx="8" fill="var(--bg)" stroke="var(--ink)" stroke-width="2.5"/>'+(function(){var s="",r=rnd(4);for(var i=0;i<26;i++)s+=dot(400+(i%7)*42+r()*8,45+Math.floor(i/7)*48+r()*8,PC,11);return s})()+T(540,242,"B: high pressure, low temperature")}
+function phaseTri(){var N=[[360,36,"GAS ♨️"],[130,260,"SOLID 🧊"],[590,260,"LIQUID 💧"]],s='<rect width="720" height="360" fill="var(--bg)"/>';
+ function A(a,b,lab,c,off){var x1=N[a][0],y1=N[a][1],x2=N[b][0],y2=N[b][1],dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy),nx=-dy/L*off,ny=dx/L*off;return arrow(x1+dx*.2+nx,y1+dy*.2+ny,x1+dx*.8+nx,y1+dy*.8+ny,c)+T((x1+x2)/2+nx*4.2,(y1+y2)/2+ny*4.2+5,lab,"zl2",' style="fill:'+c+'"')}
+ var en="var(--bad)",ex="var(--blue)";s+=A(1,2,"melting",en,-14)+A(2,1,"freezing",ex,-14)+A(2,0,"vaporization",en,-14)+A(0,2,"condensation",ex,-14)+A(1,0,"sublimation",en,14)+A(0,1,"deposition",ex,14);
+ N.forEach(function(n){s+='<rect x="'+(n[0]-70)+'" y="'+(n[1]-22)+'" width="140" height="40" rx="20" fill="var(--panel)" stroke="var(--ink)" stroke-width="2"/>'+T(n[0],n[1]+5,n[2])});
+ return s+P(170,345,"red = absorbs energy (endothermic)")+P(550,345,"blue = releases energy (exothermic)")}
+var REF={
+kmt5:function(){return '<h3>Kinetic-molecular theory: 5 assumptions for gases</h3><div class="vgrid">'+card("⚫ · · · ⚫","1. Tiny and far apart","gas particles are tiny; most of a gas is empty space")+card("🎱💥🎱","2. Elastic collisions","no kinetic energy is lost when particles hit")+card("↗️↙️↖️","3. Constant, rapid, random motion","always moving in straight lines until they hit")+card("🚫🧲","4. No attractions","no forces between gas particles")+card("🌡️ = KE","5. Temperature = average KE","KE = ½mv². Higher T → faster particles")+'</div>'},
+gasprops:function(){return '<h3>Properties of gases</h3><div class="vgrid">'+card("🎈↔️","Expansion","fills any container completely")+card("🌬️〰️","Fluidity","particles slide past each other; gases flow")+card("🪶","Low density","about 1/1000 of a liquid or solid")+card("💉⬅️","Compressibility","particles can be pushed closer together")+card("🧴➡️👃","Diffusion","spreads and mixes from high to low concentration")+card("🕳️➡️","Effusion","passes through a tiny opening")+'</div>'},
+ideal:function(){return '<h3>Ideal gas vs real gas</h3><div class="grid"><div><b>Ideal gas</b>: an imaginary gas that fits ALL 5 assumptions perfectly.</div><div><b>Real gas</b>: a gas that does NOT behave completely like an ideal gas (all real gases).</div></div>'+svgw(idealPanels(),260,"Ideal-like and non-ideal conditions")+'<p class="sm">Real gases are LEAST ideal at <b>high pressure</b> (particles close; their size matters) and <b>low temperature</b> (slow; attractions matter). Polar molecules (NH₃, H₂O) attract more than nonpolar ones (He, H₂).</p>'},
+phases3:function(){return svgw(three(),215,"Particles in a solid, liquid and gas")},
+liqsol:function(){return REF.phases3()+'<div class="wrap"><table><tr><th></th><th>🧊 Solid</th><th>💧 Liquid</th><th>♨️ Gas</th></tr><tr><td>Shape</td><td>definite</td><td>takes container shape</td><td>fills container</td></tr><tr><td>Volume</td><td>definite</td><td>definite</td><td>fills container</td></tr><tr><td>Particles</td><td>vibrate in fixed places</td><td>close, slide past each other</td><td>far apart, fast</td></tr><tr><td>Density</td><td>high</td><td>high</td><td>low</td></tr><tr><td>Compress?</td><td>almost no</td><td>almost no</td><td>yes</td></tr><tr><td>Diffusion</td><td>extremely slow</td><td>slow</td><td>fast</td></tr></table></div><p class="sm">Liquids: <b>surface tension</b>, fluidity. Solids: <b>crystalline</b> (regular pattern, definite melting point) or <b>amorphous</b> (random, e.g. glass).</p>'},
+phasechg:function(){return svgw(phaseTri(),360,"Phase changes")},
+heatS:function(){return svgw(heatSVG(4,null),330,"Heating curve of water")},
+water:function(){return '<h3>Water and energy</h3><div class="grid"><div><b>q = n × ΔH</b><br>n = moles · ΔH = molar enthalpy<br>H₂O = 18.02 g/mol</div><div>ΔH<sub>fus</sub> (melting) = <b>6.009 kJ/mol</b><br>ΔH<sub>vap</sub> (boiling) = <b>40.79 kJ/mol</b></div></div><p class="sm">Melting and vaporizing ABSORB energy. Freezing and condensing RELEASE the same amount.</p><p class="sm">Hydrogen bonds → high boiling point, ice less dense than water (0.917 vs 1.00 g/cm³), high surface tension, lots of energy to vaporize.</p>'},
+press:function(){return '<h3>Pressure units</h3><div class="fx" style="font-size:1.15em">1 atm = 760 mm Hg = 760 torr = 101.325 kPa = 101 325 Pa</div><p><b>STP</b> = 0 °C (273 K) and 1 atm (101.325 kPa).<br>K = °C + 273</p><p class="sm">Pressure = force ÷ area. Gas pressure comes from particles hitting the walls.</p>'},
+dalton:function(){return '<h3>Dalton\'s law of partial pressures</h3><div class="fx" style="font-size:1.15em">P<sub>T</sub> = P₁ + P₂ + P₃ + …</div><p>Gas collected over water: <b>P<sub>gas</sub> = P<sub>atm</sub> − P<sub>H₂O</sub></b></p><div class="wrap"><table><tr><th>Temp.</th><th>P<sub>H₂O</sub> (kPa)</th><th>P<sub>H₂O</sub> (mm Hg)</th></tr><tr><td>20 °C</td><td>2.34</td><td>17.5</td></tr><tr><td>25 °C</td><td>3.17</td><td>23.8</td></tr><tr><td>30 °C</td><td>4.24</td><td>31.8</td></tr></table></div>'},
+laws:function(){return '<h3>Gas laws (T in KELVIN: K = °C + 273)</h3><div class="vgrid">'+card("💉","Boyle (T constant)","P₁V₁ = P₂V₂<br>V ↓ → P ↑")+card("🎈❄️","Charles (P constant)","V₁/T₁ = V₂/T₂<br>T ↑ → V ↑")+card("🥫🔥","Gay-Lussac (V constant)","P₁/T₁ = P₂/T₂<br>T ↑ → P ↑")+card("🧮","Combined","P₁V₁/T₁ = P₂V₂/T₂")+'</div>'},
+avog:function(){return '<h3>Volumes and moles</h3><ul><li><b>Law of combining volumes</b>: at the same T and P, gas volumes in a reaction are in small whole-number ratios = the coefficients. 2H₂ + O₂ → 2H₂O(g): 2 L : 1 L : 2 L</li><li><b>Avogadro\'s law</b>: equal volumes of gases at the same T and P have the SAME number of molecules. V ∝ n.</li><li><b>Molar volume at STP = 22.4 L/mol</b> (any gas)</li></ul>'},
+igl:function(){return '<h3>Ideal gas law</h3><div class="fx" style="font-size:1.3em">PV = nRT</div><p>R = <b>0.0821 L·atm/(mol·K)</b> (P in atm)<br>R = <b>8.314 L·kPa/(mol·K)</b> (P in kPa)<br>V in L · n in mol · T in K (°C + 273)</p>'},
+r1:function(){return REF.kmt5()},r3:function(){return REF.gasprops()},r4:function(){return REF.ideal()},r5:function(){return REF.liqsol()},
+r8:function(){return REF.phasechg()+REF.heatS()},r9:function(){return REF.water()},r10:function(){return REF.press()},r11:function(){return REF.dalton()+REF.press()},
+r14:function(){return REF.laws()},r16:function(){return REF.avog()},r17:function(){return REF.igl()+REF.press()},
+review:function(){return REF.laws()+REF.igl()+REF.water()+REF.press()}
+};
+
+/* ================= predict-then-reveal ================= */
+var PRED={
+smell:{q:"Someone is cooking in the kitchen. Why can you smell it in another room?",o:["Gas particles are always moving and spread out","The smell travels by light","Your nose pulls the food closer","Smells are made of heat"],a:0,why:"Matter is made of particles that are ALWAYS moving. Gas particles from the food move randomly and spread through the air until they reach your nose (diffusion)."},
+speed:{q:"Helium (4 g/mol) and carbon dioxide (44 g/mol) are at the same temperature. Which particles move FASTER?",o:["Helium","Carbon dioxide","Same speed"],a:0,why:"Same temperature = same average kinetic energy (KE = ½mv²). Helium particles are lighter, so they must move faster to have the same KE."},
+compress:{q:"Two sealed syringes: one full of AIR, one full of WATER. You push both plungers. What happens?",o:["Only the air syringe moves in","Only the water syringe moves in","Both move in the same","Neither moves"],a:0,why:"Gas particles have lots of empty space between them, so a gas is COMPRESSIBLE. Liquid particles are already close together, so liquids are almost incompressible."},
+ideal:{q:"When does a real gas behave LEAST like an ideal gas?",o:["High pressure and low temperature","Low pressure and high temperature","Always the same","Only at 25 °C"],a:0,why:"At high pressure the particles are close, so their own size matters. At low temperature they are slow, so the attractions between them matter. Both break the KMT assumptions."},
+sweat:{q:"Why does sweating cool your body?",o:["Evaporation removes the fastest particles","Sweat is colder than air","Sweat blocks the sun","Sweat makes you heavier"],a:0,why:"Only the fastest (highest energy) water particles escape from your skin. The particles left behind have lower average kinetic energy, so your skin cools."},
+altitude:{q:"Lhasa, Tibet, is about 3,650 m high, where the air pressure is lower. At what temperature does water boil there?",o:["Below 100 °C","Exactly 100 °C","Above 100 °C"],a:0,why:"Water boils when its vapor pressure equals the air pressure. Lower air pressure → reached at a LOWER temperature (about 88 °C in Lhasa). That is why cooking takes longer there, and why people use pressure cookers."},
+plateau:{q:"You heat ice at 0 °C. While it is melting, what happens to the temperature?",o:["It stays at 0 °C","It goes up quickly","It goes down"],a:0,why:"During a phase change, the energy breaks the attractions between particles. It does not make the particles faster, so the temperature stays the same until all the ice has melted."},
+icefloat:{q:"You put an ice cube in a glass of water. What happens?",o:["It floats","It sinks","It stays in the middle"],a:0,why:"Ice (0.917 g/cm³) is LESS dense than liquid water (1.00 g/cm³) because hydrogen bonds hold the molecules in an open pattern with empty space. Most solids are denser than their liquids; water is special."},
+balloon:{q:"You put a balloon in the freezer. What happens to it?",o:["It gets smaller","It gets bigger","It pops","No change"],a:0,why:"Lower temperature → particles move slower and hit the walls less hard, so the balloon shrinks (Charles's law: V ∝ T at constant pressure)."},
+syringe:{q:"You push a sealed syringe so the volume is cut in HALF (same temperature). What happens to the pressure?",o:["It doubles","It halves","No change","It becomes 4 times bigger"],a:0,why:"The same particles are in half the space, so they hit the walls twice as often. Pressure doubles (Boyle's law: P₁V₁ = P₂V₂)."},
+aerosol:{q:"Why does a can of spray paint say 'Do not put in fire'?",o:["Heat raises the pressure inside and it can explode","Heat makes the can lighter","Fire makes the gas disappear","The paint freezes"],a:0,why:"The volume of the can cannot change. Higher temperature → faster particles → harder, more frequent hits → higher pressure (Gay-Lussac's law). The can can burst."},
+avogp:{q:"Two balloons are the same size, temperature and pressure. One has H₂, one has CO₂. Which has MORE molecules?",o:["They have the same number","H₂","CO₂"],a:0,why:"Avogadro's law: equal volumes of gases at the same temperature and pressure contain the SAME number of molecules. The CO₂ balloon is heavier, but the number of molecules is the same."}
+};
+
+/* ================= hot-spot regions ================= */
+var HEATHOT=["ice warms","ice melts","water warms","water boils","steam warms"].map(function(l,i){var g=HC[i];return {x:hx(g[0])-4,y:Math.min(hy(g[1]),hy(g[3]))-30,w:hx(g[2])-hx(g[0])+8,h:Math.abs(hy(g[3])-hy(g[1]))+60,l:l}});
+function heatHot(i){return HEATHOT.map(function(r,k){return {x:r.x,y:r.y,w:r.w,h:r.h,l:r.l,ok:k===i?1:0}})}
+function partHot(ans){var L=["A","B","C"],st=["gas","solid","liquid"];return st.map(function(s,i){return {x:15+i*235,y:15,w:220,h:180,l:L[i]+" ("+s+")",ok:s===ans?1:0}})}
+
+/* ================= activities ================= */
 var ACTS=[
-{id:"A1",c:1,t:"Warm-up: moles and equations review",ref:"mm",items:[
- {k:"num",q:"What is the molar mass of H₂O? (H = 1.01, O = 16.00)",a:18.02,u:"g/mol"},
- {k:"num",q:"How many moles are in 36.04 g of H₂O?",a:2,u:"mol"},
- {k:"num",q:"What is the mass of 3.00 mol of O₂?",a:96,u:"g"},
- {k:"mc",q:"Which equation is balanced?",o:["2H₂ + O₂ → 2H₂O","H₂ + O₂ → H₂O","H₂ + O₂ → 2H₂O","2H₂ + 2O₂ → H₂O"]},
- {k:"mc",q:"1 mole of any substance contains…",o:["6.022 × 10²³ particles","100 particles","12 particles","1 gram"]}]},
-{id:"A2",c:1,t:"Recipes and reading equations",ref:"recipe",items:[
- {k:"num",q:"Recipe: 2 bread + 1 cheese → 1 sandwich. You want 6 sandwiches. How many slices of bread do you need?",a:12,u:"slices"},
- {k:"num",q:"Bike recipe: 1 frame + 2 wheels → 1 bike. You have 10 wheels and many frames. How many bikes can you make?",a:5,u:"bikes"},
- {k:"mc",q:"Stoichiometry is…",o:["the study of the amounts of reactants and products in a reaction","the study of the speed of reactions","the study of atoms in the nucleus","the study of colors in reactions"]},
- {k:"mc",q:"In N₂ + 3H₂ → 2NH₃, the coefficients tell us…",o:["1 mol N₂ reacts with 3 mol H₂ to make 2 mol NH₃","1 g N₂ reacts with 3 g H₂ to make 2 g NH₃","there are 3 atoms of N","the reaction is slow"]},
- {k:"mc",q:"2H₂ + O₂ → 2H₂O. 4.04 g H₂ react with 32.00 g O₂. What mass of H₂O forms?",o:["36.04 g","28.00 g","2 g","4.04 g"]},
- {k:"mc",q:"Which is TRUE about a balanced equation?",o:["Atoms and mass are conserved, but the number of moles can change","The number of moles is always the same on both sides","Mass is lost as products form","Coefficients are grams"]},
- {k:"sort",q:"Is the statement about 2H₂ + O₂ → 2H₂O correct or wrong?",b:["Correct","Wrong"],i:["2 molecules H₂ react with 1 molecule O₂|Correct","2 mol H₂ react with 1 mol O₂|Correct","2 mol H₂O form|Correct","Total mass of reactants = total mass of products|Correct","2 g H₂ react with 1 g O₂|Wrong","The reaction makes 3 mol H₂O|Wrong","Mass is destroyed in the reaction|Wrong"]},
- {k:"text",q:"In your own words: why is a balanced equation like a recipe?"}]},
-{id:"A3",c:1,t:"Writing mole ratios",ref:"eqs",items:[
- {k:"mc",q:"N₂ + 3H₂ → 2NH₃. Which mole ratio changes mol N₂ into mol NH₃?",o:["2 mol NH₃ / 1 mol N₂","1 mol N₂ / 2 mol NH₃","3 mol H₂ / 1 mol N₂","2 g NH₃ / 1 g N₂"]},
- {k:"mc",q:"N₂ + 3H₂ → 2NH₃. Which mole ratio changes mol H₂ into mol NH₃?",o:["2 mol NH₃ / 3 mol H₂","3 mol H₂ / 2 mol NH₃","1 mol NH₃ / 1 mol H₂","2 mol NH₃ / 1 mol H₂"]},
- {k:"mc",q:"2H₂ + O₂ → 2H₂O. The mole ratio of H₂ to O₂ is…",o:["2 mol H₂ / 1 mol O₂","1 mol H₂ / 2 mol O₂","2 mol H₂ / 2 mol O₂","4 mol H₂ / 32 mol O₂"]},
- {k:"mc",q:"2KClO₃ → 2KCl + 3O₂. Which mole ratio changes mol KClO₃ into mol O₂?",o:["3 mol O₂ / 2 mol KClO₃","2 mol KClO₃ / 3 mol O₂","1 mol O₂ / 1 mol KClO₃","3 mol O₂ / 2 mol KCl"]},
- {k:"mc",q:"4Al + 3O₂ → 2Al₂O₃. Which mole ratio changes mol Al₂O₃ into mol Al?",o:["4 mol Al / 2 mol Al₂O₃","2 mol Al₂O₃ / 4 mol Al","3 mol O₂ / 2 mol Al₂O₃","4 mol Al / 3 mol O₂"]},
- {k:"mc",q:"Where do the numbers in a mole ratio come from?",o:["the coefficients of the balanced equation","the subscripts in the formulas","the molar masses","the atomic numbers"]},
- {k:"mc",q:"Why is the mole ratio important?",o:["It is the only way to go from one substance to a different substance","It changes grams into moles","It balances the equation","It tells the speed of the reaction"]},
- {k:"sort",q:"4Al + 3O₂ → 2Al₂O₃. Is each one a correct mole ratio for this equation?",b:["Correct ratio","Not correct"],i:["4 mol Al / 3 mol O₂|Correct ratio","3 mol O₂ / 2 mol Al₂O₃|Correct ratio","2 mol Al₂O₃ / 4 mol Al|Correct ratio","3 mol O₂ / 4 mol Al|Correct ratio","1 mol Al / 1 mol O₂|Not correct","2 mol Al / 3 mol Al₂O₃|Not correct","4 g Al / 3 g O₂|Not correct"]},
- {k:"mc",q:"4NH₃ + 5O₂ → 4NO + 6H₂O. What is the mole ratio of NO to H₂O?",o:["4 : 6 (= 2 : 3)","4 : 5","5 : 6","1 : 1"]},
- {k:"mc",q:"2HgO → 2Hg + O₂. What is the mole ratio of HgO to O₂?",o:["2 : 1","1 : 2","2 : 2","1 : 1"]},
- {k:"mc",q:"True or false: the coefficients in a balanced equation give the mole ratio of the substances.",o:["true","false"]},
- {k:"text",q:"Write all 6 mole ratios for 2H₂ + O₂ → 2H₂O."}]},
-{id:"A4",c:1,t:"Mole → mole calculations",ref:"mmcalc",items:[
- {k:"num",q:"N₂ + 3H₂ → 2NH₃. How many moles of NH₃ form from 3.0 mol N₂?",a:6,u:"mol NH₃"},
- {k:"num",q:"N₂ + 3H₂ → 2NH₃. How many moles of NH₃ form from 6.0 mol H₂?",a:4,u:"mol NH₃"},
- {k:"num",q:"N₂ + 3H₂ → 2NH₃. How many moles of H₂ are needed to react with 0.50 mol N₂?",a:1.5,u:"mol H₂"},
- {k:"num",q:"2KClO₃ → 2KCl + 3O₂. How many moles of O₂ form from 10.0 mol KClO₃?",a:15,u:"mol O₂"},
- {k:"num",q:"4Al + 3O₂ → 2Al₂O₃. How many moles of Al₂O₃ form from 4.0 mol Al?",a:2,u:"mol Al₂O₃"},
- {k:"num",q:"CH₄ + 2O₂ → CO₂ + 2H₂O. How many moles of O₂ are needed to burn 5.0 mol CH₄?",a:10,u:"mol O₂"},
- {k:"num",q:"2LiOH + CO₂ → Li₂CO₃ + H₂O (air cleaners in spacecraft). How many moles of LiOH are needed to remove 15.0 mol CO₂?",a:30,u:"mol LiOH"},
- {k:"num",q:"2KClO₃ → 2KCl + 3O₂. How many moles of KClO₃ are needed to make 9.0 mol O₂?",a:6,u:"mol KClO₃"},
- {k:"num",q:"4NH₃ + 5O₂ → 4NO + 6H₂O. How many moles of H₂O form from 20.0 mol NH₃?",a:30,u:"mol H₂O"},
- {k:"mc",q:"In a mole → mole problem, which step do you need?",o:["only the mole ratio","only the molar mass","molar mass, then mole ratio","nothing: the moles stay the same"]},
- {k:"text",q:"Explain each step you used to solve question 4."}]},
-{id:"A5",c:1,t:"Mole → mass calculations",ref:"calc",items:[
- {k:"num",q:"2H₂ + O₂ → 2H₂O. What mass of H₂O forms from 2.0 mol H₂?",a:36.04,u:"g"},
- {k:"num",q:"N₂ + 3H₂ → 2NH₃. What mass of NH₃ forms from 3.0 mol N₂?",a:102.24,u:"g"},
- {k:"num",q:"2KClO₃ → 2KCl + 3O₂. What mass of O₂ forms from 0.50 mol KClO₃?",a:24,u:"g"},
- {k:"num",q:"CH₄ + 2O₂ → CO₂ + 2H₂O. What mass of CO₂ forms from 1.5 mol CH₄?",a:66.0,u:"g"},
- {k:"num",q:"2Mg + O₂ → 2MgO. What mass of MgO forms from 2.0 mol Mg?",a:80.62,u:"g"},
- {k:"num",q:"Photosynthesis: 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂. What mass of glucose (C₆H₁₂O₆) forms from 2.00 mol CO₂?",a:60.06,u:"g"},
- {k:"mc",q:"In a mole → mass problem, the LAST step is…",o:["multiply by the molar mass of the wanted substance","divide by the molar mass of the given substance","multiply by Avogadro's number","use the mole ratio"]},
- {k:"mc",q:"What is the molar mass of NH₃? (N 14.01, H 1.01)",o:["17.04 g/mol","15.02 g/mol","14.01 g/mol","31.03 g/mol"]}]},
-{id:"A6",c:1,t:"Class 1 exit ticket",ref:"calc",items:[
- {k:"mc",q:"Stoichiometry is about…",o:["amounts of reactants and products","the speed of a reaction","the color of products","the shape of molecules"]},
- {k:"mc",q:"2H₂ + O₂ → 2H₂O. The mole ratio of H₂O to O₂ is…",o:["2 mol H₂O / 1 mol O₂","1 mol H₂O / 2 mol O₂","18.02 g H₂O / 32.00 g O₂","2 mol H₂O / 2 mol O₂"]},
- {k:"num",q:"N₂ + 3H₂ → 2NH₃. How many moles of H₂ react with 2.0 mol N₂?",a:6,u:"mol"},
- {k:"num",q:"2H₂ + O₂ → 2H₂O. What mass of H₂O forms from 1.0 mol O₂?",a:36.04,u:"g"},
- {k:"text",q:"One thing I understand well today, and one thing I am still confused about:"}]},
-{id:"A7",c:2,t:"Warm-up: Class 1 review",ref:"calc",items:[
- {k:"num",q:"4Al + 3O₂ → 2Al₂O₃. How many moles of O₂ react with 8.0 mol Al?",a:6,u:"mol"},
- {k:"num",q:"N₂ + 3H₂ → 2NH₃. What mass of NH₃ forms from 0.50 mol N₂?",a:17.04,u:"g"},
- {k:"num",q:"What is the volume of 0.500 mol O₂ gas at STP? (1 mol = 22.4 L)",a:11.2,u:"L"},
- {k:"mc",q:"To change grams into moles you…",o:["divide by the molar mass","multiply by the molar mass","use the mole ratio","multiply by 100"]},
- {k:"mc",q:"Mole ratios come from…",o:["coefficients","subscripts","molar masses","charges"]}]},
-{id:"A8",c:2,t:"Mass → mole and mass → mass",ref:"calc",items:[
- {k:"num",q:"2Mg + O₂ → 2MgO. How many moles of MgO form from 48.62 g Mg?",a:2,u:"mol"},
- {k:"num",q:"2H₂ + O₂ → 2H₂O. How many moles of H₂ react with 64.00 g O₂?",a:4,u:"mol"},
- {k:"num",q:"N₂ + 3H₂ → 2NH₃. How many moles of N₂ are needed to make 34.08 g NH₃?",a:1,u:"mol"},
- {k:"num",q:"2Mg + O₂ → 2MgO. What mass of MgO forms from 48.62 g Mg?",a:80.62,u:"g"},
- {k:"num",q:"2KClO₃ → 2KCl + 3O₂. What mass of O₂ forms from 245.10 g KClO₃?",a:96,u:"g"},
- {k:"num",q:"CH₄ + 2O₂ → CO₂ + 2H₂O. What mass of H₂O forms from 16.05 g CH₄?",a:36.04,u:"g"},
- {k:"num",q:"N₂ + 3H₂ → 2NH₃. What mass of NH₃ forms from 28.02 g N₂?",a:34.08,u:"g"},
- {k:"num",q:"2HgO → 2Hg + O₂. How many moles of O₂ form from 10.0 g HgO?",a:0.0231,u:"mol O₂"},
- {k:"num",q:"Same reaction: what MASS of O₂ forms from 10.0 g HgO?",a:0.739,u:"g O₂"},
- {k:"num",q:"Same reaction: what VOLUME of O₂ forms at STP from 10.0 g HgO? (1 mol gas = 22.4 L)",a:0.517,u:"L"},
- {k:"num",q:"Sn + 2HF → SnF₂ + H₂ (toothpaste). What mass of SnF₂ forms from 20.00 g HF?",a:78.3,u:"g"},
- {k:"num",q:"Cu + 2AgNO₃ → 2Ag + Cu(NO₃)₂. What mass of Ag forms from 50.0 g Cu?",a:169.7,u:"g"},
- {k:"num",q:"6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂. What mass of glucose forms from 66.02 g CO₂?",a:45.05,u:"g"},
- {k:"order",q:"Put the steps of a mass → mass problem in order.",s:["Write the balanced equation","Change grams of A to moles of A (÷ molar mass A)","Use the mole ratio to get moles of B","Change moles of B to grams of B (× molar mass B)"]},
- {k:"mc",q:"Why can't you go from grams of A straight to grams of B?",o:["Coefficients are moles, so you must go through moles","Grams cannot be measured","Molar masses are always the same","You can: just use the coefficients"]}]},
-{id:"A9",c:2,t:"Limiting reactants",ref:"lim",items:[
- {k:"mc",q:"Recipe: 2 bread + 1 cheese → 1 sandwich. You have 10 bread and 3 cheese. What is limiting?",o:["cheese","bread","both","neither"]},
- {k:"num",q:"Same recipe, 10 bread and 3 cheese. How many sandwiches can you make?",a:3,u:"sandwiches"},
- {k:"mc",q:"The limiting reactant is…",o:["the reactant that is used up first and limits the product","the reactant with the smallest mass","the reactant that is left over","always the first reactant written"]},
- {k:"mc",q:"2H₂ + O₂ → 2H₂O. You have 6.0 mol H₂ and 2.0 mol O₂. Which is limiting?",o:["O₂","H₂","neither","both"]},
- {k:"num",q:"Same reaction: 6.0 mol H₂ and 2.0 mol O₂. How many moles of H₂O form?",a:4,u:"mol"},
- {k:"num",q:"N₂ + 3H₂ → 2NH₃. You have 2.0 mol N₂ and 3.0 mol H₂. How many moles of NH₃ form?",a:2,u:"mol"},
- {k:"num",q:"4Al + 3O₂ → 2Al₂O₃. You have 2.0 mol Al and 2.0 mol O₂. What MASS of Al₂O₃ forms?",a:101.96,u:"g"},
- {k:"num",q:"2Na + Cl₂ → 2NaCl. You have 46.0 g Na and 50.0 g Cl₂. What mass of NaCl forms?",a:82.4,u:"g"},
- {k:"num",q:"Pb(NO₃)₂ + 2KI → PbI₂ + 2KNO₃. You have 1.00 mol Pb(NO₃)₂ and 1.50 mol KI. How many moles of PbI₂ form?",a:0.75,u:"mol"},
- {k:"order",q:"Put the limiting reactant method in order.",s:["Change both reactants to moles","Calculate moles of product from reactant 1","Calculate moles of product from reactant 2","Choose the SMALLER amount of product","That reactant is limiting; the smaller amount is the answer"]},
- {k:"text",q:"2Na + Cl₂ → 2NaCl: there were more grams of Cl₂ than Na, but Cl₂ was limiting. Explain why."}]},
-{id:"A10",c:2,t:"Percentage yield",ref:"yld",items:[
- {k:"sort",q:"Match each description to the type of yield.",b:["Theoretical yield","Actual yield","Percentage yield"],i:["The maximum product that can form|Theoretical yield","Calculated with stoichiometry|Theoretical yield","Measured in the lab|Actual yield","Usually smaller because some product is lost|Actual yield","actual ÷ theoretical × 100|Percentage yield","Written with the % sign|Percentage yield"]},
- {k:"num",q:"Theoretical yield = 50.0 g. Actual yield = 42.0 g. What is the percentage yield?",a:84,u:"%"},
- {k:"num",q:"2Mg + O₂ → 2MgO. 24.31 g Mg reacts. What is the THEORETICAL yield of MgO?",a:40.31,u:"g"},
- {k:"num",q:"Same reaction: the student collects 36.0 g MgO. What is the percentage yield?",a:89.3,u:"%"},
- {k:"num",q:"N₂ + 3H₂ → 2NH₃. 28.02 g N₂ reacts (H₂ in excess) and 25.0 g NH₃ is collected. What is the percentage yield?",a:73.4,u:"%"},
- {k:"num",q:"Cu + 2AgNO₃ → 2Ag + Cu(NO₃)₂. 25.0 g Cu reacts (AgNO₃ in excess) and 75.0 g Ag is collected. What is the percentage yield?",a:88.4,u:"%"},
- {k:"mc",q:"Which is a reason the actual yield is less than the theoretical yield?",o:["Some product sticks to the glassware","The balanced equation is wrong","The molar mass changes","Atoms are destroyed"]},
- {k:"mc",q:"A student reports a percentage yield of 115%. What is the most likely reason?",o:["The product was still wet or impure","The reaction worked perfectly","Some product was lost","The limiting reactant was used up"]}]},
-{id:"A11",c:2,t:"Module 6 review quiz",ref:"calc",items:[
- {k:"mc",q:"Stoichiometry is…",o:["the study of amounts of reactants and products","balancing charges","the study of reaction speed","naming compounds"]},
- {k:"mc",q:"CH₄ + 2O₂ → CO₂ + 2H₂O. Mole ratio to change mol CH₄ to mol H₂O?",o:["2 mol H₂O / 1 mol CH₄","1 mol CH₄ / 2 mol H₂O","2 mol O₂ / 1 mol CH₄","18.02 g H₂O / 16.05 g CH₄"]},
- {k:"mc",q:"2H₂ + O₂ → 2H₂O. 5.0 mol O₂ makes how many mol H₂O?",o:["10 mol","5.0 mol","2.5 mol","20 mol"]},
- {k:"mc",q:"Mole → mass: after the mole ratio you…",o:["multiply by the molar mass of the wanted substance","divide by the molar mass of the wanted substance","multiply by 100","stop"]},
- {k:"mc",q:"2Mg + O₂ → 2MgO. 24.31 g Mg makes how many grams of MgO?",o:["40.31 g","80.62 g","24.31 g","20.16 g"]},
- {k:"mc",q:"N₂ + 3H₂ → 2NH₃ with 1.0 mol N₂ and 6.0 mol H₂. The limiting reactant is…",o:["N₂","H₂","NH₃","neither"]},
- {k:"mc",q:"In question 6, how many moles of H₂ are left over?",o:["3.0 mol","0 mol","1.0 mol","6.0 mol"]},
- {k:"mc",q:"The theoretical yield is…",o:["the maximum calculated amount of product","the amount measured in the lab","always 100 g","the percentage yield"]},
- {k:"mc",q:"Theoretical 80.0 g, actual 60.0 g. Percentage yield?",o:["75.0%","133%","20.0%","60.0%"]},
- {k:"mc",q:"To find the limiting reactant, compare reactants using…",o:["moles of product each can make","their masses in grams","their colors","their coefficients only"]},
- {k:"text",q:"Which type of problem is still the hardest for you? Why?"}]},
-{id:"A12",c:2,t:"Class 2 exit ticket",ref:"calc",items:[
- {k:"num",q:"2H₂ + O₂ → 2H₂O. What mass of H₂O forms from 4.04 g H₂?",a:36.04,u:"g"},
- {k:"mc",q:"The reactant that is left over is the…",o:["excess reactant","limiting reactant","product","catalyst"]},
- {k:"num",q:"Theoretical yield 20.0 g, actual yield 18.0 g. Percentage yield?",a:90,u:"%"},
- {k:"text",q:"Explain the difference between actual yield and theoretical yield."}]}
+{id:"A1",c:1,t:"Warm-up: states of matter",items:[
+ {k:"mc",q:"Which state of matter has a definite shape AND a definite volume?",o:["Solid","Liquid","Gas","All of them"]},
+ {k:"sort",q:"Sort each example by its state of matter.",b:["Solid","Liquid","Gas"],i:["🧊 Ice cube|Solid","🪨 Rock|Solid","🥛 Milk in a glass|Liquid","🧃 Juice|Liquid","♨️ Steam from a kettle|Gas","🎈 Air inside a balloon|Gas"]},
+ {k:"multi",q:"In which states are the particles ALWAYS moving? Select ALL.",o:["*Solids","*Liquids","*Gases","None of them"]},
+ {k:"text",q:"Why can you smell food cooking from another room? Write your idea."}]},
+{id:"A2",c:1,t:"Kinetic-molecular theory",ref:"r1",items:[
+ {k:"mc",q:"The kinetic-molecular theory is based on the idea that particles of matter are…",o:["always in motion","never moving","only moving in gases","only moving when heated"]},
+ {k:"multi",q:"Select ALL the assumptions of the kinetic-molecular theory of gases.",o:["*Gas particles are tiny and far apart","*Collisions between particles are elastic","*Particles are in constant, rapid, random motion","*There are no forces of attraction between gas particles","*Temperature depends on the average kinetic energy","Gas particles slow down and stop over time","Gas particles attract each other strongly"]},
+ {k:"mc",q:"An ELASTIC collision means…",o:["no kinetic energy is lost","the particles stick together","the particles stop moving","energy is created"]},
+ {k:"mc",q:"If the temperature of a gas increases, the average kinetic energy of its particles…",o:["increases","decreases","stays the same","becomes zero"]},
+ {k:"order",q:"The same substance at three temperatures. Order from SLOWEST to FASTEST particles.",s:["Ice at −10 °C","Water at 25 °C","Steam at 110 °C"]},
+ {k:"mc",q:"At the same temperature, which particles move FASTEST?",o:["H₂ (2 g/mol)","O₂ (32 g/mol)","CO₂ (44 g/mol)","They all move at the same speed"]}]},
+{id:"A3",c:1,t:"Properties of gases",ref:"r3",items:[
+ {k:"sort",q:"Match each example to the property of gases.",b:["Expansion","Fluidity","Low density","Compressibility","Diffusion","Effusion"],i:["🎈 A gas fills every part of its container|Expansion","🌬️ Gas flows through a pipe|Fluidity","🪶 A gas has about 1/1000 the density of a liquid|Low density","💉 Air in a syringe is pushed into a smaller space|Compressibility","🧴 Perfume spreads across a room|Diffusion","🕳️ Air escapes slowly through a tiny hole in a tire|Effusion"]},
+ {k:"mc",q:"Why are gases easy to compress?",o:["There is a lot of empty space between the particles","Gas particles are very small and soft","Gas particles attract each other","Gases have no mass"]},
+ {k:"mc",q:"What is the difference between diffusion and effusion?",o:["Effusion is passing through a tiny opening; diffusion is spreading and mixing","They are exactly the same","Diffusion only happens in solids","Effusion only happens in liquids"]},
+ {k:"mc",q:"Which gas diffuses FASTER at the same temperature?",o:["Helium (4 g/mol)","Carbon dioxide (44 g/mol)","Both the same","Neither diffuses"]},
+ {k:"mc",q:"NH₃ and HCl are released at opposite ends of a glass tube. Where does the white ring form?",o:["Closer to the HCl end","Closer to the NH₃ end","Exactly in the middle","No ring forms"]}]},
+{id:"A4",c:1,t:"Ideal and real gases",ref:"r4",items:[
+ {k:"mc",q:"An IDEAL gas is…",o:["an imaginary gas that fits all the assumptions of the kinetic-molecular theory","any gas at room temperature","a gas made of only one element","a gas that never moves"]},
+ {k:"multi",q:"Select ALL the conditions that make a real gas behave LESS like an ideal gas.",o:["*High pressure","*Low temperature","Low pressure","High temperature"]},
+ {k:"hot",q:"Tap the box where the gas behaves LEAST like an ideal gas.",vb:"0 0 720 260",svg:idealPanels(),r:[{x:15,y:15,w:330,h:240,l:"A: low pressure, high temperature"},{x:375,y:15,w:330,h:240,l:"B: high pressure, low temperature",ok:1}]},
+ {k:"mc",q:"Which gas behaves MOST like an ideal gas?",o:["Helium (small, nonpolar)","Ammonia, NH₃ (polar)","Water vapor (polar)","They are all the same"]},
+ {k:"mc",q:"Why does a real gas deviate from ideal behavior at HIGH pressure?",o:["The particles are close, so their own volume and attractions matter","The particles stop moving","The particles get bigger","The gas becomes a solid immediately"]}]},
+{id:"A5",c:1,t:"Liquids, solids and phases",ref:"r5",items:[
+ {k:"sort",q:"Solid, liquid or gas?",b:["Solid","Liquid","Gas"],i:["Definite shape and definite volume|Solid","Particles vibrate in fixed positions|Solid","Definite melting point (crystalline)|Solid","Definite volume, takes the shape of its container|Liquid","Particles are close but slide past each other|Liquid","Has surface tension|Liquid","No definite shape or volume|Gas","Particles are far apart and move fast|Gas"]},
+ {k:"hot",q:"Tap the box that shows particles in a LIQUID.",vb:"0 0 720 215",svg:three(["A","B","C"],["gas","solid","liquid"]),r:partHot("liquid")},
+ {k:"mc",q:"Surface tension in a liquid is caused by…",o:["attractive forces pulling the surface particles inward","particles leaving the liquid","the container's shape","the liquid's color"]},
+ {k:"mc",q:"Why are liquids much more dense than gases?",o:["Attractive forces hold the particles close together","Liquid particles are bigger","Liquids are always cold","Liquids have no empty space at all"]},
+ {k:"mc",q:"Glass has particles in a random arrangement and no definite melting point. It is…",o:["an amorphous solid","a crystalline solid","a liquid","a gas"]},
+ {k:"multi",q:"Select ALL the properties of LIQUIDS.",o:["*Relatively high density","*Relatively incompressible","*Can diffuse (slowly)","*Surface tension","Fill the entire container","Definite shape"]},
+ {k:"mc",q:"Phases of matter are explained by two things. What are they?",o:["The kinetic energy of particles and the attractive forces between them","Color and mass","Size of the container and color","Only the temperature of the room"]}]},
+{id:"A6",c:1,t:"Exit ticket: Class 1",items:[
+ {k:"mc",q:"Which assumption explains why gas particles do not stick together?",o:["There are no forces of attraction between gas particles","Gas particles are always cold","Gas particles are large","Collisions lose energy"]},
+ {k:"mc",q:"A balloon slowly goes flat because gas escapes through tiny holes. This is…",o:["effusion","diffusion","condensation","compressibility"]},
+ {k:"mc",q:"In which state do particles vibrate in fixed positions?",o:["Solid","Liquid","Gas","All of them"]},
+ {k:"mc",q:"A real gas is most like an ideal gas at…",o:["low pressure and high temperature","high pressure and low temperature","its freezing point","any pressure"]},
+ {k:"text",q:"What is one idea from today that you want to remember?"}]},
+{id:"A7",c:2,t:"Warm-up: Class 1 review",items:[
+ {k:"mc",q:"Temperature measures the average… of particles.",o:["kinetic energy","mass","size","color"]},
+ {k:"mc",q:"Which state has a definite volume but NO definite shape?",o:["Liquid","Solid","Gas","None"]},
+ {k:"mc",q:"Perfume spreading across a room is an example of…",o:["diffusion","effusion","compression","freezing"]}]},
+{id:"A8",c:2,t:"Phase changes",ref:"r8",items:[
+ {k:"sort",q:"Does the phase change ABSORB or RELEASE energy?",b:["Absorbs energy","Releases energy"],i:["Melting|Absorbs energy","Vaporization|Absorbs energy","Sublimation|Absorbs energy","Freezing|Releases energy","Condensation|Releases energy","Deposition|Releases energy"]},
+ {k:"mc",q:"VAPORIZATION is…",o:["the change from a liquid (or solid) into a gas","the change from a gas into a liquid","the change from a liquid into a solid","the change from a solid into a liquid"]},
+ {k:"mc",q:"FREEZING is…",o:["the change from a liquid into a solid; energy is released","the change from a solid into a liquid; energy is absorbed","the change from a gas into a solid","the change from a liquid into a gas"]},
+ {k:"mc",q:"A liquid boils when…",o:["its vapor pressure equals the atmospheric pressure","it reaches 100 °C in every place on Earth","all the particles stop moving","the container is closed"]},
+ {k:"mc",q:"Where is the air pressure lower, and water boils at a LOWER temperature?",o:["On a high mountain","At sea level","Inside a pressure cooker","At the bottom of a mine"]},
+ {k:"hot",q:"On the heating curve, tap the part where ICE IS MELTING.",vb:"0 0 720 330",svg:heatSVG(4,null,true),r:heatHot(1)},
+ {k:"mc",q:"Why does the temperature stay the same while ice melts?",o:["The energy breaks attractions between particles instead of making them faster","The energy disappears","The thermometer stops working","The particles stop moving"]},
+ {k:"mc",q:"Dry ice (solid CO₂) turns directly into a gas. This is…",o:["sublimation","deposition","melting","condensation"]},
+ {k:"mc",q:"Why does evaporation cool a liquid?",o:["The fastest particles escape, so the average kinetic energy of the rest goes down","The liquid absorbs cold from the air","The particles get bigger","Evaporation adds energy"]},
+ {k:"order",q:"Heating ice at −20 °C until it is steam at 120 °C. Put the steps in order.",s:["Ice warms up","Ice melts at 0 °C","Liquid water warms up","Water boils at 100 °C","Steam warms up"]}]},
+{id:"A9",c:2,t:"Water: properties and energy",ref:"r9",items:[
+ {k:"mc",q:"Why does ice float on liquid water?",o:["Hydrogen bonds hold ice in an open pattern, so ice is less dense","Ice is heavier than water","Ice has air bubbles only","Water pushes all solids up"]},
+ {k:"multi",q:"Select ALL the properties of water caused by hydrogen bonds.",o:["*High boiling point","*Ice is less dense than liquid water","*High surface tension","*A lot of energy is needed to vaporize it","Water is a gas at room temperature"]},
+ {k:"num",q:"How much energy is needed to MELT 2.00 mol of ice at 0 °C? (ΔH_fus = 6.009 kJ/mol)",a:12.0,u:"kJ"},
+ {k:"num",q:"How much energy is needed to VAPORIZE 3.00 mol of water at 100 °C? (ΔH_vap = 40.79 kJ/mol)",a:122,u:"kJ"},
+ {k:"num",q:"How much energy is needed to melt 36.0 g of ice? (H₂O = 18.02 g/mol)",a:12.0,u:"kJ"},
+ {k:"num",q:"How much energy is needed to vaporize 9.01 g of water?",a:20.4,u:"kJ"},
+ {k:"num",q:"How much energy is RELEASED when 54.0 g of steam condenses to liquid water at 100 °C?",a:122,u:"kJ"},
+ {k:"slider",q:"Vaporizing water needs about how many TIMES more energy than melting the same amount of ice? (40.79 ÷ 6.009)",min:1,max:10,step:.5,a:7,tol:.5,u:"times"}]},
+{id:"A10",c:2,t:"Pressure, units and STP",ref:"r10",items:[
+ {k:"mc",q:"Standard temperature and pressure (STP) is…",o:["0 °C and 1 atm","25 °C and 1 atm","100 °C and 1 atm","0 °C and 0 atm"]},
+ {k:"mc",q:"Pressure is…",o:["force divided by area","mass divided by volume","energy times time","temperature times volume"]},
+ {k:"slider",q:"Set the slider to standard temperature in KELVIN.",min:0,max:400,a:273,tol:1,u:"K"},
+ {k:"num",q:"Convert 2.50 atm to kPa.",a:253,u:"kPa"},
+ {k:"num",q:"Convert 380 mm Hg to atm.",a:.500,u:"atm"},
+ {k:"num",q:"Convert 152 kPa to atm.",a:1.50,u:"atm"},
+ {k:"num",q:"Convert 0.750 atm to mm Hg.",a:570,u:"mm Hg"},
+ {k:"num",q:"Convert 912 torr to kPa.",a:122,u:"kPa"},
+ {k:"mc",q:"Why is air pressure lower on a high mountain?",o:["There is less air above pushing down","The air is hotter","Gravity is stronger","There are more particles"]}]},
+{id:"A11",c:2,t:"Dalton's law of partial pressures",ref:"r11",items:[
+ {k:"mc",q:"Dalton's law says the total pressure of a gas mixture is…",o:["the sum of the partial pressures of each gas","the partial pressure of the largest gas","always 1 atm","the average of the partial pressures"]},
+ {k:"num",q:"A mixture has O₂ at 0.25 atm, N₂ at 0.60 atm and CO₂ at 0.15 atm. What is the total pressure?",a:1.00,u:"atm"},
+ {k:"num",q:"Air at 101.3 kPa has N₂ at 79.1 kPa and O₂ at 21.2 kPa. What is the pressure of all the OTHER gases?",a:1.0,u:"kPa"},
+ {k:"num",q:"H₂ is collected over water at 20 °C. The total pressure is 100.0 kPa. What is the pressure of the dry H₂? (Use the table.)",a:97.7,u:"kPa"},
+ {k:"num",q:"O₂ is collected over water at 25 °C. Atmospheric pressure is 760 mm Hg. What is the pressure of the dry O₂?",a:736,u:"mm Hg"},
+ {k:"mc",q:"Why do we subtract the water vapor pressure?",o:["The collected gas is mixed with water vapor","Water makes the gas heavier","Water vapor has no pressure","To change units"]}]},
+{id:"A12",c:2,t:"Exit ticket: Class 2",items:[
+ {k:"mc",q:"Condensation is…",o:["gas → liquid","liquid → gas","solid → gas","liquid → solid"]},
+ {k:"num",q:"How much energy is released when 1.50 mol of water freezes? (ΔH_fus = 6.009 kJ/mol)",a:9.01,u:"kJ"},
+ {k:"num",q:"Convert 1.20 atm to mm Hg.",a:912,u:"mm Hg"},
+ {k:"num",q:"He at 0.30 atm and Ne at 0.45 atm are in one container. What is the total pressure?",a:.75,u:"atm"},
+ {k:"text",q:"What was the hardest part of today? Write one question."}]},
+{id:"A13",c:3,t:"Warm-up: Class 2 review",items:[
+ {k:"num",q:"Convert 25 °C to kelvin.",a:298,u:"K"},
+ {k:"num",q:"Convert 1.50 atm to kPa.",a:152,u:"kPa"},
+ {k:"mc",q:"At STP, the temperature is…",o:["273 K","298 K","373 K","0 K"]}]},
+{id:"A14",c:3,t:"Boyle, Charles and Gay-Lussac",ref:"r14",items:[
+ {k:"sort",q:"Which law does each example show?",b:["Boyle's law","Charles's law","Gay-Lussac's law"],i:["💉 Pushing a syringe plunger increases the pressure|Boyle's law","🤿 Air bubbles get bigger as they rise to the surface (less pressure)|Boyle's law","🎈 A balloon shrinks in the freezer|Charles's law","🔥 A hot-air balloon's air expands when heated|Charles's law","🥫 A spray can may explode in a fire|Gay-Lussac's law","🚗 Tire pressure rises after a long drive|Gay-Lussac's law"]},
+ {k:"slider",q:"At constant temperature, the VOLUME of a gas is doubled. The new pressure is how many times the old pressure?",min:0,max:4,step:.25,a:.5,tol:0,u:"× old pressure"},
+ {k:"num",q:"Boyle: 2.00 L of gas at 100 kPa is compressed to 0.500 L (T constant). New pressure?",a:400,u:"kPa"},
+ {k:"num",q:"Boyle: 150 mL of gas at 0.947 atm. The pressure changes to 0.987 atm (T constant). New volume?",a:144,u:"mL"},
+ {k:"num",q:"Charles: 752 mL of gas at 25 °C is heated to 50 °C (P constant). New volume?",a:815,u:"mL"},
+ {k:"num",q:"Charles: 3.00 L of gas at 27 °C is cooled to −73 °C (P constant). New volume?",a:2.00,u:"L"},
+ {k:"num",q:"Gay-Lussac: a spray can is at 3.00 atm at 25 °C. It is heated to 52 °C. New pressure?",a:3.27,u:"atm"},
+ {k:"num",q:"Gay-Lussac: a tire is at 200 kPa at 27 °C. After driving it is 57 °C. New pressure?",a:220,u:"kPa"},
+ {k:"mc",q:"Why must temperature be in kelvin in gas laws?",o:["Kelvin starts at absolute zero, so the ratios work","Kelvin numbers are smaller","Celsius is only for liquids","Scientists like kelvin more"]}]},
+{id:"A15",c:3,t:"Combined gas law",ref:"r14",items:[
+ {k:"mc",q:"The combined gas law combines…",o:["Boyle's, Charles's and Gay-Lussac's laws","Dalton's and Avogadro's laws","only Boyle's law","the ideal gas law and Dalton's law"]},
+ {k:"num",q:"27.5 mL of gas at 22 °C and 0.974 atm. What is its volume at STP (0 °C, 1.00 atm)?",a:24.8,u:"mL"},
+ {k:"num",q:"500. mL of gas at 27 °C and 100. kPa. New conditions: 127 °C and 150. kPa. New volume?",a:444,u:"mL"},
+ {k:"num",q:"2.00 L of gas at 20 °C and 1.00 atm changes to 4.00 L and 1.50 atm. New temperature in KELVIN?",a:879,u:"K"}]},
+{id:"A16",c:3,t:"Combining volumes and Avogadro's law",ref:"r16",items:[
+ {k:"mc",q:"The law of combining volumes says that at the same T and P, the volumes of gases in a reaction…",o:["are in small whole-number ratios","are always equal","add up to 22.4 L","do not matter"]},
+ {k:"num",q:"2H₂(g) + O₂(g) → 2H₂O(g). How many liters of O₂ react with 6.0 L of H₂ (same T and P)?",a:3.0,u:"L"},
+ {k:"num",q:"N₂(g) + 3H₂(g) → 2NH₃(g). How many liters of NH₃ form from 4.0 L of N₂?",a:8.0,u:"L"},
+ {k:"mc",q:"Avogadro's law says…",o:["equal volumes of gases at the same T and P contain equal numbers of molecules","all gases have the same mass","gas volume does not depend on moles","heavier gases take more space"]},
+ {k:"slider",q:"Set the slider to the molar volume of any gas at STP.",min:0,max:50,step:.1,a:22.4,tol:.3,u:"L/mol"},
+ {k:"num",q:"What is the volume of 2.00 mol of gas at STP?",a:44.8,u:"L"},
+ {k:"num",q:"How many moles are in 11.2 L of O₂ at STP?",a:.500,u:"mol"},
+ {k:"num",q:"What is the mass of 5.60 L of CO₂ at STP? (CO₂ = 44.01 g/mol)",a:11.0,u:"g"}]},
+{id:"A17",c:3,t:"The ideal gas law",ref:"r17",items:[
+ {k:"mc",q:"The ideal gas law is…",o:["PV = nRT","P₁V₁ = P₂V₂","P_T = P₁ + P₂","V₁/T₁ = V₂/T₂"]},
+ {k:"num",q:"0.500 mol of gas is in a 10.0 L container at 300 K. What is the pressure in atm?",a:1.23,u:"atm"},
+ {k:"num",q:"What volume does 2.00 mol of gas take up at 1.00 atm and 273 K?",a:44.8,u:"L"},
+ {k:"num",q:"How many moles of gas are in 5.00 L at 2.00 atm and 25 °C?",a:.409,u:"mol"},
+ {k:"num",q:"1.00 mol of gas is in 20.0 L at 1.50 atm. What is the temperature in kelvin?",a:365,u:"K"},
+ {k:"num",q:"0.250 mol of gas is in 2.00 L at 27 °C. What is the pressure in kPa? (R = 8.314)",a:312,u:"kPa"},
+ {k:"num",q:"8.00 g of O₂ (32.00 g/mol) is in a 5.00 L container at 300 K. What is the pressure in atm?",a:1.23,u:"atm"}]},
+{id:"A18",c:3,t:"Module 7 review",ref:"review",items:[
+ {k:"mc",q:"Which is NOT an assumption of the kinetic-molecular theory?",o:["Gas particles attract each other strongly","Gas particles are far apart","Collisions are elastic","Particles are in constant random motion"]},
+ {k:"hot",q:"Tap the part of the heating curve where WATER IS BOILING.",vb:"0 0 720 330",svg:heatSVG(4,null,true),r:heatHot(3)},
+ {k:"hot",q:"Tap the box that shows a SOLID.",vb:"0 0 720 215",svg:three(["A","B","C"],["gas","solid","liquid"]),r:partHot("solid")},
+ {k:"num",q:"How much energy does it take to vaporize 18.02 g of water?",a:40.8,u:"kJ"},
+ {k:"num",q:"Convert 101.325 kPa to mm Hg.",a:760,u:"mm Hg"},
+ {k:"num",q:"Boyle: 4.00 L at 1.00 atm is compressed to 1.00 L (T constant). New pressure?",a:4.00,u:"atm"},
+ {k:"num",q:"Ideal gas law: what volume does 1.00 mol of gas take up at 1.00 atm and 300 K?",a:24.6,u:"L"},
+ {k:"slider",q:"What is standard pressure in kPa? (to the nearest whole number)",min:0,max:200,a:101,tol:1,u:"kPa"},
+ {k:"text",q:"Which topic in Module 7 is still the hardest for you?"}]}
 ];
 var ACT={};ACTS.forEach(function(a){ACT[a.id]=a;a.n=a.items.filter(function(x){return x.k!=="text"}).length});
 </script>
 <script>
-var SHEET_URL="/api"; var COURSE="chem6"; /* server is on the same site (Cloudflare) */
+var SHEET_URL="/api"; var COURSE="chem7"; /* server is on the same site (Cloudflare) */
 var LINK=location.href.split("#")[0];
 function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
 function shuf(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t}return a}
 function ls(k,v){try{if(v===undefined){var r=localStorage.getItem(k);return r?JSON.parse(r):null}localStorage.setItem(k,JSON.stringify(v))}catch(e){return null}}
 function fmt(x){return Math.round(x*10)/10}
 function ck(s){var h=7,i;for(i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))%1679616;return ("000"+h.toString(36)).slice(-4)}
-function codeFor(id,name,sc,n){var t=fmt(sc)+"/"+n;return "#"+id+" "+name+" "+t+" "+ck(id+"|"+name.toLowerCase()+"|"+t+"|chem-m6")}
+function codeFor(id,name,sc,n){var t=fmt(sc)+"/"+n;return "#"+id+" "+name+" "+t+" "+ck(id+"|"+name.toLowerCase()+"|"+t+"|chem-m7")}
 function sumSc(rec){var t=0;(rec&&rec.s||[]).forEach(function(v){if(typeof v==="number")t+=v});return t}
 function cell(sc,ans){if(typeof sc==="number"){if(sc>=.999)return ["✓","c1"];if(sc<=0.001)return ["✗","c0"];return [Math.round(sc*100)+"%","cp"]}if(ans!=null&&ans!=="")return ["✎",""];return ["·","sm"]}
 var S={db:null,user:null,uid:null,owner:false,dbOK:false,docs:{},live:null};
+
+/* ================= Unit 2 components ================= */
+function bigTimer(e){var m=+e.dataset.timer,tot=m*60,left=tot,iv=null,C=2*Math.PI*48;e.className="tbig";
+ e.innerHTML='<svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="48" class="tr-bg"/><circle cx="60" cy="60" r="48" class="tr-fg" transform="rotate(-90 60 60)" stroke-dasharray="'+C.toFixed(1)+'" stroke-dashoffset="0"/><text x="60" y="71" class="tt">'+m+':00</text></svg><div class="tl">✏️ Copy into your notebook<small>'+m+' minutes</small></div><div class="row"><button class="btn go">▶ Start</button><button class="btn alt">⏸ Pause</button><button class="btn alt">↺ Reset</button></div>';
+ var fg=e.querySelector(".tr-fg"),tt=e.querySelector(".tt"),bs=e.querySelectorAll("button"),lab=e.querySelector(".tl small");
+ function draw(){var s=Math.max(0,Math.ceil(left));tt.textContent=Math.floor(s/60)+":"+("0"+s%60).slice(-2);fg.setAttribute("stroke-dashoffset",(C*(1-left/tot)).toFixed(1));
+  e.classList.toggle("warn",left>0&&left<=60);e.classList.toggle("end",left<=0);lab.textContent=left<=0?"⏰ Time is up!":left<=60?"Last minute!":m+" minutes"}
+ bs[0].onclick=function(){this.blur();if(iv)return;if(left<=0)left=tot;var last=Date.now();iv=setInterval(function(){var n=Date.now();left-=(n-last)/1000;last=n;if(left<=0){left=0;clearInterval(iv);iv=null}draw()},200)};
+ bs[1].onclick=function(){this.blur();clearInterval(iv);iv=null};bs[2].onclick=function(){this.blur();clearInterval(iv);iv=null;left=tot;draw()};draw()}
+function initIx(root){[].forEach.call(root.querySelectorAll("[data-play]"),function(e){if(!e.dataset.ok){e.dataset.ok=1;player(e,PLAY[e.dataset.play])}});
+ [].forEach.call(root.querySelectorAll("[data-pred]"),function(e){if(!e.dataset.ok){e.dataset.ok=1;pred(e,PRED[e.dataset.pred])}});
+ [].forEach.call(root.querySelectorAll("[data-ix]"),function(e){if(!e.dataset.ok){e.dataset.ok=1;IX[e.dataset.ix](e)}})}
+function player(e,P){var i=0,iv=null;e.className="ply";e.innerHTML="";e.appendChild(el("h3","",P.title));var stage=el("div"),cap=el("div","pcap"),num=el("span","pnum"),tx=el("div"),bt=el("b"),sp=el("span");tx.appendChild(bt);tx.appendChild(sp);cap.appendChild(num);cap.appendChild(tx);
+ var row=el("div","row"),bk=el("button","btn alt","◀ Back"),pl=el("button","btn go","▶ Play"),nx=el("button","btn","Next ▶"),dots=el("div","pdots");
+ P.st.forEach(function(s,k){var d=el("button","",String(k+1));d.setAttribute("aria-label","Step "+(k+1));d.onclick=function(){stop();show(k);d.blur()};dots.appendChild(d)});
+ function show(k){i=Math.max(0,Math.min(P.st.length-1,k));stage.innerHTML=svgw(P.st[i].s,P.h||330,P.st[i].t);num.textContent=(i+1)+"/"+P.st.length;bt.textContent=P.st[i].t;sp.textContent=P.st[i].d;
+  [].forEach.call(dots.children,function(d,k){d.classList.toggle("on",k===i)});bk.disabled=i===0;nx.disabled=i===P.st.length-1}
+ function stop(){clearInterval(iv);iv=null;pl.textContent="▶ Play"}
+ bk.onclick=function(){stop();show(i-1);this.blur()};nx.onclick=function(){stop();show(i+1);this.blur()};
+ pl.onclick=function(){this.blur();if(iv){stop();return}if(i===P.st.length-1)show(0);pl.textContent="⏸ Pause";iv=setInterval(function(){if(!e.offsetParent||i>=P.st.length-1){stop();return}show(i+1)},P.ms||6000)};
+ row.appendChild(bk);row.appendChild(pl);row.appendChild(nx);row.appendChild(dots);e.appendChild(stage);e.appendChild(cap);e.appendChild(row);show(0)}
+function pred(e,Q){e.className="pred";e.innerHTML="";e.appendChild(el("h3","","🤔 Predict first!"));e.appendChild(el("p","q",Q.q));var g=el("div","opts"),ans=el("div","pans"),rv=el("button","btn","Reveal the answer");ans.style.display="none";
+ Q.o.forEach(function(o,k){var x=el("button","opt",String.fromCharCode(65+k)+". "+o);x.onclick=function(){[].forEach.call(g.children,function(c){c.classList.remove("sel")});x.classList.add("sel");x.blur()};g.appendChild(x)});
+ rv.onclick=function(){rv.blur();[].forEach.call(g.children,function(c,k){c.classList.remove("sel");c.classList.add(k===Q.a?"ok":"no")});ans.innerHTML="<b>✓ "+String.fromCharCode(65+Q.a)+". "+Q.o[Q.a]+"</b><br>"+Q.why;ans.style.display="";rv.style.display="none";var sec=e.closest("section");if(sec)[].forEach.call(sec.querySelectorAll(".after"),function(x){x.classList.add("show")})};
+ e.appendChild(g);var r=el("div","row");r.appendChild(rv);r.appendChild(el("span","sm","Students: type A, B, C… in the ClassIn chat first."));e.appendChild(r);e.appendChild(ans)}
 
 /* ================= TEACHER DECK ================= */
 var D={secs:[],i:0};
@@ -541,7 +849,8 @@ function startDeck(){
  [].forEach.call(document.querySelectorAll("[data-ref]"),function(e){e.innerHTML=REF[e.dataset.ref](e.dataset.legend==="1")});
  [].forEach.call(document.querySelectorAll("[data-join]"),function(e){e.innerHTML='<span class="tag">Every class</span><h2>Join the live class</h2><ol style="font-size:1.15em"><li>Open the class link: <span class="lnk">'+LINK+'</span></li><li>Type your <b>real name</b>: the same name you use in ClassIn.</li><li>Open the activity number I tell you, for example <b>A3</b>.</li><li>Answer every question.</li><li>At the end you get a <b>code</b>. Copy the code into the <b>ClassIn chat</b>.</li></ol><div class="do"><b>Tip:</b> a laptop or tablet is best. On a phone, turn it sideways.</div>'});
  [].forEach.call(document.querySelectorAll("[data-act]"),buildActSlide);
- [].forEach.call(document.querySelectorAll("[data-timer]"),function(e){var m=+e.dataset.timer,b=el("button","btn alt","Start "+m+"-minute copy timer"),o=el("span","timer"),iv;b.onclick=function(){clearInterval(iv);var end=Date.now()+m*60000;b.blur();iv=setInterval(function(){var r=Math.max(0,Math.round((end-Date.now())/1000));o.textContent="  ⏱ "+Math.floor(r/60)+":"+("0"+r%60).slice(-2)+(r?"":"  Time is up!");if(!r)clearInterval(iv)},250)};e.appendChild(b);e.appendChild(o)});
+ [].forEach.call(document.querySelectorAll("[data-timer]"),bigTimer);
+ initIx(document.getElementById("deck"));
  document.getElementById("bk").onclick=function(){go(D.i-1);this.blur()};
  document.getElementById("nx").onclick=function(){go(D.i+1);this.blur()};
  document.getElementById("mbtn").onclick=function(){this.blur();openOv()};
@@ -549,11 +858,11 @@ function startDeck(){
  document.addEventListener("keydown",function(e){if(!document.getElementById("deck").classList.contains("on")||document.getElementById("ov").classList.contains("on"))return;var t=e.target.tagName;if(t==="INPUT"||t==="TEXTAREA")return;
   if(e.key===" "){if(t==="BUTTON")e.preventDefault();return}
   if(e.key==="ArrowRight"||e.key==="PageDown"){e.preventDefault();go(D.i+1)}else if(e.key==="ArrowLeft"||e.key==="PageUp"){e.preventDefault();go(D.i-1)}});
- go(ls("chem6_slide")||0);
+ go(ls("chem7_slide")||0);
  teacherData();
 }
 function go(i){i=Math.max(0,Math.min(D.secs.length-1,i));D.secs[D.i].classList.remove("on");D.i=i;D.secs[i].classList.add("on");D.secs[i].scrollTop=0;
- document.getElementById("pb").style.width=(100*(i+1)/D.secs.length)+"%";document.getElementById("n").textContent=(i+1)+" / "+D.secs.length;ls("chem6_slide",i);
+ document.getElementById("pb").style.width=(100*(i+1)/D.secs.length)+"%";document.getElementById("n").textContent=(i+1)+" / "+D.secs.length;ls("chem7_slide",i);
  var a=D.secs[i].dataset.act;if(a)renderMon(a)}
 function buildActSlide(sec){var A=ACT[sec.dataset.act];sec.innerHTML="";
  sec.appendChild(el("span","tag","Activity "+A.id+" · Class "+A.c));sec.appendChild(el("h2","",A.t));
@@ -561,10 +870,10 @@ function buildActSlide(sec){var A=ACT[sec.dataset.act];sec.innerHTML="";
  if(SHEET_URL){var row=el("div","row"),send=el("button","btn go","▶ Send to students"),stop=el("button","btn alt","Stop"),st=el("span","");st.id="lv-"+A.id;
   send.onclick=function(){send.blur();setLive(A.id)};stop.onclick=function(){stop.blur();setLive(null)};row.appendChild(send);row.appendChild(stop);row.appendChild(st);sec.appendChild(row)}
  var sp=el("div","split act"),L=el("div"),R=el("div","mon");R.id="mon-"+A.id;
- if(A.ref){var r=el("div");r.innerHTML=REF[A.ref](false);L.appendChild(r)}
+ if(A.ref){var r=el("div");r.innerHTML=REF[A.ref](false);initIx(r);L.appendChild(r)}
  else{var ol=el("ol");A.items.forEach(function(it){ol.appendChild(el("li","",it.q))});L.appendChild(ol)}
  var d=el("details"),sm=el("summary","","Answer key (teacher only: do not screen-share)");d.appendChild(sm);var ok=el("ol","sm");
- A.items.forEach(function(it){var t=it.k==="mc"?it.o[0]:it.k==="num"?(it.a+" "+(it.u||"")):it.k==="order"?it.s.join(" → "):it.k==="sort"?it.i.map(function(x){return x.replace("|"," → ")}).join("; "):"(written answer)";ok.appendChild(el("li","",it.q+"  ⟶  "+t))});
+ A.items.forEach(function(it){var t=it.k==="mc"?it.o[0]:it.k==="slider"?(it.a+" "+(it.u||"")+(it.tol?" (±"+it.tol+")":"")):it.k==="multi"?it.o.filter(function(o){return o[0]==="*"}).map(function(o){return o.slice(1)}).join(", "):it.k==="hot"?it.r.filter(function(r){return r.ok}).map(function(r){return r.l}).join(" or "):it.k==="num"?(it.a+" "+(it.u||"")):it.k==="order"?it.s.join(" → "):it.k==="sort"?it.i.map(function(x){return x.replace("|"," → ")}).join("; "):"(written answer)";ok.appendChild(el("li","",it.q+"  ⟶  "+t))});
  d.appendChild(ok);L.appendChild(d);sp.appendChild(L);sp.appendChild(R);sec.appendChild(sp);renderMon(A.id)}
 function lvMsg(t){[].forEach.call(document.querySelectorAll("[id^=lv-]"),function(s){s.textContent=t;s.className="sm c0"})}
 function setLive(id){if(!S.db){lvMsg("Live sending is off in this view. Tell students the activity number (they choose it from their list) and collect codes in the ClassIn chat.");return}
@@ -575,13 +884,13 @@ function teacherData(){if(!S.db){[].forEach.call(document.querySelectorAll(".mon
  var tm=setTimeout(function(){S.slow=true;var a=D.secs[D.i].dataset.act;if(a)renderMon(a)},10000);
  S.db.doc("live/state").onSnapshot(function(s){S.live=s.exists?s.data():null;liveLabel()},function(){});
  S.db.collection("students").onSnapshot(function(q){clearTimeout(tm);S.slow=false;var o={};q.docs.forEach(function(d){if(d.exists)o[d.id]=d.data()});S.docs=o;var a=D.secs[D.i].dataset.act;if(a)renderMon(a);if(document.getElementById("ov").classList.contains("on"))renderOv()},function(e){clearTimeout(tm);S.dbErr=e&&e.code;var a=D.secs[D.i].dataset.act;if(a)renderMon(a)})}
-function codes(){return ls("chem6_codes")||[]}
+function codes(){return ls("chem7_codes")||[]}
 function parseCodes(txt){var re=/#(A\d{1,2})\s+(.+?)\s+(\d+(?:\.\d)?)\/(\d+)\s+([0-9a-z]{4})(?![0-9a-z])/gi,m,out=codes(),seen={};out.forEach(function(c){seen[c.id+"|"+c.name.toLowerCase()+"|"+c.sc]=1});
- while((m=re.exec(txt))){var id=m[1].toUpperCase(),name=m[2].trim().slice(0,40),t=m[3]+"/"+m[4],ok=ck(id+"|"+name.toLowerCase()+"|"+t+"|chem-m6")===m[5].toLowerCase(),k=id+"|"+name.toLowerCase()+"|"+m[3];if(seen[k])continue;seen[k]=1;out.push({id:id,name:name,sc:+m[3],n:+m[4],ok:ok,at:Date.now()})}
- ls("chem6_codes",out);return out}
+ while((m=re.exec(txt))){var id=m[1].toUpperCase(),name=m[2].trim().slice(0,40),t=m[3]+"/"+m[4],ok=ck(id+"|"+name.toLowerCase()+"|"+t+"|chem-m7")===m[5].toLowerCase(),k=id+"|"+name.toLowerCase()+"|"+m[3];if(seen[k])continue;seen[k]=1;out.push({id:id,name:name,sc:+m[3],n:+m[4],ok:ok,at:Date.now()})}
+ ls("chem7_codes",out);return out}
 function rowsFor(id){var R=[],names={};
  Object.keys(S.docs).forEach(function(u){var d=S.docs[u];if(!d||!d.p||!d.p[id])return;var nm=String(d.name||"?").slice(0,40);names[nm.toLowerCase()]=1;R.push({name:nm,rec:d.p[id],at:d.at})});
- var pv=ls("chem6p_prog");if(pv&&pv[id])R.push({name:(ls("chem6p_name")||"Teacher")+" (your preview)",rec:pv[id]});
+ var pv=ls("chem7p_prog");if(pv&&pv[id])R.push({name:(ls("chem7p_name")||"Teacher")+" (your preview)",rec:pv[id]});
  codes().forEach(function(c){if(c.id!==id)return;var k=c.name.toLowerCase();if(names[k])return;names[k]=1;R.push({name:c.name,code:c})});
  R.sort(function(a,b){return a.name.localeCompare(b.name)});return R}
 function renderMon(id){var m=document.getElementById("mon-"+id);if(!m)return;var A=ACT[id];m.innerHTML="";
@@ -609,11 +918,11 @@ function renderMon(id){var m=document.getElementById("mon-"+id);if(!m)return;var
  if(miss.length)m.appendChild(el("p","c0","Review: question "+miss.map(function(x){return x[0]+1}).join(", ")+" (under 60% correct)."))}
 function openOv(){var o=document.getElementById("ov");o.classList.add("on");renderOv()}
 function renderOv(){var o=document.getElementById("ov");o.innerHTML="";var top=el("div","row"),cl=el("button","btn","← Back to slides");cl.onclick=function(){o.classList.remove("on")};top.appendChild(cl);o.appendChild(top);
- o.appendChild(el("h2","","Class monitor · Module 6"));
+ o.appendChild(el("h2","","Class monitor · Module 7"));
  o.appendChild(el("p","sm",SHEET_URL?(S.db?Object.keys(S.docs).length+" students connected live. Pasted codes are added too.":"Enter your teacher key below to see live results."):"Paste the ClassIn chat below. Codes are saved in this browser only."));
  var names={},rows={};
  Object.keys(S.docs).forEach(function(u){var d=S.docs[u];var nm=String(d&&d.name||"?").slice(0,40),k=nm.toLowerCase();names[k]=nm;rows[k]=rows[k]||{};Object.keys(d.p||{}).forEach(function(id){if(ACT[id])rows[k][id]={sc:sumSc(d.p[id]),n:ACT[id].n,done:d.p[id].done}})});
- var pv=ls("chem6p_prog");if(pv&&Object.keys(pv).length){var pk="~preview";names[pk]=(ls("chem6p_name")||"Teacher")+" (your preview)";rows[pk]={};Object.keys(pv).forEach(function(id){if(ACT[id])rows[pk][id]={sc:sumSc(pv[id]),n:ACT[id].n,done:pv[id].done}})}
+ var pv=ls("chem7p_prog");if(pv&&Object.keys(pv).length){var pk="~preview";names[pk]=(ls("chem7p_name")||"Teacher")+" (your preview)";rows[pk]={};Object.keys(pv).forEach(function(id){if(ACT[id])rows[pk][id]={sc:sumSc(pv[id]),n:ACT[id].n,done:pv[id].done}})}
  codes().forEach(function(c){var k=c.name.toLowerCase();names[k]=names[k]||c.name;rows[k]=rows[k]||{};if(!rows[k][c.id])rows[k][c.id]={sc:c.sc,n:c.n,done:true,code:1,ok:c.ok}});
  var w=el("div","wrap"),t=el("table"),h=el("tr");h.appendChild(el("th","","Student"));ACTS.forEach(function(a){var th=el("th","",a.id);th.title=a.t;h.appendChild(th)});h.appendChild(el("th","","Average"));t.appendChild(h);
  Object.keys(names).sort().forEach(function(k){var tr=el("tr"),s=0,c=0;tr.appendChild(el("td","",names[k]));ACTS.forEach(function(a){var r=rows[k][a.id];if(!r){tr.appendChild(el("td","sm","–"));return}var pc=a.n?r.sc/r.n:0;if(r.done&&a.n){s+=pc;c++}tr.appendChild(el("td",r.done?(pc>=.7?"c1":pc>=.5?"cp":"c0"):"sm",fmt(r.sc)+"/"+r.n+(r.done?"":"…")+(r.code&&!r.ok?"⚠":"")))});tr.appendChild(el("td","",c?Math.round(100*s/c)+"%":"–"));t.appendChild(tr)});
@@ -624,12 +933,12 @@ function renderOv(){var o=document.getElementById("ov");o.innerHTML="";var top=e
  o.appendChild(el("h3","","Paste codes from the ClassIn chat"));var ta=el("textarea");ta.rows=5;ta.placeholder="Paste the whole chat here. Codes look like: #A3 Lily 11/13 x7k2";o.appendChild(ta);
  var r2=el("div","row"),add=el("button","btn go","Add codes"),clr=el("button","btn alt","Clear all pasted codes"),msg=el("span","sm");
  add.onclick=function(){var before=codes().length,after=parseCodes(ta.value).length;msg.textContent=(after-before)+" new codes added.";ta.value="";renderOv();var a=D.secs[D.i].dataset.act;if(a)renderMon(a)};
- clr.onclick=function(){if(clr.dataset.c){ls("chem6_codes",[]);renderOv()}else{clr.dataset.c=1;clr.textContent="Click again to remove all codes"}};
- var cp=el("button","btn alt","Clear my preview answers");cp.onclick=function(){ls("chem6p_prog",{});renderOv()};var wipe=el("button","btn alt","Delete ALL class results on the server");wipe.onclick=function(){if(!wipe.dataset.c){wipe.dataset.c=1;wipe.textContent="Click again: this deletes every student's answers";return}api({action:"clear",key:tkey()}).then(function(r){wipe.textContent=r.ok?"All results deleted":"Could not delete: "+(r.error||"");delete wipe.dataset.c;poll()})};r2.appendChild(add);r2.appendChild(clr);r2.appendChild(cp);if(SHEET_URL)r2.appendChild(wipe);r2.appendChild(msg);o.appendChild(r2)}
+ clr.onclick=function(){if(clr.dataset.c){ls("chem7_codes",[]);renderOv()}else{clr.dataset.c=1;clr.textContent="Click again to remove all codes"}};
+ var cp=el("button","btn alt","Clear my preview answers");cp.onclick=function(){ls("chem7p_prog",{});renderOv()};var wipe=el("button","btn alt","Delete ALL class results on the server");wipe.onclick=function(){if(!wipe.dataset.c){wipe.dataset.c=1;wipe.textContent="Click again: this deletes every student's answers";return}api({action:"clear",key:tkey()}).then(function(r){wipe.textContent=r.ok?"All results deleted":"Could not delete: "+(r.error||"");delete wipe.dataset.c;poll()})};r2.appendChild(add);r2.appendChild(clr);r2.appendChild(cp);if(SHEET_URL)r2.appendChild(wipe);r2.appendChild(msg);o.appendChild(r2)}
 
 /* ================= STUDENT APP ================= */
 var U={P:{},name:"",preview:false,live:null,lastAt:undefined,cur:null,writing:false,pending:false,ref:null};
-function K(k){return (U.preview?"chem6p_":"chem6_")+k}
+function K(k){return (U.preview?"chem7p_":"chem7_")+k}
 function startStudent(preview){U.preview=!!preview;document.getElementById("stu").classList.add("on");U.name=ls(K("name"))||"";U.P=ls(K("prog"))||{};
  if(!preview&&S.db&&S.uid){U.ref=S.db.doc("students/"+S.uid);S.dbOK=true;
   U.ref.get().then(function(s){if(s.exists){var d=s.data()||{};if(!U.name&&d.name){U.name=String(d.name);ls(K("name"),U.name)}var p=d.p||{};Object.keys(p).forEach(function(id){var a=p[id],b=U.P[id];if(!b||(a.done&&!b.done)||((a.i||0)>(b.i||0)&&!b.done))U.P[id]=a});ls(K("prog"),U.P)}if(!U.cur)home()}).catch(function(){});
@@ -637,7 +946,7 @@ function startStudent(preview){U.preview=!!preview;document.getElementById("stu"
  home()}
 function push(){ls(K("prog"),U.P);if(U.preview||!U.ref||!S.dbOK)return;if(U.writing){U.pending=true;return}U.writing=true;
  U.ref.set({name:U.name,at:Date.now(),cur:U.cur||null,p:U.P}).then(function(){U.sent=true;stat()}).catch(function(e){var c=e&&e.code;if(c!=="unavailable"&&c!=="resource_exhausted"){S.dbOK=false;stat()}}).then(function(){U.writing=false;if(U.pending){U.pending=false;push()}})}
-function head(){var s=document.getElementById("stu"),h=el("div","shead"),l=el("div");l.appendChild(el("span","tag","Chemistry · Module 6"));l.appendChild(el("h2","","Stoichiometry"));h.appendChild(l);
+function head(){var s=document.getElementById("stu"),h=el("div","shead"),l=el("div");l.appendChild(el("span","tag","Chemistry · Module 7"));l.appendChild(el("h2","","States of Matter and Gases"));h.appendChild(l);
  var r=el("div","row");if(U.name){var nm=el("span","pill","👤 "+U.name);r.appendChild(nm)}var st=el("span","pill");st.id="stat";r.appendChild(st);
  if(U.preview){var b=el("button","btn alt","← Teacher slides");b.onclick=function(){s.classList.remove("on");document.getElementById("deck").classList.add("on");go(D.i)};r.appendChild(b)}
  h.appendChild(r);s.appendChild(h);stat()}
@@ -659,9 +968,9 @@ function openAct(id){U.cur=id;rec(id);push();renderAct()}
 function renderAct(){var id=U.cur,A=ACT[id],r=rec(id),s=document.getElementById("stu");s.innerHTML="";head();window.scrollTo(0,0);
  var top=el("div","row"),bk=el("button","btn alt","← All activities");bk.onclick=home;top.appendChild(bk);top.appendChild(el("b","",A.id+" · "+A.t));s.appendChild(top);
  if(r.done){summary(s,A,r);return}
- var run=el("div","run"+(A.ref?"":" noref"));if(A.ref){var rp=el("div","refp");rp.innerHTML=REF[A.ref](false);run.appendChild(rp)}
+ var run=el("div","run"+(A.ref?"":" noref"));if(A.ref){var rp=el("div","refp");rp.innerHTML=REF[A.ref](false);initIx(rp);run.appendChild(rp)}
  var qb=el("div","qbox"),idx=r.i,it=A.items[idx];qb.appendChild(el("div","qn","Question "+(idx+1)+" of "+A.items.length));var pr=el("div","prog"),pi=el("i");pi.style.width=(100*idx/A.items.length)+"%";pr.appendChild(pi);qb.appendChild(pr);
- qb.appendChild(el("p","q",it.q));var body=el("div"),fb=el("p","fb"),nx=el("button","btn go",idx+1<A.items.length?"Next question →":"Finish ✓");nx.style.display="none";
+ qb.appendChild(el("p","q",it.q));if(it.v){var qv=el("div","qv");qv.innerHTML=it.v;qb.appendChild(qv)}var body=el("div"),fb=el("p","fb"),nx=el("button","btn go",idx+1<A.items.length?"Next question →":"Finish ✓");nx.style.display="none";
  nx.onclick=function(){r.i=idx+1;if(r.i>=A.items.length)r.done=true;push();renderAct()};
  function done(ans,sc,msg,good){r.a[idx]=ans;r.s[idx]=sc;fb.textContent=msg;fb.className="fb "+(good?"good":"bad");nx.style.display="";push();setTimeout(function(){nx.focus()},30)}
  ITEM[it.k](body,it,done);qb.appendChild(body);qb.appendChild(fb);qb.appendChild(nx);run.appendChild(qb);s.appendChild(run)}
@@ -685,6 +994,26 @@ num:function(b,it,done){var row=el("div","row"),i=el("input");i.type="text";i.in
   else if(tries===1){hint.textContent="Not quite. Check your working and try once more.";hint.className="fb bad";i.select()}
   else{c.disabled=i.disabled=true;done(v,0,"Not quite. The answer is "+it.a.toLocaleString("en-US")+" "+(it.u||""),false)}};
  i.onkeydown=function(e){if(e.key==="Enter")c.click()};row.appendChild(i);row.appendChild(u);row.appendChild(c);b.appendChild(row);b.appendChild(hint);setTimeout(function(){i.focus()},50)},
+slider:function(b,it,done){var w=el("div","sld"),v=el("div","sv"),r=el("input"),lb=el("div","sl2"),row=el("div","row"),c=el("button","btn","Check"),tries=0,hint=el("p","sm","Move the slider, then press Check.");
+ r.type="range";r.min=it.min;r.max=it.max;r.step=it.step||1;r.value=it.start!=null?it.start:it.min;r.setAttribute("aria-label",it.q);
+ function show(){v.textContent=r.value+" "+(it.u||"")}r.oninput=show;show();lb.appendChild(el("span","",it.min+""));lb.appendChild(el("span","",it.max+""));
+ w.appendChild(v);w.appendChild(r);w.appendChild(lb);
+ c.onclick=function(){var x=+r.value,ok=Math.abs(x-it.a)<=(it.tol||0)+1e-9;tries++;
+  if(ok){c.disabled=r.disabled=true;done(x,tries===1?1:.5,tries===1?"Correct! ✓":"Correct on the second try ✓",true)}
+  else if(tries===1){hint.textContent="Not quite. Look again and try once more.";hint.className="fb bad"}
+  else{c.disabled=r.disabled=true;done(x,0,"Not quite. The answer is "+it.a+" "+(it.u||""),false)}};
+ row.appendChild(c);b.appendChild(w);b.appendChild(row);b.appendChild(hint)},
+multi:function(b,it,done){var g=el("div","opts"),C=[],sel={},c=el("button","btn","Check");c.style.marginTop="10px";b.appendChild(el("p","sm","Select ALL the correct answers, then press Check."));
+ shuf(it.o).forEach(function(o){var good=o[0]==="*",t=good?o.slice(1):o,x=el("button","opt tog","☐ "+t);if(good)C.push(t);x.onclick=function(){if(c.disabled)return;sel[t]=!sel[t];x.classList.toggle("on",!!sel[t]);x.textContent=(sel[t]?"☑ ":"☐ ")+t};x.dataset.t=t;x.dataset.g=good?1:"";g.appendChild(x)});
+ c.onclick=function(){var right=0,wrong=0,picked=[];[].forEach.call(g.children,function(x){var t=x.dataset.t,s=!!sel[t];if(s)picked.push(t);if(x.dataset.g){if(s){right++;x.classList.add("ok")}else x.classList.add("miss")}else if(s){wrong++;x.classList.add("no")}});
+  c.disabled=true;var sc=Math.max(0,(right-wrong)/C.length),all=right===C.length&&!wrong;
+  done(picked.join(", "),sc,all?"All correct! ✓":"You found "+right+" of "+C.length+(wrong?" and chose "+wrong+" wrong":"")+". Correct: "+C.join(", "),all)};
+ b.appendChild(g);b.appendChild(c)},
+hot:function(b,it,done){var lock=0,h='<svg class="hot" viewBox="'+it.vb+'" role="img" aria-label="Tap the correct part of the picture">'+it.svg;
+ it.r.forEach(function(r,i){h+='<rect class="hz" tabindex="0" role="button" aria-label="'+r.l+'" data-i="'+i+'" x="'+r.x+'" y="'+r.y+'" width="'+r.w+'" height="'+r.h+'" rx="10"/>'});b.innerHTML=h+'</svg><p class="sm">Tap (click) on the picture.</p>';
+ [].forEach.call(b.querySelectorAll(".hz"),function(z){function pick(){if(lock)return;lock=1;var r=it.r[+z.dataset.i];z.classList.add(r.ok?"ok":"no");if(!r.ok)[].forEach.call(b.querySelectorAll(".hz"),function(q){if(it.r[+q.dataset.i].ok)q.classList.add("ok")});
+  var cor=it.r.filter(function(x){return x.ok}).map(function(x){return x.l}).join(" or ");done(r.l,r.ok?1:0,r.ok?"Correct! ✓ ("+r.l+")":"Not quite. You chose: "+r.l+". The answer is: "+cor+" (green box).",!!r.ok)}
+  z.onclick=pick;z.onkeydown=function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();pick()}}})},
 text:function(b,it,done){var t=el("textarea");t.rows=4;t.maxLength=600;t.placeholder="Write in full sentences.";var c=el("button","btn","Submit");c.style.marginTop="8px";
  c.onclick=function(){var v=t.value.trim();if(v.length<2){t.focus();return}t.disabled=c.disabled=true;done(v,null,"Saved. Your teacher can read it.",true)};b.appendChild(t);b.appendChild(c)}
 };
