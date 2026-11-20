@@ -1,0 +1,875 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>APES Unit 3: Populations</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Serif+4:wght@400;600&display=swap"><style>
+:root{--bg:#f3f5ee;--panel:#e2eadb;--ink:#16251a;--mute:#4d6052;--g:#2e7d4f;--a:#b06a0c;--blue:#2a6f97;--bad:#b23a2e;--line:#bccbb4;
+--head:"Bricolage Grotesque","Trebuchet MS",sans-serif;--body:"Source Serif 4",Georgia,serif}
+@media (prefers-color-scheme:dark){:root{--bg:#101a13;--panel:#1b2e21;--ink:#e6efe7;--mute:#9fb5a4;--g:#5fc28a;--a:#eaa64a;--blue:#6fb3db;--bad:#e2776b;--line:#2f4a37}}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--ink);font:400 clamp(16px,1.6vw,21px)/1.5 var(--body)}
+h1,h2,h3,h4{font-family:var(--head);line-height:1.12;margin:0 0 .45em}
+h1{font-size:clamp(32px,5.4vw,68px);font-weight:800;letter-spacing:-.02em;max-width:15em}
+h2{font-size:clamp(24px,3.4vw,44px);font-weight:700}
+h3{font-size:1.05em;color:var(--g);margin-bottom:.3em}
+p{margin:.3em 0 .8em;max-width:40em}
+ul,ol{margin:.2em 0 .8em;padding-left:1.2em}li{margin:.2em 0}
+.sm{font-size:.85em;color:var(--mute)}
+.tag{display:inline-block;font:700 .7em var(--head);letter-spacing:.06em;text-transform:uppercase;color:var(--g);margin-bottom:.4em}
+.grid{display:grid;gap:clamp(12px,2vw,26px);grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));align-items:start}
+.grid>div{background:var(--panel);border-radius:10px;padding:.7em .9em}
+.do{border-left:5px solid var(--a);padding:.4em 0 .4em 1em;margin-top:1em;max-width:46em}.do b{font-family:var(--head);color:var(--a)}
+.nb{border:2px dashed var(--g);border-radius:8px;padding:.4em .8em;margin-top:1em;max-width:46em}.nb b{font-family:var(--head);color:var(--g)}
+.wrap{overflow-x:auto;max-width:100%}
+table{border-collapse:collapse;width:100%}
+th,td{text-align:left;padding:.42em .7em;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--head);color:var(--g)}
+.split{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:22px;align-items:start}
+@media(max-width:900px){.split{grid-template-columns:1fr}}
+svg.dg{width:100%;max-width:760px;height:auto;display:block}
+.dbox{fill:var(--panel);stroke:var(--g);stroke-width:2}.dtx{fill:var(--ink);font:700 14px sans-serif;text-anchor:middle}
+.darr{fill:none;stroke:var(--mute);stroke-width:2.2}.dnum{fill:var(--a)}.dnt{fill:#fff;font:800 13px sans-serif;text-anchor:middle}
+.dhead{fill:var(--mute)}
+.legend{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:4px 14px;font-size:.85em;margin:.4em 0}
+.legend span b{display:inline-block;min-width:1.6em;height:1.6em;line-height:1.6em;text-align:center;border-radius:50%;background:var(--a);color:#fff;font:800 .85em var(--head);margin-right:6px}
+.bgrid{display:grid;grid-template-columns:7.5em repeat(4,1fr);gap:4px;font-size:.82em;min-width:620px;max-width:900px}
+.bgrid div{padding:.45em .5em;border-radius:6px;background:var(--panel)}
+.bgrid .hd{background:none;font:700 1em var(--head);color:var(--mute);text-align:center}
+.bgrid .rh{background:none;font:700 1em var(--head);color:var(--blue)}
+.b-c{background:color-mix(in srgb,#7fa7c9 40%,var(--bg))!important}.b-w{background:color-mix(in srgb,#5aa36a 40%,var(--bg))!important}
+.b-h{background:color-mix(in srgb,#d9a441 40%,var(--bg))!important}.b-x{opacity:.45}
+.zsvg{width:100%;max-width:520px;height:auto;display:block}
+.water{fill:color-mix(in srgb,var(--blue) 30%,var(--bg))}.deep{fill:color-mix(in srgb,var(--blue) 55%,var(--bg))}.sedi{fill:none;stroke:#8a6a3c;stroke-width:5}
+.zl{fill:var(--ink);font:700 13px sans-serif;text-anchor:middle}.zs{fill:var(--ink);font:11px sans-serif;text-anchor:middle}.zd{stroke:var(--ink);stroke-dasharray:6 5;stroke-width:1.5}
+.plant{stroke:var(--g);stroke-width:3}
+.pyr{fill:color-mix(in srgb,var(--g) 30%,var(--bg));stroke:var(--g);stroke-width:2}
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:8px;margin:.6em 0}.flow>div{background:var(--panel);border-radius:8px;padding:.45em .7em;max-width:12em;font-size:.9em}.flow .ar{background:none;align-self:center;color:var(--g);font-weight:800;padding:0}
+.nbp{background:var(--panel);border-left:6px solid var(--g);border-radius:10px;padding:.6em 1.2em;font-size:1.12em;line-height:1.55;max-width:62em}
+.nbp h3{margin:.6em 0 .2em}.nbt{font:800 1.35em var(--head);color:var(--g)}
+.timer{font:700 .9em var(--head);margin-top:.8em}
+button{font:inherit}
+.btn{font:600 .95em var(--head);background:var(--ink);color:var(--bg);border:0;border-radius:8px;padding:.5em 1.1em;cursor:pointer}
+.btn.alt{background:var(--panel);color:var(--ink);border:2px solid var(--line)}
+.btn.go{background:var(--g);color:#fff}
+.btn:focus-visible,.chip:focus-visible,.opt:focus-visible{outline:3px solid var(--a);outline-offset:2px}
+.btn[disabled]{opacity:.45;cursor:default}
+.lnk{font-family:var(--head);color:var(--blue);word-break:break-all}
+/* deck */
+#deck{display:none;height:100%;flex-direction:column}
+#deck.on{display:flex}
+#deck main{flex:1;min-height:0;position:relative;overflow:hidden}
+#deck section{position:absolute;inset:0;padding:clamp(18px,3.4vw,48px) clamp(18px,5vw,76px);overflow-y:auto;display:none}
+#deck section.on{display:block}
+#deck nav{display:flex;align-items:center;gap:10px;padding:8px clamp(14px,5vw,76px);border-top:1px solid var(--line);font-family:var(--head)}
+.bar{flex:1;height:6px;background:var(--panel);border-radius:3px;overflow:hidden}.bar i{display:block;height:100%;width:0;background:var(--g)}
+#n{color:var(--mute);min-width:4em;text-align:right}
+.live{display:inline-flex;align-items:center;gap:6px;font:700 .8em var(--head);color:var(--bad)}.live i{width:10px;height:10px;border-radius:50%;background:var(--bad);animation:pulse 1.4s infinite}
+@keyframes pulse{50%{opacity:.25}}
+@media(prefers-reduced-motion:reduce){.live i{animation:none}}
+.mon{background:var(--panel);border-radius:12px;padding:.7em .9em;font-size:.82em}
+.mon table{font-size:.9em}.mon td,.mon th{padding:.28em .32em}.split.act{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)}
+.c1{color:var(--g);font-weight:800}.c0{color:var(--bad);font-weight:800}.cp{color:var(--a);font-weight:800}
+.mbar{height:8px;border-radius:4px;background:var(--line);overflow:hidden;min-width:60px}.mbar i{display:block;height:100%;background:var(--g)}
+.txa{border-top:1px solid var(--line);padding:.35em 0}
+.txa b{font-family:var(--head)}
+#ov{position:fixed;inset:0;background:var(--bg);z-index:30;overflow:auto;padding:24px clamp(16px,4vw,60px);display:none}
+#ov.on{display:block}
+textarea,input[type=text]{width:100%;font:inherit;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:.5em}
+/* student */
+#stu{display:none;max-width:1250px;margin:0 auto;padding:clamp(12px,2.6vw,30px)}
+#stu.on{display:block}
+.shead{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;border-bottom:2px solid var(--line);padding-bottom:.5em;margin-bottom:1em}
+.shead h2{margin:0;font-size:clamp(20px,2.6vw,30px)}
+.pill{font:600 .78em var(--head);padding:.25em .7em;border-radius:20px;background:var(--panel)}
+.pill.ok{background:color-mix(in srgb,var(--g) 25%,var(--bg))}.pill.warn{background:color-mix(in srgb,var(--a) 25%,var(--bg))}
+.alist{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.acard{text-align:left;background:var(--panel);border:2px solid var(--line);border-radius:12px;padding:.7em .9em;cursor:pointer;color:var(--ink)}
+.acard b{font-family:var(--head);display:block}.acard.now{border-color:var(--bad)}.acard.done{border-color:var(--g)}
+.run{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:22px;align-items:start}
+.run.noref{grid-template-columns:minmax(0,46em)}
+@media(max-width:860px){.run{grid-template-columns:1fr}}
+.refp{position:sticky;top:8px;background:var(--bg);border:2px solid var(--line);border-radius:12px;padding:10px;max-height:calc(100vh - 30px);overflow:auto;font-size:.88em}
+@media(max-width:860px){.refp{position:static;max-height:none}}
+.qbox{background:var(--panel);border-radius:12px;padding:1em 1.1em}
+.qn{font:700 .8em var(--head);color:var(--mute)}
+.q{font-size:1.12em;font-weight:600;margin:.3em 0 .7em}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;background:var(--bg);color:var(--ink);border:2px solid var(--line);border-radius:10px;padding:.55em .8em;cursor:pointer;font:inherit}
+.opt.ok,.chip.ok{border-color:var(--g);background:color-mix(in srgb,var(--g) 20%,var(--bg))}
+.opt.no,.chip.no{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 15%,var(--bg))}
+.fb{margin:.7em 0;font-weight:600}.fb.good{color:var(--g)}.fb.bad{color:var(--bad)}
+.pool{display:flex;flex-wrap:wrap;gap:8px;margin:.4em 0}
+.chip{background:var(--bg);border:2px solid var(--line);border-radius:8px;padding:.35em .7em;cursor:pointer;font:inherit;color:var(--ink);text-align:left}
+.chip.sel{border-color:var(--a);box-shadow:0 0 0 2px var(--a)}
+.shake{animation:sh .35s}@keyframes sh{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.bks{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));margin:.6em 0}
+.bk{border:2px dashed var(--line);border-radius:10px;padding:8px;min-height:80px;cursor:pointer;display:flex;flex-wrap:wrap;gap:6px;align-content:flex-start;background:var(--bg)}
+.bk h4{width:100%;margin:0;font:700 .92em var(--head);color:var(--g)}
+.seq{counter-reset:s;list-style:none;padding:0}.seq li{counter-increment:s;background:var(--bg);border-radius:8px;padding:.35em .6em;margin:4px 0}.seq li::before{content:counter(s) ". ";font-weight:800;color:var(--g)}
+.seq li.no{outline:2px solid var(--bad)}.seq li.ok{outline:2px solid var(--g)}
+.prog{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin:.4em 0 .8em}.prog i{display:block;height:100%;background:var(--g)}
+.code{font:800 1.3em var(--head);background:var(--bg);border:2px dashed var(--a);border-radius:10px;padding:.5em .8em;display:inline-block;user-select:all;word-break:break-all}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:.6em 0}
+.vgrid{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));margin:.5em 0}
+.vc{background:var(--panel);border-radius:12px;padding:.6em .7em;text-align:center;display:flex;flex-direction:column;align-items:center;gap:2px}
+.vc .emo{font-size:2em;line-height:1.25}.vc .emo small{font-size:.35em;color:var(--mute)}.vc b{font-family:var(--head)}.vc span{font-size:.82em;color:var(--mute)}
+.sign{font:800 1.2em var(--head)}.sp{color:var(--g);font-style:normal;font-weight:800}.sm2{color:var(--bad);font-style:normal;font-weight:800}.s0{color:var(--mute);font-style:normal;font-weight:800}
+.lgd{font-size:.85em}.kg,.kb{display:inline-block;color:#fff;border-radius:10px;padding:0 .6em;margin-right:6px}.kg{background:var(--g)}.kb{background:var(--blue)}
+.salt>div:first-child{height:22px;border-radius:11px;margin:.4em 0}.row3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;font-size:.88em;text-align:center}
+.wbar{display:flex;height:34px;border-radius:8px;overflow:hidden;margin:.3em 0;font:700 .78em var(--head);color:#fff}.wbar div{display:flex;align-items:center;padding-left:8px;white-space:nowrap;overflow:hidden}
+.ebr{display:grid;grid-template-columns:8.5em 1fr 6.5em;gap:8px;align-items:center;margin:4px 0;font-size:.9em}.ebr div{height:20px;background:var(--panel);border-radius:6px;overflow:hidden}.ebr i{display:block;height:100%;background:var(--g)}
+.bem{display:block;font-size:1.5em;line-height:1.2}td .bem{display:inline}
+
+/* ===== Unit 2 additions ===== */
+.tbig{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:1em;background:var(--panel);border-radius:14px;padding:12px 18px;max-width:46em}
+.tbig svg{width:120px;height:120px;flex-shrink:0}
+.tbig .tr-bg{fill:none;stroke:var(--line);stroke-width:12}.tbig .tr-fg{fill:none;stroke:var(--g);stroke-width:12;stroke-linecap:round;transition:stroke-dashoffset .25s linear,stroke .3s}
+.tbig .tt{font:800 30px var(--head);fill:var(--ink);text-anchor:middle}
+.tbig .tl{font:700 1.1em var(--head)}.tbig .tl small{display:block;font-weight:600;font-size:.75em;color:var(--mute)}
+.tbig.warn .tr-fg{stroke:var(--a)}.tbig.end .tr-fg{stroke:var(--bad)}.tbig.end{animation:tflash 1s 4}
+@keyframes tflash{50%{background:color-mix(in srgb,var(--bad) 30%,var(--panel))}}
+.nbg{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:20px;align-items:start}
+@media(max-width:900px){.nbg{grid-template-columns:1fr}}
+.nbv{background:var(--panel);border-radius:10px;padding:10px;border:2px dashed var(--g)}.nbv>b{font:700 .9em var(--head);color:var(--g);display:block;margin-bottom:4px}
+.ply{background:var(--panel);border-radius:14px;padding:12px 14px;max-width:880px}
+.ply h3{margin:0 0 6px}.pls{width:100%;max-width:min(100%,108vh);height:auto;display:block;background:var(--bg);border-radius:10px;margin:0 auto}
+.split.pp{grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr)}.split.pp .opts{grid-template-columns:1fr}.split.pp .flow{flex-direction:column}.split.pp .flow .ar{transform:rotate(90deg);align-self:flex-start;margin-left:1em}.split.pp .flow>div{max-width:none}
+.pcap{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;margin:10px 0 6px;min-height:4.2em}
+.pnum{font:800 1.5em var(--head);background:var(--g);color:#fff;border-radius:10px;padding:.15em .55em}
+.pcap b{font-family:var(--head);font-size:1.12em;display:block}.pcap span{font-size:1em}
+.pdots{display:flex;gap:6px;flex-wrap:wrap}.pdots button{width:30px;height:30px;border-radius:50%;border:2px solid var(--line);background:var(--bg);cursor:pointer;font:700 .8em var(--head);color:var(--ink)}
+.pdots button.on{background:var(--g);border-color:var(--g);color:#fff}
+.pred{border:3px solid var(--a);border-radius:14px;padding:12px 16px;margin:.8em 0;max-width:62em;background:color-mix(in srgb,var(--a) 8%,var(--bg))}
+.pred h3{color:var(--a);margin:0 0 4px;font-size:1.15em}.pred .q{margin:.2em 0 .6em}
+.pred .opts{grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr))}.pred .opt.sel{border-color:var(--a);box-shadow:0 0 0 2px var(--a)}
+.pans{margin-top:.6em;padding:.6em .8em;border-radius:10px;background:color-mix(in srgb,var(--g) 15%,var(--bg));font-size:1.05em}
+.ix{background:var(--panel);border-radius:14px;padding:12px 14px;max-width:900px}
+.ix label{font:700 1em var(--head);display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:4px 0}
+.ix input[type=range],.sld input[type=range]{flex:1;min-width:180px;accent-color:var(--g);height:28px}
+.ixo{font:800 1.25em var(--head);margin:.3em 0}
+.sld{background:var(--bg);border-radius:10px;padding:10px 12px}.sld input[type=range]{width:100%;display:block}
+.sv{font:800 2em var(--head);color:var(--g);text-align:center}
+.sl2{display:flex;justify-content:space-between;font-size:.85em;color:var(--mute)}
+svg.hot{width:100%;max-width:700px;height:auto;display:block;background:var(--bg);border-radius:10px}
+.hz{fill:transparent;stroke:transparent;stroke-width:3;cursor:pointer}.hz:hover,.hz:focus{stroke:var(--a);fill:color-mix(in srgb,var(--a) 12%,transparent);outline:none}
+.hz.ok{stroke:var(--g);fill:color-mix(in srgb,var(--g) 25%,transparent)}.hz.no{stroke:var(--bad);fill:color-mix(in srgb,var(--bad) 20%,transparent)}
+.opt.tog.on{border-color:var(--a);box-shadow:0 0 0 2px var(--a)}.opt.miss{border-style:dashed;border-color:var(--g)}
+.qv{margin:.2em 0 .8em}
+.rv{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.rv>div{background:var(--panel);border-radius:12px;padding:.6em .8em}.rv h3{margin:.2em 0}.rv p{font-size:.9em;margin:.3em 0}
+.after{display:none}.after.show{display:block}.split.after.show{display:grid}
+.big2{font-size:1.15em}
+.pill2{fill:var(--ink)}.pl2{fill:var(--bg);font:700 13px sans-serif;text-anchor:middle}
+.zl2{fill:var(--ink);font:700 15px sans-serif;text-anchor:middle}.zs2{fill:var(--ink);font:12px sans-serif;text-anchor:middle}
+.ax{stroke:var(--ink);stroke-width:2}.gl{stroke:var(--line);stroke-width:1}
+.fx{display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:1.12em;margin:.4em 0}
+.fr{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;line-height:1.25}.fr>span:first-child{border-bottom:2px solid var(--ink);padding:0 .3em}.fr>span:last-child{padding:0 .3em}
+.cx{text-decoration:line-through;text-decoration-color:var(--bad);text-decoration-thickness:2px}
+.ans{background:color-mix(in srgb,var(--g) 22%,var(--bg));border:2px solid var(--g);border-radius:8px;padding:.1em .5em;font-weight:800}
+.step{display:grid;grid-template-columns:2.2em 1fr;gap:8px;align-items:start;margin:.5em 0}.step>b{background:var(--g);color:#fff;border-radius:50%;width:1.8em;height:1.8em;display:flex;align-items:center;justify-content:center;font-family:var(--head)}
+
+</style></head><body>
+<div id="deck"><main>
+
+<!-- ================= CLASS 1 ================= -->
+<section class="on"><span class="tag">AP Environmental Science · Unit 3</span><h1>Populations</h1><h2>Class 1 · Species strategies and carrying capacity (2 hours)</h2>
+<p>By the end of today you can: compare generalists and specialists <span class="sm">(ERT-3.A)</span>; compare r- and K-selected species <span class="sm">(ERT-3.B)</span>; explain survivorship curves <span class="sm">(ERT-3.C)</span>; describe carrying capacity and its effects <span class="sm">(ERT-3.D, 3.E)</span>.</p>
+<div class="wrap"><table><tr><th>Block</th><th>Minutes</th></tr>
+<tr><td>Join + warm-up (A1)</td><td>10</td></tr>
+<tr><td>3.1 Generalists and specialists · 3.2 r and K · A2</td><td>35</td></tr>
+<tr><td>Break</td><td>8</td></tr>
+<tr><td>3.3 Survivorship curves · play · A3</td><td>25</td></tr>
+<tr><td>3.4 Carrying capacity · play: reindeer · A4</td><td>30</td></tr>
+<tr><td>Exit ticket (A5)</td><td>10</td></tr></table></div>
+<div class="nb">&#9998; <b>Notebook:</b> new page. Title: <b>Unit 3: Populations</b>.</div></section>
+
+<section data-join></section>
+<section data-act="A1"></section>
+
+<section><span class="tag">Topic 3.1</span><h2>Generalist and specialist species</h2>
+<p>A <b>population</b> = all the members of ONE species living in one area. A species' <b>niche</b> = its role: what it eats, where it lives, how it survives.</p>
+<div class="split"><div><div data-pred="koala"></div></div><div class="after"><div data-ref="gs"></div></div></div></section>
+
+<section><span class="tag">Topic 3.1</span><h2>Broad niche vs narrow niche</h2>
+<svg class="pls" viewBox="0 0 720 250" role="img" aria-label="Broad and narrow niche"><rect width="720" height="250" fill="var(--bg)"/><rect x="20" y="20" width="330" height="200" rx="14" fill="color-mix(in srgb,var(--g) 18%,var(--bg))" stroke="var(--g)" stroke-width="3"/><text x="185" y="48" class="zl2">🦝 Generalist: BROAD niche</text><text x="70" y="110" font-size="34">🍎</text><text x="130" y="110" font-size="34">🐟</text><text x="190" y="110" font-size="34">🐛</text><text x="250" y="110" font-size="34">🗑️</text><text x="70" y="170" font-size="34">🌲</text><text x="130" y="170" font-size="34">🏙️</text><text x="190" y="170" font-size="34">🌾</text><text x="250" y="170" font-size="34">🏞️</text><text x="185" y="210" class="zs2">many foods · many habitats · wins when things CHANGE</text><rect x="370" y="20" width="330" height="200" rx="14" fill="color-mix(in srgb,var(--a) 15%,var(--bg))" stroke="var(--a)" stroke-width="3"/><text x="535" y="48" class="zl2">🐨 Specialist: NARROW niche</text><text x="535" y="140" font-size="60" text-anchor="middle">🌿</text><text x="535" y="185" class="zs2">eucalyptus only</text><text x="535" y="210" class="zs2">wins when things stay STABLE · higher extinction risk</text></svg>
+<div class="grid"><div><h3>Generalists</h3><p>Raccoons, rats, cockroaches. They do well in changing environments and are often <b>invasive</b>.</p></div><div><h3>Specialists</h3><p>Koalas (eucalyptus), giant pandas (bamboo), monarch caterpillars (only milkweed). They do well in <b>stable</b> environments but are at risk if their food or habitat disappears.</p></div></div></section>
+
+<section><span class="tag">Topic 3.2</span><h2>K-selected and r-selected species</h2>
+<div class="split"><div><div data-pred="invade"></div></div>
+<div><svg class="pls" viewBox="0 0 360 300" role="img" aria-label="r vs K"><rect width="360" height="300" fill="var(--bg)"/><rect x="10" y="10" width="165" height="280" rx="12" fill="var(--panel)"/><rect x="185" y="10" width="165" height="280" rx="12" fill="var(--panel)"/><text x="92" y="40" class="zl2">r-selected</text><text x="267" y="40" class="zl2">K-selected</text><text x="92" y="95" font-size="34" text-anchor="middle">🐟</text><text x="92" y="140" font-size="16" text-anchor="middle">🥚🥚🥚🥚🥚🥚🥚</text><text x="92" y="162" font-size="16" text-anchor="middle">🥚🥚🥚🥚🥚🥚🥚</text><text x="92" y="200" class="zs2">many babies</text><text x="92" y="220" class="zs2">no care</text><text x="92" y="240" class="zs2">short life</text><text x="267" y="100" font-size="50" text-anchor="middle">🐘</text><text x="267" y="150" font-size="26" text-anchor="middle">🐘</text><text x="267" y="200" class="zs2">1 baby at a time</text><text x="267" y="220" class="zs2">lots of care</text><text x="267" y="240" class="zs2">long life</text></svg></div></div></section>
+
+<section><span class="tag">Topic 3.2</span><h2>r vs K: the details</h2><div data-ref="rk"></div></section>
+
+<section><div class="nbg"><div class="nbp"><div class="nbt">&#9998; Notebook page 1 · 3.1 and 3.2</div>
+<ul><li><b>Generalist</b>: broad niche; does well when the environment changes; often invasive.</li>
+<li><b>Specialist</b>: narrow niche; does well in a stable environment; higher extinction risk.</li>
+<li><b>r-selected</b>: many small offspring, little care, early maturity, short life; populations boom and crash; recover fast; often invasive.</li>
+<li><b>K-selected</b>: few large offspring, lots of care, late maturity, long life; population near K; recover slowly.</li>
+<li><b>Biotic potential</b> = max growth rate in ideal conditions.</li></ul></div>
+<div class="nbv"><b>✏️ Draw this</b><svg class="pls" viewBox="0 0 360 200" role="img" aria-label="r vs K sketch"><line x1="180" y1="10" x2="180" y2="190" stroke="var(--ink)" stroke-width="2"/><text x="90" y="35" class="zl2">r 🐟</text><text x="270" y="35" class="zl2">K 🐘</text><text x="90" y="90" font-size="14" text-anchor="middle">●●●●●●●●●●</text><text x="90" y="110" font-size="14" text-anchor="middle">●●●●●●●●●●</text><text x="270" y="105" font-size="30" text-anchor="middle">●</text><text x="90" y="160" class="zs2">many · no care · Type III</text><text x="270" y="160" class="zs2">few · care · Type I</text></svg></div></div>
+<div data-timer="5"></div></section>
+
+<section data-act="A2"></section>
+
+<section><span class="tag">Topic 3.3</span><h2>Survivorship curves</h2>
+<p>A <b>survivorship curve</b> shows how many individuals of a group born at the same time are still alive at each age.</p>
+<div data-pred="turtle"></div></section>
+
+<section><span class="tag">Topic 3.3</span><h2>Three types of survivorship curves</h2><div data-play="surv"></div></section>
+
+<section><div class="nbg"><div class="nbp"><div class="nbt">&#9998; Notebook page 2 · 3.3 Survivorship curves</div>
+<ul><li>Survivorship curve = how many are still alive at each age.</li>
+<li><b>Type I</b>: most survive to old age (humans, elephants). K-selected.</li>
+<li><b>Type II</b>: equal chance of dying at every age (songbirds, squirrels, lizards).</li>
+<li><b>Type III</b>: most die young (fish, insects, sea turtles, plants). r-selected.</li>
+<li>The y-axis is a log scale (1, 10, 100, 1000).</li></ul></div>
+<div class="nbv"><b>✏️ Draw this</b><svg class="pls" viewBox="0 0 360 220" role="img" aria-label="Survivorship sketch"><line x1="30" y1="190" x2="340" y2="190" stroke="var(--ink)" stroke-width="2"/><line x1="30" y1="20" x2="30" y2="190" stroke="var(--ink)" stroke-width="2"/><path d="M30 30 H230 Q270 35 290 190" fill="none" stroke="var(--g)" stroke-width="4"/><path d="M30 30 L320 190" fill="none" stroke="var(--blue)" stroke-width="4"/><path d="M30 30 Q45 170 90 175 H330" fill="none" stroke="var(--a)" stroke-width="4"/><text x="230" y="22" class="zs2" style="fill:var(--g)">I</text><text x="190" y="110" class="zs2" style="fill:var(--blue)">II</text><text x="75" y="160" class="zs2" style="fill:var(--a)">III</text><text x="185" y="210" class="zs2">age →</text></svg></div></div>
+<div data-timer="4"></div></section>
+
+<section data-act="A3"></section>
+
+<section><span class="tag">Topic 3.4</span><h2>Carrying capacity</h2>
+<p class="big2"><b>Carrying capacity (K)</b> = the largest population an environment can support for a long time. It is set by <b>limiting resources</b>: food, water, space, shelter.</p>
+<div data-pred="deerp"></div></section>
+
+<section><span class="tag">Topic 3.4</span><h2>Overshoot and dieback</h2><div data-play="reindeer"></div></section>
+
+<section><span class="tag">Topic 3.4</span><h2>The impact of carrying capacity on ecosystems</h2>
+<div class="vgrid">
+<div class="vc"><div class="emo">📈➡️</div><b>Overshoot</b><span>the population goes ABOVE K for a short time</span></div>
+<div class="vc"><div class="emo">🌿⬇️</div><b>Resource depletion</b><span>food, water and habitat are used faster than they recover</span></div>
+<div class="vc"><div class="emo">📉☠️</div><b>Dieback</b><span>many individuals die from starvation or disease</span></div>
+<div class="vc"><div class="emo">🏜️</div><b>Ecosystem damage</b><span>overgrazing, erosion; other species lose food too; K can become LOWER</span></div></div>
+<div class="do"><b>Example:</b> too many deer (no wolves) eat young trees → forests cannot grow back → birds and insects that need those trees decline.</div></section>
+
+<section><div class="nbg"><div class="nbp"><div class="nbt">&#9998; Notebook page 3 · 3.4 Carrying capacity</div>
+<ul><li><b>Carrying capacity (K)</b> = largest population an environment can support for a long time.</li>
+<li>Set by limiting resources: food, water, space.</li>
+<li><b>Overshoot</b>: above K → resources depleted → <b>dieback</b>.</li>
+<li>Overshoot damages the ecosystem and can lower K.</li>
+<li>Example: St. Matthew Island reindeer: 29 (1944) → ~6,000 (1963) → 42 (1966).</li></ul></div>
+<div class="nbv"><b>✏️ Draw this</b><svg class="pls" viewBox="0 0 360 200" role="img" aria-label="Overshoot sketch"><line x1="30" y1="180" x2="340" y2="180" stroke="var(--ink)" stroke-width="2"/><line x1="30" y1="20" x2="30" y2="180" stroke="var(--ink)" stroke-width="2"/><line x1="30" y1="80" x2="340" y2="80" stroke="var(--bad)" stroke-width="2" stroke-dasharray="6 5"/><path d="M30 175 Q120 170 160 80 Q180 20 200 40 Q225 170 260 160 Q300 130 340 125" fill="none" stroke="var(--g)" stroke-width="4"/><text x="320" y="72" class="zs2" style="fill:var(--bad)">K</text><text x="185" y="18" class="zs2">overshoot</text><text x="240" y="190" class="zs2">dieback</text></svg></div></div>
+<div data-timer="4"></div></section>
+
+<section data-act="A4"></section>
+<section data-act="A5"></section>
+
+<!-- ================= CLASS 2 ================= -->
+<section><span class="tag">AP Environmental Science · Unit 3</span><h1>Growth, age structure and fertility</h1><h2>Class 2 (2 hours)</h2>
+<p>By the end of today you can: explain how resources affect population growth <span class="sm">(ERT-3.F)</span>; explain age structure diagrams <span class="sm">(EIN-1.A)</span>; explain what affects total fertility rate <span class="sm">(EIN-1.B)</span>.</p>
+<div class="wrap"><table><tr><th>Block</th><th>Minutes</th></tr>
+<tr><td>Warm-up (A6)</td><td>8</td></tr>
+<tr><td>3.5 Growth and resources · simulator · A7</td><td>35</td></tr>
+<tr><td>3.6 Age structure · play: China · A8</td><td>30</td></tr>
+<tr><td>Break</td><td>8</td></tr>
+<tr><td>3.7 Total fertility rate · A9</td><td>25</td></tr>
+<tr><td>Exit ticket (A10)</td><td>10</td></tr></table></div></section>
+
+<section data-join></section>
+<section data-act="A6"></section>
+
+<section><span class="tag">Topic 3.5</span><h2>Exponential growth</h2>
+<div class="split"><div><div data-pred="bact"></div></div>
+<div class="after"><svg class="pls" viewBox="0 0 360 260" role="img" aria-label="Doubling bars"><line x1="30" y1="230" x2="350" y2="230" stroke="var(--ink)" stroke-width="2"/><g fill="var(--a)"><rect x="40" y="229" width="22" height="1"/><rect x="70" y="228" width="22" height="2"/><rect x="100" y="226" width="22" height="4"/><rect x="130" y="222" width="22" height="8"/><rect x="160" y="214" width="22" height="16"/><rect x="190" y="198" width="22" height="32"/><rect x="220" y="166" width="22" height="64"/><rect x="250" y="102" width="22" height="128"/><rect x="280" y="24" width="22" height="206"/></g><text x="190" y="252" class="zs2">each bar = the one before × 2 → J-curve</text></svg></div></div></section>
+
+<section><span class="tag">Topic 3.5</span><h2>Resources limit growth</h2>
+<div class="grid"><div><h3>🍎💧🏠🦠 Density-dependent factors</h3><p>Get STRONGER as the population gets more crowded: competition for food, water and space; disease; predators.</p></div>
+<div><h3>🌀🔥❄️ Density-independent factors</h3><p>Affect the population no matter how crowded it is: hurricanes, fires, floods, very cold winters.</p></div></div>
+<div class="do">When resources are <b>unlimited</b> → exponential growth (J-curve). When resources are <b>limited</b> → logistic growth (S-curve): growth slows and levels off at K.</div>
+<div data-ref="grow"></div></section>
+
+<section><span class="tag">Topic 3.5</span><h2>Simulator: J-curve vs S-curve</h2><div data-ix="growth"></div></section>
+
+<section><span class="tag">Topic 3.5</span><h2>Calculating exponential growth</h2>
+<div class="split"><div><div class="fx" style="font-size:1.5em"><span>N = N₀ e<sup>rt</sup></span></div><ul><li>N = population after time t</li><li>N₀ = starting population</li><li>r = growth rate (0.10 = 10% per year)</li><li>t = time · e ≈ 2.718 (calculator key eˣ)</li></ul></div>
+<div><h3>Example</h3><p>100 rabbits, r = 0.10 per year. How many after 10 years?</p>
+<div class="step"><b>1</b><div>rt = 0.10 × 10 = 1.0</div></div>
+<div class="step"><b>2</b><div>e<sup>1.0</sup> = 2.718</div></div>
+<div class="step"><b>3</b><div class="fx">N = 100 × 2.718 = <span class="ans">272 rabbits</span></div></div>
+<h3>Try it together</h3><p>500 bacteria, r = 0.20 per hour, t = 5 hours?</p><details><summary>Show answer</summary><div class="fx">rt = 1.0 → N = 500 × 2.718 = <span class="ans">1,359</span></div></details></div></div></section>
+
+<section><div class="nbg"><div class="nbp"><div class="nbt">&#9998; Notebook page 4 · 3.5 Growth and resources</div>
+<ul><li>Unlimited resources → <b>exponential</b> growth (J-curve).</li>
+<li>Limited resources → <b>logistic</b> growth (S-curve), levels off at K.</li>
+<li><b>Density-dependent</b>: food, water, space, disease, predators.</li>
+<li><b>Density-independent</b>: hurricane, fire, flood, cold.</li>
+<li><b>N = N₀e<sup>rt</sup></b></li></ul></div>
+<div class="nbv"><b>✏️ Draw this</b><svg class="pls" viewBox="0 0 360 200" role="img" aria-label="J and S sketch"><line x1="20" y1="180" x2="170" y2="180" stroke="var(--ink)" stroke-width="2"/><line x1="20" y1="20" x2="20" y2="180" stroke="var(--ink)" stroke-width="2"/><path d="M20 178 Q120 175 160 25" fill="none" stroke="var(--a)" stroke-width="4"/><text x="95" y="198" class="zs2">J: exponential</text><line x1="190" y1="180" x2="340" y2="180" stroke="var(--ink)" stroke-width="2"/><line x1="190" y1="20" x2="190" y2="180" stroke="var(--ink)" stroke-width="2"/><line x1="190" y1="60" x2="340" y2="60" stroke="var(--bad)" stroke-dasharray="5 4"/><path d="M190 178 C250 175 250 62 340 62" fill="none" stroke="var(--g)" stroke-width="4"/><text x="265" y="198" class="zs2">S: logistic</text><text x="330" y="52" class="zs2" style="fill:var(--bad)">K</text></svg></div></div>
+<div data-timer="5"></div></section>
+
+<section data-act="A7"></section>
+
+<section><span class="tag">Topic 3.6</span><h2>Age structure diagrams</h2>
+<p>An <b>age structure diagram</b> shows how many people are in each age group: males on one side, females on the other. Each bar = one age group (youngest at the bottom).</p>
+<div class="split"><div><div data-pred="pyrp"></div></div><div><div data-ref="pyrOne"></div></div></div>
+<div class="after"><div data-ref="pyr"></div></div></section>
+
+<section><span class="tag">Topic 3.6</span><h2>How an age structure changes over time</h2><div data-play="china"></div></section>
+
+<section><span class="tag">Topic 3.6</span><h2>Real examples</h2>
+<div class="grid"><div><h3>🔺 Rapid growth</h3><p>Niger, Nigeria, Afghanistan: many children, wide base.</p></div><div><h3>▮ Slow / stable</h3><p>United States, France: similar numbers in each age group.</p></div><div><h3>🔻 Declining</h3><p>Japan, Italy, South Korea: few children, many older people.</p></div></div>
+<div class="do"><b>Population momentum:</b> even if each family has fewer children, a country with a wide base keeps growing for many years, because so many young people are entering their reproductive years.</div></section>
+
+<section><div class="nbg"><div class="nbp"><div class="nbt">&#9998; Notebook page 5 · 3.6 Age structure</div>
+<ul><li>Age groups: <b>0–14</b> pre-reproductive · <b>15–44</b> reproductive · <b>45+</b> post-reproductive.</li>
+<li>Wide base (pyramid) → rapid growth.</li>
+<li>Straight sides → slow or stable.</li>
+<li>Narrow base, top-heavy → declining.</li>
+<li>Top-heavy → fewer workers support more retired people.</li></ul></div>
+<div class="nbv"><b>✏️ Draw this</b><div data-ref="pyrS"></div></div></div>
+<div data-timer="4"></div></section>
+
+<section data-act="A8"></section>
+
+<section><span class="tag">Topic 3.7</span><h2>Total fertility rate (TFR)</h2>
+<div class="split"><div><p class="big2"><b>TFR</b> = the average number of children a woman has in her lifetime.</p>
+<p><b>Replacement-level fertility ≈ 2.1</b>: 2 children replace the 2 parents, plus a little extra because some children die before they can have children. Where more children die, replacement level is higher.</p>
+<p><b>Infant mortality rate</b> = the number of babies who die before age 1, per 1,000 live births.</p></div>
+<div><svg class="pls" viewBox="0 0 360 240" role="img" aria-label="Replacement level"><rect width="360" height="240" rx="12" fill="var(--panel)"/><text x="80" y="80" font-size="44" text-anchor="middle">👨👩</text><text x="180" y="80" class="zl2" style="font-size:26px">→</text><text x="280" y="80" font-size="44" text-anchor="middle">👧👦</text><text x="180" y="140" class="zl2">2 parents → 2 children</text><text x="180" y="180" class="zl2">+ 0.1 (some children die)</text><text x="180" y="220" class="zl2" style="font-size:22px">= 2.1</text></svg></div></div></section>
+
+<section><span class="tag">Topic 3.7</span><h2>What changes the TFR?</h2><div data-pred="tfrp"></div><div class="after"><div data-ref="tfr"></div></div></section>
+
+<section><span class="tag">Topic 3.7</span><h2>Government policy: China</h2>
+<svg class="pls" viewBox="0 0 720 200" role="img" aria-label="China policy timeline"><rect width="720" height="200" fill="var(--bg)"/><line x1="40" y1="100" x2="690" y2="100" class="ax"/><circle cx="90" cy="100" r="9" fill="var(--g)"/><circle cx="260" cy="100" r="9" fill="var(--bad)"/><circle cx="520" cy="100" r="9" fill="var(--a)"/><circle cx="640" cy="100" r="9" fill="var(--a)"/><text x="90" y="80" class="zl2">1970</text><text x="90" y="135" class="zs2">TFR about 5–6</text><text x="260" y="80" class="zl2">1980</text><text x="260" y="135" class="zs2">one-child policy</text><text x="520" y="80" class="zl2">2016</text><text x="520" y="135" class="zs2">two-child policy</text><text x="640" y="80" class="zl2">2021</text><text x="640" y="135" class="zs2">three-child policy</text><text x="400" y="180" class="zl2">Today: TFR far BELOW 2.1 → population started to decline (2022)</text></svg>
+<div class="do"><b>Notice:</b> even after the rules were relaxed, the TFR stayed low, because of education, city life and the high cost of raising children.</div></section>
+
+<section><div class="nbg"><div class="nbp"><div class="nbt">&#9998; Notebook page 6 · 3.7 Total fertility rate</div>
+<ul><li><b>TFR</b> = average children per woman in her lifetime.</li>
+<li><b>Replacement level ≈ 2.1</b>.</li>
+<li><b>Infant mortality rate</b> = infant deaths per 1,000 live births.</li>
+<li>TFR goes DOWN with: women's education, family planning, low infant mortality, city life, higher income.</li>
+<li>Government policy: China one-child policy (1980).</li></ul></div>
+<div class="nbv"><b>✏️ Draw this</b><svg class="pls" viewBox="0 0 360 160" role="img" aria-label="TFR factors sketch"><text x="180" y="40" class="zl2">TFR ↓ when…</text><text x="60" y="95" font-size="36" text-anchor="middle">🎓</text><text x="140" y="95" font-size="36" text-anchor="middle">💊</text><text x="220" y="95" font-size="36" text-anchor="middle">🏥</text><text x="300" y="95" font-size="36" text-anchor="middle">🏙️</text><text x="60" y="130" class="zs2">education</text><text x="140" y="130" class="zs2">family plan.</text><text x="220" y="130" class="zs2">healthy babies</text><text x="300" y="130" class="zs2">cities</text></svg></div></div>
+<div data-timer="4"></div></section>
+
+<section data-act="A9"></section>
+<section data-act="A10"></section>
+
+<!-- ================= CLASS 3 ================= -->
+<section><span class="tag">AP Environmental Science · Unit 3</span><h1>Human populations</h1><h2>Class 3 (1 hour)</h2>
+<p>By the end of today you can: explain how human populations grow and decline <span class="sm">(EIN-1.C)</span>; define the demographic transition <span class="sm">(EIN-1.D)</span>.</p>
+<div class="wrap"><table><tr><th>Block</th><th>Minutes</th></tr>
+<tr><td>3.8 Human population dynamics · A11</td><td>25</td></tr>
+<tr><td>3.9 Demographic transition · play · A12</td><td>20</td></tr>
+<tr><td>Unit 3 visual review + A13</td><td>15</td></tr></table></div></section>
+
+<section data-join></section>
+
+<section><span class="tag">Topic 3.8</span><h2>Human population growth</h2>
+<div class="split"><div><svg class="pls" viewBox="0 0 360 260" role="img" aria-label="World population growth"><line x1="40" y1="220" x2="350" y2="220" stroke="var(--ink)" stroke-width="2"/><line x1="40" y1="20" x2="40" y2="220" stroke="var(--ink)" stroke-width="2"/><path d="M40 205 L120 200 L190 195 L249 180 L276 170 L297 160 L315 150 L331 140 L345 130 L350 125" fill="none" stroke="var(--g)" stroke-width="5"/><text x="80" y="240" class="zs2">1700</text><text x="190" y="240" class="zs2">1900</text><text x="340" y="240" class="zs2">2022</text><text x="300" y="115" class="zs2">8 billion (2022)</text><text x="170" y="185" class="zs2">1 billion (1804)</text><text x="22" y="120" class="zs2" transform="rotate(-90 22 120)">billions of people</text></svg>
+<p class="sm">1 billion (1804) → 2 (1927) → 4 (1974) → 8 billion (2022)</p></div>
+<div><h3>Why so fast?</h3><ul><li>💉 Medicine and vaccines</li><li>🚰 Clean water and sanitation</li><li>🌾 More food from modern farming (the Green Revolution)</li></ul>
+<p>→ the <b>death rate fell</b> while birth rates stayed high.</p>
+<h3>Malthus (1798)</h3><p>Thomas Malthus said human populations grow <b>faster than food supplies</b>, so famine, disease and war would limit them. Technology has raised Earth's carrying capacity for humans so far, but people still debate how many humans Earth can support.</p></div></div></section>
+
+<section><span class="tag">Topic 3.8</span><h2>Growth rate and doubling time</h2>
+<div class="split"><div><div data-ref="calc"></div>
+<p class="sm">A population <b>grows</b> when births + immigration &gt; deaths + emigration, and <b>declines</b> when deaths + emigration &gt; births + immigration.</p></div>
+<div><h3>Example 1: growth rate</h3><p>CBR = 30, CDR = 10 (per 1,000), no migration.</p><div class="fx"><span class="fr"><span>30 − 10</span><span>10</span></span> = <span class="ans">2.0%</span></div>
+<h3>Example 2: rule of 70</h3><p>Growth rate = 2.0%. Doubling time?</p><div class="fx"><span class="fr"><span>70</span><span>2.0</span></span> = <span class="ans">35 years</span></div>
+<h3>Try it together</h3><p>CBR = 15, CDR = 10, immigration 3, emigration 2. Growth rate? Doubling time?</p><details><summary>Show answer</summary><div class="fx">(15 + 3 − 10 − 2) ÷ 10 = <span class="ans">0.6%</span> · 70 ÷ 0.6 = <span class="ans">117 years</span></div></details></div></div></section>
+
+<section><div class="nbg"><div class="nbp"><div class="nbt">&#9998; Notebook page 7 · 3.8 Human population dynamics</div>
+<ul><li>Human population: more than 8 billion (2022). Grew fast because the death rate fell (medicine, clean water, more food).</li>
+<li><b>Malthus</b>: population grows faster than food → famine, disease.</li>
+<li>Growth rate (%) = [(CBR + immig.) − (CDR + emig.)] ÷ 10</li>
+<li><b>Rule of 70</b>: doubling time = 70 ÷ growth rate (%)</li></ul></div>
+<div class="nbv"><b>✏️ Draw this</b><svg class="pls" viewBox="0 0 360 160" role="img" aria-label="Births deaths balance"><rect x="20" y="30" width="140" height="100" rx="10" fill="color-mix(in srgb,var(--g) 20%,var(--bg))" stroke="var(--g)"/><rect x="200" y="30" width="140" height="100" rx="10" fill="color-mix(in srgb,var(--bad) 15%,var(--bg))" stroke="var(--bad)"/><text x="90" y="65" class="zl2">IN ➕</text><text x="90" y="95" class="zs2">births + immigration</text><text x="270" y="65" class="zl2">OUT ➖</text><text x="270" y="95" class="zs2">deaths + emigration</text><text x="180" y="155" class="zs2">IN &gt; OUT → grows · OUT &gt; IN → declines</text></svg></div></div>
+<div data-timer="4"></div></section>
+
+<section data-act="A11"></section>
+
+<section><span class="tag">Topic 3.9</span><h2>The demographic transition</h2>
+<p>The <b>demographic transition</b> = the change from high birth and death rates to low birth and death rates as a country develops economically.</p>
+<div class="split pp"><div data-pred="dtmp"></div><div data-play="dtm"></div></div></section>
+
+<section><div class="nbg"><div class="nbp"><div class="nbt">&#9998; Notebook page 8 · 3.9 Demographic transition</div>
+<ul><li><b>Stage 1</b> pre-industrial: high BR, high DR → small, slow growth.</li>
+<li><b>Stage 2</b> transitional: DR falls (medicine, food, water) → FAST growth.</li>
+<li><b>Stage 3</b> industrial: BR falls (education, family planning, cities) → growth slows.</li>
+<li><b>Stage 4</b> post-industrial: low BR, low DR → stable or declining.</li></ul></div>
+<div class="nbv"><b>✏️ Draw this</b><svg class="pls" viewBox="0 0 360 200" role="img" aria-label="DTM sketch"><line x1="20" y1="170" x2="340" y2="170" stroke="var(--ink)" stroke-width="2"/><path d="M20 40 H130 Q190 45 240 140 H340" fill="none" stroke="var(--bad)" stroke-width="4"/><path d="M20 45 H60 Q100 130 160 150 H340" fill="none" stroke="var(--blue)" stroke-width="4"/><line x1="100" y1="20" x2="100" y2="170" stroke="var(--line)"/><line x1="180" y1="20" x2="180" y2="170" stroke="var(--line)"/><line x1="260" y1="20" x2="260" y2="170" stroke="var(--line)"/><text x="60" y="190" class="zs2">1</text><text x="140" y="190" class="zs2">2</text><text x="220" y="190" class="zs2">3</text><text x="300" y="190" class="zs2">4</text><text x="310" y="132" class="zs2" style="fill:var(--bad)">BR</text><text x="310" y="162" class="zs2" style="fill:var(--blue)">DR</text></svg></div></div>
+<div data-timer="4"></div></section>
+
+<section data-act="A12"></section>
+
+<section><h2>Unit 3 visual review</h2><div data-ref="review"></div>
+<div class="split" style="margin-top:.8em"><div data-ref="surv"></div><div data-ref="dtm"></div></div></section>
+
+<section><div class="nbp"><div class="nbt">&#9998; Notebook page 9 · Unit 3 one-page summary (copy the pictures too!)</div></div>
+<div class="split"><div data-ref="surv"></div><div data-ref="k"></div></div>
+<div class="split"><div data-ref="pyr"></div><div data-ref="dtm"></div></div>
+<div data-timer="8"></div></section>
+
+<section data-act="A13"></section>
+
+<section><h2>Unit 3 complete 🎉</h2><p class="big2">Next: <b>Unit 4 · Earth Systems and Resources</b>. Review notebook pages 1–9.</p><div data-ref="review"></div></section>
+
+</main>
+<nav><button class="btn" id="bk" aria-label="Previous slide">Back</button><div class="bar"><i id="pb"></i></div><span id="n"></span><button class="btn alt" id="mbtn">Class monitor</button><button class="btn alt" id="svbtn">Student view</button><button class="btn" id="nx" aria-label="Next slide">Next</button></nav>
+</div>
+
+<div id="ov"></div>
+<div id="stu"></div>
+<div id="boot" style="padding:40px;font-family:var(--head)">Loading…</div>
+<script>
+/* ================= drawing helpers ================= */
+var SKY="color-mix(in srgb,#7fb8e0 30%,var(--bg))",SOIL="color-mix(in srgb,#9b7a4c 45%,var(--bg))",WAT="color-mix(in srgb,var(--blue) 38%,var(--bg))",
+ ROCK="color-mix(in srgb,#8d8d8d 55%,var(--bg))",GRN="color-mix(in srgb,var(--g) 45%,var(--bg))",MUD="color-mix(in srgb,#8a5a2b 60%,var(--bg))";
+var PAL=["#d1495b","#edae49","#00798c","#7b4fa0","#30a14e","#8c5a3c"];
+function E(x,y,e,s){return '<text x="'+x+'" y="'+y+'" font-size="'+(s||34)+'" text-anchor="middle">'+e+'</text>'}
+function T(x,y,t,c,ex){return '<text x="'+x+'" y="'+y+'" class="'+(c||"zl2")+'"'+(ex||"")+'>'+t+'</text>'}
+function P(x,y,t){var w=t.length*7.6+20;return '<rect x="'+(x-w/2).toFixed(0)+'" y="'+(y-15)+'" width="'+w.toFixed(0)+'" height="23" rx="11" class="pill2"/><text x="'+x+'" y="'+(y+2)+'" class="pl2">'+t+'</text>'}
+function X(x,y,s){s=s||11;return '<path d="M'+(x-s)+' '+(y-s)+'L'+(x+s)+' '+(y+s)+'M'+(x+s)+' '+(y-s)+'L'+(x-s)+' '+(y+s)+'" stroke="#c0392b" stroke-width="4" stroke-linecap="round"/>'}
+function arrow(x1,y1,x2,y2,c,dash){var a=Math.atan2(y2-y1,x2-x1),h=10;return '<path d="M'+x1+' '+y1+'L'+x2+' '+y2+'" stroke="'+(c||"var(--ink)")+'" stroke-width="3" fill="none"'+(dash?' stroke-dasharray="8 6"':'')+'/><path d="M'+x2+' '+y2+'L'+(x2-h*Math.cos(a-.45)).toFixed(1)+' '+(y2-h*Math.sin(a-.45)).toFixed(1)+'L'+(x2-h*Math.cos(a+.45)).toFixed(1)+' '+(y2-h*Math.sin(a+.45)).toFixed(1)+'Z" fill="'+(c||"var(--ink)")+'"/>'}
+function svgw(inner,h,label){return '<svg class="pls" viewBox="0 0 720 '+(h||330)+'" role="img" aria-label="'+(label||"diagram")+'">'+inner+'</svg>'}
+
+var PLAY={};
+</script>
+<script>
+/* ================= graph helpers ================= */
+function axes(x0,y0,w,h,xl,yl){return '<line x1="'+x0+'" y1="'+y0+'" x2="'+(x0+w)+'" y2="'+y0+'" class="ax"/><line x1="'+x0+'" y1="'+(y0-h)+'" x2="'+x0+'" y2="'+y0+'" class="ax"/>'+T(x0+w/2,y0+34,xl)+T(x0-34,y0-h/2,yl,"zl2",' transform="rotate(-90 '+(x0-34)+' '+(y0-h/2)+')"')}
+function pathF(f,x0,y0,w,h,t1,step){var d="";for(var t=0;t<=(t1==null?1:t1)+1e-9;t+=(step||.005))d+=(t?"L":"M")+(x0+t*w).toFixed(1)+" "+(y0-Math.max(0,Math.min(1.08,f(t)))*h).toFixed(1);return d}
+
+/* ================= 3.3 survivorship ================= */
+function sI(t){return t<.75?1-.12*t:Math.max(0,.91-(t-.75)*3.64)}
+function sII(t){return 1-t}
+function sIII(t){return t<.18?1-t*4.6:Math.max(0,.17-(t-.18)*.2)}
+function survSVG(o){o=o||{};var x0=90,y0=270,w=560,h=220,s='<rect width="720" height="330" fill="var(--bg)"/>';
+ [[1,"1000"],[.667,"100"],[.333,"10"],[0,"1"]].forEach(function(q){s+='<line x1="'+x0+'" y1="'+(y0-q[0]*h)+'" x2="'+(x0+w)+'" y2="'+(y0-q[0]*h)+'" class="gl"/>'+T(x0-8,y0-q[0]*h+5,q[1],"zs2",' style="text-anchor:end"')});
+ s+=axes(x0,y0,w,h,"Age (% of maximum life span) →","Number surviving (log)")+T(x0,y0+18,"0","zs2")+T(x0+w,y0+18,"100","zs2");
+ var C=[[sI,"var(--g)","Type I"],[sII,"var(--blue)","Type II"],[sIII,"var(--a)","Type III"]];C.forEach(function(c,i){if(o.only!=null&&o.only!==i)return;s+='<path d="'+pathF(c[0],x0,y0,w,h)+'" fill="none" stroke="'+c[1]+'" stroke-width="5"/>';if(!o.nol)s+=T([x0+420,x0+300,x0+150][i],[y0-h-6,y0-h*.42-10,y0-h*.25+22][i],c[2],"zl2",' style="fill:'+c[1]+'"')});
+ return s+(o.x||"")}
+PLAY.surv={title:"▶ Play: follow 1,000 babies of each type",st:[
+ {t:"Start: 1,000 babies of each species",d:"We follow 1,000 newborn humans, 1,000 newborn songbirds and 1,000 baby sea turtles (eggs) and count how many are still alive as they get older.",s:survSVG({only:-1,x:E(250,120,"👶",40)+E(360,120,"🐦",40)+E(470,120,"🐢",40)})},
+ {t:"Type III: most die very young",d:"Sea turtles lay many eggs. Most babies are eaten or die in the first days. The few that survive can live a long time. Examples: fish, insects, sea turtles, plants. (Usually r-selected.)",s:survSVG({only:2,x:E(190,150,"🐢",34)+X(230,150,12)})},
+ {t:"Type II: the same chance of dying at every age",d:"Songbirds, squirrels and lizards can die at any age (predators, accidents). On a log graph this makes a straight line.",s:survSVG({only:1,x:E(390,150,"🐦",34)})},
+ {t:"Type I: most live long and die old",d:"Most humans and elephants survive to old age, then death rates rise quickly. Parents take care of few offspring. (Usually K-selected.)",s:survSVG({only:0,x:E(560,90,"👴",34)})},
+ {t:"Compare all three",d:"The y-axis is a LOG scale (1, 10, 100, 1000), so a constant rate of death makes a straight line. Type I = late loss · Type II = constant loss · Type III = early loss.",s:survSVG()}]};
+
+/* ================= 3.4/3.5 growth curves ================= */
+function expo(t){return .02*Math.exp(4.2*t)}
+function logi(t){return 1/(1+49*Math.exp(-9*t))}
+function overshoot(t){var b=1/(1+49*Math.exp(-11*t));if(t<.45)return b*1.05;if(t<.6)return .95+.55*Math.sin((t-.45)/.15*Math.PI/2);if(t<.75)return 1.5-1.2*((t-.6)/.15);return .3+.35*(1-Math.exp(-(t-.75)*8))}
+function growthSVG(o){o=o||{};var x0=90,y0=270,w=560,h=170,s='<rect width="720" height="330" fill="var(--bg)"/>'+axes(x0,y0,w,h+50,"Time →","Population size");
+ if(o.K!==false)s+='<line x1="'+x0+'" y1="'+(y0-h)+'" x2="'+(x0+w)+'" y2="'+(y0-h)+'" stroke="var(--bad)" stroke-width="3" stroke-dasharray="9 6"/>'+T(x0+120,y0-h-10,"carrying capacity (K)","zl2",' style="fill:var(--bad)"');
+ (o.curves||[]).forEach(function(c){s+='<path d="'+pathF(c[0],x0,y0,w,h,c[3])+'" fill="none" stroke="'+c[1]+'" stroke-width="5"/>'+(c[2]?T(c[4]||x0+w*.3,c[5]||y0-40,c[2],"zl2",' style="fill:'+c[1]+'"'):"")});
+ return s+(o.x||"")}
+function deer(n,x,y){var s="";for(var i=0;i<n;i++)s+=E(x+(i%8)*26,y+Math.floor(i/8)*26,"🦌",22);return s}
+PLAY.reindeer={title:"▶ Play: overshoot and dieback (reindeer on St. Matthew Island)",st:[
+ {t:"1944: 29 reindeer arrive",d:"People brought 29 reindeer to St. Matthew Island (Alaska). There were no predators and lots of lichen to eat.",s:growthSVG({curves:[[overshoot,"var(--g)","",.05]],x:deer(3,140,170)+E(560,240,"🌿",30)+E(600,240,"🌿",30)+E(640,240,"🌿",30)})},
+ {t:"Fast growth",d:"Lots of food and no predators: the population grew very fast (exponential growth).",s:growthSVG({curves:[[overshoot,"var(--g)","",.4]],x:deer(12,140,150)+E(600,240,"🌿",30)})},
+ {t:"1963: about 6,000 reindeer: OVERSHOOT",d:"The population went far ABOVE the carrying capacity. The reindeer ate the lichen faster than it could grow back.",s:growthSVG({curves:[[overshoot,"var(--g)","",.58]],x:deer(24,120,140)+P(560,60,"overshoot!")})},
+ {t:"Winter 1963–64: DIEBACK",d:"With almost no food left in a harsh winter, most reindeer starved. By 1966 only about 42 were left.",s:growthSVG({curves:[[overshoot,"var(--g)","",.78]],x:deer(2,140,170)+P(560,60,"dieback (crash)")+E(600,140,"❄️",30)})},
+ {t:"Damage to the ecosystem",d:"The lichen took decades to recover, so the carrying capacity became LOWER than before. Overshoot harms the whole ecosystem, not just the population.",s:growthSVG({curves:[[overshoot,"var(--g)","",1]],x:'<line x1="460" y1="215" x2="650" y2="215" stroke="var(--a)" stroke-width="3" stroke-dasharray="6 5"/>'+P(560,190,"new, lower K")})}]};
+
+function twoGrowth(){var s='<rect width="720" height="330" fill="var(--bg)"/>';[[expo,"A",.95,40],[logi,"B",1,400]].forEach(function(c){var x0=c[3]+30,y0=270,w=280,h=170;s+='<line x1="'+x0+'" y1="'+y0+'" x2="'+(x0+w)+'" y2="'+y0+'" class="ax"/><line x1="'+x0+'" y1="'+(y0-h-40)+'" x2="'+x0+'" y2="'+y0+'" class="ax"/><path d="'+pathF(c[0],x0,y0,w,h,c[2])+'" fill="none" stroke="var(--g)" stroke-width="5"/>'+T(x0+w/2,y0+30,"Time →")+T(x0+20,40,c[1],"zl2",' style="font-size:22px"')});return s}
+/* ================= 3.6 age structure ================= */
+var PYR={grow:[10,9,8,7,6,5,4,3,2,1],stable:[6,6,6,6,6,5.5,5,4,3,1.5],decline:[3.5,4,4.5,5,5.5,6,6.5,6.5,5.5,4]};
+function pyramid(x,y,data,lab,o){o=o||{};var s="",bh=o.bh||17,sc=o.sc||9,cx=x;
+ data.forEach(function(v,i){var yy=y-(i+1)*bh,c=i<3?"var(--g)":i<9?"var(--blue)":"var(--a)";if(i<3)c="color-mix(in srgb,var(--g) 75%,var(--bg))";else if(i<9)c="color-mix(in srgb,var(--blue) 70%,var(--bg))";else c="color-mix(in srgb,var(--a) 75%,var(--bg))";
+  s+='<rect x="'+(cx-v*sc)+'" y="'+yy+'" width="'+(v*sc-1)+'" height="'+(bh-2)+'" fill="'+c+'"/><rect x="'+(cx+1)+'" y="'+yy+'" width="'+(v*sc-1)+'" height="'+(bh-2)+'" fill="'+c+'"/>'});
+ s+='<line x1="'+cx+'" y1="'+(y-data.length*bh-4)+'" x2="'+cx+'" y2="'+(y+2)+'" stroke="var(--ink)"/>';if(lab)s+=T(cx,y+22,lab);return s}
+function pyrLegend(y){return '<rect x="200" y="'+y+'" width="16" height="12" fill="color-mix(in srgb,var(--g) 75%,var(--bg))"/>'+T(270,y+11,"0–14 (pre-reproductive)","zs2")+'<rect x="350" y="'+y+'" width="16" height="12" fill="color-mix(in srgb,var(--blue) 70%,var(--bg))"/>'+T(420,y+11,"15–44 (reproductive)","zs2")+'<rect x="495" y="'+y+'" width="16" height="12" fill="color-mix(in srgb,var(--a) 75%,var(--bg))"/>'+T(565,y+11,"45+ (post-reproductive)","zs2")}
+function pyr3(labels){var L=labels||["Rapid growth","Slow / stable","Declining"];return '<rect width="720" height="300" fill="var(--bg)"/>'+pyramid(130,240,PYR.grow,L[0])+pyramid(360,240,PYR.stable,L[1])+pyramid(590,240,PYR.decline,L[2])+pyrLegend(275)}
+var PYC=[[10,9,8,7,6,5,4,3,2,1],[7,8,9,8,7,6,5,3.5,2.5,1.2],[4.5,5,6,7,8,8,7,6,4.5,2.5],[3.5,3.8,4.2,4.8,5.5,6.5,7.5,7.5,6.5,5]];
+PLAY.china={title:"▶ Play: how an age structure changes (simplified model of China)",st:[
+ {t:"1970: a pyramid",d:"Many babies were born each year. The wide base means the population will grow fast: many young people will soon have their own children.",s:'<rect width="720" height="300" fill="var(--bg)"/>'+pyramid(360,250,PYC[0],"",{bh:20,sc:14})+pyrLegend(270)+P(600,40,"wide base")},
+ {t:"1990: fewer births",d:"The one-child policy began in 1980. Fewer babies were born, so the base becomes NARROWER than the groups above it.",s:'<rect width="720" height="300" fill="var(--bg)"/>'+pyramid(360,250,PYC[1],"",{bh:20,sc:14})+pyrLegend(270)+P(600,40,"narrow base")},
+ {t:"2020: a bulge in the middle",d:"The big groups born before 1980 are now middle-aged. Fewer young people are coming behind them.",s:'<rect width="720" height="300" fill="var(--bg)"/>'+pyramid(360,250,PYC[2],"",{bh:20,sc:14})+pyrLegend(270)+P(600,40,"bulge")},
+ {t:"2050 (projected): top-heavy",d:"Many older people and fewer young workers. The population is declining. Fewer workers must support more retired people.",s:'<rect width="720" height="300" fill="var(--bg)"/>'+pyramid(360,250,PYC[3],"",{bh:20,sc:14})+pyrLegend(270)+P(600,40,"top-heavy → decline")}]};
+
+/* ================= 3.9 demographic transition ================= */
+function br(t){return t<.45?.85-.05*t:t<.75?.83-(t-.45)*2.2:.17}
+function dr(t){return t<.2?.8:t<.5?.8-(t-.2)*2:.2-Math.max(0,(t-.85))*.0}
+function popc(t){return .08+.85/(1+Math.exp(-11*(t-.5)))}
+function dtmSVG(upto,o){o=o||{};var x0=70,y0=270,w=620,h=210,s='<rect width="720" height="330" fill="var(--bg)"/>';
+ ["1 Pre-industrial","2 Transitional","3 Industrial","4 Post-industrial"].forEach(function(l,i){s+='<rect x="'+(x0+i*w/4)+'" y="'+(y0-h)+'" width="'+(w/4)+'" height="'+h+'" fill="'+(i%2?"var(--panel)":"var(--bg)")+'" opacity="'+(o.dim&&i!==o.dim-1?0.5:1)+'"/>'+T(x0+(i+.5)*w/4,y0+22,l,"zl2")});
+ s+='<line x1="'+x0+'" y1="'+y0+'" x2="'+(x0+w)+'" y2="'+y0+'" class="ax"/>';var t1=upto==null?1:upto;
+ s+='<path d="'+pathF(br,x0,y0,w,h,t1)+'" fill="none" stroke="var(--bad)" stroke-width="5"/>'+'<path d="'+pathF(dr,x0,y0,w,h,t1)+'" fill="none" stroke="var(--blue)" stroke-width="5"/>'+'<path d="'+pathF(popc,x0,y0,w,h,t1)+'" fill="none" stroke="var(--g)" stroke-width="5" stroke-dasharray="10 6"/>';
+ s+=P(150,30,"birth rate")+'<rect x="94" y="22" width="8" height="8" fill="var(--bad)"/>'+P(330,30,"death rate")+'<rect x="274" y="22" width="8" height="8" fill="var(--blue)"/>'+P(530,30,"total population (dashed)")+'<rect x="440" y="22" width="8" height="8" fill="var(--g)"/>';
+ return s+(o.x||"")}
+PLAY.dtm={title:"▶ Play: the demographic transition",st:[
+ {t:"Stage 1: pre-industrial",d:"Birth rates AND death rates are both high (disease, little food, no modern medicine). The population stays small and grows slowly.",s:dtmSVG(.25,{dim:1,x:E(147,120,"🛖",40)})},
+ {t:"Stage 2: transitional",d:"Better food, clean water and medicine → the DEATH rate falls fast. The birth rate stays high. The gap is big → the population grows very FAST.",s:dtmSVG(.5,{dim:2,x:E(302,130,"💉",34)+E(340,130,"🚰",34)})},
+ {t:"Stage 3: industrial",d:"People move to cities, women get more education and jobs, children cost more and family planning is available → the BIRTH rate falls. Growth slows down.",s:dtmSVG(.75,{dim:3,x:E(457,130,"🏭",36)+E(497,130,"🎓",34)})},
+ {t:"Stage 4: post-industrial",d:"Birth and death rates are both LOW. The population is large and stable, or starts to decline if the birth rate falls below the death rate (Japan, Italy, China).",s:dtmSVG(1,{dim:4,x:E(612,130,"🏙️",40)})}]};
+
+/* ================= live simulator: growth ================= */
+var IX={
+growth:function(e){e.className="ix";e.innerHTML='<h3>📈 Population growth simulator</h3><div class="row"><button class="btn go gm1">Unlimited resources (exponential)</button><button class="btn alt gm2">Limited resources (logistic)</button></div><label>Carrying capacity K: <input type="range" min="200" max="900" step="50" value="600" class="gK"> <b class="vK"></b></label><label>Growth rate r: <input type="range" min="0.1" max="0.6" step="0.05" value="0.3" class="gr"> <b class="vr"></b></label><div class="ixo"></div><div class="gsv"></div>';
+ var mode=1,b1=e.querySelector(".gm1"),b2=e.querySelector(".gm2"),K=e.querySelector(".gK"),r=e.querySelector(".gr");
+ function draw(){var k=+K.value,rr=+r.value,N=[10],x0=80,y0=270,w=580,h=230;for(var t=1;t<=40;t++){var n=N[t-1];N.push(mode===1?n*(1+rr):n+rr*n*(1-n/k))}
+  var max=1000,d="";N.forEach(function(n,t){d+=(t?"L":"M")+(x0+t*w/40).toFixed(1)+" "+(y0-Math.min(n,max*1.05)/max*h).toFixed(1)});
+  var s='<rect width="720" height="330" fill="var(--bg)"/>'+axes(x0,y0,w,h,"Time (generations) →","Population");[0,250,500,750,1000].forEach(function(v){s+=T(x0-8,y0-v/max*h+5,v,"zs2",' style="text-anchor:end"')});
+  if(mode===2)s+='<line x1="'+x0+'" y1="'+(y0-k/max*h)+'" x2="'+(x0+w)+'" y2="'+(y0-k/max*h)+'" stroke="var(--bad)" stroke-width="3" stroke-dasharray="9 6"/>'+T(x0+w-50,y0-k/max*h-8,"K = "+k,"zl2",' style="fill:var(--bad)"');
+  s+='<path d="'+d+'" fill="none" stroke="var(--g)" stroke-width="5"/>';e.querySelector(".gsv").innerHTML=svgw(s,330,"Population growth graph");
+  e.querySelector(".vK").textContent=k;e.querySelector(".vr").textContent=rr;K.disabled=mode===1;
+  e.querySelector(".ixo").innerHTML=mode===1?"J-curve: the population keeps multiplying. This only happens when resources are unlimited (not for long in nature!).":"S-curve: growth is fast at first, then SLOWS as food, water and space run out, and levels off at the carrying capacity K."}
+ b1.onclick=function(){mode=1;b1.className="btn go gm1";b2.className="btn alt gm2";this.blur();draw()};b2.onclick=function(){mode=2;b2.className="btn go gm2";b1.className="btn alt gm1";this.blur();draw()};K.oninput=r.oninput=draw;draw()}
+};
+</script>
+<script>
+function card(emo,title,txt){return '<div class="vc"><div class="emo">'+emo+'</div><b>'+title+'</b>'+(txt?'<span>'+txt+'</span>':'')+'</div>'}
+var REF={
+gs:function(){return '<h3>Generalist vs specialist</h3><div class="vgrid">'+card("🦝🐀🪳","Generalist","BROAD niche: eats many foods, lives in many habitats. Wins when the environment CHANGES. Often invasive.")+card("🐨🐼🦋","Specialist","NARROW niche: one food or habitat (koala: eucalyptus). Wins in a STABLE environment. At risk of extinction.")+'</div>'},
+rk:function(){return '<h3>r-selected vs K-selected</h3><div class="wrap"><table><tr><th></th><th>🐟🦟 r-selected</th><th>🐘🐋 K-selected</th></tr><tr><td>Offspring</td><td>MANY, small</td><td>FEW, large</td></tr><tr><td>Parental care</td><td>little or none</td><td>a lot</td></tr><tr><td>Maturity / life</td><td>early / short</td><td>late / long</td></tr><tr><td>Reproduce</td><td>often only once</td><td>many times</td></tr><tr><td>Population</td><td>booms and crashes; often overshoots K</td><td>stays near K</td></tr><tr><td>After a disturbance</td><td>recovers FAST; often invasive</td><td>recovers SLOWLY; hurt by invasive species</td></tr><tr><td>Survivorship</td><td>Type III</td><td>Type I</td></tr></table></div><p class="sm"><b>Biotic potential</b> = the maximum rate a population can grow with ideal conditions. Many species are between r and K.</p>'},
+surv:function(){return svgw(survSVG(),330,"Survivorship curves")+'<p class="sm"><b>Type I</b> = most die old (humans, elephants) · <b>Type II</b> = equal chance at every age (songbirds, squirrels) · <b>Type III</b> = most die young (fish, insects, sea turtles, plants)</p>'},
+k:function(){return svgw(growthSVG({curves:[[overshoot,"var(--g)"]],x:P(270,60,"overshoot")+P(520,250,"dieback")}),330,"Overshoot and dieback")+'<p class="sm"><b>Carrying capacity (K)</b> = the largest population an environment can support for a long time. <b>Overshoot</b> = the population goes above K → resources run out → <b>dieback</b>. Overshoot damages the ecosystem and can LOWER K.</p>'},
+grow:function(){return svgw(growthSVG({curves:[[expo,"var(--a)","J: exponential",.95,560,40],[logi,"var(--g)","S: logistic",1,450,205]]}),330,"Exponential and logistic growth")+'<p class="sm"><b>Exponential (J-curve)</b>: unlimited resources. <b>Logistic (S-curve)</b>: limited resources → levels off at K. <b>N = N₀e<sup>rt</sup></b></p><p class="sm"><b>Density-dependent</b> limits get stronger as the population gets crowded: food, water, space, disease, predators. <b>Density-independent</b> limits do not depend on crowding: hurricanes, fires, floods, cold weather.</p>'},
+pyrOne:function(){return svgw('<rect width="720" height="300" fill="var(--bg)"/>'+pyramid(360,250,PYR.grow,"",{bh:20,sc:14})+T(560,250,"0–4 years","zs2")+T(560,60,"90+ years","zs2")+T(200,40,"males")+T(520,40,"females"),300,"Age structure with a wide base")},
+pyrS:function(){return svgw(pyr3(),300,"Three age structures")},
+pyr:function(){return svgw(pyr3(),300,"Three age structure diagrams")+'<p class="sm">Wide base → <b>rapid growth</b> (many future parents). Straight sides → <b>slow or stable</b>. Narrow base, top-heavy → <b>declining</b>.</p>'},
+tfr:function(){return '<h3>Total fertility rate (TFR)</h3><p><b>TFR</b> = the average number of children a woman has in her lifetime. <b>Replacement level ≈ 2.1</b> (2 to replace the parents + a little extra because some children die).</p><div class="vgrid">'+card("🎓👩","Women\'s education ↑","TFR ↓")+card("💊","Family planning ↑","TFR ↓")+card("👶🏥","Infant mortality ↓","TFR ↓")+card("💰🏙️","Income, cities ↑","TFR ↓ (children cost more)")+card("🌾👨‍👩‍👧‍👦","Farm families","TFR ↑ (children help work)")+card("🏛️","Government policy","China one-child policy (1980) → TFR ↓")+'</div>'},
+calc:function(){return '<h3>Human population math</h3><div class="fx">growth rate (%) = <span class="fr"><span>(CBR + immigration) − (CDR + emigration)</span><span>10</span></span></div><p class="sm">CBR = crude birth rate, CDR = crude death rate (both per 1,000 people)</p><div class="fx">doubling time (years) = <span class="fr"><span>70</span><span>growth rate (%)</span></span></div><p class="sm">Rule of 70. Infant mortality rate = infant deaths per 1,000 live births.</p>'},
+dtm:function(){return svgw(dtmSVG(1),330,"Demographic transition model")+'<p class="sm">1: high BR, high DR · 2: DR falls → fast growth · 3: BR falls → growth slows · 4: low BR, low DR → stable or declining</p>'},
+rA2:function(){return REF.gs()+REF.rk()},rA3:function(){return REF.surv()},rA4:function(){return REF.k()},rA7:function(){return REF.grow()},rA8:function(){return REF.pyr()},rA9:function(){return REF.tfr()},rA11:function(){return REF.calc()},rA12:function(){return REF.dtm()},
+review:function(){return '<div class="rv"><div><h3>3.1 🦝 vs 🐨</h3><p>Generalist (broad niche, changing env.) · specialist (narrow niche, stable env.)</p></div><div><h3>3.2 🐟 vs 🐘</h3><p>r: many offspring, no care, Type III · K: few offspring, care, Type I</p></div><div><h3>3.3 📉</h3><p>Type I late loss · II constant · III early loss</p></div><div><h3>3.4 🦌</h3><p>K = max population. Overshoot → dieback.</p></div><div><h3>3.5 J vs S</h3><p>Exponential (unlimited) · logistic (limited). Density-dependent vs independent.</p></div><div><h3>3.6 🔺▮🔻</h3><p>Wide base grows · straight stable · top-heavy declines</p></div><div><h3>3.7 👶 2.1</h3><p>TFR. Education, family planning, low infant mortality → TFR ↓</p></div><div><h3>3.8 70 ÷ r</h3><p>Growth % = (BR − DR)/10 · doubling time = 70 / %</p></div><div><h3>3.9 1→4</h3><p>DR falls first, then BR falls</p></div></div>'}
+};
+
+var PRED={
+koala:{q:"The climate changes and the forest changes quickly. Which animal is more likely to survive?",o:["🦝 Raccoon (eats almost anything)","🐨 Koala (eats only eucalyptus leaves)"],a:0,why:"Generalists have a BROAD niche, so they can switch foods and habitats when the environment changes. Specialists do best in a STABLE environment."},
+invade:{q:"A ship brings a new species to a lake. Which kind is MOST likely to become invasive?",o:["A small fish that lays 10,000 eggs and eats many foods","A large fish that has 2 babies and eats one kind of snail"],a:0,why:"r-selected generalists reproduce fast and can live almost anywhere, so they spread quickly and outcompete native species."},
+turtle:{q:"A sea turtle lays 100 eggs. How many will probably survive to become adults?",o:["About 1 or fewer","About 50","About 90"],a:0,why:"Most baby sea turtles are eaten by birds, crabs and fish in their first days. Very high death rate when young = Type III survivorship."},
+deerp:{q:"A herd of deer has lots of food and no predators. What will happen to the population in the LONG run?",o:["It grows fast, goes above what the land can support, then crashes","It grows forever","It stays the same forever"],a:0,why:"With no limits it grows exponentially, but food is limited. It can overshoot the carrying capacity, eat too much food, and then die back."},
+bact:{q:"One bacterium divides into 2 every 20 minutes. About how many bacteria are there after 10 divisions (3 hours 20 minutes)?",o:["About 20","About 100","About 1,000","About 1,000,000"],a:2,why:"2 → 4 → 8 → 16 → 32 → 64 → 128 → 256 → 512 → 1,024. Doubling again and again = EXPONENTIAL growth (a J-curve)."},
+pyrp:{q:"A country's age structure has a very WIDE base (many children). What will happen to its population?",o:["It will grow quickly","It will stay the same","It will decline"],a:0,why:"All those children will soon be adults having their own children. A wide base = rapid growth in the future (population momentum)."},
+tfrp:{q:"In one country, more girls finish high school and university. What happens to the total fertility rate (TFR)?",o:["It goes down","It goes up","No change"],a:0,why:"Educated women usually marry later, have more job choices and know more about family planning, so they have fewer children."},
+dtmp:{q:"A country gets vaccines and clean water, so fewer people die. The birth rate does not change yet. What happens to the population?",o:["It grows very fast","It shrinks","It stays the same"],a:0,why:"Births stay high but deaths fall, so the gap between them gets big: rapid growth. This is Stage 2 of the demographic transition."}
+};
+
+var SVHOT=[{x:470,y:30,w:200,h:110,l:"Type I",ok:0},{x:300,y:120,w:180,h:90,l:"Type II",ok:0},{x:90,y:90,w:150,h:180,l:"Type III",ok:0}];
+function svHot(l){return SVHOT.map(function(r){return {x:r.x,y:r.y,w:r.w,h:r.h,l:r.l,ok:r.l===l?1:0}})}
+function pyrHot(l){return ["Rapid growth","Slow / stable","Declining"].map(function(n,i){return {x:30+i*230,y:50,w:200,h:200,l:n,ok:n===l?1:0}})}
+function dtmHot(i){return ["Stage 1","Stage 2","Stage 3","Stage 4"].map(function(l,k){return {x:70+k*155,y:60,w:155,h:210,l:l,ok:k===i?1:0}})}
+var ACTS=[
+{id:"A1",c:1,t:"Warm-up: populations",items:[
+ {k:"mc",q:"A POPULATION is…",o:["all the members of one species living in one area","all the species in an area","all the living and nonliving things in an area","one single organism"]},
+ {k:"multi",q:"Select ALL the things a population of rabbits needs to grow.",o:["*Food","*Water","*Space (habitat)","*Mates","Predators"]},
+ {k:"slider",q:"A rabbit pair has 6 babies. How many rabbits are there now?",min:0,max:12,a:8,tol:0,u:"rabbits"},
+ {k:"text",q:"What do you think limits how big a population can get?"}]},
+{id:"A2",c:1,t:"Generalists, specialists, r and K",ref:"rA2",items:[
+ {k:"sort",q:"Generalist or specialist?",b:["Generalist","Specialist"],i:["🦝 Raccoon: eats fruit, fish, insects and garbage|Generalist","🪳 Cockroach: lives almost anywhere|Generalist","🐀 Rat: lives in cities, farms and forests|Generalist","🐨 Koala: eats only eucalyptus leaves|Specialist","🐼 Giant panda: eats almost only bamboo|Specialist","🦋 Monarch caterpillar: eats only milkweed|Specialist"]},
+ {k:"mc",q:"Specialist species have an advantage when the environment is…",o:["stable (not changing)","changing quickly","full of new invasive species","polluted"]},
+ {k:"sort",q:"r-selected or K-selected?",b:["r-selected","K-selected"],i:["Many small offspring|r-selected","Little or no parental care|r-selected","Short life span, early maturity|r-selected","Few large offspring|K-selected","Lots of parental care|K-selected","Population stays near carrying capacity|K-selected"]},
+ {k:"mc",q:"Which is a K-selected species?",o:["🐘 Elephant","🦟 Mosquito","🐟 Cod fish","🐭 Mouse"]},
+ {k:"mc",q:"Which kind of species is MOST likely to be invasive?",o:["r-selected generalist","K-selected specialist","K-selected generalist","r-selected specialist that eats one food"]},
+ {k:"mc",q:"After a big disturbance (like a fire), which population usually recovers more SLOWLY?",o:["K-selected species","r-selected species","Both the same","Neither recovers"]},
+ {k:"mc",q:"Biotic potential is…",o:["the maximum rate a population can grow with ideal conditions","the number of species in an area","the carrying capacity","the death rate"]}]},
+{id:"A3",c:1,t:"Survivorship curves",ref:"rA3",items:[
+ {k:"hot",q:"Tap the TYPE III curve.",vb:"0 0 720 330",svg:survSVG({nol:1}),r:svHot("Type III")},
+ {k:"sort",q:"Which survivorship curve type?",b:["Type I","Type II","Type III"],i:["👶 Humans|Type I","🐘 Elephants|Type I","🐦 Songbirds|Type II","🐿️ Squirrels|Type II","🐢 Sea turtles|Type III","🐟 Most fish|Type III","🌱 Plants that make many seeds|Type III"]},
+ {k:"mc",q:"A Type I curve shows…",o:["high survival when young; most die at old age","most die when very young","an equal chance of dying at every age","no deaths at all"]},
+ {k:"mc",q:"Why does the Type II curve look like a straight line?",o:["The death rate is the same at every age, and the y-axis is a log scale","No one dies","Everyone dies at the same age","It is drawn with a ruler"]},
+ {k:"mc",q:"r-selected species usually have which survivorship curve?",o:["Type III","Type I","Type II","None"]}]},
+{id:"A4",c:1,t:"Carrying capacity",ref:"rA4",items:[
+ {k:"mc",q:"Carrying capacity (K) is…",o:["the largest population an environment can support for a long time","the number of babies one female has","the speed a population grows","the number of species in an area"]},
+ {k:"hot",q:"Tap the part of the graph where the population is in OVERSHOOT.",vb:"0 0 720 330",svg:growthSVG({curves:[[overshoot,"var(--g)"]]}),r:[{x:90,y:40,w:200,h:240,l:"early growth"},{x:290,y:20,w:170,h:120,l:"overshoot",ok:1},{x:460,y:20,w:200,h:260,l:"dieback and recovery"}]},
+ {k:"order",q:"Put the events in order (reindeer on St. Matthew Island).",s:["29 reindeer arrive; lots of food, no predators","The population grows very fast","The population goes above the carrying capacity","The reindeer eat the lichen faster than it grows back","Most reindeer starve: dieback"]},
+ {k:"mc",q:"What can happen to the carrying capacity after a big overshoot?",o:["It can become lower because resources were damaged","It always becomes higher","It stays exactly the same","It becomes zero forever"]},
+ {k:"slider",q:"A pond can support 500 frogs (K = 500). Now there are 650 frogs. How many frogs are ABOVE the carrying capacity?",min:0,max:300,step:10,a:150,tol:0,u:"frogs"}]},
+{id:"A5",c:1,t:"Exit ticket: Class 1",items:[
+ {k:"mc",q:"A species with a broad niche that can live in many habitats is a…",o:["generalist","specialist","keystone species","K-selected species"]},
+ {k:"mc",q:"Many offspring, little parental care, short life:",o:["r-selected","K-selected","Type I","specialist"]},
+ {k:"mc",q:"Most individuals die when very young. This is a Type ___ curve.",o:["III","I","II","IV"]},
+ {k:"mc",q:"When a population goes above carrying capacity it is in…",o:["overshoot","equilibrium","succession","stage 1"]},
+ {k:"text",q:"What is one thing from today that you want to remember?"}]},
+{id:"A6",c:2,t:"Warm-up: Class 1 review",items:[
+ {k:"mc",q:"Which is a specialist?",o:["Koala","Raccoon","Rat","Cockroach"]},
+ {k:"mc",q:"Elephants are…",o:["K-selected with a Type I curve","r-selected with a Type III curve","r-selected with a Type I curve","generalists with a Type III curve"]},
+ {k:"mc",q:"Overshoot is usually followed by…",o:["dieback","more growth","succession","migration of predators"]}]},
+{id:"A7",c:2,t:"Population growth and resources",ref:"rA7",items:[
+ {k:"hot",q:"Tap the curve that shows growth with LIMITED resources.",vb:"0 0 720 330",svg:twoGrowth(),r:[{x:5,y:5,w:350,h:320,l:"A: J-curve (exponential)"},{x:365,y:5,w:350,h:320,l:"B: S-curve (logistic)",ok:1}]},
+ {k:"mc",q:"A J-shaped (exponential) growth curve happens when…",o:["resources are unlimited","resources are limited","the population is at carrying capacity","there is a disaster"]},
+ {k:"sort",q:"Density-dependent or density-independent factor?",b:["Density-dependent","Density-independent"],i:["🍎 Competition for food|Density-dependent","🦠 Disease spreading in a crowded population|Density-dependent","🦊 Predators|Density-dependent","💧 Not enough water for everyone|Density-dependent","🌀 A hurricane|Density-independent","🔥 A wildfire|Density-independent","❄️ A very cold winter|Density-independent"]},
+ {k:"num",q:"N = N₀e^(rt). A population of 1,000 fish grows with r = 0.05 per year. How many after 10 years? (Use a calculator: e^0.5 ≈ 1.649)",a:1649,u:"fish"},
+ {k:"mc",q:"In logistic growth, why does the growth SLOW DOWN?",o:["Resources like food and space become limited","The organisms get tired","Birth rate goes up","The carrying capacity rises"]},
+ {k:"slider",q:"Bacteria double every hour. Start with 1. How many after 5 hours?",min:0,max:64,a:32,tol:0,u:"bacteria"}]},
+{id:"A8",c:2,t:"Age structure diagrams",ref:"rA8",items:[
+ {k:"hot",q:"Tap the age structure of a country whose population is DECLINING.",vb:"0 0 720 300",svg:pyr3(["A","B","C"]),r:pyrHot("Declining")},
+ {k:"mc",q:"A country with a very wide base (many young people) will most likely…",o:["grow rapidly","decline","stay exactly the same","have no births"]},
+ {k:"mc",q:"Which age group is the 'reproductive' group?",o:["15–44","0–14","45–64","65+"]},
+ {k:"mc",q:"Japan has many older people and few children. Its age structure is…",o:["top-heavy (declining)","a pyramid (rapid growth)","straight (stable)","a triangle with a wide base"]},
+ {k:"mc",q:"China's one-child policy (1980) made the base of its age structure…",o:["narrower","wider","exactly the same","disappear"]},
+ {k:"mc",q:"Why is a top-heavy age structure a problem for a country?",o:["Fewer workers must support many retired people","There are too many babies","Schools are too crowded","Food is too cheap"]}]},
+{id:"A9",c:2,t:"Total fertility rate",ref:"rA9",items:[
+ {k:"mc",q:"Total fertility rate (TFR) is…",o:["the average number of children a woman has in her lifetime","the number of babies born per year","the number of people per km²","the death rate of infants"]},
+ {k:"slider",q:"Set the slider to replacement-level fertility.",min:0,max:6,step:.1,a:2.1,tol:.1,u:"children per woman"},
+ {k:"multi",q:"Select ALL the factors that usually LOWER the TFR.",o:["*More education for women","*Easy access to family planning","*Lower infant mortality","*Families move to cities where children cost more","Families need children to work on farms","High infant mortality"]},
+ {k:"mc",q:"Why is replacement level a little MORE than 2.0?",o:["Some children die before they grow up and have children","Every woman has twins","Men also give birth","It is a mistake"]},
+ {k:"mc",q:"Infant mortality rate is…",o:["the number of babies who die before age 1, per 1,000 live births","the number of old people who die","the number of babies born per woman","the number of mothers who die"]},
+ {k:"text",q:"Give one reason why the TFR in China today is much lower than in 1970."}]},
+{id:"A10",c:2,t:"Exit ticket: Class 2",items:[
+ {k:"mc",q:"An S-shaped growth curve levels off at…",o:["the carrying capacity","zero","the biotic potential","the birth rate"]},
+ {k:"mc",q:"A hurricane is a ___ factor.",o:["density-independent","density-dependent","biotic","r-selected"]},
+ {k:"mc",q:"A narrow base and wide top means the population is…",o:["declining","growing quickly","stable forever","r-selected"]},
+ {k:"mc",q:"If TFR stays below 2.1 for a long time, the population will…",o:["eventually decline (without immigration)","grow quickly","double","stay the same forever"]},
+ {k:"text",q:"What was the hardest idea today?"}]},
+{id:"A11",c:3,t:"Human population dynamics",ref:"rA11",items:[
+ {k:"num",q:"A country has a crude birth rate of 20 per 1,000 and a crude death rate of 8 per 1,000 (no migration). What is the growth rate in %?",a:1.2,u:"%"},
+ {k:"num",q:"Using the rule of 70: a population grows 2% per year. What is its doubling time?",a:35,u:"years"},
+ {k:"num",q:"A population grows 3.5% per year. Doubling time?",a:20,u:"years"},
+ {k:"num",q:"CBR = 12, CDR = 9, immigration = 4, emigration = 1 (all per 1,000). Growth rate in %?",a:.6,u:"%"},
+ {k:"mc",q:"Which helped human populations grow fast in the last 200 years?",o:["Better medicine, clean water and more food from farming","More diseases","Fewer farms","Higher death rates"]},
+ {k:"mc",q:"Malthus said that human populations…",o:["grow faster than food supplies, which leads to famine and disease","can never grow","always stay at carrying capacity","grow slower than food supplies"]},
+ {k:"mc",q:"A population DECLINES when…",o:["deaths + emigration are greater than births + immigration","births are greater than deaths","immigration is very high","TFR is 4"]}]},
+{id:"A12",c:3,t:"The demographic transition",ref:"rA12",items:[
+ {k:"hot",q:"Tap the stage where the population grows FASTEST.",vb:"0 0 720 330",svg:dtmSVG(1),r:dtmHot(1)},
+ {k:"order",q:"Put the stages of the demographic transition in order.",s:["High birth rate and high death rate","Death rate falls; birth rate stays high","Birth rate falls","Low birth rate and low death rate"]},
+ {k:"mc",q:"In Stage 2, the death rate falls because of…",o:["better food, clean water and medicine","more children","lower income","wars"]},
+ {k:"mc",q:"In Stage 3, the birth rate falls because…",o:["more education for women, family planning, city life","more diseases","less food","more farms"]},
+ {k:"mc",q:"Japan has low birth and death rates and a declining population. Which stage?",o:["Stage 4","Stage 1","Stage 2","Stage 3"]}]},
+{id:"A13",c:3,t:"Unit 3 review",ref:"review",items:[
+ {k:"mc",q:"Which is TRUE about generalists?",o:["They have a broad niche and do well when the environment changes","They eat only one food","They always go extinct first","They are always K-selected"]},
+ {k:"hot",q:"Tap the TYPE I survivorship curve.",vb:"0 0 720 330",svg:survSVG({nol:1}),r:svHot("Type I")},
+ {k:"mc",q:"A mouse has 50 babies a year and lives 1 year. It is…",o:["r-selected","K-selected","a specialist","Type I"]},
+ {k:"hot",q:"Tap the age structure that shows RAPID growth.",vb:"0 0 720 300",svg:pyr3(["A","B","C"]),r:pyrHot("Rapid growth")},
+ {k:"num",q:"Rule of 70: growth rate = 1.4%. Doubling time?",a:50,u:"years"},
+ {k:"slider",q:"Replacement-level TFR?",min:0,max:6,step:.1,a:2.1,tol:.1,u:"children"},
+ {k:"mc",q:"Disease spreads faster in a crowded population. This is…",o:["a density-dependent factor","a density-independent factor","a demographic transition","a survivorship curve"]},
+ {k:"mc",q:"In which demographic transition stage is the BIRTH rate falling?",o:["Stage 3","Stage 1","Stage 2","Stage 4"]},
+ {k:"text",q:"Which Unit 3 topic is still the hardest for you?"}]}
+];
+var ACT={};ACTS.forEach(function(a){ACT[a.id]=a;a.n=a.items.filter(function(x){return x.k!=="text"}).length});
+</script>
+<script>
+var SHEET_URL="/api"; var COURSE="apes3"; /* server is on the same site (Cloudflare) */
+var LINK=location.href.split("#")[0];
+function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function shuf(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t}return a}
+function ls(k,v){try{if(v===undefined){var r=localStorage.getItem(k);return r?JSON.parse(r):null}localStorage.setItem(k,JSON.stringify(v))}catch(e){return null}}
+function fmt(x){return Math.round(x*10)/10}
+function ck(s){var h=7,i;for(i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))%1679616;return ("000"+h.toString(36)).slice(-4)}
+function codeFor(id,name,sc,n){var t=fmt(sc)+"/"+n;return "#"+id+" "+name+" "+t+" "+ck(id+"|"+name.toLowerCase()+"|"+t+"|apes-u3")}
+function sumSc(rec){var t=0;(rec&&rec.s||[]).forEach(function(v){if(typeof v==="number")t+=v});return t}
+function cell(sc,ans){if(typeof sc==="number"){if(sc>=.999)return ["✓","c1"];if(sc<=0.001)return ["✗","c0"];return [Math.round(sc*100)+"%","cp"]}if(ans!=null&&ans!=="")return ["✎",""];return ["·","sm"]}
+var S={db:null,user:null,uid:null,owner:false,dbOK:false,docs:{},live:null};
+
+/* ================= Unit 2 components ================= */
+function bigTimer(e){var m=+e.dataset.timer,tot=m*60,left=tot,iv=null,C=2*Math.PI*48;e.className="tbig";
+ e.innerHTML='<svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="48" class="tr-bg"/><circle cx="60" cy="60" r="48" class="tr-fg" transform="rotate(-90 60 60)" stroke-dasharray="'+C.toFixed(1)+'" stroke-dashoffset="0"/><text x="60" y="71" class="tt">'+m+':00</text></svg><div class="tl">✏️ Copy into your notebook<small>'+m+' minutes</small></div><div class="row"><button class="btn go">▶ Start</button><button class="btn alt">⏸ Pause</button><button class="btn alt">↺ Reset</button></div>';
+ var fg=e.querySelector(".tr-fg"),tt=e.querySelector(".tt"),bs=e.querySelectorAll("button"),lab=e.querySelector(".tl small");
+ function draw(){var s=Math.max(0,Math.ceil(left));tt.textContent=Math.floor(s/60)+":"+("0"+s%60).slice(-2);fg.setAttribute("stroke-dashoffset",(C*(1-left/tot)).toFixed(1));
+  e.classList.toggle("warn",left>0&&left<=60);e.classList.toggle("end",left<=0);lab.textContent=left<=0?"⏰ Time is up!":left<=60?"Last minute!":m+" minutes"}
+ bs[0].onclick=function(){this.blur();if(iv)return;if(left<=0)left=tot;var last=Date.now();iv=setInterval(function(){var n=Date.now();left-=(n-last)/1000;last=n;if(left<=0){left=0;clearInterval(iv);iv=null}draw()},200)};
+ bs[1].onclick=function(){this.blur();clearInterval(iv);iv=null};bs[2].onclick=function(){this.blur();clearInterval(iv);iv=null;left=tot;draw()};draw()}
+function initIx(root){[].forEach.call(root.querySelectorAll("[data-play]"),function(e){if(!e.dataset.ok){e.dataset.ok=1;player(e,PLAY[e.dataset.play])}});
+ [].forEach.call(root.querySelectorAll("[data-pred]"),function(e){if(!e.dataset.ok){e.dataset.ok=1;pred(e,PRED[e.dataset.pred])}});
+ [].forEach.call(root.querySelectorAll("[data-ix]"),function(e){if(!e.dataset.ok){e.dataset.ok=1;IX[e.dataset.ix](e)}})}
+function player(e,P){var i=0,iv=null;e.className="ply";e.innerHTML="";e.appendChild(el("h3","",P.title));var stage=el("div"),cap=el("div","pcap"),num=el("span","pnum"),tx=el("div"),bt=el("b"),sp=el("span");tx.appendChild(bt);tx.appendChild(sp);cap.appendChild(num);cap.appendChild(tx);
+ var row=el("div","row"),bk=el("button","btn alt","◀ Back"),pl=el("button","btn go","▶ Play"),nx=el("button","btn","Next ▶"),dots=el("div","pdots");
+ P.st.forEach(function(s,k){var d=el("button","",String(k+1));d.setAttribute("aria-label","Step "+(k+1));d.onclick=function(){stop();show(k);d.blur()};dots.appendChild(d)});
+ function show(k){i=Math.max(0,Math.min(P.st.length-1,k));stage.innerHTML=svgw(P.st[i].s,P.h||330,P.st[i].t);num.textContent=(i+1)+"/"+P.st.length;bt.textContent=P.st[i].t;sp.textContent=P.st[i].d;
+  [].forEach.call(dots.children,function(d,k){d.classList.toggle("on",k===i)});bk.disabled=i===0;nx.disabled=i===P.st.length-1}
+ function stop(){clearInterval(iv);iv=null;pl.textContent="▶ Play"}
+ bk.onclick=function(){stop();show(i-1);this.blur()};nx.onclick=function(){stop();show(i+1);this.blur()};
+ pl.onclick=function(){this.blur();if(iv){stop();return}if(i===P.st.length-1)show(0);pl.textContent="⏸ Pause";iv=setInterval(function(){if(!e.offsetParent||i>=P.st.length-1){stop();return}show(i+1)},P.ms||6000)};
+ row.appendChild(bk);row.appendChild(pl);row.appendChild(nx);row.appendChild(dots);e.appendChild(stage);e.appendChild(cap);e.appendChild(row);show(0)}
+function pred(e,Q){e.className="pred";e.innerHTML="";e.appendChild(el("h3","","🤔 Predict first!"));e.appendChild(el("p","q",Q.q));var g=el("div","opts"),ans=el("div","pans"),rv=el("button","btn","Reveal the answer");ans.style.display="none";
+ Q.o.forEach(function(o,k){var x=el("button","opt",String.fromCharCode(65+k)+". "+o);x.onclick=function(){[].forEach.call(g.children,function(c){c.classList.remove("sel")});x.classList.add("sel");x.blur()};g.appendChild(x)});
+ rv.onclick=function(){rv.blur();[].forEach.call(g.children,function(c,k){c.classList.remove("sel");c.classList.add(k===Q.a?"ok":"no")});ans.innerHTML="<b>✓ "+String.fromCharCode(65+Q.a)+". "+Q.o[Q.a]+"</b><br>"+Q.why;ans.style.display="";rv.style.display="none";var sec=e.closest("section");if(sec)[].forEach.call(sec.querySelectorAll(".after"),function(x){x.classList.add("show")})};
+ e.appendChild(g);var r=el("div","row");r.appendChild(rv);r.appendChild(el("span","sm","Students: type A, B, C… in the ClassIn chat first."));e.appendChild(r);e.appendChild(ans)}
+
+/* ================= TEACHER DECK ================= */
+var D={secs:[],i:0};
+function startDeck(){
+ document.getElementById("deck").classList.add("on");
+ D.secs=[].slice.call(document.querySelectorAll("#deck section"));
+ [].forEach.call(document.querySelectorAll("[data-ref]"),function(e){e.innerHTML=REF[e.dataset.ref](e.dataset.legend==="1")});
+ [].forEach.call(document.querySelectorAll("[data-join]"),function(e){e.innerHTML='<span class="tag">Every class</span><h2>Join the live class</h2><ol style="font-size:1.15em"><li>Open the class link: <span class="lnk">'+LINK+'</span></li><li>Type your <b>real name</b>: the same name you use in ClassIn.</li><li>Open the activity number I tell you, for example <b>A3</b>.</li><li>Answer every question.</li><li>At the end you get a <b>code</b>. Copy the code into the <b>ClassIn chat</b>.</li></ol><div class="do"><b>Tip:</b> a laptop or tablet is best. On a phone, turn it sideways.</div>'});
+ [].forEach.call(document.querySelectorAll("[data-act]"),buildActSlide);
+ [].forEach.call(document.querySelectorAll("[data-timer]"),bigTimer);
+ initIx(document.getElementById("deck"));
+ document.getElementById("bk").onclick=function(){go(D.i-1);this.blur()};
+ document.getElementById("nx").onclick=function(){go(D.i+1);this.blur()};
+ document.getElementById("mbtn").onclick=function(){this.blur();openOv()};
+ document.getElementById("svbtn").onclick=function(){this.blur();document.getElementById("deck").classList.remove("on");startStudent(true)};
+ document.addEventListener("keydown",function(e){if(!document.getElementById("deck").classList.contains("on")||document.getElementById("ov").classList.contains("on"))return;var t=e.target.tagName;if(t==="INPUT"||t==="TEXTAREA")return;
+  if(e.key===" "){if(t==="BUTTON")e.preventDefault();return}
+  if(e.key==="ArrowRight"||e.key==="PageDown"){e.preventDefault();go(D.i+1)}else if(e.key==="ArrowLeft"||e.key==="PageUp"){e.preventDefault();go(D.i-1)}});
+ go(ls("apes3_slide")||0);
+ teacherData();
+}
+function go(i){i=Math.max(0,Math.min(D.secs.length-1,i));D.secs[D.i].classList.remove("on");D.i=i;D.secs[i].classList.add("on");D.secs[i].scrollTop=0;
+ document.getElementById("pb").style.width=(100*(i+1)/D.secs.length)+"%";document.getElementById("n").textContent=(i+1)+" / "+D.secs.length;ls("apes3_slide",i);
+ var a=D.secs[i].dataset.act;if(a)renderMon(a)}
+function buildActSlide(sec){var A=ACT[sec.dataset.act];sec.innerHTML="";
+ sec.appendChild(el("span","tag","Activity "+A.id+" · Class "+A.c));sec.appendChild(el("h2","",A.t));
+ var tell=el("div","do");tell.appendChild(el("b","","Students: "));tell.appendChild(document.createTextNode("open the class link → choose "+A.id+" → answer all "+A.items.length+" questions → copy your code into the ClassIn chat."));tell.style.marginBottom="12px";sec.appendChild(tell);
+ if(SHEET_URL){var row=el("div","row"),send=el("button","btn go","▶ Send to students"),stop=el("button","btn alt","Stop"),st=el("span","");st.id="lv-"+A.id;
+  send.onclick=function(){send.blur();setLive(A.id)};stop.onclick=function(){stop.blur();setLive(null)};row.appendChild(send);row.appendChild(stop);row.appendChild(st);sec.appendChild(row)}
+ var sp=el("div","split act"),L=el("div"),R=el("div","mon");R.id="mon-"+A.id;
+ if(A.ref){var r=el("div");r.innerHTML=REF[A.ref](false);initIx(r);L.appendChild(r)}
+ else{var ol=el("ol");A.items.forEach(function(it){ol.appendChild(el("li","",it.q))});L.appendChild(ol)}
+ var d=el("details"),sm=el("summary","","Answer key (teacher only: do not screen-share)");d.appendChild(sm);var ok=el("ol","sm");
+ A.items.forEach(function(it){var t=it.k==="mc"?it.o[0]:it.k==="slider"?(it.a+" "+(it.u||"")+(it.tol?" (±"+it.tol+")":"")):it.k==="multi"?it.o.filter(function(o){return o[0]==="*"}).map(function(o){return o.slice(1)}).join(", "):it.k==="hot"?it.r.filter(function(r){return r.ok}).map(function(r){return r.l}).join(" or "):it.k==="num"?(it.a+" "+(it.u||"")):it.k==="order"?it.s.join(" → "):it.k==="sort"?it.i.map(function(x){return x.replace("|"," → ")}).join("; "):"(written answer)";ok.appendChild(el("li","",it.q+"  ⟶  "+t))});
+ d.appendChild(ok);L.appendChild(d);sp.appendChild(L);sp.appendChild(R);sec.appendChild(sp);renderMon(A.id)}
+function lvMsg(t){[].forEach.call(document.querySelectorAll("[id^=lv-]"),function(s){s.textContent=t;s.className="sm c0"})}
+function setLive(id){if(!S.db){lvMsg("Live sending is off in this view. Tell students the activity number (they choose it from their list) and collect codes in the ClassIn chat.");return}
+ var op=(S.live&&S.live.opened)||[];if(id&&op.indexOf(id)<0)op=op.concat([id]);
+ S.db.doc("live/state").set({act:id,opened:op,at:Date.now()}).catch(function(e){lvMsg("Could not send: "+(e&&e.message||e))})}
+function liveLabel(){[].forEach.call(document.querySelectorAll("[id^=lv-]"),function(s){var id=s.id.slice(3);s.innerHTML="";s.className="";if(S.live&&S.live.act===id){var l=el("span","live");l.appendChild(el("i"));l.appendChild(document.createTextNode("LIVE now on student screens"));s.appendChild(l)}else if(S.live&&S.live.opened&&S.live.opened.indexOf(id)>=0)s.appendChild(el("span","sm","Opened earlier (students can still do it)"))})}
+function teacherData(){if(!S.db){[].forEach.call(document.querySelectorAll(".mon"),function(m){renderMon(m.id.slice(4))});return}
+ var tm=setTimeout(function(){S.slow=true;var a=D.secs[D.i].dataset.act;if(a)renderMon(a)},10000);
+ S.db.doc("live/state").onSnapshot(function(s){S.live=s.exists?s.data():null;liveLabel()},function(){});
+ S.db.collection("students").onSnapshot(function(q){clearTimeout(tm);S.slow=false;var o={};q.docs.forEach(function(d){if(d.exists)o[d.id]=d.data()});S.docs=o;var a=D.secs[D.i].dataset.act;if(a)renderMon(a);if(document.getElementById("ov").classList.contains("on"))renderOv()},function(e){clearTimeout(tm);S.dbErr=e&&e.code;var a=D.secs[D.i].dataset.act;if(a)renderMon(a)})}
+function codes(){return ls("apes3_codes")||[]}
+function parseCodes(txt){var re=/#(A\d{1,2})\s+(.+?)\s+(\d+(?:\.\d)?)\/(\d+)\s+([0-9a-z]{4})(?![0-9a-z])/gi,m,out=codes(),seen={};out.forEach(function(c){seen[c.id+"|"+c.name.toLowerCase()+"|"+c.sc]=1});
+ while((m=re.exec(txt))){var id=m[1].toUpperCase(),name=m[2].trim().slice(0,40),t=m[3]+"/"+m[4],ok=ck(id+"|"+name.toLowerCase()+"|"+t+"|apes-u3")===m[5].toLowerCase(),k=id+"|"+name.toLowerCase()+"|"+m[3];if(seen[k])continue;seen[k]=1;out.push({id:id,name:name,sc:+m[3],n:+m[4],ok:ok,at:Date.now()})}
+ ls("apes3_codes",out);return out}
+function rowsFor(id){var R=[],names={};
+ Object.keys(S.docs).forEach(function(u){var d=S.docs[u];if(!d||!d.p||!d.p[id])return;var nm=String(d.name||"?").slice(0,40);names[nm.toLowerCase()]=1;R.push({name:nm,rec:d.p[id],at:d.at})});
+ var pv=ls("apes3p_prog");if(pv&&pv[id])R.push({name:(ls("apes3p_name")||"Teacher")+" (your preview)",rec:pv[id]});
+ codes().forEach(function(c){if(c.id!==id)return;var k=c.name.toLowerCase();if(names[k])return;names[k]=1;R.push({name:c.name,code:c})});
+ R.sort(function(a,b){return a.name.localeCompare(b.name)});return R}
+function renderMon(id){var m=document.getElementById("mon-"+id);if(!m)return;var A=ACT[id];m.innerHTML="";
+ var joined=Object.keys(S.docs).length,R=rowsFor(id),fin=R.filter(function(r){return r.code||(r.rec&&r.rec.done)}).length;
+ m.appendChild(el("h3","","Results · "+A.id));
+ if(S.sheetErr)m.appendChild(el("p","c0","Server problem: "+S.sheetErr));
+ if(!S.db)m.appendChild(el("p","sm",SHEET_URL&&!tkey()?"Enter your teacher key in Class monitor to see live results.":"Students paste their codes in the ClassIn chat. Copy the chat and paste it into Class monitor: scores appear here."));
+ else if(S.slow)m.appendChild(el("p","sm","Waiting for the database… results may be out of date."));
+ else m.appendChild(el("p","sm",joined+" students joined · "+R.length+" started · "+fin+" finished"));
+ if(!R.length){m.appendChild(el("p","","No answers yet."));return}
+ var w=el("div","wrap"),t=el("table"),h=el("tr");["Student","Progress","Score"].forEach(function(x){h.appendChild(el("th","",x))});A.items.forEach(function(it,j){h.appendChild(el("th","",(j+1)+(it.k==="text"?"✎":"")))});t.appendChild(h);
+ var tot=A.items.map(function(){return [0,0]});
+ R.forEach(function(r){var tr=el("tr");tr.appendChild(el("td","",r.name+(r.code?" (code"+(r.code.ok?"":" ⚠")+")":"")));
+  if(r.code){tr.appendChild(el("td","sm","done"));tr.appendChild(el("td","",r.code.sc+"/"+r.code.n));A.items.forEach(function(){tr.appendChild(el("td","sm","·"))})}
+  else{var rec=r.rec,ans=(rec.s||[]).filter(function(v,k){return v!==undefined&&v!==null||(rec.a&&rec.a[k])}).length,p=el("td"),b=el("div","mbar"),i=el("i");i.style.width=Math.min(100,100*ans/A.items.length)+"%";b.appendChild(i);p.appendChild(b);p.appendChild(el("span","sm",rec.done?"done":ans+"/"+A.items.length));tr.appendChild(p);
+   tr.appendChild(el("td","",fmt(sumSc(rec))+"/"+A.n+(rec.t>1?" (try "+rec.t+")":"")));
+   A.items.forEach(function(it,j){var sc=rec.s?rec.s[j]:undefined,an=rec.a?rec.a[j]:undefined,c=cell(sc,an);tr.appendChild(el("td",c[1],c[0]));if(typeof sc==="number"){tot[j][0]+=sc;tot[j][1]++}})}
+  t.appendChild(tr)});
+ var fr=el("tr");fr.appendChild(el("td","sm","Class % correct"));fr.appendChild(el("td"));fr.appendChild(el("td"));tot.forEach(function(x,j){var td=el("td","sm",A.items[j].k==="text"||!x[1]?"":Math.round(100*x[0]/x[1])+"%");if(x[1]&&x[0]/x[1]<.6)td.className="c0";fr.appendChild(td)});t.appendChild(fr);
+ w.appendChild(t);m.appendChild(w);
+ A.items.forEach(function(it,j){if(it.k!=="text")return;var box=el("div");box.appendChild(el("h3","","✎ "+(j+1)+". "+it.q));var any=0;
+  R.forEach(function(r){var a=r.rec&&r.rec.a&&r.rec.a[j];if(!a)return;any=1;var d=el("div","txa");d.appendChild(el("b","",r.name+": "));d.appendChild(document.createTextNode(String(a).slice(0,600)));box.appendChild(d)});
+  if(!any)box.appendChild(el("p","sm","No written answers yet."));m.appendChild(box)});
+ var miss=A.items.map(function(it,j){return [j,tot[j][1]?tot[j][0]/tot[j][1]:1]}).filter(function(x){return A.items[x[0]].k!=="text"&&tot[x[0]][1]&&x[1]<.6});
+ if(miss.length)m.appendChild(el("p","c0","Review: question "+miss.map(function(x){return x[0]+1}).join(", ")+" (under 60% correct)."))}
+function openOv(){var o=document.getElementById("ov");o.classList.add("on");renderOv()}
+function renderOv(){var o=document.getElementById("ov");o.innerHTML="";var top=el("div","row"),cl=el("button","btn","← Back to slides");cl.onclick=function(){o.classList.remove("on")};top.appendChild(cl);o.appendChild(top);
+ o.appendChild(el("h2","","Class monitor · Unit 3"));
+ o.appendChild(el("p","sm",SHEET_URL?(S.db?Object.keys(S.docs).length+" students connected live. Pasted codes are added too.":"Enter your teacher key below to see live results."):"Paste the ClassIn chat below. Codes are saved in this browser only."));
+ var names={},rows={};
+ Object.keys(S.docs).forEach(function(u){var d=S.docs[u];var nm=String(d&&d.name||"?").slice(0,40),k=nm.toLowerCase();names[k]=nm;rows[k]=rows[k]||{};Object.keys(d.p||{}).forEach(function(id){if(ACT[id])rows[k][id]={sc:sumSc(d.p[id]),n:ACT[id].n,done:d.p[id].done}})});
+ var pv=ls("apes3p_prog");if(pv&&Object.keys(pv).length){var pk="~preview";names[pk]=(ls("apes3p_name")||"Teacher")+" (your preview)";rows[pk]={};Object.keys(pv).forEach(function(id){if(ACT[id])rows[pk][id]={sc:sumSc(pv[id]),n:ACT[id].n,done:pv[id].done}})}
+ codes().forEach(function(c){var k=c.name.toLowerCase();names[k]=names[k]||c.name;rows[k]=rows[k]||{};if(!rows[k][c.id])rows[k][c.id]={sc:c.sc,n:c.n,done:true,code:1,ok:c.ok}});
+ var w=el("div","wrap"),t=el("table"),h=el("tr");h.appendChild(el("th","","Student"));ACTS.forEach(function(a){var th=el("th","",a.id);th.title=a.t;h.appendChild(th)});h.appendChild(el("th","","Average"));t.appendChild(h);
+ Object.keys(names).sort().forEach(function(k){var tr=el("tr"),s=0,c=0;tr.appendChild(el("td","",names[k]));ACTS.forEach(function(a){var r=rows[k][a.id];if(!r){tr.appendChild(el("td","sm","–"));return}var pc=a.n?r.sc/r.n:0;if(r.done&&a.n){s+=pc;c++}tr.appendChild(el("td",r.done?(pc>=.7?"c1":pc>=.5?"cp":"c0"):"sm",fmt(r.sc)+"/"+r.n+(r.done?"":"…")+(r.code&&!r.ok?"⚠":"")))});tr.appendChild(el("td","",c?Math.round(100*s/c)+"%":"–"));t.appendChild(tr)});
+ w.appendChild(t);o.appendChild(w);
+ o.appendChild(el("p","sm","“…” = still working · ⚠ = code check failed (maybe typed wrong)."));
+ if(SHEET_URL){o.appendChild(el("h3","","Teacher key (TEACHER_KEY in Cloudflare)"));var kr=el("div","row"),ki=el("input");ki.type="password";ki.value=tkey();ki.style.maxWidth="18em";var kb=el("button","btn go","Save key"),km=el("span","sm",S.db?"✓ Connected":"");
+  kb.onclick=function(){ls("apes1_tkey",ki.value.trim());km.textContent="Checking…";teacherData()};kr.appendChild(ki);kr.appendChild(kb);kr.appendChild(km);o.appendChild(kr)}
+ o.appendChild(el("h3","","Paste codes from the ClassIn chat"));var ta=el("textarea");ta.rows=5;ta.placeholder="Paste the whole chat here. Codes look like: #A3 Lily 11/13 x7k2";o.appendChild(ta);
+ var r2=el("div","row"),add=el("button","btn go","Add codes"),clr=el("button","btn alt","Clear all pasted codes"),msg=el("span","sm");
+ add.onclick=function(){var before=codes().length,after=parseCodes(ta.value).length;msg.textContent=(after-before)+" new codes added.";ta.value="";renderOv();var a=D.secs[D.i].dataset.act;if(a)renderMon(a)};
+ clr.onclick=function(){if(clr.dataset.c){ls("apes3_codes",[]);renderOv()}else{clr.dataset.c=1;clr.textContent="Click again to remove all codes"}};
+ var cp=el("button","btn alt","Clear my preview answers");cp.onclick=function(){ls("apes3p_prog",{});renderOv()};var wipe=el("button","btn alt","Delete ALL class results on the server");wipe.onclick=function(){if(!wipe.dataset.c){wipe.dataset.c=1;wipe.textContent="Click again: this deletes every student's answers";return}api({action:"clear",key:tkey()}).then(function(r){wipe.textContent=r.ok?"All results deleted":"Could not delete: "+(r.error||"");delete wipe.dataset.c;poll()})};r2.appendChild(add);r2.appendChild(clr);r2.appendChild(cp);if(SHEET_URL)r2.appendChild(wipe);r2.appendChild(msg);o.appendChild(r2)}
+
+/* ================= STUDENT APP ================= */
+var U={P:{},name:"",preview:false,live:null,lastAt:undefined,cur:null,writing:false,pending:false,ref:null};
+function K(k){return (U.preview?"apes3p_":"apes3_")+k}
+function startStudent(preview){U.preview=!!preview;document.getElementById("stu").classList.add("on");U.name=ls(K("name"))||"";U.P=ls(K("prog"))||{};
+ if(!preview&&S.db&&S.uid){U.ref=S.db.doc("students/"+S.uid);S.dbOK=true;
+  U.ref.get().then(function(s){if(s.exists){var d=s.data()||{};if(!U.name&&d.name){U.name=String(d.name);ls(K("name"),U.name)}var p=d.p||{};Object.keys(p).forEach(function(id){var a=p[id],b=U.P[id];if(!b||(a.done&&!b.done)||((a.i||0)>(b.i||0)&&!b.done))U.P[id]=a});ls(K("prog"),U.P)}if(!U.cur)home()}).catch(function(){});
+  S.db.doc("live/state").onSnapshot(function(s){var d=s.exists?s.data():null;U.live=d;if(d&&d.act&&ACT[d.act]&&d.at!==U.lastAt&&U.name){U.lastAt=d.at;openAct(d.act);return}U.lastAt=d?d.at:U.lastAt;if(!U.cur)home()},function(){S.dbOK=false;if(!U.cur)home()})}
+ home()}
+function push(){ls(K("prog"),U.P);if(U.preview||!U.ref||!S.dbOK)return;if(U.writing){U.pending=true;return}U.writing=true;
+ U.ref.set({name:U.name,at:Date.now(),cur:U.cur||null,p:U.P}).then(function(){U.sent=true;stat()}).catch(function(e){var c=e&&e.code;if(c!=="unavailable"&&c!=="resource_exhausted"){S.dbOK=false;stat()}}).then(function(){U.writing=false;if(U.pending){U.pending=false;push()}})}
+function head(){var s=document.getElementById("stu"),h=el("div","shead"),l=el("div");l.appendChild(el("span","tag","AP Environmental Science · Unit 3"));l.appendChild(el("h2","","Populations"));h.appendChild(l);
+ var r=el("div","row");if(U.name){var nm=el("span","pill","👤 "+U.name);r.appendChild(nm)}var st=el("span","pill");st.id="stat";r.appendChild(st);
+ if(U.preview){var b=el("button","btn alt","← Teacher slides");b.onclick=function(){s.classList.remove("on");document.getElementById("deck").classList.add("on");go(D.i)};r.appendChild(b)}
+ h.appendChild(r);s.appendChild(h);stat()}
+function stat(){var st=document.getElementById("stat");if(!st)return;if(U.preview){st.textContent="Teacher preview: shows only in your own monitor";st.className="pill warn"}else if(S.dbOK&&U.ref){st.textContent="✓ Connected to teacher";st.className="pill ok"}else if(SHEET_URL&&!U.tried){st.textContent="Connecting…";st.className="pill"}else{st.textContent=SHEET_URL?"Not connected: open the activity your teacher says, then copy your code into the ClassIn chat":"At the end, copy your code into the ClassIn chat";st.className="pill warn"}}
+function home(){U.cur=null;var s=document.getElementById("stu");s.innerHTML="";head();
+ if(!U.name){var q=el("div","qbox");q.appendChild(el("h3","","Type your name"));q.appendChild(el("p","","Use the same name as in ClassIn, so your teacher knows it is you."));var i=el("input");i.type="text";i.maxLength=30;i.placeholder="Your name";q.appendChild(i);var b=el("button","btn go","Start");b.style.marginTop="10px";
+  b.onclick=function(){var v=i.value.replace(/[#\/]/g,"").trim();if(v.length<2){i.focus();return}U.name=v;ls(K("name"),v);push();if(U.live&&U.live.act&&ACT[U.live.act]){U.lastAt=U.live.at;openAct(U.live.act)}else home()};
+  i.onkeydown=function(e){if(e.key==="Enter")b.click()};q.appendChild(b);s.appendChild(q);setTimeout(function(){i.focus()},50);return}
+ var liveMode=!U.preview&&S.dbOK&&U.ref,L=U.live;
+ if(liveMode&&L&&L.act&&ACT[L.act]){var c=el("div","qbox");c.appendChild(el("p","live","● Your teacher started an activity"));var b2=el("button","btn go","Open "+L.act+": "+ACT[L.act].t);b2.onclick=function(){openAct(L.act)};c.appendChild(b2);s.appendChild(c)}
+ else if(liveMode){s.appendChild(el("p","qbox","Wait here. When your teacher starts an activity, it will open by itself."))}
+ else s.appendChild(el("p","sm","Choose the activity your teacher tells you. At the end, copy your code into the ClassIn chat."));
+ [1,2,3].forEach(function(c){var list=ACTS.filter(function(a){return a.c===c&&(!liveMode||(L&&L.opened&&L.opened.indexOf(a.id)>=0))});if(!list.length)return;
+  s.appendChild(el("h3","","Class "+c));var g=el("div","alist");
+  list.forEach(function(a){var p=U.P[a.id],b=el("button","acard"+(p&&p.done?" done":"")+(L&&L.act===a.id?" now":""));b.appendChild(el("b","",a.id+" · "+a.t));b.appendChild(el("span","sm",p&&p.done?"Done: "+fmt(sumSc(p))+"/"+a.n:p?"In progress":a.items.length+" questions"));b.onclick=function(){openAct(a.id)};g.appendChild(b)});s.appendChild(g)});
+ var ch=el("button","btn alt","Change name");ch.style.marginTop="18px";ch.onclick=function(){U.name="";ls(K("name"),"");home()};s.appendChild(ch)}
+function rec(id){var r=U.P[id];if(!r){r=U.P[id]={a:[],s:[],i:0,done:false,t:1}}if(!r.a)r.a=[];if(!r.s)r.s=[];return r}
+function openAct(id){U.cur=id;rec(id);push();renderAct()}
+function renderAct(){var id=U.cur,A=ACT[id],r=rec(id),s=document.getElementById("stu");s.innerHTML="";head();window.scrollTo(0,0);
+ var top=el("div","row"),bk=el("button","btn alt","← All activities");bk.onclick=home;top.appendChild(bk);top.appendChild(el("b","",A.id+" · "+A.t));s.appendChild(top);
+ if(r.done){summary(s,A,r);return}
+ var run=el("div","run"+(A.ref?"":" noref"));if(A.ref){var rp=el("div","refp");rp.innerHTML=REF[A.ref](false);initIx(rp);run.appendChild(rp)}
+ var qb=el("div","qbox"),idx=r.i,it=A.items[idx];qb.appendChild(el("div","qn","Question "+(idx+1)+" of "+A.items.length));var pr=el("div","prog"),pi=el("i");pi.style.width=(100*idx/A.items.length)+"%";pr.appendChild(pi);qb.appendChild(pr);
+ qb.appendChild(el("p","q",it.q));if(it.v){var qv=el("div","qv");qv.innerHTML=it.v;qb.appendChild(qv)}var body=el("div"),fb=el("p","fb"),nx=el("button","btn go",idx+1<A.items.length?"Next question →":"Finish ✓");nx.style.display="none";
+ nx.onclick=function(){r.i=idx+1;if(r.i>=A.items.length)r.done=true;push();renderAct()};
+ function done(ans,sc,msg,good){r.a[idx]=ans;r.s[idx]=sc;fb.textContent=msg;fb.className="fb "+(good?"good":"bad");nx.style.display="";push();setTimeout(function(){nx.focus()},30)}
+ ITEM[it.k](body,it,done);qb.appendChild(body);qb.appendChild(fb);qb.appendChild(nx);run.appendChild(qb);s.appendChild(run)}
+var ITEM={
+mc:function(b,it,done){var g=el("div","opts"),lock=0;shuf(it.o).forEach(function(o){var x=el("button","opt",o);x.onclick=function(){if(lock)return;lock=1;var ok=o===it.o[0];x.classList.add(ok?"ok":"no");if(!ok)[].forEach.call(g.children,function(c){if(c.textContent===it.o[0])c.classList.add("ok")});done(o,ok?1:0,ok?"Correct! ✓":"Not quite. The answer is: "+it.o[0],ok)};g.appendChild(x)});b.appendChild(g)},
+sort:function(b,it,done){var sel=null,miss={},placed=0,n=it.i.length,pool=el("div","pool"),bks=el("div","bks"),info=el("p","sm","Tap an item, then tap its group.");
+ shuf(it.i).forEach(function(x){var p=x.split("|"),c=el("button","chip",p[0]);c.dataset.a=p[1];c.onclick=function(){if(c.classList.contains("ok"))return;if(sel)sel.classList.remove("sel");sel=c;c.classList.add("sel")};pool.appendChild(c)});
+ it.b.forEach(function(bn){var k=el("div","bk");k.setAttribute("role","button");k.tabIndex=0;k.appendChild(el("h4","",bn));k.onclick=function(){if(!sel)return;var c=sel;if(c.dataset.a===bn){c.classList.remove("sel");c.classList.add("ok");k.appendChild(c);sel=null;placed++;if(placed===n){var good=n-Object.keys(miss).length;done("sorted",good/n,"All sorted! Right on the first try: "+good+" of "+n+".",good/n>=.7)}}else{miss[c.textContent]=1;c.classList.remove("shake");void c.offsetWidth;c.classList.add("shake")}info.textContent="Placed "+placed+" of "+n+"."};k.onkeydown=function(e){if(e.key==="Enter")k.click()};bks.appendChild(k)});
+ b.appendChild(pool);b.appendChild(bks);b.appendChild(info)},
+order:function(b,it,done){var seq=[],pool=el("div","pool"),ol=el("ol","seq"),row=el("div","row"),undo=el("button","btn alt","Undo"),chk=el("button","btn","Check order");chk.disabled=true;b.appendChild(el("p","sm","Tap the steps in the correct order."));
+ function draw(){ol.innerHTML="";seq.forEach(function(x){ol.appendChild(el("li","",x))});chk.disabled=seq.length!==it.s.length}
+ shuf(it.s).forEach(function(x){var c=el("button","chip",x);c.onclick=function(){if(c.disabled)return;c.disabled=true;c.style.opacity=.35;seq.push(x);draw()};pool.appendChild(c)});
+ undo.onclick=function(){var x=seq.pop();[].forEach.call(pool.children,function(c){if(c.textContent===x){c.disabled=false;c.style.opacity=1}});draw()};
+ chk.onclick=function(){undo.disabled=chk.disabled=true;[].forEach.call(pool.children,function(c){c.disabled=true});var g=0;[].forEach.call(ol.children,function(li,i){var ok=seq[i]===it.s[i];if(ok)g++;li.classList.add(ok?"ok":"no")});
+  if(g<it.s.length){var cor=el("div","");cor.appendChild(el("p","","Correct order:"));var o2=el("ol","seq");it.s.forEach(function(x){o2.appendChild(el("li","",x))});cor.appendChild(o2);b.appendChild(cor)}
+  done(seq.join(" > "),g/it.s.length,g===it.s.length?"Perfect order! ✓":g+" of "+it.s.length+" steps in the right place.",g===it.s.length)};
+ row.appendChild(undo);row.appendChild(chk);b.appendChild(pool);b.appendChild(ol);b.appendChild(row)},
+num:function(b,it,done){var row=el("div","row"),i=el("input");i.type="text";i.inputMode="decimal";i.style.maxWidth="12em";i.placeholder="Your answer";var u=el("span","",it.u||""),c=el("button","btn","Check"),tries=0,hint=el("p","sm","Show your working in your notebook.");
+ c.onclick=function(){var m=String(i.value).replace(/,/g,"").match(/-?\d*\.?\d+/);if(!m){i.focus();return}var v=parseFloat(m[0]),ok=Math.abs(v-it.a)<=Math.max(Math.abs(it.a)*.02,.01);tries++;
+  if(ok){c.disabled=i.disabled=true;done(v,tries===1?1:.5,tries===1?"Correct! ✓":"Correct on the second try ✓",true)}
+  else if(tries===1){hint.textContent="Not quite. Check your working and try once more.";hint.className="fb bad";i.select()}
+  else{c.disabled=i.disabled=true;done(v,0,"Not quite. The answer is "+it.a.toLocaleString("en-US")+" "+(it.u||""),false)}};
+ i.onkeydown=function(e){if(e.key==="Enter")c.click()};row.appendChild(i);row.appendChild(u);row.appendChild(c);b.appendChild(row);b.appendChild(hint);setTimeout(function(){i.focus()},50)},
+slider:function(b,it,done){var w=el("div","sld"),v=el("div","sv"),r=el("input"),lb=el("div","sl2"),row=el("div","row"),c=el("button","btn","Check"),tries=0,hint=el("p","sm","Move the slider, then press Check.");
+ r.type="range";r.min=it.min;r.max=it.max;r.step=it.step||1;r.value=it.start!=null?it.start:it.min;r.setAttribute("aria-label",it.q);
+ function show(){v.textContent=r.value+" "+(it.u||"")}r.oninput=show;show();lb.appendChild(el("span","",it.min+""));lb.appendChild(el("span","",it.max+""));
+ w.appendChild(v);w.appendChild(r);w.appendChild(lb);
+ c.onclick=function(){var x=+r.value,ok=Math.abs(x-it.a)<=(it.tol||0)+1e-9;tries++;
+  if(ok){c.disabled=r.disabled=true;done(x,tries===1?1:.5,tries===1?"Correct! ✓":"Correct on the second try ✓",true)}
+  else if(tries===1){hint.textContent="Not quite. Look again and try once more.";hint.className="fb bad"}
+  else{c.disabled=r.disabled=true;done(x,0,"Not quite. The answer is "+it.a+" "+(it.u||""),false)}};
+ row.appendChild(c);b.appendChild(w);b.appendChild(row);b.appendChild(hint)},
+multi:function(b,it,done){var g=el("div","opts"),C=[],sel={},c=el("button","btn","Check");c.style.marginTop="10px";b.appendChild(el("p","sm","Select ALL the correct answers, then press Check."));
+ shuf(it.o).forEach(function(o){var good=o[0]==="*",t=good?o.slice(1):o,x=el("button","opt tog","☐ "+t);if(good)C.push(t);x.onclick=function(){if(c.disabled)return;sel[t]=!sel[t];x.classList.toggle("on",!!sel[t]);x.textContent=(sel[t]?"☑ ":"☐ ")+t};x.dataset.t=t;x.dataset.g=good?1:"";g.appendChild(x)});
+ c.onclick=function(){var right=0,wrong=0,picked=[];[].forEach.call(g.children,function(x){var t=x.dataset.t,s=!!sel[t];if(s)picked.push(t);if(x.dataset.g){if(s){right++;x.classList.add("ok")}else x.classList.add("miss")}else if(s){wrong++;x.classList.add("no")}});
+  c.disabled=true;var sc=Math.max(0,(right-wrong)/C.length),all=right===C.length&&!wrong;
+  done(picked.join(", "),sc,all?"All correct! ✓":"You found "+right+" of "+C.length+(wrong?" and chose "+wrong+" wrong":"")+". Correct: "+C.join(", "),all)};
+ b.appendChild(g);b.appendChild(c)},
+hot:function(b,it,done){var lock=0,h='<svg class="hot" viewBox="'+it.vb+'" role="img" aria-label="Tap the correct part of the picture">'+it.svg;
+ it.r.forEach(function(r,i){h+='<rect class="hz" tabindex="0" role="button" aria-label="'+r.l+'" data-i="'+i+'" x="'+r.x+'" y="'+r.y+'" width="'+r.w+'" height="'+r.h+'" rx="10"/>'});b.innerHTML=h+'</svg><p class="sm">Tap (click) on the picture.</p>';
+ [].forEach.call(b.querySelectorAll(".hz"),function(z){function pick(){if(lock)return;lock=1;var r=it.r[+z.dataset.i];z.classList.add(r.ok?"ok":"no");if(!r.ok)[].forEach.call(b.querySelectorAll(".hz"),function(q){if(it.r[+q.dataset.i].ok)q.classList.add("ok")});
+  var cor=it.r.filter(function(x){return x.ok}).map(function(x){return x.l}).join(" or ");done(r.l,r.ok?1:0,r.ok?"Correct! ✓ ("+r.l+")":"Not quite. You chose: "+r.l+". The answer is: "+cor+" (green box).",!!r.ok)}
+  z.onclick=pick;z.onkeydown=function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();pick()}}})},
+text:function(b,it,done){var t=el("textarea");t.rows=4;t.maxLength=600;t.placeholder="Write in full sentences.";var c=el("button","btn","Submit");c.style.marginTop="8px";
+ c.onclick=function(){var v=t.value.trim();if(v.length<2){t.focus();return}t.disabled=c.disabled=true;done(v,null,"Saved. Your teacher can read it.",true)};b.appendChild(t);b.appendChild(c)}
+};
+function summary(s,A,r){var q=el("div","qbox"),sc=sumSc(r);q.appendChild(el("h2","","Finished! 🎉"));
+ if(A.n){q.appendChild(el("p","q","Score: "+fmt(sc)+" / "+A.n+"  ("+Math.round(100*sc/A.n)+"%)"));q.appendChild(el("p","",sc/A.n>=.8?"Great work!":sc/A.n>=.5?"Good effort. Check your notebook for the ones you missed.":"Keep going. Read your notebook page again, then try again."))}
+ q.appendChild(el("p","","Your code:"));q.appendChild(el("div","code",codeFor(A.id,U.name,sc,A.n)));
+ q.appendChild(el("p","sm",S.dbOK&&U.ref&&!U.preview?"✓ Your answers were sent to your teacher. You do not need to send the code.":"Copy this code into the ClassIn chat so your teacher gets your score."));
+ var row=el("div","row"),h=el("button","btn go","← All activities"),again=el("button","btn alt","Try again");h.onclick=home;again.onclick=function(){var t=(r.t||1)+1;U.P[A.id]={a:[],s:[],i:0,done:false,t:t};push();renderAct()};row.appendChild(h);row.appendChild(again);q.appendChild(row);s.appendChild(q)}
+
+/* ================= GOOGLE SHEET MODE ================= */
+function api(o){o.course=COURSE;var c=window.AbortController?new AbortController():null,tm=setTimeout(function(){if(c)c.abort()},15000);return fetch(SHEET_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(o),signal:c?c.signal:undefined}).then(function(r){clearTimeout(tm);return r},function(e){clearTimeout(tm);throw e}).then(function(r){return r.text()}).then(function(t){try{return JSON.parse(t)}catch(e){return {error:"no connection to the class server"}}})}
+function tkey(){return ls("apes1_tkey")||""}
+function setLive(id){if(!SHEET_URL){lvMsg("Tell students the activity number. They paste their codes in the ClassIn chat.");return}
+ if(!tkey()){lvMsg("Enter your teacher key in Class monitor first.");return}
+ var op=((S.live&&S.live.opened)||[]).slice();if(id&&op.indexOf(id)<0)op.push(id);var st={act:id,opened:op,at:Date.now()};lvMsg("Sending…");
+ api({action:"setlive",key:tkey(),live:st}).then(function(r){if(r.ok){S.live=st;liveLabel()}else lvMsg("Could not send: "+(r.error||"unknown"))}).catch(function(){lvMsg("Could not reach the class server.")})}
+function refreshTeacher(){var a=D.secs[D.i]&&D.secs[D.i].dataset.act;if(a)renderMon(a);if(document.getElementById("ov").classList.contains("on"))renderOv()}
+function poll(){if(!SHEET_URL||!tkey())return;api({action:"results",key:tkey()}).then(function(r){
+  if(r.error){S.sheetErr=r.error;S.db=null;refreshTeacher();return}S.sheetErr=null;S.db="sheet";var o={};
+  (r.rows||[]).forEach(function(x){var d=o[x.sid]=o[x.sid]||{name:x.name,p:{}};d.name=String(x.name);try{d.p[x.act]=JSON.parse(x.rec)}catch(e){}});
+  S.docs=o;S.live=r.live||null;liveLabel();refreshTeacher()}).catch(function(){S.sheetErr="cannot reach the class server";refreshTeacher()})}
+function teacherData(){[].forEach.call(document.querySelectorAll(".mon"),function(m){renderMon(m.id.slice(4))});if(!SHEET_URL||!tkey())return;poll();if(!S.started){S.started=true;setInterval(poll,8000)}}
+function startStudent(preview){U.preview=!!preview;document.getElementById("stu").classList.add("on");U.name=ls(K("name"))||"";U.P=ls(K("prog"))||{};
+ if(!preview&&SHEET_URL){U.ref="sheet";S.dbOK=false;U.sid=ls("apes1_sid");if(!U.sid){U.sid="s"+Date.now().toString(36)+Math.random().toString(36).slice(2,8);ls("apes1_sid",U.sid)}
+  var pl=function(){api({action:"live"}).then(function(r){if(r.error)throw 0;var was=S.dbOK;S.dbOK=true;if(!was){stat();if(!U.cur)home()}var d=r.live||null;U.live=d;if(d&&d.act&&ACT[d.act]&&d.at!==U.lastAt&&U.name){U.lastAt=d.at;openAct(d.act);return}U.lastAt=d?d.at:U.lastAt;if(!U.cur)home()}).catch(function(){var was=S.dbOK;S.dbOK=false;U.tried=true;stat();if(was!==false||!U.shown){U.shown=true;if(!U.cur)home()}})};
+  pl();setInterval(pl,8000)}
+ home()}
+function push(){ls(K("prog"),U.P);if(U.preview||!U.ref||!U.cur||!S.dbOK)return;if(U.writing){U.pending=true;return}U.writing=true;var id=U.cur;
+ api({action:"save",sid:U.sid,name:U.name,act:id,n:ACT[id].n,rec:JSON.stringify(U.P[id])}).then(function(r){S.dbOK=!!r.ok;stat()}).catch(function(){S.dbOK=false;stat()}).then(function(){U.writing=false;if(U.pending){U.pending=false;push()}})}
+/* ================= BOOT ================= */
+(function(){var b=document.getElementById("boot");if(b)b.remove();S.owner=/^#teacher$/i.test(location.hash);if(S.owner)startDeck();else startStudent(false);
+ window.addEventListener("hashchange",function(){location.reload()})})();
+</script></body></html>
