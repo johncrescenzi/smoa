@@ -116,8 +116,54 @@ textarea,input[type=text]{width:100%;font:inherit;background:var(--bg);color:var
 .wbar{display:flex;height:34px;border-radius:8px;overflow:hidden;margin:.3em 0;font:700 .78em var(--head);color:#fff}.wbar div{display:flex;align-items:center;padding-left:8px;white-space:nowrap;overflow:hidden}
 .ebr{display:grid;grid-template-columns:8.5em 1fr 6.5em;gap:8px;align-items:center;margin:4px 0;font-size:.9em}.ebr div{height:20px;background:var(--panel);border-radius:6px;overflow:hidden}.ebr i{display:block;height:100%;background:var(--g)}
 .bem{display:block;font-size:1.5em;line-height:1.2}td .bem{display:inline}
-</style></head><body>
-<div id="deck"><main>
+/* ===== Unit 2 additions ===== */
+.tbig{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:1em;background:var(--panel);border-radius:14px;padding:12px 18px;max-width:46em}
+.tbig svg{width:120px;height:120px;flex-shrink:0}
+.tbig .tr-bg{fill:none;stroke:var(--line);stroke-width:12}.tbig .tr-fg{fill:none;stroke:var(--g);stroke-width:12;stroke-linecap:round;transition:stroke-dashoffset .25s linear,stroke .3s}
+.tbig .tt{font:800 30px var(--head);fill:var(--ink);text-anchor:middle}
+.tbig .tl{font:700 1.1em var(--head)}.tbig .tl small{display:block;font-weight:600;font-size:.75em;color:var(--mute)}
+.tbig.warn .tr-fg{stroke:var(--a)}.tbig.end .tr-fg{stroke:var(--bad)}.tbig.end{animation:tflash 1s 4}
+@keyframes tflash{50%{background:color-mix(in srgb,var(--bad) 30%,var(--panel))}}
+.nbg{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:20px;align-items:start}
+@media(max-width:900px){.nbg{grid-template-columns:1fr}}
+.nbv{background:var(--panel);border-radius:10px;padding:10px;border:2px dashed var(--g)}.nbv>b{font:700 .9em var(--head);color:var(--g);display:block;margin-bottom:4px}
+.ply{background:var(--panel);border-radius:14px;padding:12px 14px;max-width:880px}
+.ply h3{margin:0 0 6px}.pls{width:100%;max-width:min(100%,108vh);height:auto;display:block;background:var(--bg);border-radius:10px;margin:0 auto}
+.split.pp{grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr)}.split.pp .opts{grid-template-columns:1fr}.split.pp .flow{flex-direction:column}.split.pp .flow .ar{transform:rotate(90deg);align-self:flex-start;margin-left:1em}.split.pp .flow>div{max-width:none}
+.pcap{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;margin:10px 0 6px;min-height:4.2em}
+.pnum{font:800 1.5em var(--head);background:var(--g);color:#fff;border-radius:10px;padding:.15em .55em}
+.pcap b{font-family:var(--head);font-size:1.12em;display:block}.pcap span{font-size:1em}
+.pdots{display:flex;gap:6px;flex-wrap:wrap}.pdots button{width:30px;height:30px;border-radius:50%;border:2px solid var(--line);background:var(--bg);cursor:pointer;font:700 .8em var(--head);color:var(--ink)}
+.pdots button.on{background:var(--g);border-color:var(--g);color:#fff}
+.pred{border:3px solid var(--a);border-radius:14px;padding:12px 16px;margin:.8em 0;max-width:62em;background:color-mix(in srgb,var(--a) 8%,var(--bg))}
+.pred h3{color:var(--a);margin:0 0 4px;font-size:1.15em}.pred .q{margin:.2em 0 .6em}
+.pred .opts{grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr))}.pred .opt.sel{border-color:var(--a);box-shadow:0 0 0 2px var(--a)}
+.pans{margin-top:.6em;padding:.6em .8em;border-radius:10px;background:color-mix(in srgb,var(--g) 15%,var(--bg));font-size:1.05em}
+.ix{background:var(--panel);border-radius:14px;padding:12px 14px;max-width:900px}
+.ix label{font:700 1em var(--head);display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:4px 0}
+.ix input[type=range],.sld input[type=range]{flex:1;min-width:180px;accent-color:var(--g);height:28px}
+.ixo{font:800 1.25em var(--head);margin:.3em 0}
+.sld{background:var(--bg);border-radius:10px;padding:10px 12px}.sld input[type=range]{width:100%;display:block}
+.sv{font:800 2em var(--head);color:var(--g);text-align:center}
+.sl2{display:flex;justify-content:space-between;font-size:.85em;color:var(--mute)}
+svg.hot{width:100%;max-width:700px;height:auto;display:block;background:var(--bg);border-radius:10px}
+.hz{fill:transparent;stroke:transparent;stroke-width:3;cursor:pointer}.hz:hover,.hz:focus{stroke:var(--a);fill:color-mix(in srgb,var(--a) 12%,transparent);outline:none}
+.hz.ok{stroke:var(--g);fill:color-mix(in srgb,var(--g) 25%,transparent)}.hz.no{stroke:var(--bad);fill:color-mix(in srgb,var(--bad) 20%,transparent)}
+.opt.tog.on{border-color:var(--a);box-shadow:0 0 0 2px var(--a)}.opt.miss{border-style:dashed;border-color:var(--g)}
+.qv{margin:.2em 0 .8em}
+.rv{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.rv>div{background:var(--panel);border-radius:12px;padding:.6em .8em}.rv h3{margin:.2em 0}.rv p{font-size:.9em;margin:.3em 0}
+.after{display:none}.after.show{display:block}.split.after.show{display:grid}
+.big2{font-size:1.15em}
+.pill2{fill:var(--ink)}.pl2{fill:var(--bg);font:700 13px sans-serif;text-anchor:middle}
+.zl2{fill:var(--ink);font:700 15px sans-serif;text-anchor:middle}.zs2{fill:var(--ink);font:12px sans-serif;text-anchor:middle}
+.ax{stroke:var(--ink);stroke-width:2}.gl{stroke:var(--line);stroke-width:1}
+.fx{display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:1.12em;margin:.4em 0}
+.fr{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;line-height:1.25}.fr>span:first-child{border-bottom:2px solid var(--ink);padding:0 .3em}.fr>span:last-child{padding:0 .3em}
+.cx{text-decoration:line-through;text-decoration-color:var(--bad);text-decoration-thickness:2px}
+.ans{background:color-mix(in srgb,var(--g) 22%,var(--bg));border:2px solid var(--g);border-radius:8px;padding:.1em .5em;font-weight:800}
+.step{display:grid;grid-template-columns:2.2em 1fr;gap:8px;align-items:start;margin:.5em 0}.step>b{background:var(--g);color:#fff;border-radius:50%;width:1.8em;height:1.8em;display:flex;align-items:center;justify-content:center;font-family:var(--head)}
+</style></head><body><div id="deck"><main>
 
 <!-- ================= CLASS 1 ================= -->
 <section class="on"><span class="tag">AP Environmental Science · Unit 1</span><h1>The Living World: Ecosystems</h1><h2>Class 1 · Ecosystems, biomes and the carbon cycle (2 hours)</h2>
@@ -373,49 +419,81 @@ textarea,input[type=text]{width:100%;font:inherit;background:var(--bg);color:var
 <section><span class="tag">AP Environmental Science · Unit 1</span><h1>Class 3 · Energy flow</h1><h2>Trophic levels, the 10% rule, food webs (1 hour)</h2>
 <p>By the end of today you can: explain how energy flows and matter cycles through trophic levels <span class="sm">(ENG-1.B)</span>; calculate how energy decreases with the 10% rule <span class="sm">(ENG-1.C)</span>; describe food chains and food webs <span class="sm">(ENG-1.D)</span>.</p>
 <div class="wrap"><table><tr><th>Block</th><th>Minutes</th></tr>
-<tr><td>Warm-up (A13)</td><td>5</td></tr><tr><td>1.9 Trophic levels + 1.10 the 10% rule</td><td>15</td></tr><tr><td>Activity A14: energy calculations</td><td>10</td></tr>
-<tr><td>1.11 Food chains and food webs + activity A15</td><td>18</td></tr><tr><td>Unit 1 review quiz (A16) + wrap-up</td><td>12</td></tr></table></div></section>
+<tr><td>Warm-up (A13)</td><td>5</td></tr><tr><td>1.9 Trophic levels · play: follow the energy</td><td>12</td></tr><tr><td>1.10 The 10% rule · simulator · A14</td><td>15</td></tr>
+<tr><td>1.11 Food chains and webs · play: remove the snakes · A15</td><td>16</td></tr><tr><td>Unit 1 review quiz (A16) + visual summary</td><td>12</td></tr></table></div></section>
 
+<section data-join></section>
 <section data-act="A13"></section>
 
 <section><span class="tag">Topic 1.9</span><h2>Trophic levels</h2>
-<div class="wrap"><table><tr><th>Level</th><th>Name</th><th>Gets energy from</th><th>Example</th></tr>
-<tr><td>1</td><td><b>Producers</b> (autotrophs)</td><td>sunlight (photosynthesis)</td><td>grass, trees, phytoplankton</td></tr>
-<tr><td>2</td><td><b>Primary consumers</b> (herbivores)</td><td>producers</td><td>rabbit, grasshopper, zooplankton</td></tr>
-<tr><td>3</td><td><b>Secondary consumers</b></td><td>primary consumers</td><td>snake, frog, small fish</td></tr>
-<tr><td>4</td><td><b>Tertiary consumers</b> (top predators)</td><td>secondary consumers</td><td>hawk, shark</td></tr>
-<tr><td>all</td><td><b>Decomposers & detritivores</b></td><td>dead matter and waste from every level</td><td>bacteria, fungi; worms, crabs</td></tr></table></div>
-<div data-ref="chain" style="margin-top:.6em"></div><div class="grid" style="margin-top:.8em"><div><h3>Energy flows one way</h3><p>Sun → producers → consumers → <b>lost as heat</b>. Energy does <b>not</b> cycle.</p></div>
-<div><h3>Matter cycles</h3><p>Carbon, nitrogen, phosphorus and water are <b>reused</b>. Decomposers return nutrients to the soil.</p></div>
-<div><h3>Laws of thermodynamics</h3><p><b>1st:</b> energy is not created or destroyed, only changed in form. <b>2nd:</b> each energy change loses some energy as <b>heat</b>.</p></div></div></section>
+<p class="big2">A <b>trophic level</b> = an organism's feeding position in a food chain.</p>
+<div class="split"><div><div data-pred="sun"></div></div>
+<div><div class="vgrid">
+<div class="vc"><div class="emo">🌾🌳</div><b>1 · Producers</b><span>autotrophs: make food from sunlight (photosynthesis)</span></div>
+<div class="vc"><div class="emo">🦗🐇</div><b>2 · Primary consumers</b><span>herbivores: eat producers</span></div>
+<div class="vc"><div class="emo">🐸🐍</div><b>3 · Secondary consumers</b><span>eat primary consumers</span></div>
+<div class="vc"><div class="emo">🦅🦈</div><b>4 · Tertiary consumers</b><span>top predators: eat secondary consumers</span></div>
+<div class="vc"><div class="emo">🍄🪱🦠</div><b>Decomposers & detritivores</b><span>eat dead matter and waste from EVERY level</span></div></div></div></div></section>
 
-<section><span class="tag">Topic 1.10</span><h2>Energy flow and the 10% rule</h2><div class="split"><div><div data-ref="pyramid"></div></div>
-<div><p>Only about <b>10%</b> of the energy at one trophic level passes to the next level. About <b>90% is lost</b>:</p><div data-ref="loss"></div><div data-ref="ebar"></div>
-<p><b>Going up</b> one level: × 0.1 · <b>Going down</b> one level: × 10</p>
-<p><b>Example:</b> producers 20,000 kcal → primary 2,000 → secondary 200 → tertiary 20 kcal.</p>
-<div class="do"><b>So:</b> there are few top predators, food chains are short (4–5 levels), and eating lower on the food chain feeds more people.</div></div></div></section>
+<section><span class="tag">Topic 1.9</span><h2>Follow the energy</h2><div data-play="energy"></div></section>
 
-<section><div class="nbp"><div class="nbt">&#9998; Notebook page 9 · Topics 1.9–1.10 Energy flow</div>
-<ul><li>Producers → primary (herbivores) → secondary → tertiary consumers. Decomposers feed on all levels.</li>
+<section><span class="tag">Topic 1.9</span><h2>Energy flows, matter cycles</h2>
+<div class="grid"><div><h3>➡️ Energy flows one way</h3><p>Sun → producers → consumers → lost as <b>heat</b>. Energy does <b>not</b> cycle.</p></div>
+<div><h3>♻️ Matter cycles</h3><p>Carbon, nitrogen, phosphorus and water are <b>reused</b>. Decomposers return nutrients to the soil.</p></div>
+<div><h3>📜 Laws of thermodynamics</h3><p><b>1st:</b> energy is not created or destroyed, only changed in form. <b>2nd:</b> every energy change loses some energy as <b>heat</b>.</p></div></div>
+<div data-ref="chain" style="margin-top:.6em"></div></section>
+
+<section><span class="tag">Topic 1.10</span><h2>The 10% rule</h2>
+<div class="split"><div><div data-pred="tenp"></div></div>
+<div class="after"><p>Only about <b>10%</b> of the energy at one level passes to the next. About <b>90% is lost</b>:</p><div data-ref="loss"></div><p><b>Going up</b> one level: × 0.1 · <b>Going down</b> one level: × 10</p></div></div></section>
+
+<section><span class="tag">Topic 1.10</span><h2>Simulator: energy pyramid</h2><div data-ix="tenpct"></div></section>
+
+<section><span class="tag">Topic 1.10</span><h2>10% rule calculations</h2>
+<div class="split"><div><h3>Example 1: going UP</h3><p>Producers have 20,000 kcal. How much reaches the tertiary consumers?</p>
+<div class="step"><b>1</b><div>Primary: 20,000 × 0.1 = 2,000</div></div><div class="step"><b>2</b><div>Secondary: 2,000 × 0.1 = 200</div></div><div class="step"><b>3</b><div>Tertiary: 200 × 0.1 = <span class="ans">20 kcal</span></div></div>
+<h3>Example 2: going DOWN</h3><p>A hawk (tertiary) gets 30 kcal. How much did the producers have?</p><div class="step"><b>1</b><div>30 × 10 × 10 × 10 = <span class="ans">30,000 kcal</span></div></div></div>
+<div><div data-pred="veg"></div><div class="do after"><b>So:</b> there are few top predators, food chains are short (4–5 levels), and eating lower on the food chain feeds more people.</div></div></div></section>
+
+<section><div class="nbg"><div class="nbp"><div class="nbt">&#9998; Notebook page 9 · Topics 1.9–1.10 Energy flow</div>
+<ul><li>Trophic levels: producers → primary (herbivores) → secondary → tertiary consumers. Decomposers feed on all levels.</li>
 <li><b>Energy flows one way</b> (ends as heat). <b>Matter cycles.</b></li>
 <li>1st law: energy is not created or destroyed. 2nd law: each transfer loses energy as heat.</li>
-<li><b>10% rule:</b> about 10% passes up each level; 90% is lost (mostly heat from respiration).</li>
-<li>Up one level ×0.1 · down one level ×10. Example: 20,000 → 2,000 → 200 → 20 kcal.</li></ul></div><div data-timer="4"></div></section>
+<li><b>10% rule:</b> about 10% passes up each level; 90% is lost (heat, not eaten, feces).</li>
+<li>Up one level ×0.1 · down one level ×10.</li></ul></div>
+<div class="nbv"><b>✏️ Draw this</b><svg class="pls" viewBox="0 0 360 230" role="img" aria-label="Energy pyramid sketch"><rect x="40" y="175" width="280" height="40" fill="color-mix(in srgb,var(--g) 60%,var(--bg))"/><rect x="85" y="130" width="190" height="40" fill="color-mix(in srgb,var(--g) 45%,var(--bg))"/><rect x="125" y="85" width="110" height="40" fill="color-mix(in srgb,var(--g) 30%,var(--bg))"/><rect x="155" y="40" width="50" height="40" fill="color-mix(in srgb,var(--g) 18%,var(--bg))"/><text x="180" y="200" class="zl2">🌾 10,000</text><text x="180" y="155" class="zl2">🦗 1,000</text><text x="180" y="110" class="zl2">🐸 100</text><text x="180" y="65" class="zs2">🐍 10</text><text x="300" y="120" class="zs2" style="fill:var(--bad)">🔥 90% lost</text><text x="300" y="138" class="zs2" style="fill:var(--bad)">each step</text></svg></div></div>
+<div data-timer="4"></div></section>
 
 <section data-act="A14"></section>
 
-<section><span class="tag">Topic 1.11</span><h2>Food chains and food webs</h2><div data-ref="webchain"></div><div class="split"><div><div data-ref="foodweb"></div></div>
-<div><ul><li>A <b>food chain</b> shows <b>one</b> path of energy: grass → rabbit → fox.</li><li>A <b>food web</b> shows <b>many</b> connected food chains.</li><li>Arrows point <b>from the food to the eater</b>: the direction energy flows.</li><li><b>Omnivores</b> can feed at more than one level. The sparrow is a primary consumer when it eats berries and a secondary consumer when it eats grasshoppers.</li><li>Remove one species and the effects spread through the web. No snakes → more mice → less grass.</li><li>Decomposers are usually not drawn, but they feed on every level.</li></ul></div></div></section>
+<section><span class="tag">Topic 1.11</span><h2>Food chains and food webs</h2><div data-ref="webchain"></div>
+<div class="split"><div><div data-ref="webE"></div></div>
+<div><ul><li>A <b>food chain</b> shows <b>one</b> path of energy: grass → rabbit → fox.</li><li>A <b>food web</b> shows <b>many</b> connected food chains.</li><li>Arrows point <b>from the food to the eater</b>: the direction energy flows.</li><li><b>Omnivores</b> can feed at more than one level. The sparrow is a <b>primary</b> consumer when it eats berries and a <b>secondary</b> consumer when it eats grasshoppers.</li><li>Decomposers are usually not drawn, but they feed on every level.</li></ul></div></div></section>
 
-<section><div class="nbp"><div class="nbt">&#9998; Notebook page 10 · Topic 1.11 Food chains and webs</div>
+<section><span class="tag">Topic 1.11</span><h2>Change one species, change the web</h2><div class="split pp"><div data-pred="snakes"></div><div data-play="cascade"></div></div></section>
+
+<section><div class="nbg"><div class="nbp"><div class="nbt">&#9998; Notebook page 10 · Topic 1.11 Food chains and webs</div>
 <ul><li>Food chain = one path · food web = many linked chains.</li>
 <li>Arrow = energy flow, <b>from food → eater</b>.</li>
-<li>Omnivores can be at more than one trophic level.</li>
-<li>Removing a species changes the whole web.</li>
-<li>All energy in the web starts with producers (and the Sun).</li></ul></div><div data-timer="4"></div></section>
+<li>Omnivores can be at more than one trophic level (sparrow).</li>
+<li>Removing a species changes the whole web (no snakes → more mice → less grass).</li>
+<li>All energy in the web starts with producers (and the Sun).</li></ul></div>
+<div class="nbv"><b>✏️ Draw this</b><svg class="pls" viewBox="0 0 360 200" role="img" aria-label="Food chain sketch"><text x="40" y="110" font-size="34" text-anchor="middle">🌾</text><text x="130" y="110" font-size="34" text-anchor="middle">🦗</text><text x="220" y="110" font-size="34" text-anchor="middle">🐦</text><text x="310" y="110" font-size="34" text-anchor="middle">🦅</text><path d="M62 98 H100 M152 98 H190 M242 98 H280" stroke="var(--ink)" stroke-width="3"/><path d="M100 92 l10 6 l-10 6z M190 92 l10 6 l-10 6z M280 92 l10 6 l-10 6z" fill="var(--ink)"/><text x="40" y="145" class="zs2">producer</text><text x="130" y="145" class="zs2">primary</text><text x="220" y="145" class="zs2">secondary</text><text x="310" y="145" class="zs2">tertiary</text><text x="180" y="40" class="zl2">arrow = food → eater</text></svg></div></div>
+<div data-timer="4"></div></section>
 
 <section data-act="A15"></section>
 <section data-act="A16"></section>
+
+<section><div class="nbp"><div class="nbt">&#9998; Notebook page 11 · Unit 1 one-page summary (copy the pictures too!)</div></div>
+<div class="rv" style="margin-top:.6em">
+<div><h3>1.1 Interactions</h3><p style="font-size:1.5em">🦁🦓 · 🐝🌸 · 🦈🐟 · 🦟🧍</p><p>competition, predation, mutualism, commensalism, parasitism</p></div>
+<div><h3>1.2–1.3 Biomes</h3><p style="font-size:1.5em">🌡️ + 🌧️ · 🧂🌊</p><p>land: temperature + rain · water: salinity, depth, flow</p></div>
+<div><h3>1.4–1.7 Cycles</h3><p style="font-size:1.5em">C · N · P · 💧</p><p>matter cycles between reservoirs; P has no gas</p></div>
+<div><h3>1.8 Productivity</h3><p style="font-size:1.5em">GPP − R = NPP</p><p>NPP = energy left for consumers</p></div>
+<div><h3>1.9–1.10 Energy</h3><p style="font-size:1.5em">🌾→🦗→🐸→🐍</p><p>10,000 → 1,000 → 100 → 10 · 90% lost as heat</p></div>
+<div><h3>1.11 Webs</h3><p style="font-size:1.5em">🕸️ ➡️</p><p>arrow = food → eater · one change spreads</p></div></div>
+<div class="split"><div data-ref="cycle4"></div><div data-ref="webE"></div></div>
+<div data-timer="8"></div></section>
 
 <section><h2>Unit 1 summary</h2><div data-ref="cycle4"></div><div class="grid">
 <div><h3>Ecosystems (1.1)</h3><p>Resources shape interactions: competition, predation, mutualism, commensalism, parasitism. Partitioning reduces competition.</p></div>
@@ -430,7 +508,67 @@ textarea,input[type=text]{width:100%;font:inherit;background:var(--bg);color:var
 
 <div id="ov"></div>
 <div id="stu"></div>
-<div id="boot" style="padding:40px;font-family:var(--head)">Loading…</div>
+<div id="boot" style="padding:40px;font-family:var(--head)">Loading…</div><script>
+/* ================= drawing helpers ================= */
+var SKY="color-mix(in srgb,#7fb8e0 30%,var(--bg))",SOIL="color-mix(in srgb,#9b7a4c 45%,var(--bg))",WAT="color-mix(in srgb,var(--blue) 38%,var(--bg))",
+ ROCK="color-mix(in srgb,#8d8d8d 55%,var(--bg))",GRN="color-mix(in srgb,var(--g) 45%,var(--bg))",MUD="color-mix(in srgb,#8a5a2b 60%,var(--bg))";
+var PAL=["#d1495b","#edae49","#00798c","#7b4fa0","#30a14e","#8c5a3c"];
+function E(x,y,e,s){return '<text x="'+x+'" y="'+y+'" font-size="'+(s||34)+'" text-anchor="middle">'+e+'</text>'}
+function T(x,y,t,c,ex){return '<text x="'+x+'" y="'+y+'" class="'+(c||"zl2")+'"'+(ex||"")+'>'+t+'</text>'}
+function P(x,y,t){var w=t.length*7.6+20;return '<rect x="'+(x-w/2).toFixed(0)+'" y="'+(y-15)+'" width="'+w.toFixed(0)+'" height="23" rx="11" class="pill2"/><text x="'+x+'" y="'+(y+2)+'" class="pl2">'+t+'</text>'}
+function X(x,y,s){s=s||11;return '<path d="M'+(x-s)+' '+(y-s)+'L'+(x+s)+' '+(y+s)+'M'+(x+s)+' '+(y-s)+'L'+(x-s)+' '+(y+s)+'" stroke="#c0392b" stroke-width="4" stroke-linecap="round"/>'}
+function arrow(x1,y1,x2,y2,c,dash){var a=Math.atan2(y2-y1,x2-x1),h=10;return '<path d="M'+x1+' '+y1+'L'+x2+' '+y2+'" stroke="'+(c||"var(--ink)")+'" stroke-width="3" fill="none"'+(dash?' stroke-dasharray="8 6"':'')+'/><path d="M'+x2+' '+y2+'L'+(x2-h*Math.cos(a-.45)).toFixed(1)+' '+(y2-h*Math.sin(a-.45)).toFixed(1)+'L'+(x2-h*Math.cos(a+.45)).toFixed(1)+' '+(y2-h*Math.sin(a+.45)).toFixed(1)+'Z" fill="'+(c||"var(--ink)")+'"/>'}
+function svgw(inner,h,label){return '<svg class="pls" viewBox="0 0 720 '+(h||330)+'" role="img" aria-label="'+(label||"diagram")+'">'+inner+'</svg>'}
+
+var PLAY={},IX={},PRED={};
+</script>
+<script>
+/* ===== Unit 1 Class 3 upgrade: energy flow and food webs ===== */
+var CX=[150,280,410,540,670],CE=["🌾","🦗","🐸","🐍","🦅"],CV=[10000,1000,100,10,1],CL=["Producer","Primary","Secondary","Tertiary","Quaternary"];
+function fmt(n){return n.toLocaleString("en-US")}
+function chainScene(k,ex){var s='<rect width="720" height="330" fill="'+SKY+'"/><rect y="250" width="720" height="80" fill="'+GRN+'" opacity=".6"/>'+E(50,150,"☀️",54);
+ if(k>=0)s+=arrow(80,140,118,140,"var(--a)");
+ for(var i=0;i<=k&&i<5;i++){s+=E(CX[i],155,CE[i],52)+P(CX[i],200,fmt(CV[i])+" kcal")+T(CX[i],232,CL[i],"zs2");
+  if(i>0){s+=arrow(CX[i-1]+30,140,CX[i]-34,140);s+=arrow(CX[i]-10,105,CX[i]-10,62,"var(--bad)")+E(CX[i]-10,52,"🔥",24)+T(CX[i]+22,82,"−"+fmt(CV[i-1]-CV[i]),"zs2",' style="fill:var(--bad);font-weight:700"')}}
+ return s+(ex||"")}
+PLAY.energy={title:"▶ Play: follow 10,000 kcal of energy up a food chain",st:[
+ {t:"The Sun → producers",d:"Grass captures only a small part of the sunlight (about 1%) by photosynthesis. It stores 10,000 kcal of chemical energy. Producer = trophic level 1.",s:chainScene(0)},
+ {t:"Producers → primary consumers",d:"Grasshoppers eat the grass. Only about 1,000 kcal (10%) becomes grasshopper body. About 9,000 kcal is lost: mostly HEAT from respiration, plus parts not eaten (roots) and waste (feces).",s:chainScene(1)},
+ {t:"→ secondary consumers",d:"Frogs eat grasshoppers. Again only 10% passes on: 1,000 → 100 kcal.",s:chainScene(2)},
+ {t:"→ tertiary consumers",d:"Snakes eat frogs: 100 → 10 kcal.",s:chainScene(3)},
+ {t:"→ a top predator",d:"Hawks eat snakes: only 1 kcal is left from the original 10,000! That is why there are FEW top predators and food chains are short (usually 4–5 levels).",s:chainScene(4,P(360,30,"10,000 → 1,000 → 100 → 10 → 1"))},
+ {t:"Energy flows; matter cycles",d:"When organisms die or make waste, decomposers (bacteria, fungi) break them down. Carbon, nitrogen and phosphorus go back to the soil and air, and the grass uses them again: MATTER CYCLES. But the energy left as heat and never comes back: ENERGY FLOWS ONE WAY.",s:chainScene(4,'<path d="M670 255 Q600 300 420 300 Q260 300 170 262" fill="none" stroke="#7a5230" stroke-width="4" stroke-dasharray="8 6"/><path d="M170 262 l12 0 l-6 12z" fill="#7a5230"/>'+E(420,305,"🍄",30)+E(460,305,"🦠",26)+P(420,322,"decomposers return nutrients → matter cycles ♻️")+P(360,30,"heat 🔥 leaves → energy flows one way →"))}]};
+
+/* emoji food web */
+var WN={hawk:[360,48,"🦅","Hawk"],snake:[140,145,"🐍","Snake"],sparrow:[360,145,"🐦","Sparrow"],fox:[580,145,"🦊","Fox"],grasshopper:[110,245,"🦗","Grasshopper"],mouse:[360,245,"🐭","Mouse"],rabbit:[610,245,"🐇","Rabbit"],grass:[230,330,"🌾","Grass"],bush:[490,330,"🫐","Berry bush"]};
+var WA=[["grass","grasshopper"],["grass","mouse"],["grass","rabbit"],["bush","mouse"],["bush","rabbit"],["bush","sparrow"],["grasshopper","sparrow"],["mouse","snake"],["sparrow","snake"],["rabbit","fox"],["mouse","fox"],["snake","hawk"],["sparrow","hawk"],["mouse","hawk"],["rabbit","hawk"]];
+function webSVG(o){o=o||{};var s='<rect width="720" height="380" fill="var(--bg)"/>',gone=o.gone||[],up=o.up||[],down=o.down||[];
+ WA.forEach(function(a){var p=WN[a[0]],q=WN[a[1]],dx=q[0]-p[0],dy=q[1]-p[1],L=Math.hypot(dx,dy),ux=dx/L,uy=dy/L,off=a[0]==="mouse"&&a[1]==="hawk"?1:0;var dead=gone.indexOf(a[0])>=0||gone.indexOf(a[1])>=0;
+  if(off){s+='<g opacity="'+(dead?.2:1)+'"><path d="M385 228 Q470 150 388 70" fill="none" stroke="var(--mute)" stroke-width="3"/><path d="M388 70 l1 14 l10 -8z" fill="var(--mute)"/></g>';return}
+  s+='<g opacity="'+(dead?.2:1)+'">'+arrow((p[0]+ux*30).toFixed(0),(p[1]+uy*30).toFixed(0),(q[0]-ux*34).toFixed(0),(q[1]-uy*34).toFixed(0),"var(--mute)")+'</g>'});
+ for(var k in WN){var n=WN[k],g=gone.indexOf(k)>=0;s+='<circle cx="'+n[0]+'" cy="'+n[1]+'" r="28" fill="var(--panel)" stroke="'+(up.indexOf(k)>=0?"var(--g)":down.indexOf(k)>=0?"var(--bad)":"var(--line)")+'" stroke-width="'+(up.indexOf(k)>=0||down.indexOf(k)>=0?5:2)+'" opacity="'+(g?.35:1)+'"/>'+E(n[0],n[1]+11,n[2],30)+(o.nol?"":T(n[0]+(k==="hawk"?0:0),n[1]+(k==="grass"||k==="bush"?-34:44),n[3],"zs2",' style="font-weight:700"'))+(g?X(n[0],n[1],20):"")+(up.indexOf(k)>=0?T(n[0]+38,n[1]-18,"↑","zl2",' style="fill:var(--g);font-size:26px"'):"")+(down.indexOf(k)>=0?T(n[0]+38,n[1]-18,"↓","zl2",' style="fill:var(--bad);font-size:26px"'):"")}
+ return s+(o.x||"")}
+PLAY.cascade={title:"▶ Play: what happens if the snakes disappear?",h:380,st:[
+ {t:"The food web",d:"Every arrow points from the food to the eater. All the energy starts with the producers (grass and berry bush).",s:webSVG()},
+ {t:"The snakes disappear",d:"People kill all the snakes (or a disease kills them). The links to and from the snakes are gone.",s:webSVG({gone:["snake"]})},
+ {t:"Mice increase",d:"Snakes used to eat mice. With no snakes, more mice survive, so the mouse population goes UP.",s:webSVG({gone:["snake"],up:["mouse"]})},
+ {t:"Grass and berries decrease",d:"More mice eat more grass and berries. The producers go DOWN, so grasshoppers and rabbits have less food.",s:webSVG({gone:["snake"],up:["mouse"],down:["grass","bush","grasshopper","rabbit"]})},
+ {t:"The effect spreads",d:"Hawks and foxes eat more mice. Sparrows lost a predator but have fewer grasshoppers to eat. In a food web, changing ONE species affects many others.",s:webSVG({gone:["snake"],up:["mouse","fox","hawk"],down:["grass","bush","grasshopper","rabbit"]})}]};
+
+/* 10% simulator */
+IX.tenpct=function(e){e.className="ix";e.innerHTML='<h3>🔺 10% rule simulator</h3><label>Producer energy: <input type="range" min="1000" max="50000" step="1000" value="10000" class="pe"> <b class="pv"></b></label><label>Energy passed up each level: <input type="range" min="5" max="20" step="1" value="10" class="pp"> <b class="ppv"></b></label><div class="ixo"></div><div class="tsv"></div>';
+ var a=e.querySelector(".pe"),b=e.querySelector(".pp");function draw(){var p0=+a.value,f=+b.value/100,v=[p0,p0*f,p0*f*f,p0*f*f*f],em=["🌾","🦗","🐸","🐍"],nm=["Producers","Primary consumers","Secondary consumers","Tertiary consumers"],s='<rect width="720" height="300" fill="var(--bg)"/>';
+  v.forEach(function(x,i){var w=Math.max(30,600*Math.pow(x/p0,.35)),y=250-i*60;s+='<rect x="'+(330-w/2)+'" y="'+y+'" width="'+w+'" height="52" rx="6" fill="color-mix(in srgb,var(--g) '+(70-i*12)+'%,var(--bg))" stroke="var(--g)"/>'+E(330-w/2-26,y+36,em[i],28)+T(330,y+32,nm[i]+": "+fmt(Math.round(x*10)/10)+" kcal","zl2");if(i>0)s+=T(690,y+60,"🔥 −"+fmt(Math.round((v[i-1]-x)*10)/10),"zs2",' style="text-anchor:end;fill:var(--bad);font-weight:700"')});
+  e.querySelector(".tsv").innerHTML=svgw(s,300,"Energy pyramid");e.querySelector(".pv").textContent=fmt(p0)+" kcal";e.querySelector(".ppv").textContent=b.value+"%";
+  e.querySelector(".ixo").textContent=b.value==="10"?"The 10% rule: ×0.1 each level up. Only "+fmt(v[3])+" kcal reaches the tertiary consumers.":"Real ecosystems pass about 5–20%. The 10% rule is an average."}a.oninput=b.oninput=draw;draw()};
+
+PRED.sun={q:"Where did the energy in a hawk's body come from at the very BEGINNING?",o:["The Sun","The soil","Water","Only from the snake it ate"],a:0,why:"The hawk ate a snake, the snake ate a frog… but every food chain starts with producers, and producers get their energy from SUNLIGHT by photosynthesis."};
+PRED.tenp={q:"Grass stores 10,000 kcal. About how much energy reaches a FROG that eats grasshoppers (secondary consumer)?",o:["100 kcal","1,000 kcal","5,000 kcal","9,000 kcal"],a:0,why:"Only about 10% passes up each level: 10,000 → 1,000 (grasshoppers) → 100 kcal (frogs)."};
+PRED.veg={q:"One field grows 10,000 kcal of corn. Which feeds MORE people?",o:["People eat the corn","Feed the corn to cows, then people eat the beef","Both feed the same number"],a:0,why:"Eating the corn: about 10,000 kcal for people. Feeding it to cows first: only about 1,000 kcal ends up in the beef. Eating lower on the food chain feeds about 10 times more people."};
+PRED.snakes={q:"All the snakes in this food web disappear. What happens to the MICE first?",o:["They increase","They decrease","Nothing changes"],a:0,why:"Snakes eat mice. With fewer predators, more mice survive and the mouse population grows (at first)."};
+
+function webHot(ok){var r=[];for(var k in WN)r.push({x:WN[k][0]-34,y:WN[k][1]-34,w:68,h:68,l:WN[k][3],ok:k===ok?1:0});return r}
+</script>
 <script>
 /* ---------- diagram helper ---------- */
 var DGN=0;
@@ -646,7 +784,10 @@ var ACTS=[
  {k:"mc",q:"GPP = 10,000 and R = 6,000. NPP = ?",o:["4,000","16,000","60,000","1,000"]},
  {k:"mc",q:"Which reservoir holds the most nitrogen?",o:["the atmosphere","rocks","the ocean","animals"]},
  {k:"mc",q:"Transpiration is water leaving…",o:["plant leaves","the ocean","clouds","groundwater"]}]},
-{id:"A14",c:3,t:"Trophic levels and the 10% rule",ref:"pyramid",items:[
+{id:"A14",c:3,t:"Trophic levels and the 10% rule",ref:"a14b",items:[
+ {k:"slider",q:"Use the 10% rule. Producers store 8,000 kcal. How much energy reaches the primary consumers?",min:0,max:2000,step:100,a:800,tol:0,u:"kcal"},
+ {k:"multi",q:"Select ALL the ways energy is lost between trophic levels.",o:["*Heat from cellular respiration","*Parts that are not eaten (bones, roots)","*Waste that is not digested (feces)","Energy is destroyed","Energy goes back to the Sun"]},
+ {k:"order",q:"Put this food chain in order, starting with the producer.",s:["🌾 Grass","🦗 Grasshopper","🐸 Frog","🐍 Snake","🦅 Hawk"]},
  {k:"num",q:"Producers store 20,000 kcal. How much energy reaches the primary consumers?",a:2000,u:"kcal"},
  {k:"num",q:"Producers store 20,000 kcal. How much energy reaches the tertiary consumers?",a:20,u:"kcal"},
  {k:"num",q:"A hawk (tertiary consumer) gets 15 kcal. How much energy did the producers have?",a:15000,u:"kcal"},
@@ -660,7 +801,9 @@ var ACTS=[
  {k:"mc",q:"Decomposers and detritivores get their energy from…",o:["dead matter and waste from all levels","sunlight","only producers","only top predators"]},
  {k:"mc",q:"A primary consumer is…",o:["an herbivore that eats producers","a plant","a carnivore that eats herbivores","a decomposer"]},
  {k:"text",q:"Use the 10% rule to explain why a field of crops can feed more people if they eat the plants instead of feeding the plants to cows and eating the meat."}]},
-{id:"A15",c:3,t:"Food web analysis",ref:"foodweb",items:[
+{id:"A15",c:3,t:"Food web analysis",ref:"webE",items:[
+ {k:"hot",q:"Tap the TERTIARY consumer that eats the snake.",vb:"0 0 720 380",svg:webSVG({nol:0}),r:webHot("hawk")},
+ {k:"hot",q:"Tap the animal that feeds at MORE THAN ONE trophic level (it eats berries AND grasshoppers).",vb:"0 0 720 380",svg:webSVG({nol:0}),r:webHot("sparrow")},
  {k:"sort",q:"Use the food web. Put each organism or meal at the correct trophic level.",b:["Producer","Primary consumer","Secondary consumer","Tertiary consumer"],i:["Grass|Producer","Berry bush|Producer","Grasshopper|Primary consumer","Rabbit|Primary consumer","Sparrow eating berries|Primary consumer","Fox|Secondary consumer","Snake eating a mouse|Secondary consumer","Sparrow eating a grasshopper|Secondary consumer","Hawk eating a snake|Tertiary consumer","Hawk eating a sparrow that ate a grasshopper|Tertiary consumer"]},
  {k:"mc",q:"In a food web, an arrow points…",o:["from the food to the eater (the way energy flows)","from the eater to the food","from big animals to small animals","toward the Sun"]},
  {k:"mc",q:"Which animal feeds at more than one trophic level?",o:["sparrow","grasshopper","rabbit","fox"]},
@@ -763,6 +906,9 @@ ACT.A1.ref="a1";ACT.A2.ref="a2";ACT.A4.ref="a4";ACT.A9.ref="a9";ACT.A10.ref="a10
  var O={"sunlight":"☀️ sunlight","a fungus":"🍄 a fungus","a deer":"🦌 a deer","bacteria":"🦠 bacteria","the Sun":"☀️ the Sun","the soil":"🟫 the soil","water":"💧 water","animals":"🐄 animals"};
  ACT.A1.items.slice(0,3).forEach(function(it){it.o=it.o.map(function(o){return O[o]||o})});
 })();
+</script><script>
+REF.webE=function(){return svgw(webSVG(),380,"Food web")+'<p class="sm">Arrows point from the food to the eater. The sparrow eats berries (primary consumer) AND grasshoppers (secondary consumer).</p>'};
+REF.a14b=function(){return REF.pyramid()+REF.ebar()+REF.loss()};
 </script>
 <script>
 var SHEET_URL="/api"; var COURSE="apes"; /* server is on the same site (Cloudflare) */
@@ -777,6 +923,31 @@ function sumSc(rec){var t=0;(rec&&rec.s||[]).forEach(function(v){if(typeof v==="
 function cell(sc,ans){if(typeof sc==="number"){if(sc>=.999)return ["✓","c1"];if(sc<=0.001)return ["✗","c0"];return [Math.round(sc*100)+"%","cp"]}if(ans!=null&&ans!=="")return ["✎",""];return ["·","sm"]}
 var S={db:null,user:null,uid:null,owner:false,dbOK:false,docs:{},live:null};
 
+/* ================= Unit 2 components ================= */
+function bigTimer(e){var m=+e.dataset.timer,tot=m*60,left=tot,iv=null,C=2*Math.PI*48;e.className="tbig";
+ e.innerHTML='<svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="48" class="tr-bg"/><circle cx="60" cy="60" r="48" class="tr-fg" transform="rotate(-90 60 60)" stroke-dasharray="'+C.toFixed(1)+'" stroke-dashoffset="0"/><text x="60" y="71" class="tt">'+m+':00</text></svg><div class="tl">✏️ Copy into your notebook<small>'+m+' minutes</small></div><div class="row"><button class="btn go">▶ Start</button><button class="btn alt">⏸ Pause</button><button class="btn alt">↺ Reset</button></div>';
+ var fg=e.querySelector(".tr-fg"),tt=e.querySelector(".tt"),bs=e.querySelectorAll("button"),lab=e.querySelector(".tl small");
+ function draw(){var s=Math.max(0,Math.ceil(left));tt.textContent=Math.floor(s/60)+":"+("0"+s%60).slice(-2);fg.setAttribute("stroke-dashoffset",(C*(1-left/tot)).toFixed(1));
+  e.classList.toggle("warn",left>0&&left<=60);e.classList.toggle("end",left<=0);lab.textContent=left<=0?"⏰ Time is up!":left<=60?"Last minute!":m+" minutes"}
+ bs[0].onclick=function(){this.blur();if(iv)return;if(left<=0)left=tot;var last=Date.now();iv=setInterval(function(){var n=Date.now();left-=(n-last)/1000;last=n;if(left<=0){left=0;clearInterval(iv);iv=null}draw()},200)};
+ bs[1].onclick=function(){this.blur();clearInterval(iv);iv=null};bs[2].onclick=function(){this.blur();clearInterval(iv);iv=null;left=tot;draw()};draw()}
+function initIx(root){[].forEach.call(root.querySelectorAll("[data-play]"),function(e){if(!e.dataset.ok){e.dataset.ok=1;player(e,PLAY[e.dataset.play])}});
+ [].forEach.call(root.querySelectorAll("[data-pred]"),function(e){if(!e.dataset.ok){e.dataset.ok=1;pred(e,PRED[e.dataset.pred])}});
+ [].forEach.call(root.querySelectorAll("[data-ix]"),function(e){if(!e.dataset.ok){e.dataset.ok=1;IX[e.dataset.ix](e)}})}
+function player(e,P){var i=0,iv=null;e.className="ply";e.innerHTML="";e.appendChild(el("h3","",P.title));var stage=el("div"),cap=el("div","pcap"),num=el("span","pnum"),tx=el("div"),bt=el("b"),sp=el("span");tx.appendChild(bt);tx.appendChild(sp);cap.appendChild(num);cap.appendChild(tx);
+ var row=el("div","row"),bk=el("button","btn alt","◀ Back"),pl=el("button","btn go","▶ Play"),nx=el("button","btn","Next ▶"),dots=el("div","pdots");
+ P.st.forEach(function(s,k){var d=el("button","",String(k+1));d.setAttribute("aria-label","Step "+(k+1));d.onclick=function(){stop();show(k);d.blur()};dots.appendChild(d)});
+ function show(k){i=Math.max(0,Math.min(P.st.length-1,k));stage.innerHTML=svgw(P.st[i].s,P.h||330,P.st[i].t);num.textContent=(i+1)+"/"+P.st.length;bt.textContent=P.st[i].t;sp.textContent=P.st[i].d;
+  [].forEach.call(dots.children,function(d,k){d.classList.toggle("on",k===i)});bk.disabled=i===0;nx.disabled=i===P.st.length-1}
+ function stop(){clearInterval(iv);iv=null;pl.textContent="▶ Play"}
+ bk.onclick=function(){stop();show(i-1);this.blur()};nx.onclick=function(){stop();show(i+1);this.blur()};
+ pl.onclick=function(){this.blur();if(iv){stop();return}if(i===P.st.length-1)show(0);pl.textContent="⏸ Pause";iv=setInterval(function(){if(!e.offsetParent||i>=P.st.length-1){stop();return}show(i+1)},P.ms||6000)};
+ row.appendChild(bk);row.appendChild(pl);row.appendChild(nx);row.appendChild(dots);e.appendChild(stage);e.appendChild(cap);e.appendChild(row);show(0)}
+function pred(e,Q){e.className="pred";e.innerHTML="";e.appendChild(el("h3","","🤔 Predict first!"));e.appendChild(el("p","q",Q.q));var g=el("div","opts"),ans=el("div","pans"),rv=el("button","btn","Reveal the answer");ans.style.display="none";
+ Q.o.forEach(function(o,k){var x=el("button","opt",String.fromCharCode(65+k)+". "+o);x.onclick=function(){[].forEach.call(g.children,function(c){c.classList.remove("sel")});x.classList.add("sel");x.blur()};g.appendChild(x)});
+ rv.onclick=function(){rv.blur();[].forEach.call(g.children,function(c,k){c.classList.remove("sel");c.classList.add(k===Q.a?"ok":"no")});ans.innerHTML="<b>✓ "+String.fromCharCode(65+Q.a)+". "+Q.o[Q.a]+"</b><br>"+Q.why;ans.style.display="";rv.style.display="none";var sec=e.closest("section");if(sec)[].forEach.call(sec.querySelectorAll(".after"),function(x){x.classList.add("show")})};
+ e.appendChild(g);var r=el("div","row");r.appendChild(rv);r.appendChild(el("span","sm","Students: type A, B, C… in the ClassIn chat first."));e.appendChild(r);e.appendChild(ans)}
+
 /* ================= TEACHER DECK ================= */
 var D={secs:[],i:0};
 function startDeck(){
@@ -785,7 +956,8 @@ function startDeck(){
  [].forEach.call(document.querySelectorAll("[data-ref]"),function(e){e.innerHTML=REF[e.dataset.ref](e.dataset.legend==="1")});
  [].forEach.call(document.querySelectorAll("[data-join]"),function(e){e.innerHTML='<span class="tag">Every class</span><h2>Join the live class</h2><ol style="font-size:1.15em"><li>Open the class link: <span class="lnk">'+LINK+'</span></li><li>Type your <b>real name</b>: the same name you use in ClassIn.</li><li>Open the activity number I tell you, for example <b>A3</b>.</li><li>Answer every question.</li><li>At the end you get a <b>code</b>. Copy the code into the <b>ClassIn chat</b>.</li></ol><div class="do"><b>Tip:</b> a laptop or tablet is best. On a phone, turn it sideways.</div>'});
  [].forEach.call(document.querySelectorAll("[data-act]"),buildActSlide);
- [].forEach.call(document.querySelectorAll("[data-timer]"),function(e){var m=+e.dataset.timer,b=el("button","btn alt","Start "+m+"-minute copy timer"),o=el("span","timer"),iv;b.onclick=function(){clearInterval(iv);var end=Date.now()+m*60000;b.blur();iv=setInterval(function(){var r=Math.max(0,Math.round((end-Date.now())/1000));o.textContent="  ⏱ "+Math.floor(r/60)+":"+("0"+r%60).slice(-2)+(r?"":"  Time is up!");if(!r)clearInterval(iv)},250)};e.appendChild(b);e.appendChild(o)});
+ [].forEach.call(document.querySelectorAll("[data-timer]"),bigTimer);
+ initIx(document.getElementById("deck"));
  document.getElementById("bk").onclick=function(){go(D.i-1);this.blur()};
  document.getElementById("nx").onclick=function(){go(D.i+1);this.blur()};
  document.getElementById("mbtn").onclick=function(){this.blur();openOv()};
@@ -805,10 +977,10 @@ function buildActSlide(sec){var A=ACT[sec.dataset.act];sec.innerHTML="";
  if(SHEET_URL){var row=el("div","row"),send=el("button","btn go","▶ Send to students"),stop=el("button","btn alt","Stop"),st=el("span","");st.id="lv-"+A.id;
   send.onclick=function(){send.blur();setLive(A.id)};stop.onclick=function(){stop.blur();setLive(null)};row.appendChild(send);row.appendChild(stop);row.appendChild(st);sec.appendChild(row)}
  var sp=el("div","split act"),L=el("div"),R=el("div","mon");R.id="mon-"+A.id;
- if(A.ref){var r=el("div");r.innerHTML=REF[A.ref](false);L.appendChild(r)}
+ if(A.ref){var r=el("div");r.innerHTML=REF[A.ref](false);initIx(r);L.appendChild(r)}
  else{var ol=el("ol");A.items.forEach(function(it){ol.appendChild(el("li","",it.q))});L.appendChild(ol)}
  var d=el("details"),sm=el("summary","","Answer key (teacher only: do not screen-share)");d.appendChild(sm);var ok=el("ol","sm");
- A.items.forEach(function(it){var t=it.k==="mc"?it.o[0]:it.k==="num"?(it.a+" "+(it.u||"")):it.k==="order"?it.s.join(" → "):it.k==="sort"?it.i.map(function(x){return x.replace("|"," → ")}).join("; "):"(written answer)";ok.appendChild(el("li","",it.q+"  ⟶  "+t))});
+ A.items.forEach(function(it){var t=it.k==="mc"?it.o[0]:it.k==="slider"?(it.a+" "+(it.u||"")+(it.tol?" (±"+it.tol+")":"")):it.k==="multi"?it.o.filter(function(o){return o[0]==="*"}).map(function(o){return o.slice(1)}).join(", "):it.k==="hot"?it.r.filter(function(r){return r.ok}).map(function(r){return r.l}).join(" or "):it.k==="num"?(it.a+" "+(it.u||"")):it.k==="order"?it.s.join(" → "):it.k==="sort"?it.i.map(function(x){return x.replace("|"," → ")}).join("; "):"(written answer)";ok.appendChild(el("li","",it.q+"  ⟶  "+t))});
  d.appendChild(ok);L.appendChild(d);sp.appendChild(L);sp.appendChild(R);sec.appendChild(sp);renderMon(A.id)}
 function lvMsg(t){[].forEach.call(document.querySelectorAll("[id^=lv-]"),function(s){s.textContent=t;s.className="sm c0"})}
 function setLive(id){if(!S.db){lvMsg("Live sending is off in this view. Tell students the activity number (they choose it from their list) and collect codes in the ClassIn chat.");return}
@@ -903,9 +1075,9 @@ function openAct(id){U.cur=id;rec(id);push();renderAct()}
 function renderAct(){var id=U.cur,A=ACT[id],r=rec(id),s=document.getElementById("stu");s.innerHTML="";head();window.scrollTo(0,0);
  var top=el("div","row"),bk=el("button","btn alt","← All activities");bk.onclick=home;top.appendChild(bk);top.appendChild(el("b","",A.id+" · "+A.t));s.appendChild(top);
  if(r.done){summary(s,A,r);return}
- var run=el("div","run"+(A.ref?"":" noref"));if(A.ref){var rp=el("div","refp");rp.innerHTML=REF[A.ref](false);run.appendChild(rp)}
+ var run=el("div","run"+(A.ref?"":" noref"));if(A.ref){var rp=el("div","refp");rp.innerHTML=REF[A.ref](false);initIx(rp);run.appendChild(rp)}
  var qb=el("div","qbox"),idx=r.i,it=A.items[idx];qb.appendChild(el("div","qn","Question "+(idx+1)+" of "+A.items.length));var pr=el("div","prog"),pi=el("i");pi.style.width=(100*idx/A.items.length)+"%";pr.appendChild(pi);qb.appendChild(pr);
- qb.appendChild(el("p","q",it.q));var body=el("div"),fb=el("p","fb"),nx=el("button","btn go",idx+1<A.items.length?"Next question →":"Finish ✓");nx.style.display="none";
+ qb.appendChild(el("p","q",it.q));if(it.v){var qv=el("div","qv");qv.innerHTML=it.v;qb.appendChild(qv)}var body=el("div"),fb=el("p","fb"),nx=el("button","btn go",idx+1<A.items.length?"Next question →":"Finish ✓");nx.style.display="none";
  nx.onclick=function(){r.i=idx+1;if(r.i>=A.items.length)r.done=true;push();renderAct()};
  function done(ans,sc,msg,good){r.a[idx]=ans;r.s[idx]=sc;fb.textContent=msg;fb.className="fb "+(good?"good":"bad");nx.style.display="";push();setTimeout(function(){nx.focus()},30)}
  ITEM[it.k](body,it,done);qb.appendChild(body);qb.appendChild(fb);qb.appendChild(nx);run.appendChild(qb);s.appendChild(run)}
@@ -929,6 +1101,26 @@ num:function(b,it,done){var row=el("div","row"),i=el("input");i.type="text";i.in
   else if(tries===1){hint.textContent="Not quite. Check your working and try once more.";hint.className="fb bad";i.select()}
   else{c.disabled=i.disabled=true;done(v,0,"Not quite. The answer is "+it.a.toLocaleString("en-US")+" "+(it.u||""),false)}};
  i.onkeydown=function(e){if(e.key==="Enter")c.click()};row.appendChild(i);row.appendChild(u);row.appendChild(c);b.appendChild(row);b.appendChild(hint);setTimeout(function(){i.focus()},50)},
+slider:function(b,it,done){var w=el("div","sld"),v=el("div","sv"),r=el("input"),lb=el("div","sl2"),row=el("div","row"),c=el("button","btn","Check"),tries=0,hint=el("p","sm","Move the slider, then press Check.");
+ r.type="range";r.min=it.min;r.max=it.max;r.step=it.step||1;r.value=it.start!=null?it.start:it.min;r.setAttribute("aria-label",it.q);
+ function show(){v.textContent=r.value+" "+(it.u||"")}r.oninput=show;show();lb.appendChild(el("span","",it.min+""));lb.appendChild(el("span","",it.max+""));
+ w.appendChild(v);w.appendChild(r);w.appendChild(lb);
+ c.onclick=function(){var x=+r.value,ok=Math.abs(x-it.a)<=(it.tol||0)+1e-9;tries++;
+  if(ok){c.disabled=r.disabled=true;done(x,tries===1?1:.5,tries===1?"Correct! ✓":"Correct on the second try ✓",true)}
+  else if(tries===1){hint.textContent="Not quite. Look again and try once more.";hint.className="fb bad"}
+  else{c.disabled=r.disabled=true;done(x,0,"Not quite. The answer is "+it.a+" "+(it.u||""),false)}};
+ row.appendChild(c);b.appendChild(w);b.appendChild(row);b.appendChild(hint)},
+multi:function(b,it,done){var g=el("div","opts"),C=[],sel={},c=el("button","btn","Check");c.style.marginTop="10px";b.appendChild(el("p","sm","Select ALL the correct answers, then press Check."));
+ shuf(it.o).forEach(function(o){var good=o[0]==="*",t=good?o.slice(1):o,x=el("button","opt tog","☐ "+t);if(good)C.push(t);x.onclick=function(){if(c.disabled)return;sel[t]=!sel[t];x.classList.toggle("on",!!sel[t]);x.textContent=(sel[t]?"☑ ":"☐ ")+t};x.dataset.t=t;x.dataset.g=good?1:"";g.appendChild(x)});
+ c.onclick=function(){var right=0,wrong=0,picked=[];[].forEach.call(g.children,function(x){var t=x.dataset.t,s=!!sel[t];if(s)picked.push(t);if(x.dataset.g){if(s){right++;x.classList.add("ok")}else x.classList.add("miss")}else if(s){wrong++;x.classList.add("no")}});
+  c.disabled=true;var sc=Math.max(0,(right-wrong)/C.length),all=right===C.length&&!wrong;
+  done(picked.join(", "),sc,all?"All correct! ✓":"You found "+right+" of "+C.length+(wrong?" and chose "+wrong+" wrong":"")+". Correct: "+C.join(", "),all)};
+ b.appendChild(g);b.appendChild(c)},
+hot:function(b,it,done){var lock=0,h='<svg class="hot" viewBox="'+it.vb+'" role="img" aria-label="Tap the correct part of the picture">'+it.svg;
+ it.r.forEach(function(r,i){h+='<rect class="hz" tabindex="0" role="button" aria-label="'+r.l+'" data-i="'+i+'" x="'+r.x+'" y="'+r.y+'" width="'+r.w+'" height="'+r.h+'" rx="10"/>'});b.innerHTML=h+'</svg><p class="sm">Tap (click) on the picture.</p>';
+ [].forEach.call(b.querySelectorAll(".hz"),function(z){function pick(){if(lock)return;lock=1;var r=it.r[+z.dataset.i];z.classList.add(r.ok?"ok":"no");if(!r.ok)[].forEach.call(b.querySelectorAll(".hz"),function(q){if(it.r[+q.dataset.i].ok)q.classList.add("ok")});
+  var cor=it.r.filter(function(x){return x.ok}).map(function(x){return x.l}).join(" or ");done(r.l,r.ok?1:0,r.ok?"Correct! ✓ ("+r.l+")":"Not quite. You chose: "+r.l+". The answer is: "+cor+" (green box).",!!r.ok)}
+  z.onclick=pick;z.onkeydown=function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();pick()}}})},
 text:function(b,it,done){var t=el("textarea");t.rows=4;t.maxLength=600;t.placeholder="Write in full sentences.";var c=el("button","btn","Submit");c.style.marginTop="8px";
  c.onclick=function(){var v=t.value.trim();if(v.length<2){t.focus();return}t.disabled=c.disabled=true;done(v,null,"Saved. Your teacher can read it.",true)};b.appendChild(t);b.appendChild(c)}
 };
